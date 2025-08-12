@@ -1,0 +1,1 @@
+export type * from "../module/recall-knowledge.d.ts";

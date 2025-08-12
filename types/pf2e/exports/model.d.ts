@@ -1,0 +1,1 @@
+export type * from "../module/model.d.ts";
