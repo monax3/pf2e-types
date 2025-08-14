@@ -1,0 +1,1 @@
+export type * from "../module/dc.d.ts";
