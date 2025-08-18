@@ -2,7 +2,6 @@ import * as ts from "typescript";
 import fs from "node:fs/promises";
 import path from "node:path";
 import foundryAPI from "./foundry-api.json" with { type: "json" };
-import c from "ansi-colors";
 
 async function readTsConfig(fileName: string) {
     const text = await fs.readFile(fileName, "utf8");
@@ -196,15 +195,11 @@ for (const group of testGroups) {
     }
 }
 
-for (const options of testGroups) {
-    if (options.missing.size === 0) {
-        continue;
-    }
-
+await fs.writeFile('correctness.md', ['# API correctness', '', ...testGroups.flatMap((options) => {
     const items = options.items
         .toSorted()
-        .filter((item) => options.missing.has(item))
-        .map((item) => ` ${options.missing.has(item) ? c.red("✗") : c.green("✓")} ${item}`);
+        // .filter((item) => options.missing.has(item))
+        .map((item) => `- ${options.missing.has(item) ? '[ ]' : '[x]'} ${item}`);
 
-    console.error(`${options.name}\n${items.join("\n")}\n\n`);
-}
+    return [`## ${options.name}`, '', ...items, ''];
+})].join('\n'), 'utf8');

@@ -1,0 +1,1327 @@
+# API correctness
+
+## Namespaces
+
+- [x] foundry.abstract
+- [x] foundry.abstract.types
+- [x] foundry.applications
+- [x] foundry.applications.api
+- [x] foundry.applications.apps
+- [x] foundry.applications.apps.av
+- [x] foundry.applications.dice
+- [x] foundry.applications.elements
+- [x] foundry.applications.fields
+- [x] foundry.applications.handlebars
+- [x] foundry.applications.hud
+- [x] foundry.applications.settings
+- [x] foundry.applications.settings.menus
+- [x] foundry.applications.sheets
+- [ ] foundry.applications.sheets.journal
+- [x] foundry.applications.sidebar
+- [x] foundry.applications.sidebar.apps
+- [x] foundry.applications.sidebar.tabs
+- [x] foundry.applications.types
+- [x] foundry.applications.ui
+- [x] foundry.applications.ux
+- [x] foundry.appv1
+- [x] foundry.appv1.api
+- [x] foundry.appv1.sheets
+- [x] foundry.audio
+- [x] foundry.av
+- [x] foundry.av.clients
+- [x] foundry.canvas
+- [x] foundry.canvas.animation
+- [x] foundry.canvas.animation.types
+- [x] foundry.canvas.containers
+- [x] foundry.canvas.containers.types
+- [x] foundry.canvas.extensions
+- [x] foundry.canvas.geometry
+- [x] foundry.canvas.geometry.edges
+- [x] foundry.canvas.geometry.types
+- [x] foundry.canvas.groups
+- [x] foundry.canvas.interaction
+- [x] foundry.canvas.interaction.types
+- [x] foundry.canvas.layers
+- [x] foundry.canvas.layers.types
+- [x] foundry.canvas.perception
+- [x] foundry.canvas.perception.types
+- [x] foundry.canvas.placeables
+- [x] foundry.canvas.placeables.regions
+- [x] foundry.canvas.placeables.tokens
+- [x] foundry.canvas.placeables.types
+- [x] foundry.canvas.primary
+- [x] foundry.canvas.rendering
+- [ ] foundry.canvas.rendering.BLEND_MODES
+- [x] foundry.canvas.rendering.batching
+- [x] foundry.canvas.rendering.filters
+- [ ] foundry.canvas.rendering.filters.types
+- [x] foundry.canvas.rendering.mixins
+- [x] foundry.canvas.rendering.shaders
+- [x] foundry.canvas.rendering.shaders.types
+- [x] foundry.canvas.sources
+- [x] foundry.canvas.workers
+- [x] foundry.config
+- [x] foundry.data
+- [x] foundry.data.fields
+- [ ] foundry.data.regionBehaviors
+- [ ] foundry.data.regionShapes
+- [x] foundry.data.types
+- [x] foundry.data.validation
+- [x] foundry.data.validators
+- [x] foundry.dice
+- [x] foundry.dice.terms
+- [x] foundry.documents
+- [x] foundry.documents.abstract
+- [x] foundry.documents.collections
+- [x] foundry.documents.types
+- [x] foundry.grid
+- [x] foundry.grid.types
+- [x] foundry.helpers
+- [x] foundry.helpers.interaction
+- [x] foundry.helpers.media
+- [x] foundry.helpers.types
+- [x] foundry.nue
+- [x] foundry.nue.tours
+- [x] foundry.packages
+- [x] foundry.packages.types
+- [x] foundry.prosemirror
+- [x] foundry.prosemirror.types
+- [x] foundry.types
+- [x] foundry.utils
+- [x] foundry.utils.types
+
+## Types
+
+- [x] foundry.AVConfigConfiguration
+- [x] foundry.AVSettingsData
+- [ ] foundry.AdventureContentTreeNode
+- [x] foundry.ApplicationV1HeaderButton
+- [x] foundry.ApplicationV1Options
+- [x] foundry.AudioTimeoutOptions
+- [x] foundry.BaseEffectSourceData
+- [x] foundry.BaseEffectSourceOptions
+- [ ] foundry.BrowserTest
+- [x] foundry.CameraPopoutConfiguration
+- [x] foundry.CameraViewControlContext
+- [x] foundry.CameraViewUserContext
+- [x] foundry.CanvasEnvironmentConfig
+- [x] foundry.CategoryBrowserConfiguration
+- [x] foundry.ChatBubbleOptions
+- [ ] foundry.ClipperPoints
+- [x] foundry.CompendiumPackDirectoryContext
+- [x] foundry.ContextMenuCallback
+- [x] foundry.ContextMenuCondition
+- [x] foundry.ContextMenuEntry
+- [ ] foundry.ContextMenuJQueryCallback
+- [x] foundry.ContextMenuOptions
+- [x] foundry.ContextMenuRenderOptions
+- [ ] foundry.DependencyResolutionDescriptor
+- [x] foundry.DialogData
+- [x] foundry.DialogV1Button
+- [x] foundry.DialogV1ConfirmOptions
+- [x] foundry.DialogV1Options
+- [x] foundry.DialogV2Button
+- [x] foundry.DialogV2ButtonCallback
+- [x] foundry.DialogV2CloseCallback
+- [x] foundry.DialogV2Configuration
+- [x] foundry.DialogV2RenderCallback
+- [x] foundry.DialogV2SubmitCallback
+- [x] foundry.DialogV2WaitOptions
+- [x] foundry.DiceTermFulfillmentDescriptor
+- [x] foundry.DocumentDirectoryConfiguration
+- [x] foundry.DocumentHTMLEmbedConfig
+- [x] foundry.DocumentSheetConfigFieldDescriptor
+- [x] foundry.DocumentSheetConfigRenderContext
+- [x] foundry.DocumentSheetConfiguration
+- [x] foundry.DocumentSheetRenderOptions
+- [x] foundry.DocumentSheetV1Options
+- [ ] foundry.DocumentTagsInputConfig
+- [x] foundry.DoorAnimationConfiguration
+- [x] foundry.DoorStateSnapshot
+- [x] foundry.DoorStyle
+- [x] foundry.DragDropConfiguration
+- [x] foundry.DraggableResizeOptions
+- [ ] foundry.DrawingConfigConfiguration
+- [x] foundry.EnrichmentAnchorOptions
+- [x] foundry.EnrichmentOptions
+- [x] foundry.FavoriteFolder
+- [x] foundry.FieldFilter
+- [x] foundry.FilePickerInputConfig
+- [ ] foundry.FontTypes
+- [x] foundry.FormApplicationOptions
+- [ ] foundry.FrameViewerConfiguration
+- [x] foundry.GameUIConfiguration
+- [x] foundry.HTMLCodeMirrorOptions
+- [ ] foundry.HTMLColorPickerOptions
+- [ ] foundry.HTMLDocumentTagsOptions
+- [ ] foundry.HTMLRangePickerOptions
+- [x] foundry.HTMLSecretConfiguration
+- [x] foundry.HTMLSecretContentCallback
+- [x] foundry.HTMLSecretUpdateCallback
+- [ ] foundry.HTMLStringTagsOptions
+- [x] foundry.HandlebarsRenderOptions
+- [x] foundry.HandlebarsTemplatePart
+- [ ] foundry.HookedFunction
+- [x] foundry.HotbarSlotData
+- [x] foundry.HoverFadeState
+- [x] foundry.ImagePopoutConfiguration
+- [ ] foundry.JournalSheetCategoryContext
+- [ ] foundry.JournalSheetOptions
+- [ ] foundry.JournalSheetPageContext
+- [x] foundry.LightSourceData
+- [x] foundry.MainMenuItem
+- [x] foundry.ModuleSubTypeCounts
+- [x] foundry.NewFontDefinition
+- [x] foundry.Notification
+- [x] foundry.NotificationOptions
+- [x] foundry.OcclusionState
+- [x] foundry.PackageCompatibilityIssue
+- [x] foundry.PlaylistDirectoryControlContext
+- [x] foundry.PlaylistDirectoryRenderContext
+- [x] foundry.PlaylistDirectoryTreeContext
+- [x] foundry.PlaylistDirectoryVolumeContext
+- [x] foundry.PlaylistRenderContext
+- [x] foundry.PlaylistSoundRenderContext
+- [x] foundry.PointEffectSourceData
+- [x] foundry.PolygonVertexOptions
+- [x] foundry.PrimarySpriteMeshConstructorOptions
+- [x] foundry.ProseMirrorHistory
+- [x] foundry.ProseMirrorInputConfig
+- [x] foundry.RangePickerInputConfig
+- [x] foundry.RenderedEffectLayerConfig
+- [ ] foundry.RenderedEffectSourceAnimationConfig
+- [x] foundry.RenderedEffectSourceData
+- [x] foundry.RenderedEffectSourceLayer
+- [x] foundry.SceneControl
+- [x] foundry.SceneControlTool
+- [x] foundry.SceneControlsActivationChange
+- [x] foundry.SceneControlsRenderOptions
+- [x] foundry.SearchFilterCallback
+- [x] foundry.SearchFilterConfiguration
+- [x] foundry.ShaderTechnique
+- [x] foundry.ShareImageConfig
+- [x] foundry.SheetRegistrationDescriptor
+- [x] foundry.SheetRegistrationOptions
+- [x] foundry.SidebarTabDescriptor
+- [ ] foundry.StringTagsInputConfig
+- [x] foundry.SupportReportData
+- [x] foundry.TabsConfiguration
+- [x] foundry.TextContentReplacer
+- [x] foundry.TextReplacementOptions
+- [x] foundry.TextureAlphaData
+- [x] foundry.TextureBase64ExtractionOptions
+- [ ] foundry.TextureCacheEntry
+- [ ] foundry.TextureCacheMap
+- [x] foundry.TexturePixelsExtractionOptions
+- [x] foundry.ToolclipConfiguration
+- [x] foundry.ToolclipConfigurationItem
+- [x] foundry.TourConfig
+- [x] foundry.TourStatus
+- [x] foundry.TourStep
+- [x] foundry.TurnMarkerAnimationConfigData
+- [x] foundry.TurnMarkerAnimationData
+- [x] foundry.UsabilityIssue
+- [x] foundry.VisionSourceData
+- [x] foundry.WeatherOcclusionMaskConfiguration
+- [x] foundry.WeatherTerrainMaskConfiguration
+- [x] foundry.WorkerTask
+- [ ] foundry.WorldConfigOptions
+- [x] foundry.abstract.types.DataModelConstructionContext
+- [ ] foundry.abstract.types.DataModelConstructionOptions
+- [ ] foundry.abstract.types.DataModelFromSourceOptions
+- [x] foundry.abstract.types.DataModelUpdateOptions
+- [x] foundry.abstract.types.DataModelValidationOptions
+- [x] foundry.abstract.types.DataSchema
+- [x] foundry.abstract.types.DatabaseAction
+- [x] foundry.abstract.types.DatabaseCreateOperation
+- [x] foundry.abstract.types.DatabaseDeleteOperation
+- [x] foundry.abstract.types.DatabaseGetOperation
+- [x] foundry.abstract.types.DatabaseOperation
+- [x] foundry.abstract.types.DatabaseUpdateOperation
+- [ ] foundry.abstract.types.DocumentClassMetadata
+- [ ] foundry.abstract.types.DocumentCloneOptions
+- [ ] foundry.abstract.types.DocumentConstructionContext
+- [ ] foundry.abstract.types.DocumentPermissionTest
+- [x] foundry.abstract.types.DocumentSocketRequest
+- [x] foundry.applications.fields.CustomFormGroup
+- [x] foundry.applications.fields.CustomFormInput
+- [x] foundry.applications.fields.EditorInputConfig
+- [x] foundry.applications.fields.FormSelectOption
+- [x] foundry.applications.fields.NumberInputConfig
+- [x] foundry.applications.fields.SelectInputConfig
+- [x] foundry.applications.fields.TextAreaInputConfig
+- [x] foundry.applications.handlebars.SelectOptionsHelperOptions
+- [x] foundry.applications.types.ApplicationClickAction
+- [x] foundry.applications.types.ApplicationClosingOptions
+- [x] foundry.applications.types.ApplicationConfiguration
+- [x] foundry.applications.types.ApplicationConstructorParams
+- [x] foundry.applications.types.ApplicationFormConfiguration
+- [x] foundry.applications.types.ApplicationFormSubmission
+- [x] foundry.applications.types.ApplicationHeaderControlsEntry
+- [x] foundry.applications.types.ApplicationPosition
+- [x] foundry.applications.types.ApplicationRenderContext
+- [x] foundry.applications.types.ApplicationRenderOptions
+- [x] foundry.applications.types.ApplicationTab
+- [x] foundry.applications.types.ApplicationTabsConfiguration
+- [x] foundry.applications.types.ApplicationWindowConfiguration
+- [x] foundry.applications.types.ApplicationWindowRenderOptions
+- [x] foundry.applications.types.FormFooterButton
+- [x] foundry.applications.types.FormNode
+- [x] foundry.audio.AnalysisData
+- [x] foundry.audio.AnalysisDataValue
+- [x] foundry.audio.AnalysisNodes
+- [x] foundry.audio.AudioBufferCacheEntry
+- [x] foundry.audio.BandName
+- [x] foundry.audio.ContextName
+- [x] foundry.audio.SoundCreationOptions
+- [x] foundry.audio.SoundPlaybackOptions
+- [x] foundry.audio.SoundScheduleCallback
+- [x] foundry.canvas.animation.types.CanvasAnimationAttribute
+- [x] foundry.canvas.animation.types.CanvasAnimationData
+- [x] foundry.canvas.animation.types.CanvasAnimationEasingFunction
+- [x] foundry.canvas.animation.types.CanvasAnimationOptions
+- [x] foundry.canvas.containers.types.GridMeshData
+- [x] foundry.canvas.geometry.types.ClipperPoint
+- [x] foundry.canvas.geometry.types.ClockwiseSweepPolygonConfig
+- [x] foundry.canvas.geometry.types.EdgeOptions
+- [x] foundry.canvas.geometry.types.EdgeSet
+- [x] foundry.canvas.geometry.types.EdgeType
+- [x] foundry.canvas.geometry.types.PointSourcePolygonConfig
+- [x] foundry.canvas.geometry.types.PointSourcePolygonType
+- [x] foundry.canvas.geometry.types.PolygonRay
+- [x] foundry.canvas.geometry.types.QuadtreeObject
+- [x] foundry.canvas.geometry.types.RayIntersection
+- [x] foundry.canvas.geometry.types.VertexMap
+- [x] foundry.canvas.interaction.types.PingData
+- [x] foundry.canvas.interaction.types.PingOptions
+- [x] foundry.canvas.interaction.types.PulsePingOptions
+- [x] foundry.canvas.interaction.types.RenderFlag
+- [x] foundry.canvas.layers.types.AmbientSoundPlaybackConfig
+- [x] foundry.canvas.layers.types.CanvasHistoryEvent
+- [x] foundry.canvas.layers.types.CanvasVisionContainer
+- [x] foundry.canvas.layers.types.CanvasVisionContainerDarkness
+- [x] foundry.canvas.layers.types.CanvasVisionContainerLight
+- [x] foundry.canvas.layers.types.CanvasVisionContainerSight
+- [x] foundry.canvas.layers.types.PlaceablesLayerOptions
+- [x] foundry.canvas.perception.types.PerceptionManagerFlags
+- [ ] foundry.canvas.placeables.types.DynamicRingId
+- [x] foundry.canvas.placeables.types.RingColorBand
+- [x] foundry.canvas.placeables.types.RingData
+- [ ] foundry.canvas.rendering.filters.types.SMAAFilterConfig
+- [x] foundry.canvas.rendering.shaders.types.DepthBatchData
+- [x] foundry.canvas.rendering.shaders.types.OccludableBatchData
+- [x] foundry.data.types.ArrayFieldOptions
+- [x] foundry.data.types.CalendarConfig
+- [x] foundry.data.types.CalendarConfigDay
+- [x] foundry.data.types.CalendarConfigDays
+- [x] foundry.data.types.CalendarConfigLeapYear
+- [x] foundry.data.types.CalendarConfigMonth
+- [x] foundry.data.types.CalendarConfigMonths
+- [x] foundry.data.types.CalendarConfigSeason
+- [x] foundry.data.types.CalendarConfigSeasons
+- [x] foundry.data.types.CalendarConfigYears
+- [x] foundry.data.types.ChoiceInputConfig
+- [x] foundry.data.types.CodeMirrorInputConfig
+- [x] foundry.data.types.CodeMirrorLanguage
+- [x] foundry.data.types.CombatConfigurationData
+- [x] foundry.data.types.DataFieldContext
+- [x] foundry.data.types.DataFieldOptions
+- [x] foundry.data.types.DataFieldValidationOptions
+- [x] foundry.data.types.DataFieldValidator
+- [x] foundry.data.types.DocumentFlags
+- [x] foundry.data.types.DocumentStats
+- [x] foundry.data.types.DocumentUUIDFieldOptions
+- [x] foundry.data.types.ElementValidationFailure
+- [x] foundry.data.types.FilePathFieldOptions
+- [x] foundry.data.types.FormGroupConfig
+- [x] foundry.data.types.FormInputConfig
+- [x] foundry.data.types.JavaScriptFieldOptions
+- [x] foundry.data.types.LightAnimationData
+- [x] foundry.data.types.NumberFieldOptions
+- [x] foundry.data.types.StringFieldInputConfig
+- [x] foundry.data.types.StringFieldOptions
+- [x] foundry.data.types.TimeComponents
+- [x] foundry.data.types.TimeFormatter
+- [x] foundry.dice.DiceRollParseNode
+- [x] foundry.dice.DiceTermResult
+- [x] foundry.dice.FlavorRollParseNode
+- [x] foundry.dice.FunctionRollParseNode
+- [x] foundry.dice.ModifiersRollParseNode
+- [x] foundry.dice.NumericRollParseNode
+- [x] foundry.dice.ParentheticalRollParseNode
+- [x] foundry.dice.PoolRollParseNode
+- [x] foundry.dice.RollOptions
+- [x] foundry.dice.RollParseArg
+- [x] foundry.dice.RollParseNode
+- [x] foundry.dice.RollParseTreeNode
+- [x] foundry.dice.StringParseNode
+- [x] foundry.dice.terms.RollTermData
+- [x] foundry.documents.types.ActiveEffectData
+- [x] foundry.documents.types.ActiveEffectDuration
+- [x] foundry.documents.types.ActorData
+- [x] foundry.documents.types.ActorDeltaData
+- [x] foundry.documents.types.AdventureData
+- [x] foundry.documents.types.AdventureImportData
+- [x] foundry.documents.types.AdventureImportOptions
+- [x] foundry.documents.types.AdventureImportResult
+- [x] foundry.documents.types.AdventurePostImportCallback
+- [x] foundry.documents.types.AdventurePreImportCallback
+- [x] foundry.documents.types.AmbientLightData
+- [x] foundry.documents.types.AmbientSoundData
+- [x] foundry.documents.types.AmbientSoundEffect
+- [x] foundry.documents.types.CardData
+- [x] foundry.documents.types.CardFaceData
+- [x] foundry.documents.types.CardsData
+- [x] foundry.documents.types.ChatMessageData
+- [x] foundry.documents.types.ChatSpeakerData
+- [x] foundry.documents.types.CombatData
+- [x] foundry.documents.types.CombatHistoryData
+- [x] foundry.documents.types.CombatRoundEventContext
+- [x] foundry.documents.types.CombatTurnEventContext
+- [x] foundry.documents.types.CombatantData
+- [x] foundry.documents.types.CombatantGroupData
+- [x] foundry.documents.types.DrawingData
+- [x] foundry.documents.types.EffectChangeData
+- [x] foundry.documents.types.EffectDurationData
+- [x] foundry.documents.types.EnvironmentData
+- [x] foundry.documents.types.FogExplorationData
+- [ ] foundry.documents.types.FolderChildNode
+- [x] foundry.documents.types.FolderData
+- [x] foundry.documents.types.GlobalLightData
+- [x] foundry.documents.types.GridData
+- [x] foundry.documents.types.ItemData
+- [ ] foundry.documents.types.JournalEntryCategoryData
+- [x] foundry.documents.types.JournalEntryData
+- [x] foundry.documents.types.JournalEntryPageData
+- [ ] foundry.documents.types.JournalEntryPageImageData
+- [ ] foundry.documents.types.JournalEntryPageTextData
+- [ ] foundry.documents.types.JournalEntryPageTitleData
+- [ ] foundry.documents.types.JournalEntryPageVideoData
+- [x] foundry.documents.types.MacroData
+- [x] foundry.documents.types.MeasuredTemplateData
+- [x] foundry.documents.types.NoteData
+- [x] foundry.documents.types.PlaylistData
+- [x] foundry.documents.types.PlaylistSoundData
+- [x] foundry.documents.types.PrototypeTokenData
+- [x] foundry.documents.types.RegionBehaviorActivatedEvent
+- [x] foundry.documents.types.RegionBehaviorData
+- [x] foundry.documents.types.RegionBehaviorDeactivatedEvent
+- [x] foundry.documents.types.RegionBehaviorUnviewedEvent
+- [x] foundry.documents.types.RegionBehaviorViewedEvent
+- [x] foundry.documents.types.RegionData
+- [x] foundry.documents.types.RegionEvent
+- [x] foundry.documents.types.RegionMovementSegment
+- [x] foundry.documents.types.RegionRegionBoundaryEvent
+- [x] foundry.documents.types.RegionSegmentizeMovementPathWaypoint
+- [ ] foundry.documents.types.RegionSocketEvent
+- [x] foundry.documents.types.RegionTokenAnimateEvent
+- [x] foundry.documents.types.RegionTokenAnimateEventData
+- [x] foundry.documents.types.RegionTokenAnimateInEvent
+- [x] foundry.documents.types.RegionTokenAnimateOutEvent
+- [x] foundry.documents.types.RegionTokenEnterEvent
+- [x] foundry.documents.types.RegionTokenEnterExitEvent
+- [x] foundry.documents.types.RegionTokenEnterExitEventData
+- [x] foundry.documents.types.RegionTokenExitEvent
+- [x] foundry.documents.types.RegionTokenMoveEvent
+- [x] foundry.documents.types.RegionTokenMoveEventData
+- [x] foundry.documents.types.RegionTokenMoveInEvent
+- [x] foundry.documents.types.RegionTokenMoveOutEvent
+- [x] foundry.documents.types.RegionTokenMoveWithinEvent
+- [x] foundry.documents.types.RegionTokenRoundEndEvent
+- [x] foundry.documents.types.RegionTokenRoundEvent
+- [x] foundry.documents.types.RegionTokenRoundEventData
+- [x] foundry.documents.types.RegionTokenRoundStartEvent
+- [x] foundry.documents.types.RegionTokenTurnEndEvent
+- [x] foundry.documents.types.RegionTokenTurnEvent
+- [x] foundry.documents.types.RegionTokenTurnEventData
+- [x] foundry.documents.types.RegionTokenTurnStartEvent
+- [x] foundry.documents.types.RollTableData
+- [x] foundry.documents.types.RollTableDraw
+- [x] foundry.documents.types.SceneData
+- [x] foundry.documents.types.SceneDimensions
+- [ ] foundry.documents.types.SceneEnvironmentData
+- [x] foundry.documents.types.SettingData
+- [x] foundry.documents.types.TableResultData
+- [x] foundry.documents.types.TileData
+- [x] foundry.documents.types.TileOcclusionData
+- [ ] foundry.documents.types.TileRestrictionsData
+- [x] foundry.documents.types.TileVideoData
+- [ ] foundry.documents.types.TokenBarData
+- [x] foundry.documents.types.TokenCompleteMovementWaypoint
+- [x] foundry.documents.types.TokenData
+- [x] foundry.documents.types.TokenDetectionMode
+- [x] foundry.documents.types.TokenDimensions
+- [x] foundry.documents.types.TokenGetCompleteMovementPathWaypoint
+- [x] foundry.documents.types.TokenHexagonalOffsetsData
+- [x] foundry.documents.types.TokenHexagonalShapeData
+- [x] foundry.documents.types.TokenMeasureMovementPathOptions
+- [x] foundry.documents.types.TokenMeasureMovementPathWaypoint
+- [x] foundry.documents.types.TokenMeasuredMovementWaypoint
+- [x] foundry.documents.types.TokenMovementContinuationData
+- [x] foundry.documents.types.TokenMovementContinuationHandle
+- [ ] foundry.documents.types.TokenMovementCostAggregator
+- [x] foundry.documents.types.TokenMovementCostFunction
+- [x] foundry.documents.types.TokenMovementData
+- [x] foundry.documents.types.TokenMovementHistoryData
+- [x] foundry.documents.types.TokenMovementMethod
+- [x] foundry.documents.types.TokenMovementOperation
+- [x] foundry.documents.types.TokenMovementSectionData
+- [x] foundry.documents.types.TokenMovementSegmentData
+- [x] foundry.documents.types.TokenMovementState
+- [x] foundry.documents.types.TokenMovementWaypoint
+- [ ] foundry.documents.types.TokenOcclusionData
+- [x] foundry.documents.types.TokenPosition
+- [x] foundry.documents.types.TokenRegionMovementSegment
+- [x] foundry.documents.types.TokenRegionMovementWaypoint
+- [x] foundry.documents.types.TokenResumeMovementCallback
+- [ ] foundry.documents.types.TokenRingData
+- [x] foundry.documents.types.TokenSegmentizeMovementWaypoint
+- [ ] foundry.documents.types.TokenSightData
+- [x] foundry.documents.types.TrackedAttributesDescription
+- [x] foundry.documents.types.UserData
+- [x] foundry.documents.types.WallData
+- [x] foundry.documents.types.WallThresholdData
+- [x] foundry.grid.types.GridConfiguration
+- [x] foundry.grid.types.GridCoordinates2D
+- [x] foundry.grid.types.GridCoordinates3D
+- [x] foundry.grid.types.GridMeasurePathCostFunction2D
+- [x] foundry.grid.types.GridMeasurePathCostFunction3D
+- [x] foundry.grid.types.GridMeasurePathResult
+- [x] foundry.grid.types.GridMeasurePathResultSegment
+- [x] foundry.grid.types.GridMeasurePathResultWaypoint
+- [x] foundry.grid.types.GridMeasurePathWaypointData2D
+- [x] foundry.grid.types.GridMeasurePathWaypointData3D
+- [x] foundry.grid.types.GridOffset2D
+- [x] foundry.grid.types.GridOffset3D
+- [x] foundry.grid.types.GridSnappingBehavior
+- [x] foundry.grid.types.HexagonalGridConfiguration
+- [x] foundry.grid.types.HexagonalGridCoordinates2D
+- [x] foundry.grid.types.HexagonalGridCoordinates3D
+- [x] foundry.grid.types.HexagonalGridCube2D
+- [x] foundry.grid.types.HexagonalGridCube3D
+- [x] foundry.grid.types.SquareGridConfiguration
+- [x] foundry.helpers.types.CompendiumArtDescriptor
+- [x] foundry.helpers.types.CompendiumArtInfo
+- [x] foundry.helpers.types.CompendiumArtMapping
+- [ ] foundry.packages.types.CompendiumArtFlag
+- [x] foundry.packages.types.DocumentTypesConfiguration
+- [ ] foundry.packages.types.ModuleManifestData
+- [ ] foundry.packages.types.PackFolderData
+- [x] foundry.packages.types.PackageAuthorData
+- [x] foundry.packages.types.PackageCompatibilityBadge
+- [x] foundry.packages.types.PackageCompatibilityData
+- [ ] foundry.packages.types.PackageCompendiumData
+- [ ] foundry.packages.types.PackageFlagsData
+- [x] foundry.packages.types.PackageLanguageData
+- [x] foundry.packages.types.PackageManifestData
+- [ ] foundry.packages.types.PackageMediaData
+- [x] foundry.packages.types.PackageRelationshipsData
+- [x] foundry.packages.types.RelatedPackageData
+- [ ] foundry.packages.types.ServerSanitizationFields
+- [ ] foundry.packages.types.SystemManifestData
+- [ ] foundry.packages.types.WorldManifestData
+- [x] foundry.prosemirror.types.MenuToggleBlockWrapCommand
+- [x] foundry.prosemirror.types.ProseMirrorCommand
+- [x] foundry.prosemirror.types.ProseMirrorContentLinkOptions
+- [x] foundry.prosemirror.types.ProseMirrorDropDownConfig
+- [x] foundry.prosemirror.types.ProseMirrorDropDownEntry
+- [x] foundry.prosemirror.types.ProseMirrorMarkOutput
+- [x] foundry.prosemirror.types.ProseMirrorMenuItem
+- [x] foundry.prosemirror.types.ProseMirrorMenuOptions
+- [x] foundry.prosemirror.types.ProseMirrorNodeOutput
+- [x] foundry.prosemirror.types.ProseMirrorSliceTransformer
+- [x] foundry.types.ActivityData
+- [x] foundry.types.Builtin
+- [x] foundry.types.BuiltinType
+- [x] foundry.types.CanvasDimensions
+- [x] foundry.types.CanvasPerformanceSettings
+- [x] foundry.types.CanvasSupportedComponents
+- [x] foundry.types.CanvasViewPosition
+- [x] foundry.types.CanvasVisibilityTest
+- [x] foundry.types.CanvasVisibilityTestConfiguration
+- [x] foundry.types.CanvasVisibilityTextureConfiguration
+- [x] foundry.types.ColorSource
+- [x] foundry.types.ConnectedGamepad
+- [x] foundry.types.Constructor
+- [x] foundry.types.DeepPartial
+- [x] foundry.types.DeepReadonly
+- [x] foundry.types.ElevatedPoint
+- [x] foundry.types.FromCompendiumOptions
+- [x] foundry.types.HotReloadData
+- [x] foundry.types.JournalEntryPageHeading
+- [x] foundry.types.KeybindingAction
+- [x] foundry.types.KeybindingActionBinding
+- [x] foundry.types.KeybindingActionConfig
+- [x] foundry.types.KeyboardEventContext
+- [x] foundry.types.ManageCompendiumRequest
+- [x] foundry.types.ManageCompendiumResponse
+- [x] foundry.types.Point
+- [x] foundry.types.PointArray
+- [x] foundry.types.Rectangle
+- [x] foundry.types.RequestData
+- [x] foundry.types.ReticuleOptions
+- [x] foundry.types.RollTableHTMLEmbedConfig
+- [x] foundry.types.RulerWaypoint
+- [x] foundry.types.SearchableField
+- [x] foundry.types.SettingConfig
+- [x] foundry.types.SettingSubmenuConfig
+- [x] foundry.types.SocketRequest
+- [x] foundry.types.SocketResponse
+- [x] foundry.types.TokenAnimationContext
+- [x] foundry.types.TokenAnimationData
+- [x] foundry.types.TokenAnimationOptions
+- [x] foundry.types.TokenAnimationTransition
+- [x] foundry.types.TokenConstrainMovementPathOptions
+- [x] foundry.types.TokenConstrainMovementPathWaypoint
+- [x] foundry.types.TokenConstrainedMovementWaypoint
+- [x] foundry.types.TokenDragContext
+- [x] foundry.types.TokenFindMovementPathJob
+- [x] foundry.types.TokenFindMovementPathOptions
+- [x] foundry.types.TokenFindMovementPathWaypoint
+- [x] foundry.types.TokenGetTerrainMovementPathWaypoint
+- [x] foundry.types.TokenMovementActionConfig
+- [x] foundry.types.TokenMovementActionCostFunction
+- [x] foundry.types.TokenPlannedMovement
+- [x] foundry.types.TokenRulerData
+- [x] foundry.types.TokenRulerWaypoint
+- [x] foundry.types.TokenRulerWaypointData
+- [x] foundry.types.TokenTerrainMovementWaypoint
+- [x] foundry.types.WorldCompendiumConfiguration
+- [x] foundry.types.WorldCompendiumPackConfiguration
+- [x] foundry.utils.types.EmittedEventListener
+- [x] foundry.utils.types.IterableWeakMapHeldValue
+- [x] foundry.utils.types.IterableWeakMapValue
+- [x] foundry.utils.types.LineCircleIntersection
+- [x] foundry.utils.types.LineIntersection
+- [x] foundry.utils.types.ResolvedUUID
+- [x] foundry.utils.types.StringTreeEntryFilter
+- [x] foundry.utils.types.StringTreeNode
+- [x] foundry.utils.types.WordTreeEntry
+
+## Values
+
+- [x] foundry.CanvasDocument
+- [x] foundry.ClientDocument
+- [x] foundry.ClientPackage
+- [ ] foundry.EventEmitter
+- [x] foundry.Game
+- [x] foundry.HandlebarsApplication
+- [ ] foundry.PackageCompendiumPacks
+- [ ] foundry.PackageRelationships
+- [x] foundry.abstract.DataModel
+- [x] foundry.abstract.DatabaseBackend
+- [x] foundry.abstract.Document
+- [x] foundry.abstract.DocumentSocketResponse
+- [x] foundry.abstract.EmbeddedCollection
+- [ ] foundry.abstract.EmbeddedCollectionDelta
+- [ ] foundry.abstract.SingletonEmbeddedCollection
+- [x] foundry.abstract.TypeDataModel
+- [x] foundry.applications.api.ApplicationV2
+- [x] foundry.applications.api.CategoryBrowser
+- [x] foundry.applications.api.DialogV2
+- [x] foundry.applications.api.DocumentSheetV2
+- [x] foundry.applications.api.HandlebarsApplicationMixin
+- [x] foundry.applications.apps.CombatTrackerConfig
+- [x] foundry.applications.apps.CompendiumArtConfig
+- [x] foundry.applications.apps.DocumentOwnershipConfig
+- [x] foundry.applications.apps.DocumentSheetConfig
+- [x] foundry.applications.apps.FilePicker
+- [x] foundry.applications.apps.GridConfig
+- [x] foundry.applications.apps.ImagePopout
+- [x] foundry.applications.apps.PermissionConfig
+- [x] foundry.applications.apps.av.CameraPopout
+- [x] foundry.applications.apps.av.CameraViews
+- [x] foundry.applications.dice.RollResolver
+- [x] foundry.applications.elements.AbstractFormInputElement
+- [x] foundry.applications.elements.AbstractMultiSelectElement
+- [x] foundry.applications.elements.HTMLCodeMirrorElement
+- [x] foundry.applications.elements.HTMLColorPickerElement
+- [x] foundry.applications.elements.HTMLDocumentEmbedElement
+- [x] foundry.applications.elements.HTMLDocumentTagsElement
+- [x] foundry.applications.elements.HTMLEnrichedContentElement
+- [x] foundry.applications.elements.HTMLFilePickerElement
+- [x] foundry.applications.elements.HTMLHueSelectorSlider
+- [x] foundry.applications.elements.HTMLMultiCheckboxElement
+- [x] foundry.applications.elements.HTMLMultiSelectElement
+- [x] foundry.applications.elements.HTMLProseMirrorElement
+- [x] foundry.applications.elements.HTMLRangePickerElement
+- [x] foundry.applications.elements.HTMLSecretBlockElement
+- [x] foundry.applications.elements.HTMLStringTagsElement
+- [x] foundry.applications.fields.createCheckboxInput
+- [x] foundry.applications.fields.createEditorInput
+- [x] foundry.applications.fields.createFontAwesomeIcon
+- [x] foundry.applications.fields.createFormGroup
+- [x] foundry.applications.fields.createMultiSelectInput
+- [x] foundry.applications.fields.createNumberInput
+- [x] foundry.applications.fields.createSelectInput
+- [x] foundry.applications.fields.createTextInput
+- [x] foundry.applications.fields.createTextareaInput
+- [x] foundry.applications.fields.prepareSelectOptionGroups
+- [x] foundry.applications.fields.setInputAttributes
+- [x] foundry.applications.handlebars.checked
+- [x] foundry.applications.handlebars.concat
+- [x] foundry.applications.handlebars.disabled
+- [x] foundry.applications.handlebars.editor
+- [x] foundry.applications.handlebars.formGroup
+- [x] foundry.applications.handlebars.formInput
+- [x] foundry.applications.handlebars.getTemplate
+- [x] foundry.applications.handlebars.ifThen
+- [x] foundry.applications.handlebars.initialize
+- [x] foundry.applications.handlebars.loadTemplates
+- [x] foundry.applications.handlebars.localize
+- [x] foundry.applications.handlebars.numberFormat
+- [x] foundry.applications.handlebars.numberInput
+- [x] foundry.applications.handlebars.object
+- [x] foundry.applications.handlebars.radioBoxes
+- [x] foundry.applications.handlebars.renderTemplate
+- [x] foundry.applications.handlebars.selectOptions
+- [x] foundry.applications.hud.BasePlaceableHUD
+- [x] foundry.applications.hud.DrawingHUD
+- [x] foundry.applications.hud.HeadsUpDisplayContainer
+- [x] foundry.applications.hud.TileHUD
+- [x] foundry.applications.hud.TokenHUD
+- [x] foundry.applications.instances
+- [x] foundry.applications.parseHTML
+- [ ] foundry.applications.settings.DependencyResolution
+- [x] foundry.applications.settings.SettingsConfig
+- [x] foundry.applications.settings.menus.AVConfig
+- [x] foundry.applications.settings.menus.DiceConfig
+- [x] foundry.applications.settings.menus.FontConfig
+- [x] foundry.applications.settings.menus.PrototypeOverridesConfig
+- [x] foundry.applications.settings.menus.UIConfig
+- [ ] foundry.applications.sheets.ActiveEffectConfig
+- [ ] foundry.applications.sheets.ActorSheetV2
+- [ ] foundry.applications.sheets.AdventureExporter
+- [ ] foundry.applications.sheets.AdventureImporterV2
+- [ ] foundry.applications.sheets.AmbientLightConfig
+- [ ] foundry.applications.sheets.AmbientSoundConfig
+- [ ] foundry.applications.sheets.BaseSheet
+- [ ] foundry.applications.sheets.CardConfig
+- [ ] foundry.applications.sheets.CardDeckConfig
+- [ ] foundry.applications.sheets.CardHandConfig
+- [ ] foundry.applications.sheets.CardPileConfig
+- [ ] foundry.applications.sheets.CardsConfig
+- [ ] foundry.applications.sheets.CombatantConfig
+- [ ] foundry.applications.sheets.DrawingConfig
+- [ ] foundry.applications.sheets.FolderConfig
+- [x] foundry.applications.sheets.ItemSheetV2
+- [ ] foundry.applications.sheets.MacroConfig
+- [x] foundry.applications.sheets.MeasuredTemplateConfig
+- [ ] foundry.applications.sheets.NoteConfig
+- [ ] foundry.applications.sheets.PlaylistConfig
+- [ ] foundry.applications.sheets.PlaylistSoundConfig
+- [x] foundry.applications.sheets.PrototypeTokenConfig
+- [ ] foundry.applications.sheets.RegionBehaviorConfig
+- [ ] foundry.applications.sheets.RegionConfig
+- [ ] foundry.applications.sheets.RollTableSheet
+- [x] foundry.applications.sheets.SceneConfig
+- [ ] foundry.applications.sheets.TableResultConfig
+- [ ] foundry.applications.sheets.TileConfig
+- [x] foundry.applications.sheets.TokenConfig
+- [x] foundry.applications.sheets.UserConfig
+- [ ] foundry.applications.sheets.WallConfig
+- [ ] foundry.applications.sheets.journal.JournalEntryCategoryConfig
+- [ ] foundry.applications.sheets.journal.JournalEntryPageHandlebarsSheet
+- [ ] foundry.applications.sheets.journal.JournalEntryPageImageSheet
+- [ ] foundry.applications.sheets.journal.JournalEntryPageMarkdownSheet
+- [ ] foundry.applications.sheets.journal.JournalEntryPagePDFSheet
+- [ ] foundry.applications.sheets.journal.JournalEntryPageProseMirrorSheet
+- [ ] foundry.applications.sheets.journal.JournalEntryPageSheet
+- [ ] foundry.applications.sheets.journal.JournalEntryPageTextSheet
+- [ ] foundry.applications.sheets.journal.JournalEntryPageVideoSheet
+- [ ] foundry.applications.sheets.journal.JournalEntrySheet
+- [ ] foundry.applications.sheets.journal.ShowToPlayersDialog
+- [x] foundry.applications.sidebar.AbstractSidebarTab
+- [x] foundry.applications.sidebar.DocumentDirectory
+- [x] foundry.applications.sidebar.Sidebar
+- [x] foundry.applications.sidebar.apps.ChatPopout
+- [x] foundry.applications.sidebar.apps.Compendium
+- [x] foundry.applications.sidebar.apps.ControlsConfig
+- [x] foundry.applications.sidebar.apps.FolderExport
+- [ ] foundry.applications.sidebar.apps.FrameViewer
+- [x] foundry.applications.sidebar.apps.ModuleManagement
+- [x] foundry.applications.sidebar.apps.SupportDetails
+- [x] foundry.applications.sidebar.apps.ToursManagement
+- [x] foundry.applications.sidebar.apps.WorldConfig
+- [x] foundry.applications.sidebar.tabs.ActorDirectory
+- [x] foundry.applications.sidebar.tabs.CardsDirectory
+- [x] foundry.applications.sidebar.tabs.ChatLog
+- [x] foundry.applications.sidebar.tabs.CombatTracker
+- [x] foundry.applications.sidebar.tabs.CompendiumDirectory
+- [x] foundry.applications.sidebar.tabs.ItemDirectory
+- [x] foundry.applications.sidebar.tabs.JournalDirectory
+- [x] foundry.applications.sidebar.tabs.MacroDirectory
+- [x] foundry.applications.sidebar.tabs.PlaylistDirectory
+- [x] foundry.applications.sidebar.tabs.RollTableDirectory
+- [x] foundry.applications.sidebar.tabs.SceneDirectory
+- [x] foundry.applications.sidebar.tabs.Settings
+- [x] foundry.applications.ui.GamePause
+- [x] foundry.applications.ui.Hotbar
+- [x] foundry.applications.ui.MainMenu
+- [x] foundry.applications.ui.Notifications
+- [x] foundry.applications.ui.Players
+- [x] foundry.applications.ui.RegionLegend
+- [x] foundry.applications.ui.SceneControls
+- [x] foundry.applications.ui.SceneNavigation
+- [x] foundry.applications.ux.ContextMenu
+- [x] foundry.applications.ux.DragDrop
+- [x] foundry.applications.ux.Draggable
+- [x] foundry.applications.ux.FormDataExtended
+- [x] foundry.applications.ux.HTMLSecret
+- [x] foundry.applications.ux.ProseMirrorEditor
+- [x] foundry.applications.ux.SearchFilter
+- [x] foundry.applications.ux.Tabs
+- [x] foundry.applications.ux.TextEditor
+- [x] foundry.appv1.api.Application
+- [x] foundry.appv1.api.Dialog
+- [x] foundry.appv1.api.DocumentSheet
+- [x] foundry.appv1.api.FormApplication
+- [x] foundry.appv1.sheets.ActorSheet
+- [x] foundry.appv1.sheets.AdventureImporter
+- [x] foundry.appv1.sheets.ItemSheet
+- [x] foundry.appv1.sheets.JournalPageSheet
+- [x] foundry.appv1.sheets.JournalSheet
+- [x] foundry.appv1.sheets.JournalTextPageSheet
+- [x] foundry.appv1.sheets.JournalTextTinyMCESheet
+- [x] foundry.audio.AudioBufferCache
+- [x] foundry.audio.AudioHelper
+- [x] foundry.audio.AudioTimeout
+- [x] foundry.audio.BiquadFilterEffect
+- [x] foundry.audio.ConvolverEffect
+- [x] foundry.audio.Sound
+- [x] foundry.av.AVClient
+- [x] foundry.av.AVMaster
+- [x] foundry.av.AVSettings
+- [x] foundry.av.clients.SimplePeerAVClient
+- [x] foundry.canvas.Canvas
+- [x] foundry.canvas.FramebufferSnapshot
+- [x] foundry.canvas.SceneManager
+- [x] foundry.canvas.TextureExtractor
+- [x] foundry.canvas.TextureLoader
+- [x] foundry.canvas.animation.CanvasAnimation
+- [x] foundry.canvas.animation.ChatBubbles
+- [x] foundry.canvas.animation.SmoothNoise
+- [x] foundry.canvas.containers.AutumnLeavesWeatherEffect
+- [x] foundry.canvas.containers.CachedContainer
+- [x] foundry.canvas.containers.ControlIcon
+- [x] foundry.canvas.containers.Cursor
+- [x] foundry.canvas.containers.DoorControl
+- [x] foundry.canvas.containers.DoorMesh
+- [x] foundry.canvas.containers.FullCanvasObjectMixin
+- [x] foundry.canvas.containers.GridHighlight
+- [x] foundry.canvas.containers.GridMesh
+- [x] foundry.canvas.containers.ParticleEffect
+- [x] foundry.canvas.containers.PointSourceMesh
+- [x] foundry.canvas.containers.PreciseText
+- [x] foundry.canvas.containers.QuadMesh
+- [x] foundry.canvas.containers.ResizeHandle
+- [x] foundry.canvas.containers.SpriteMesh
+- [x] foundry.canvas.containers.UnboundContainer
+- [x] foundry.canvas.extensions.extendPIXICircle
+- [x] foundry.canvas.extensions.extendPIXIGraphics
+- [x] foundry.canvas.extensions.extendPIXIPolygon
+- [x] foundry.canvas.extensions.extendPIXIRectangle
+- [x] foundry.canvas.geometry.CanvasQuadtree
+- [x] foundry.canvas.geometry.ClockwiseSweepPolygon
+- [x] foundry.canvas.geometry.LimitedAnglePolygon
+- [x] foundry.canvas.geometry.ObservableTransform
+- [x] foundry.canvas.geometry.PointSourcePolygon
+- [x] foundry.canvas.geometry.PolygonMesher
+- [x] foundry.canvas.geometry.Quadtree
+- [x] foundry.canvas.geometry.Ray
+- [x] foundry.canvas.geometry.UnboundTransform
+- [x] foundry.canvas.geometry.WeilerAthertonClipper
+- [x] foundry.canvas.geometry.edges.CanvasEdges
+- [x] foundry.canvas.geometry.edges.CollisionResult
+- [x] foundry.canvas.geometry.edges.Edge
+- [x] foundry.canvas.geometry.edges.PolygonVertex
+- [x] foundry.canvas.getTexture
+- [x] foundry.canvas.groups.CanvasGroupMixin
+- [x] foundry.canvas.groups.CanvasVisibility
+- [x] foundry.canvas.groups.EffectsCanvasGroup
+- [x] foundry.canvas.groups.EnvironmentCanvasGroup
+- [x] foundry.canvas.groups.HiddenCanvasGroup
+- [x] foundry.canvas.groups.InterfaceCanvasGroup
+- [x] foundry.canvas.groups.OverlayCanvasGroup
+- [x] foundry.canvas.groups.PrimaryCanvasGroup
+- [x] foundry.canvas.groups.RenderedCanvasGroup
+- [x] foundry.canvas.interaction.AlertPing
+- [x] foundry.canvas.interaction.ArrowPing
+- [x] foundry.canvas.interaction.BaseRuler
+- [x] foundry.canvas.interaction.ChevronPing
+- [x] foundry.canvas.interaction.MouseInteractionManager
+- [x] foundry.canvas.interaction.Ping
+- [x] foundry.canvas.interaction.PulsePing
+- [x] foundry.canvas.interaction.RenderFlags
+- [ ] foundry.canvas.interaction.RenderFlagsMixin
+- [x] foundry.canvas.interaction.Ruler
+- [x] foundry.canvas.layers.CanvasBackgroundAlterationEffects
+- [x] foundry.canvas.layers.CanvasColorationEffects
+- [x] foundry.canvas.layers.CanvasDarknessEffects
+- [x] foundry.canvas.layers.CanvasDepthMask
+- [x] foundry.canvas.layers.CanvasIlluminationEffects
+- [x] foundry.canvas.layers.CanvasLayer
+- [x] foundry.canvas.layers.CanvasOcclusionMask
+- [x] foundry.canvas.layers.CanvasVisionMask
+- [x] foundry.canvas.layers.ControlsLayer
+- [x] foundry.canvas.layers.DarknessLevelContainer
+- [x] foundry.canvas.layers.DrawingsLayer
+- [x] foundry.canvas.layers.GridLayer
+- [x] foundry.canvas.layers.InteractionLayer
+- [x] foundry.canvas.layers.LightingLayer
+- [x] foundry.canvas.layers.NotesLayer
+- [x] foundry.canvas.layers.PlaceablesLayer
+- [x] foundry.canvas.layers.RegionLayer
+- [x] foundry.canvas.layers.SoundsLayer
+- [x] foundry.canvas.layers.TemplateLayer
+- [x] foundry.canvas.layers.TilesLayer
+- [x] foundry.canvas.layers.TokenLayer
+- [x] foundry.canvas.layers.WallsLayer
+- [x] foundry.canvas.layers.WeatherEffects
+- [x] foundry.canvas.loadTexture
+- [x] foundry.canvas.perception.DetectionMode
+- [x] foundry.canvas.perception.DetectionModeAll
+- [x] foundry.canvas.perception.DetectionModeDarkvision
+- [x] foundry.canvas.perception.DetectionModeInvisibility
+- [x] foundry.canvas.perception.DetectionModeLightPerception
+- [x] foundry.canvas.perception.DetectionModeTremor
+- [x] foundry.canvas.perception.FogManager
+- [x] foundry.canvas.perception.PerceptionManager
+- [x] foundry.canvas.perception.VisionMode
+- [x] foundry.canvas.placeables.AmbientLight
+- [x] foundry.canvas.placeables.AmbientSound
+- [x] foundry.canvas.placeables.Drawing
+- [x] foundry.canvas.placeables.MeasuredTemplate
+- [x] foundry.canvas.placeables.Note
+- [x] foundry.canvas.placeables.PlaceableObject
+- [x] foundry.canvas.placeables.Region
+- [x] foundry.canvas.placeables.Tile
+- [x] foundry.canvas.placeables.Token
+- [x] foundry.canvas.placeables.Wall
+- [x] foundry.canvas.placeables.regions.RegionGeometry
+- [x] foundry.canvas.placeables.regions.RegionMesh
+- [x] foundry.canvas.placeables.tokens.BaseTokenRuler
+- [x] foundry.canvas.placeables.tokens.DynamicRingData
+- [x] foundry.canvas.placeables.tokens.TokenRing
+- [x] foundry.canvas.placeables.tokens.TokenRingConfig
+- [x] foundry.canvas.placeables.tokens.TokenRuler
+- [x] foundry.canvas.placeables.tokens.TokenTurnMarker
+- [x] foundry.canvas.placeables.tokens.TurnMarkerData
+- [x] foundry.canvas.placeables.tokens.UserTargets
+- [x] foundry.canvas.primary.CanvasTransformMixin
+- [x] foundry.canvas.primary.PrimaryCanvasContainer
+- [x] foundry.canvas.primary.PrimaryCanvasObjectMixin
+- [x] foundry.canvas.primary.PrimaryGraphics
+- [x] foundry.canvas.primary.PrimaryOccludableObjectMixin
+- [x] foundry.canvas.primary.PrimaryParticleEffect
+- [x] foundry.canvas.primary.PrimarySpriteMesh
+- [x] foundry.canvas.rendering.BLEND_MODES.MAX_COLOR
+- [x] foundry.canvas.rendering.BLEND_MODES.MIN_ALL
+- [x] foundry.canvas.rendering.BLEND_MODES.MIN_COLOR
+- [x] foundry.canvas.rendering.batching.BatchRenderer
+- [x] foundry.canvas.rendering.batching.BatchShaderGenerator
+- [x] foundry.canvas.rendering.filters.AbstractBaseFilter
+- [x] foundry.canvas.rendering.filters.AbstractBaseMaskFilter
+- [x] foundry.canvas.rendering.filters.InvisibilityFilter
+- [x] foundry.canvas.rendering.filters.PrimaryCanvasGroupAmbienceFilter
+- [ ] foundry.canvas.rendering.filters.SMAABlendingWeightCalculationFilter
+- [ ] foundry.canvas.rendering.filters.SMAAEdgeDetectionFilter
+- [x] foundry.canvas.rendering.filters.SMAAFilter
+- [ ] foundry.canvas.rendering.filters.SMAANeighborhoodBlendingFilter
+- [x] foundry.canvas.rendering.filters.TextureTransitionFilter
+- [x] foundry.canvas.rendering.filters.VisibilityFilter
+- [x] foundry.canvas.rendering.filters.VisualEffectsMaskingFilter
+- [x] foundry.canvas.rendering.filters.VoidFilter
+- [x] foundry.canvas.rendering.filters.WeatherOcclusionMaskFilter
+- [x] foundry.canvas.rendering.mixins.AdaptiveFragmentChannelMixin
+- [x] foundry.canvas.rendering.mixins.BaseShaderMixin
+- [x] foundry.canvas.rendering.shaders.AbstractBaseShader
+- [x] foundry.canvas.rendering.shaders.AbstractWeatherShader
+- [x] foundry.canvas.rendering.shaders.AdaptiveBackgroundShader
+- [x] foundry.canvas.rendering.shaders.AdaptiveColorationShader
+- [x] foundry.canvas.rendering.shaders.AdaptiveDarknessShader
+- [x] foundry.canvas.rendering.shaders.AdaptiveIlluminationShader
+- [x] foundry.canvas.rendering.shaders.AdaptiveLightingShader
+- [x] foundry.canvas.rendering.shaders.AdaptiveVisionShader
+- [x] foundry.canvas.rendering.shaders.AmplificationBackgroundVisionShader
+- [x] foundry.canvas.rendering.shaders.AmplificationSamplerShader
+- [x] foundry.canvas.rendering.shaders.BackgroundVisionShader
+- [x] foundry.canvas.rendering.shaders.BaseSamplerShader
+- [x] foundry.canvas.rendering.shaders.BaselineIlluminationSamplerShader
+- [x] foundry.canvas.rendering.shaders.BewitchingWaveColorationShader
+- [x] foundry.canvas.rendering.shaders.BewitchingWaveIlluminationShader
+- [x] foundry.canvas.rendering.shaders.BlackHoleDarknessShader
+- [x] foundry.canvas.rendering.shaders.ChromaColorationShader
+- [x] foundry.canvas.rendering.shaders.ColorAdjustmentsSamplerShader
+- [x] foundry.canvas.rendering.shaders.ColorationVisionShader
+- [x] foundry.canvas.rendering.shaders.ColorizeBrightnessShader
+- [x] foundry.canvas.rendering.shaders.DashLineShader
+- [ ] foundry.canvas.rendering.shaders.DenseSmokeDarknessShader
+- [x] foundry.canvas.rendering.shaders.DepthSamplerShader
+- [x] foundry.canvas.rendering.shaders.EmanationColorationShader
+- [x] foundry.canvas.rendering.shaders.EnergyFieldColorationShader
+- [x] foundry.canvas.rendering.shaders.FairyLightColorationShader
+- [x] foundry.canvas.rendering.shaders.FairyLightIlluminationShader
+- [x] foundry.canvas.rendering.shaders.FlameColorationShader
+- [x] foundry.canvas.rendering.shaders.FlameIlluminationShader
+- [x] foundry.canvas.rendering.shaders.FogColorationShader
+- [x] foundry.canvas.rendering.shaders.FogSamplerShader
+- [x] foundry.canvas.rendering.shaders.FogShader
+- [x] foundry.canvas.rendering.shaders.ForceGridColorationShader
+- [x] foundry.canvas.rendering.shaders.GhostLightColorationShader
+- [x] foundry.canvas.rendering.shaders.GhostLightIlluminationShader
+- [x] foundry.canvas.rendering.shaders.GridShader
+- [x] foundry.canvas.rendering.shaders.HexaDomeColorationShader
+- [x] foundry.canvas.rendering.shaders.IlluminationVisionShader
+- [x] foundry.canvas.rendering.shaders.LightDomeColorationShader
+- [x] foundry.canvas.rendering.shaders.MagicalGloomDarknessShader
+- [x] foundry.canvas.rendering.shaders.OccludableSamplerShader
+- [x] foundry.canvas.rendering.shaders.PrimaryBaseSamplerShader
+- [x] foundry.canvas.rendering.shaders.PulseColorationShader
+- [x] foundry.canvas.rendering.shaders.PulseIlluminationShader
+- [x] foundry.canvas.rendering.shaders.RadialRainbowColorationShader
+- [x] foundry.canvas.rendering.shaders.RainShader
+- [x] foundry.canvas.rendering.shaders.RegionShader
+- [x] foundry.canvas.rendering.shaders.RevolvingColorationShader
+- [x] foundry.canvas.rendering.shaders.RoilingDarknessShader
+- [x] foundry.canvas.rendering.shaders.SirenColorationShader
+- [x] foundry.canvas.rendering.shaders.SirenIlluminationShader
+- [x] foundry.canvas.rendering.shaders.SmokePatchColorationShader
+- [x] foundry.canvas.rendering.shaders.SmokePatchIlluminationShader
+- [x] foundry.canvas.rendering.shaders.SnowShader
+- [x] foundry.canvas.rendering.shaders.StarLightColorationShader
+- [x] foundry.canvas.rendering.shaders.SunburstColorationShader
+- [x] foundry.canvas.rendering.shaders.SunburstIlluminationShader
+- [x] foundry.canvas.rendering.shaders.SwirlingRainbowColorationShader
+- [x] foundry.canvas.rendering.shaders.TokenRingSamplerShader
+- [x] foundry.canvas.rendering.shaders.TorchColorationShader
+- [x] foundry.canvas.rendering.shaders.TorchIlluminationShader
+- [x] foundry.canvas.rendering.shaders.VortexColorationShader
+- [x] foundry.canvas.rendering.shaders.VortexIlluminationShader
+- [x] foundry.canvas.rendering.shaders.WaveBackgroundVisionShader
+- [x] foundry.canvas.rendering.shaders.WaveColorationShader
+- [x] foundry.canvas.rendering.shaders.WaveColorationVisionShader
+- [x] foundry.canvas.rendering.shaders.WaveIlluminationShader
+- [x] foundry.canvas.rendering.shaders.WeatherShaderEffect
+- [x] foundry.canvas.sources.BaseEffectSource
+- [x] foundry.canvas.sources.BaseLightSource
+- [x] foundry.canvas.sources.GlobalLightSource
+- [x] foundry.canvas.sources.PointDarknessSource
+- [x] foundry.canvas.sources.PointEffectSourceMixin
+- [x] foundry.canvas.sources.PointLightSource
+- [x] foundry.canvas.sources.PointMovementSource
+- [x] foundry.canvas.sources.PointSoundSource
+- [x] foundry.canvas.sources.PointVisionSource
+- [x] foundry.canvas.sources.RenderedEffectSource
+- [x] foundry.canvas.srcExists
+- [x] foundry.canvas.workers.TextureCompressor
+- [x] foundry.config.ReleaseData
+- [x] foundry.config.ServerSettings
+- [x] foundry.data.ActorDeltaField
+- [x] foundry.data.BaseShapeData
+- [x] foundry.data.BaseTerrainData
+- [x] foundry.data.CalendarData
+- [x] foundry.data.CircleShapeData
+- [x] foundry.data.ClientDatabaseBackend
+- [x] foundry.data.CombatConfiguration
+- [x] foundry.data.EllipseShapeData
+- [x] foundry.data.LightData
+- [x] foundry.data.PolygonShapeData
+- [x] foundry.data.PrototypeToken
+- [ ] foundry.data.PrototypeTokenOverrides
+- [x] foundry.data.RectangleShapeData
+- [x] foundry.data.SIMPLIFIED_GREGORIAN_CALENDAR_CONFIG
+- [x] foundry.data.ShapeData
+- [x] foundry.data.TerrainData
+- [x] foundry.data.TextureData
+- [x] foundry.data.TombstoneData
+- [x] foundry.data.fields.AlphaField
+- [x] foundry.data.fields.AngleField
+- [x] foundry.data.fields.AnyField
+- [x] foundry.data.fields.ArrayField
+- [x] foundry.data.fields.BooleanField
+- [x] foundry.data.fields.ColorField
+- [x] foundry.data.fields.DataField
+- [ ] foundry.data.fields.DocumentAuthorField
+- [x] foundry.data.fields.DocumentFlagsField
+- [x] foundry.data.fields.DocumentIdField
+- [x] foundry.data.fields.DocumentOwnershipField
+- [x] foundry.data.fields.DocumentStatsField
+- [x] foundry.data.fields.DocumentTypeField
+- [x] foundry.data.fields.DocumentUUIDField
+- [x] foundry.data.fields.EmbeddedCollectionDeltaField
+- [x] foundry.data.fields.EmbeddedCollectionField
+- [x] foundry.data.fields.EmbeddedDataField
+- [x] foundry.data.fields.EmbeddedDocumentField
+- [x] foundry.data.fields.FilePathField
+- [x] foundry.data.fields.ForeignDocumentField
+- [x] foundry.data.fields.HTMLField
+- [x] foundry.data.fields.HueField
+- [x] foundry.data.fields.IntegerSortField
+- [x] foundry.data.fields.JSONField
+- [x] foundry.data.fields.JavaScriptField
+- [x] foundry.data.fields.NumberField
+- [x] foundry.data.fields.ObjectField
+- [x] foundry.data.fields.SchemaField
+- [x] foundry.data.fields.SetField
+- [x] foundry.data.fields.StringField
+- [x] foundry.data.fields.TypeDataField
+- [x] foundry.data.fields.TypedObjectField
+- [x] foundry.data.fields.TypedSchemaField
+- [x] foundry.data.regionBehaviors.AdjustDarknessLevelRegionBehaviorType
+- [ ] foundry.data.regionBehaviors.DisplayScrollingTextRegionBehaviorType
+- [x] foundry.data.regionBehaviors.ExecuteMacroRegionBehaviorType
+- [x] foundry.data.regionBehaviors.ExecuteScriptRegionBehaviorType
+- [ ] foundry.data.regionBehaviors.ModifyMovementCostRegionBehaviorType
+- [x] foundry.data.regionBehaviors.PauseGameRegionBehaviorType
+- [x] foundry.data.regionBehaviors.RegionBehaviorType
+- [x] foundry.data.regionBehaviors.SuppressWeatherRegionBehaviorType
+- [x] foundry.data.regionBehaviors.TeleportTokenRegionBehaviorType
+- [x] foundry.data.regionBehaviors.ToggleBehaviorRegionBehaviorType
+- [x] foundry.data.regionShapes.RegionCircleShape
+- [x] foundry.data.regionShapes.RegionEllipseShape
+- [x] foundry.data.regionShapes.RegionPolygonShape
+- [x] foundry.data.regionShapes.RegionPolygonTree
+- [x] foundry.data.regionShapes.RegionPolygonTreeNode
+- [x] foundry.data.regionShapes.RegionRectangleShape
+- [x] foundry.data.regionShapes.RegionShape
+- [x] foundry.data.validation.DataModelValidationError
+- [x] foundry.data.validation.DataModelValidationFailure
+- [x] foundry.data.validators.hasFileExtension
+- [x] foundry.data.validators.isBase64Data
+- [x] foundry.data.validators.isColorString
+- [x] foundry.data.validators.isJSON
+- [x] foundry.data.validators.isValidId
+- [x] foundry.dice.MersenneTwister
+- [x] foundry.dice.Roll
+- [x] foundry.dice.RollGrammar
+- [x] foundry.dice.RollParser
+- [x] foundry.dice.terms.Coin
+- [x] foundry.dice.terms.DiceTerm
+- [x] foundry.dice.terms.Die
+- [x] foundry.dice.terms.FateDie
+- [x] foundry.dice.terms.FunctionTerm
+- [x] foundry.dice.terms.NumericTerm
+- [x] foundry.dice.terms.OperatorTerm
+- [x] foundry.dice.terms.ParentheticalTerm
+- [x] foundry.dice.terms.PoolTerm
+- [x] foundry.dice.terms.RollTerm
+- [x] foundry.dice.terms.StringTerm
+- [x] foundry.documents.ActiveEffect
+- [x] foundry.documents.Actor
+- [x] foundry.documents.ActorDelta
+- [x] foundry.documents.Adventure
+- [x] foundry.documents.AmbientLightDocument
+- [x] foundry.documents.AmbientSoundDocument
+- [x] foundry.documents.BaseActiveEffect
+- [x] foundry.documents.BaseActor
+- [x] foundry.documents.BaseActorDelta
+- [x] foundry.documents.BaseAdventure
+- [x] foundry.documents.BaseAmbientLight
+- [x] foundry.documents.BaseAmbientSound
+- [x] foundry.documents.BaseCard
+- [x] foundry.documents.BaseCards
+- [x] foundry.documents.BaseChatMessage
+- [x] foundry.documents.BaseCombat
+- [x] foundry.documents.BaseCombatant
+- [x] foundry.documents.BaseCombatantGroup
+- [x] foundry.documents.BaseDrawing
+- [x] foundry.documents.BaseFogExploration
+- [x] foundry.documents.BaseFolder
+- [x] foundry.documents.BaseItem
+- [x] foundry.documents.BaseJournalEntry
+- [x] foundry.documents.BaseJournalEntryCategory
+- [x] foundry.documents.BaseJournalEntryPage
+- [x] foundry.documents.BaseMacro
+- [x] foundry.documents.BaseMeasuredTemplate
+- [x] foundry.documents.BaseNote
+- [x] foundry.documents.BasePlaylist
+- [x] foundry.documents.BasePlaylistSound
+- [x] foundry.documents.BaseRegion
+- [x] foundry.documents.BaseRegionBehavior
+- [x] foundry.documents.BaseRollTable
+- [x] foundry.documents.BaseScene
+- [x] foundry.documents.BaseSetting
+- [x] foundry.documents.BaseTableResult
+- [x] foundry.documents.BaseTile
+- [x] foundry.documents.BaseToken
+- [x] foundry.documents.BaseUser
+- [x] foundry.documents.BaseWall
+- [x] foundry.documents.Card
+- [x] foundry.documents.Cards
+- [x] foundry.documents.ChatMessage
+- [x] foundry.documents.Combat
+- [x] foundry.documents.Combatant
+- [x] foundry.documents.CombatantGroup
+- [x] foundry.documents.DrawingDocument
+- [x] foundry.documents.FogExploration
+- [x] foundry.documents.Folder
+- [x] foundry.documents.Item
+- [x] foundry.documents.JournalEntry
+- [ ] foundry.documents.JournalEntryCategory
+- [x] foundry.documents.JournalEntryPage
+- [x] foundry.documents.Macro
+- [x] foundry.documents.MeasuredTemplateDocument
+- [x] foundry.documents.NoteDocument
+- [x] foundry.documents.Playlist
+- [x] foundry.documents.PlaylistSound
+- [x] foundry.documents.RegionBehavior
+- [x] foundry.documents.RegionDocument
+- [x] foundry.documents.RollTable
+- [x] foundry.documents.Scene
+- [x] foundry.documents.Setting
+- [x] foundry.documents.TableResult
+- [x] foundry.documents.TileDocument
+- [x] foundry.documents.TokenDocument
+- [x] foundry.documents.User
+- [x] foundry.documents.WallDocument
+- [x] foundry.documents.abstract.CanvasDocumentMixin
+- [x] foundry.documents.abstract.ClientDocumentMixin
+- [x] foundry.documents.abstract.DirectoryCollectionMixin
+- [x] foundry.documents.abstract.DocumentCollection
+- [x] foundry.documents.abstract.WorldCollection
+- [x] foundry.documents.collections.Actors
+- [x] foundry.documents.collections.CardStacks
+- [ ] foundry.documents.collections.ChatMessages
+- [x] foundry.documents.collections.CombatEncounters
+- [x] foundry.documents.collections.CompendiumCollection
+- [x] foundry.documents.collections.CompendiumFolderCollection
+- [x] foundry.documents.collections.CompendiumPacks
+- [x] foundry.documents.collections.FogExplorations
+- [x] foundry.documents.collections.Folders
+- [x] foundry.documents.collections.Items
+- [x] foundry.documents.collections.Journal
+- [x] foundry.documents.collections.Macros
+- [x] foundry.documents.collections.Playlists
+- [x] foundry.documents.collections.RollTables
+- [x] foundry.documents.collections.Scenes
+- [x] foundry.documents.collections.Users
+- [x] foundry.documents.collections.WorldSettings
+- [x] foundry.grid.BaseGrid
+- [x] foundry.grid.GridHex
+- [x] foundry.grid.GridlessGrid
+- [x] foundry.grid.HexagonalGrid
+- [x] foundry.grid.SquareGrid
+- [x] foundry.helpers.AsyncWorker
+- [x] foundry.helpers.ClientIssues
+- [x] foundry.helpers.ClientSettings
+- [x] foundry.helpers.DocumentIndex
+- [x] foundry.helpers.GameTime
+- [x] foundry.helpers.Hooks
+- [x] foundry.helpers.Localization
+- [x] foundry.helpers.SocketInterface
+- [x] foundry.helpers.WorkerManager
+- [x] foundry.helpers.interaction.ClientKeybindings
+- [x] foundry.helpers.interaction.ClipboardHelper
+- [x] foundry.helpers.interaction.GamepadManager
+- [x] foundry.helpers.interaction.KeyboardManager
+- [x] foundry.helpers.interaction.MouseManager
+- [x] foundry.helpers.interaction.TooltipManager
+- [x] foundry.helpers.media.CompendiumArt
+- [x] foundry.helpers.media.ImageHelper
+- [x] foundry.helpers.media.VideoHelper
+- [x] foundry.nue.NewUserExperienceManager
+- [x] foundry.nue.Tour
+- [x] foundry.nue.ToursCollection
+- [x] foundry.nue.registerTours
+- [ ] foundry.nue.tours.CanvasTour
+- [ ] foundry.nue.tours.SetupTour
+- [ ] foundry.nue.tours.SidebarTour
+- [x] foundry.packages.AdditionalTypesField
+- [x] foundry.packages.BaseModule
+- [x] foundry.packages.BasePackage
+- [x] foundry.packages.BaseSystem
+- [x] foundry.packages.BaseWorld
+- [x] foundry.packages.ClientPackageMixin
+- [x] foundry.packages.Module
+- [x] foundry.packages.PACKAGE_TYPES
+- [x] foundry.packages.PackageCompatibility
+- [x] foundry.packages.RelatedPackage
+- [x] foundry.packages.System
+- [x] foundry.packages.World
+- [x] foundry.prosemirror.ProseMirrorClickHandler
+- [x] foundry.prosemirror.ProseMirrorContentLinkPlugin
+- [x] foundry.prosemirror.ProseMirrorDirtyPlugin
+- [x] foundry.prosemirror.ProseMirrorDropDown
+- [x] foundry.prosemirror.ProseMirrorHighlightMatchesPlugin
+- [x] foundry.prosemirror.ProseMirrorImagePlugin
+- [x] foundry.prosemirror.ProseMirrorInputRules
+- [x] foundry.prosemirror.ProseMirrorKeyMaps
+- [x] foundry.prosemirror.ProseMirrorMenu
+- [x] foundry.prosemirror.ProseMirrorPasteTransformer
+- [x] foundry.prosemirror.ProseMirrorPlugin
+- [x] foundry.ui
+- [x] foundry.utils.AsyncFunction
+- [x] foundry.utils.BitMask
+- [x] foundry.utils.Collection
+- [x] foundry.utils.Color
+- [x] foundry.utils.EventEmitterMixin
+- [x] foundry.utils.HttpError
+- [x] foundry.utils.IterableWeakMap
+- [x] foundry.utils.IterableWeakSet
+- [x] foundry.utils.Semaphore
+- [x] foundry.utils.StringTree
+- [x] foundry.utils.WordTree
+- [ ] foundry.utils.applySpecialKeys
+- [ ] foundry.utils.benchmark
+- [ ] foundry.utils.buildUuid
+- [ ] foundry.utils.circleCircleIntersects
+- [x] foundry.utils.cleanHTML
+- [x] foundry.utils.closestPointToSegment
+- [x] foundry.utils.debounce
+- [ ] foundry.utils.debouncedReload
+- [x] foundry.utils.deepClone
+- [ ] foundry.utils.deepFreeze
+- [ ] foundry.utils.deepSeal
+- [ ] foundry.utils.deleteProperty
+- [x] foundry.utils.diffObject
+- [x] foundry.utils.duplicate
+- [x] foundry.utils.encodeURL
+- [ ] foundry.utils.escapeHTML
+- [x] foundry.utils.expandObject
+- [x] foundry.utils.fetchJsonWithTimeout
+- [ ] foundry.utils.fetchResource
+- [x] foundry.utils.fetchWithTimeout
+- [x] foundry.utils.filterObject
+- [x] foundry.utils.flattenObject
+- [ ] foundry.utils.formatFileSize
+- [x] foundry.utils.fromUuid
+- [x] foundry.utils.fromUuidSync
+- [ ] foundry.utils.getCacheBustURL
+- [ ] foundry.utils.getDefiningClass
+- [x] foundry.utils.getDocumentClass
+- [ ] foundry.utils.getParentClasses
+- [ ] foundry.utils.getPlaceableObjectClass
+- [x] foundry.utils.getProperty
+- [ ] foundry.utils.getRoute
+- [x] foundry.utils.getType
+- [x] foundry.utils.hasProperty
+- [x] foundry.utils.invertObject
+- [ ] foundry.utils.isDeletionKey
+- [x] foundry.utils.isEmpty
+- [x] foundry.utils.isNewerVersion
+- [ ] foundry.utils.isSubclass
+- [x] foundry.utils.lineCircleIntersection
+- [x] foundry.utils.lineLineIntersection
+- [x] foundry.utils.lineSegmentIntersection
+- [x] foundry.utils.lineSegmentIntersects
+- [x] foundry.utils.logCompatibilityWarning
+- [x] foundry.utils.mergeObject
+- [x] foundry.utils.objectsEqual
+- [x] foundry.utils.orient2dFast
+- [x] foundry.utils.parseHTML
+- [ ] foundry.utils.parseS3URL
+- [x] foundry.utils.parseUuid
+- [ ] foundry.utils.pathCircleIntersects
+- [x] foundry.utils.performIntegerSort
+- [ ] foundry.utils.polygonCentroid
+- [x] foundry.utils.quadraticIntersection
+- [x] foundry.utils.randomID
+- [x] foundry.utils.readTextFromFile
+- [x] foundry.utils.saveDataToFile
+- [x] foundry.utils.setProperty
+- [ ] foundry.utils.srcExists
+- [ ] foundry.utils.threadLock
+- [ ] foundry.utils.throttle
+- [x] foundry.utils.timeSince
+- [ ] foundry.utils.unescapeHTML
