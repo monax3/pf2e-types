@@ -468,8 +468,9 @@ declare const spellTraits: {
 };
 declare const weaponTraits: {
     adjusted: string;
-    alchemical: string;
     agile: string;
+    alchemical: string;
+    analog: string;
     apex: string;
     artifact: string;
     attached: string;
@@ -576,7 +577,11 @@ declare const weaponTraits: {
     "thrown-80": string;
     "thrown-100": string;
     "thrown-200": string;
+    time: string;
     training: string;
+    "tracking-1": string;
+    "tracking-2": string;
+    "tracking-3": string;
     trip: string;
     twin: string;
     "two-hand-d6": string;
@@ -829,8 +834,9 @@ declare const npcAttackTraits: {
     "sovereign-steel": string;
     warpglass: string;
     adjusted: string;
-    alchemical: string;
     agile: string;
+    alchemical: string;
+    analog: string;
     apex: string;
     artifact: string;
     attached: string;
@@ -936,7 +942,11 @@ declare const npcAttackTraits: {
     "thrown-80": string;
     "thrown-100": string;
     "thrown-200": string;
+    time: string;
     training: string;
+    "tracking-1": string;
+    "tracking-2": string;
+    "tracking-3": string;
     trip: string;
     twin: string;
     "two-hand-d6": string;
@@ -2271,6 +2281,7 @@ declare const equipmentTraits: {
     adjusted: string;
     adjustment: string;
     alchemical: string;
+    analog: string;
     apex: string;
     artifact: string;
     auditory: string;
@@ -2281,8 +2292,8 @@ declare const equipmentTraits: {
     coagulant: string;
     coda: string;
     companion: string;
-    contract: string;
     consecration: string;
+    contract: string;
     cursed: string;
     darkness: string;
     death: string;
@@ -2335,6 +2346,7 @@ declare const equipmentTraits: {
     steam: string;
     structure: string;
     tattoo: string;
+    tech: string;
     teleportation: string;
     visual: string;
     wand: string;
@@ -2430,6 +2442,7 @@ declare const equipmentTraits: {
 };
 declare const shieldTraits: {
     alchemical: string;
+    analog: string;
     apex: string;
     artifact: string;
     aura: string;
@@ -2451,6 +2464,7 @@ declare const shieldTraits: {
     relic: string;
     "shield-throw-20": string;
     "shield-throw-30": string;
+    tech: string;
     arcane: string;
     divine: string;
     occult: string;
@@ -2480,6 +2494,7 @@ declare const shieldTraits: {
 declare const armorTraits: {
     adjusted: string;
     alchemical: string;
+    analog: string;
     apex: string;
     aquadynamic: string;
     artifact: string;
@@ -2494,9 +2509,9 @@ declare const armorTraits: {
     "entrench-melee": string;
     "entrench-ranged": string;
     extradimensional: string;
+    flexible: string;
     focused: string;
     force: string;
-    flexible: string;
     healing: string;
     hindering: string;
     illusion: string;
@@ -2511,6 +2526,7 @@ declare const armorTraits: {
     plant: string;
     ponderous: string;
     relic: string;
+    tech: string;
     arcane: string;
     divine: string;
     occult: string;
@@ -3121,6 +3137,7 @@ declare const traitDescriptions: {
     alchemist: string;
     amphibious: string;
     anadi: string;
+    analog: string;
     android: string;
     angel: string;
     animal: string;

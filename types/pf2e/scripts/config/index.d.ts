@@ -257,6 +257,7 @@ export declare const PF2ECONFIG: {
         sonic: string;
         spells: string;
         spirit: string;
+        time: string;
         "unarmed-attacks": string;
         vitality: string;
         void: string;
@@ -338,6 +339,7 @@ export declare const PF2ECONFIG: {
         spells: string;
         spirit: string;
         "splash-damage": string;
+        time: string;
         "unarmed-attacks": string;
         "vampire-weaknesses": string;
         vitality: string;
@@ -871,9 +873,20 @@ export declare const PF2ECONFIG: {
         wornwrist: string;
         "worn-and-attached-to-two-weapons": string;
         "worn-under-armor": string;
+        "installed-in-armor-with-the-energy-shielding-upgrade": string;
+        "installed-in-armor-with-the-exposed-trait": string;
+        "installed-in-armor": string;
+        "installed-in-a-grenade-launcher-or-two-handed-weapon-with-an-undermounted-grenade-launcher": string;
+        "installed-in-a-weapon-sight": string;
+        "installed-in-a-weapon-with-the-kickback-trait": string;
+        "installed-in-a-weapon": string;
+        "installed-in-one-handed-weapon-grip": string;
+        "installed-in-ranged-weapon-without-a-loudener": string;
+        "installed-in-two-handed-weapon": string;
+        "installed-on-a-weapon-without-a-silencer": string;
     };
     magicTraditions: Record<"arcane" | "divine" | "occult" | "primal", string>;
-    deityDomains: Record<"healing" | "magic" | "metal" | "water" | "wood" | "air" | "cold" | "earth" | "fire" | "void" | "wealth" | "abomination" | "ambition" | "change" | "cities" | "confidence" | "creation" | "darkness" | "death" | "decay" | "destruction" | "dreams" | "dust" | "duty" | "family" | "fate" | "freedom" | "glyph" | "indulgence" | "introspection" | "knowledge" | "lightning" | "luck" | "might" | "moon" | "naga" | "nature" | "nightmares" | "pain" | "passion" | "perfection" | "plague" | "protection" | "repose" | "secrecy" | "sorrow" | "soul" | "star" | "sun" | "swarm" | "time" | "toil" | "travel" | "trickery" | "truth" | "tyranny" | "undeath" | "vigil" | "zeal" | "airapocryphal" | "ambitionapocryphal" | "confidenceapocryphal" | "darknessapocryphal" | "deathapocryphal" | "delirium" | "fateapocryphal" | "fireapocryphal" | "indulgenceapocryphal" | "knowledgeapocryphal" | "mightapocryphal" | "secrecyapocryphal" | "travelapocryphal" | "waterapocryphal" | "wyrmkin", {
+    deityDomains: Record<"healing" | "magic" | "metal" | "time" | "water" | "wood" | "air" | "cold" | "earth" | "fire" | "void" | "wealth" | "abomination" | "ambition" | "change" | "cities" | "confidence" | "creation" | "darkness" | "death" | "decay" | "destruction" | "dreams" | "dust" | "duty" | "family" | "fate" | "freedom" | "glyph" | "indulgence" | "introspection" | "knowledge" | "lightning" | "luck" | "might" | "moon" | "naga" | "nature" | "nightmares" | "pain" | "passion" | "perfection" | "plague" | "protection" | "repose" | "secrecy" | "sorrow" | "soul" | "star" | "sun" | "swarm" | "toil" | "travel" | "trickery" | "truth" | "tyranny" | "undeath" | "vigil" | "zeal" | "airapocryphal" | "ambitionapocryphal" | "confidenceapocryphal" | "darknessapocryphal" | "deathapocryphal" | "delirium" | "fateapocryphal" | "fireapocryphal" | "indulgenceapocryphal" | "knowledgeapocryphal" | "mightapocryphal" | "secrecyapocryphal" | "travelapocryphal" | "waterapocryphal" | "wyrmkin", {
         label: string;
         description: string;
     }>;
@@ -1236,6 +1249,7 @@ export declare const PF2ECONFIG: {
     armorTraits: {
         adjusted: string;
         alchemical: string;
+        analog: string;
         apex: string;
         aquadynamic: string;
         artifact: string;
@@ -1250,9 +1264,9 @@ export declare const PF2ECONFIG: {
         "entrench-melee": string;
         "entrench-ranged": string;
         extradimensional: string;
+        flexible: string;
         focused: string;
         force: string;
-        flexible: string;
         healing: string;
         hindering: string;
         illusion: string;
@@ -1267,6 +1281,7 @@ export declare const PF2ECONFIG: {
         plant: string;
         ponderous: string;
         relic: string;
+        tech: string;
         arcane: string;
         divine: string;
         occult: string;
@@ -1970,6 +1985,7 @@ export declare const PF2ECONFIG: {
         adjusted: string;
         adjustment: string;
         alchemical: string;
+        analog: string;
         apex: string;
         artifact: string;
         auditory: string;
@@ -1980,8 +1996,8 @@ export declare const PF2ECONFIG: {
         coagulant: string;
         coda: string;
         companion: string;
-        contract: string;
         consecration: string;
+        contract: string;
         cursed: string;
         darkness: string;
         death: string;
@@ -2034,6 +2050,7 @@ export declare const PF2ECONFIG: {
         steam: string;
         structure: string;
         tattoo: string;
+        tech: string;
         teleportation: string;
         visual: string;
         wand: string;
@@ -3034,8 +3051,9 @@ export declare const PF2ECONFIG: {
         "sovereign-steel": string;
         warpglass: string;
         adjusted: string;
-        alchemical: string;
         agile: string;
+        alchemical: string;
+        analog: string;
         apex: string;
         artifact: string;
         attached: string;
@@ -3141,7 +3159,11 @@ export declare const PF2ECONFIG: {
         "thrown-80": string;
         "thrown-100": string;
         "thrown-200": string;
+        time: string;
         training: string;
+        "tracking-1": string;
+        "tracking-2": string;
+        "tracking-3": string;
         trip: string;
         twin: string;
         "two-hand-d6": string;
@@ -3263,6 +3285,7 @@ export declare const PF2ECONFIG: {
     };
     shieldTraits: {
         alchemical: string;
+        analog: string;
         apex: string;
         artifact: string;
         aura: string;
@@ -3284,6 +3307,7 @@ export declare const PF2ECONFIG: {
         relic: string;
         "shield-throw-20": string;
         "shield-throw-30": string;
+        tech: string;
         arcane: string;
         divine: string;
         occult: string;
@@ -3434,8 +3458,9 @@ export declare const PF2ECONFIG: {
     };
     weaponTraits: {
         adjusted: string;
-        alchemical: string;
         agile: string;
+        alchemical: string;
+        analog: string;
         apex: string;
         artifact: string;
         attached: string;
@@ -3542,7 +3567,11 @@ export declare const PF2ECONFIG: {
         "thrown-80": string;
         "thrown-100": string;
         "thrown-200": string;
+        time: string;
         training: string;
+        "tracking-1": string;
+        "tracking-2": string;
+        "tracking-3": string;
         trip: string;
         twin: string;
         "two-hand-d6": string;
@@ -3961,6 +3990,7 @@ export declare const PF2ECONFIG: {
         alchemist: string;
         amphibious: string;
         anadi: string;
+        analog: string;
         android: string;
         angel: string;
         animal: string;
@@ -4305,10 +4335,10 @@ export declare const PF2ECONFIG: {
     };
     creatureTypes: {
         plant: string;
+        time: string;
         spirit: string;
         vitality: string;
         void: string;
-        time: string;
         fungus: string;
         shadow: string;
         animal: string;
@@ -4362,6 +4392,147 @@ export declare const PF2ECONFIG: {
         3: string;
         4: string;
         5: string;
+    };
+    grades: {
+        commercial: string;
+        tactical: string;
+        advanced: string;
+        superior: string;
+        elite: string;
+        ultimate: string;
+        paragon: string;
+    };
+    weaponImprovements: {
+        commercial: {
+            level: number;
+            tracking: number;
+            dice: number;
+            credits: number;
+        };
+        tactical: {
+            level: number;
+            tracking: number;
+            dice: number;
+            credits: number;
+        };
+        advanced: {
+            level: number;
+            tracking: number;
+            dice: number;
+            credits: number;
+        };
+        superior: {
+            level: number;
+            tracking: number;
+            dice: number;
+            credits: number;
+        };
+        elite: {
+            level: number;
+            tracking: number;
+            dice: number;
+            credits: number;
+        };
+        ultimate: {
+            level: number;
+            tracking: number;
+            dice: number;
+            credits: number;
+        };
+        paragon: {
+            level: number;
+            tracking: number;
+            dice: number;
+            credits: number;
+        };
+    };
+    armorImprovements: {
+        commercial: {
+            level: number;
+            bonus: number;
+            resilient: number;
+            credits: number;
+        };
+        tactical: {
+            level: number;
+            bonus: number;
+            resilient: number;
+            credits: number;
+        };
+        advanced: {
+            level: number;
+            bonus: number;
+            resilient: number;
+            credits: number;
+        };
+        superior: {
+            level: number;
+            bonus: number;
+            resilient: number;
+            credits: number;
+        };
+        elite: {
+            level: number;
+            bonus: number;
+            resilient: number;
+            credits: number;
+        };
+        ultimate: {
+            level: number;
+            bonus: number;
+            resilient: number;
+            credits: number;
+        };
+        paragon: {
+            level: number;
+            bonus: number;
+            resilient: number;
+            credits: number;
+        };
+    };
+    shieldImprovements: {
+        commercial: {
+            level: number;
+            hardness: number;
+            maxHP: number;
+            credits: number;
+        };
+        tactical: {
+            level: number;
+            hardness: number;
+            maxHP: number;
+            credits: number;
+        };
+        advanced: {
+            level: number;
+            hardness: number;
+            maxHP: number;
+            credits: number;
+        };
+        superior: {
+            level: number;
+            hardness: number;
+            maxHP: number;
+            credits: number;
+        };
+        elite: {
+            level: number;
+            hardness: number;
+            maxHP: number;
+            credits: number;
+        };
+        ultimate: {
+            level: number;
+            hardness: number;
+            maxHP: number;
+            credits: number;
+        };
+        paragon: {
+            level: number;
+            hardness: number;
+            maxHP: number;
+            credits: number;
+        };
     };
     weaponReload: Record<WeaponReloadTime, string>;
     armorCategories: Record<"medium" | "light" | "unarmored" | "heavy" | "light-barding" | "heavy-barding", string>;
@@ -4553,7 +4724,7 @@ export declare const PF2ECONFIG: {
         prerequisite4: string;
         prerequisite5: string;
     };
-    senses: Record<"darkvision" | "echolocation" | "greater-darkvision" | "infrared-vision" | "lifesense" | "low-light-vision" | "magicsense" | "motion-sense" | "scent" | "see-invisibility" | "spiritsense" | "thoughtsense" | "tremorsense" | "truesight" | "wavesense", string>;
+    senses: Record<"bloodsense" | "darkvision" | "echolocation" | "greater-darkvision" | "infrared-vision" | "lifesense" | "low-light-vision" | "magicsense" | "motion-sense" | "scent" | "see-invisibility" | "spiritsense" | "thoughtsense" | "tremorsense" | "truesight" | "wavesense", string>;
     senseAcuities: Record<SenseAcuity, string>;
     conditionTypes: Record<"blinded" | "broken" | "clumsy" | "confused" | "controlled" | "dazzled" | "deafened" | "doomed" | "drained" | "enfeebled" | "fascinated" | "fatigued" | "fleeing" | "frightened" | "grabbed" | "hidden" | "immobilized" | "off-guard" | "paralyzed" | "petrified" | "prone" | "restrained" | "sickened" | "slowed" | "stunned" | "stupefied" | "unconscious" | "wounded" | "cursebound" | "concealed" | "dying" | "encumbered" | "friendly" | "helpful" | "hostile" | "indifferent" | "invisible" | "malevolence" | "observed" | "persistent-damage" | "quickened" | "undetected" | "unfriendly" | "unnoticed", string>;
     pfsFactions: {
@@ -4647,6 +4818,7 @@ export declare const PF2ECONFIG: {
         stupefied: string;
         "swarm-attacks": string;
         "swarm-mind": string;
+        time: string;
         trip: string;
         "unarmed-attacks": string;
         unconscious: string;

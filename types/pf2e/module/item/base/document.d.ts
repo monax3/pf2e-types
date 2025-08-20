@@ -104,7 +104,7 @@ declare class ItemPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> exte
     };
     static createDocuments<TDocument extends Document>(this: ConstructorOf<TDocument>, data?: (TDocument | DeepPartial<TDocument["_source"]>)[], operation?: Partial<DatabaseCreateOperation<TDocument["parent"]>>): Promise<TDocument[]>;
     static deleteDocuments<TDocument extends Document>(this: ConstructorOf<TDocument>, ids?: string[], operation?: Partial<DatabaseDeleteOperation<TDocument["parent"]>>): Promise<TDocument[]>;
-    protected _preCreate(data: this["_source"], options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
+    protected _preCreate(data: DeepPartial<this["_source"]>, options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
     /** Keep `TextEditor` and anything else up to no good from setting this item's description to `null` */
     protected _preUpdate(changed: DeepPartial<this["_source"]>, options: DatabaseUpdateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
     /** Call onCreate rule-element hooks */

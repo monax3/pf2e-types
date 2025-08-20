@@ -59,6 +59,7 @@ declare class WeaponPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> ex
         includeGranter?: boolean;
     }): string[];
     prepareBaseData(): void;
+    private prepareTraits;
     /** Add the rule elements of this weapon's linked ammunition to its own list */
     prepareSiblingData(): void;
     onPrepareSynthetics(): void;

@@ -3,7 +3,7 @@ import { WeaponPF2e } from './document.ts';
 declare function upgradeWeaponTrait<TTrait extends string>(trait: TTrait): TTrait;
 /**
  * Add a trait to an array of traits--unless it matches an existing trait except by annotation. Replace the trait if
- * the new trait is an upgrade, or otherwise do nothing.
+ * the new trait is an upgrade, or otherwise do nothing. Note: the array is mutated as part of this process.
  */
 declare function addOrUpgradeTrait<TTrait extends string>(traits: TTrait[], newTrait: TTrait): TTrait[];
 /** Apply a two-hand trait to a weapon's damage dice. */

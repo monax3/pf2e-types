@@ -1,7 +1,9 @@
+import { ApplicationRenderContext, ApplicationRenderOptions } from "../applications/_module.mjs";
 import { EditorState } from "prosemirror-state";
 import type { DialogV2 } from "../applications/api/_module.mjs";
 import type { CombatTrackerConfig } from "../applications/apps/_module.mjs";
 import SettingsConfig from "../applications/settings/config.mjs";
+import ChatPopout from "../applications/sidebar/apps/chat-popout.mjs";
 import { ContextMenuEntry } from "../applications/ux/context-menu.mjs";
 import Canvas from "../canvas/board.mjs";
 import LightingLayer from "../canvas/layers/lighting.mjs";
@@ -77,6 +79,10 @@ type HookParamsRender<T extends Application | ApplicationV2, N extends string> =
     : [T, HTMLElement, T extends ApplicationV2<infer _First, infer _Second, infer U> ? U : never]
 >;
 type HookParamsRenderChatMessageHTML = HookParameters<"renderChatMessageHTML", [ChatMessage, string, object]>;
+type HookParamsRenderChatPopout = HookParameters<
+    "renderChatPopout",
+    [ChatPopout, HTMLElement, ApplicationRenderContext, ApplicationRenderOptions]
+>;
 type HookParamsTargetToken = HookParameters<"targetToken", [User, Token<TokenDocument<Scene>>, boolean]>;
 type HookParamsUpdate<T extends foundry.abstract.Document, N extends string> = HookParameters<
     `update${N}`,

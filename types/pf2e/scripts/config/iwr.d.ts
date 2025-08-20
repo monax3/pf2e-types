@@ -75,6 +75,7 @@ declare const immunityTypes: {
     stupefied: string;
     "swarm-attacks": string;
     "swarm-mind": string;
+    time: string;
     trip: string;
     "unarmed-attacks": string;
     unconscious: string;
@@ -144,6 +145,7 @@ declare const weaknessTypes: {
     spells: string;
     spirit: string;
     "splash-damage": string;
+    time: string;
     "unarmed-attacks": string;
     "vampire-weaknesses": string;
     vitality: string;
@@ -214,6 +216,7 @@ declare const resistanceTypes: {
     sonic: string;
     spells: string;
     spirit: string;
+    time: string;
     "unarmed-attacks": string;
     vitality: string;
     void: string;

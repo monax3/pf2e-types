@@ -21,6 +21,7 @@ declare class ArmorPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> ext
     getRollOptions(prefix?: string, options?: {
         includeGranter?: boolean;
     }): string[];
+    acceptsSubitem(candidate: PhysicalItemPF2e): boolean;
     isStackableWith(item: PhysicalItemPF2e<TParent>): boolean;
     prepareBaseData(): void;
     prepareDerivedData(): void;

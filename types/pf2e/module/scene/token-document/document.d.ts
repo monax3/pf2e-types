@@ -68,9 +68,9 @@ declare class TokenDocumentPF2e<TParent extends ScenePF2e | null = ScenePF2e | n
      * re-rendering.
      */
     simulateUpdate(updates?: Record<string, unknown>): void;
-    /** Ensure that actors that don't allow synthetics are linked */
-    protected _preCreate(data: this["_source"], options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
-    /** Ensure that actors that don't allow synthetics stay linked */
+    /** Ensure that actors that don't allow synthetics are linked. */
+    protected _preCreate(data: DeepPartial<this["_source"]>, options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
+    /** Ensure that actors that don't allow synthetics stay linked. */
     protected _preUpdate(data: Record<string, unknown>, options: TokenUpdateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
     /** Toggle token hiding if this token's actor is a loot actor */
     protected _onCreate(data: this["_source"], options: DatabaseCreateCallbackOptions, userId: string): void;

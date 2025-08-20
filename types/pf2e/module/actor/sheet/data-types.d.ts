@@ -5,6 +5,7 @@ import { InventoryBulk } from '../inventory/index.ts';
 import { FormSelectOption } from "../../../../foundry/client/applications/forms/fields.mts";
 import { AppV1RenderOptions } from "../../../../foundry/client/appv1/api/application-v1.mts";
 import { ActorSheetData } from "../../../../foundry/client/appv1/sheets/actor-sheet.mts";
+import { ItemUUID } from "../../../../foundry/common/documents/_module.mts";
 import { PhysicalItemPF2e } from '../../item/index.ts';
 import { Frequency } from '../../item/base/data/index.ts';
 import { Coins } from '../../item/physical/data.ts';
@@ -22,7 +23,8 @@ interface InventoryItem<TItem extends PhysicalItemPF2e = PhysicalItemPF2e> {
     isSellable: boolean;
     hasCharges: boolean;
     heldItems?: InventoryItem[] | null;
-    notifyInvestment?: boolean;
+    notifyEquip?: boolean;
+    notifyInvest?: boolean;
     /** Whether the item should be hidden if the user isn't the owner */
     hidden: boolean;
 }
@@ -71,6 +73,7 @@ interface ActorSheetDataPF2e<TActor extends ActorPF2e> extends ActorSheetData<TA
     publicationLicenses: FormSelectOption[];
 }
 interface AbilityViewData {
+    uuid: ItemUUID;
     id: string;
     name: string;
     img: string;

@@ -3,7 +3,7 @@ import { ItemType } from '../../item/base/data/index.ts';
 import { TokenDocumentPF2e } from '../../scene/index.ts';
 import { ArmorStatistic, Statistic, StatisticDifficultyClass } from '../../system/statistic/index.ts';
 import { ActorPF2e, ActorUpdateCallbackOptions, HitPointsSummary } from '../base.ts';
-import { TokenDimensions, VehicleSource, VehicleSystemData } from './data.ts';
+import { VehicleSource, VehicleSystemData } from './data.ts';
 declare class VehiclePF2e<TParent extends TokenDocumentPF2e | null = TokenDocumentPF2e | null> extends ActorPF2e<TParent> {
     armorClass: StatisticDifficultyClass<ArmorStatistic>;
     get allowedItemTypes(): (ItemType | "physical")[];
@@ -12,7 +12,6 @@ declare class VehiclePF2e<TParent extends TokenDocumentPF2e | null = TokenDocume
     get hardness(): number;
     /** Whether the creature emits sound: overridable by AE-like */
     get emitsSound(): boolean;
-    getTokenDimensions(dimensions?: Omit<ActorDimensions, "height">): TokenDimensions;
     prepareBaseData(): void;
     prepareDerivedData(): void;
     private prepareSaves;

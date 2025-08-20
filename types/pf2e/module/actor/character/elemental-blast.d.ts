@@ -83,6 +83,7 @@ interface ElementalBlastConfig extends Omit<fields.ModelPropsFromSchema<BlastCon
     };
     statistic: Statistic;
     actionCost: 1 | 2;
+    ready: boolean;
     maps: {
         melee: {
             map0: string;

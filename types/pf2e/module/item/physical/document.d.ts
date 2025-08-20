@@ -5,6 +5,7 @@ import { DatabaseCreateCallbackOptions, DatabaseDeleteOperation, DatabaseUpdateC
 import { ItemPF2e, ContainerPF2e } from '../index.ts';
 import { ItemSourcePF2e, PhysicalItemSource, RawItemChatData, TraitChatData } from '../base/data/index.ts';
 import { Rarity, Size, ZeroToTwo } from '../../data.ts';
+import { RuleElementOptions, RuleElementPF2e } from '../../rules/index.ts';
 import { EffectSpinoff } from '../../rules/rule-element/effect-spinoff/spinoff.ts';
 import { Bulk } from './bulk.ts';
 import { IdentificationStatus, ItemCarryType, ItemMaterialData, MystifiedData, PhysicalItemHitPoints, PhysicalItemTrait, PhysicalSystemData, Price } from './data.ts';
@@ -75,6 +76,7 @@ declare abstract class PhysicalItemPF2e<TParent extends ActorPF2e | null = Actor
     /** Refresh certain derived properties in case of special data preparation from subclasses */
     prepareDerivedData(): void;
     prepareSiblingData(): void;
+    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElementPF2e[];
     /** After item alterations have occurred, ensure that this item's hit points are no higher than its maximum */
     onPrepareSynthetics(): void;
     prepareActorData(): void;
@@ -87,6 +89,17 @@ declare abstract class PhysicalItemPF2e<TParent extends ActorPF2e | null = Actor
     getEmbeddedDocument(embeddedName: string, id: string, options?: {
         strict?: boolean;
     }): foundry.abstract.Document | undefined;
+    attach(item: PhysicalItemPF2e, { quantity, stack }?: {
+        quantity?: number;
+        stack?: boolean;
+    }): Promise<boolean>;
+    /**
+     * Detach a subitem from another physical item, either creating it as a new, independent item or incrementing the
+     * quantity of an existing stack.
+     */
+    detach({ skipConfirm }: {
+        skipConfirm?: boolean;
+    }): Promise<void>;
     /**
      * Can the provided item stack with this item?
      * @param item an item we are trying to add to the inventory
@@ -126,7 +139,7 @@ declare abstract class PhysicalItemPF2e<TParent extends ActorPF2e | null = Actor
     /** Redirect subitem deletes to parent-item updates */
     delete(operation?: Partial<Omit<DatabaseDeleteOperation<null>, "parent" | "pack">>): Promise<this | undefined>;
     /** Set to unequipped upon acquiring */
-    protected _preCreate(data: this["_source"], options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
+    protected _preCreate(data: DeepPartial<this["_source"]>, options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
     protected _preUpdate(changed: DeepPartial<this["_source"]>, operation: DatabaseUpdateCallbackOptions & {
         checkHP?: boolean;
     }, user: fd.BaseUser): Promise<boolean | void>;

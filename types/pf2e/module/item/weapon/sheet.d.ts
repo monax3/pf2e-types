@@ -1,6 +1,6 @@
 import { FormSelectOption } from "../../../../foundry/client/applications/forms/fields.mts";
 import { ItemSheetOptions } from '../base/sheet/sheet.ts';
-import { MaterialSheetData, PhysicalItemSheetData, PhysicalItemSheetPF2e, RUNE_DATA } from '../physical/index.ts';
+import { Grade, MaterialSheetData, PhysicalItemSheetData, PhysicalItemSheetPF2e, RUNE_DATA } from '../physical/index.ts';
 import { AdjustedValue, SheetOptions } from '../../sheet/helpers.ts';
 import { ComboWeaponMeleeUsage, SpecificWeaponData } from './data.ts';
 import { WeaponPF2e } from './document.ts';
@@ -48,6 +48,7 @@ interface WeaponSheetData extends PhysicalItemSheetData<WeaponPF2e> {
             name: string;
         }[];
     };
+    grades: Record<Grade, string>;
     specificMagicData: SpecificWeaponData;
     weaponMAP: typeof CONFIG.PF2E.weaponMAP;
     weaponRanges: Record<number, string>;

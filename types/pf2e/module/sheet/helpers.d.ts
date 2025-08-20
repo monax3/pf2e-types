@@ -46,6 +46,8 @@ declare function eventToRollParams(event: Maybe<Event>, rollType: {
 }): ParamsFromEvent;
 /** Set roll mode from a user's input: used for messages that are not actually rolls. */
 declare function eventToRollMode(event: Maybe<Event>): RollMode | "roll";
+/** Returns true if the control key is held down, handling mac */
+declare function isControlDown(event: MouseEvent | KeyboardEvent | TouchEvent): boolean;
 /** Given a uuid, loads the item and sends it to chat, potentially recontextualizing it with a given actor */
 declare function sendItemToChat(itemUuid: ItemUUID, options: {
     event?: Event;
@@ -89,5 +91,5 @@ interface TagifyEntry {
     hidden?: true;
     "data-tooltip"?: string;
 }
-export { createSheetOptions, createSheetTags, createTagifyTraits, createTooltipListener, eventToRollMode, eventToRollParams, getAdjustedValue, getAdjustment, getItemFromDragEvent, maintainFocusInRender, sendItemToChat, };
+export { createSheetOptions, createSheetTags, createTagifyTraits, createTooltipListener, eventToRollMode, eventToRollParams, getAdjustedValue, getAdjustment, getItemFromDragEvent, isControlDown, maintainFocusInRender, sendItemToChat, };
 export type { AdjustedValue, SheetOption, SheetOptions, TagifyEntry };

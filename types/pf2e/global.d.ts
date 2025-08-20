@@ -16,7 +16,6 @@ import { CoinsPF2e } from './module/item/physical/helpers.ts';
 import { ActiveEffectPF2e } from './module/active-effect.ts';
 import { CompendiumBrowser, CompendiumBrowserSettings, CompendiumBrowserSources } from './module/apps/compendium-browser/browser.ts';
 import { EffectsPanel } from './module/apps/effects-panel.ts';
-import { LicenseViewer } from './module/apps/license-viewer/app.ts';
 import { ActorDirectoryPF2e, ChatLogPF2e, CompendiumDirectoryPF2e, EncounterTracker, ItemDirectoryPF2e } from './module/apps/sidebar/index.ts';
 import { WorldClock } from './module/apps/world-clock/app.ts';
 import { CanvasPF2e, EffectsCanvasGroupPF2e } from './module/canvas/index.ts';
@@ -119,7 +118,6 @@ interface GamePF2e extends Game<ActorPF2e<null>, ActorsPF2e<ActorPF2e<null>>, Ch
     pf2e: {
         actions: Record<string, Function> & Collection<string, Action>;
         compendiumBrowser: CompendiumBrowser;
-        licenseViewer: LicenseViewer;
         worldClock: WorldClock;
         effectPanel: EffectsPanel;
         effectTracker: EffectTracker;
@@ -235,17 +233,17 @@ declare global {
         };
         PF2E: typeof PF2ECONFIG;
     }
-    const CONFIG: ConfigPF2e;
-    const canvas: CanvasPF2e;
+    var CONFIG: ConfigPF2e;
+    var canvas: CanvasPF2e;
     namespace globalThis {
-        const game: GamePF2e;
+        var game: GamePF2e;
         export import fa = foundry.applications;
         export import fav1 = foundry.appv1;
         export import fc = foundry.canvas;
         export import fd = foundry.documents;
         export import fh = foundry.helpers;
         export import fu = foundry.utils;
-        const ui: FoundryUI<ActorDirectoryPF2e, ItemDirectoryPF2e, ChatLogPF2e, CompendiumDirectoryPF2e, EncounterTracker<EncounterPF2e | null>, Hotbar<MacroPF2e>>;
+        var ui: FoundryUI<ActorDirectoryPF2e, ItemDirectoryPF2e, ChatLogPF2e, CompendiumDirectoryPF2e, EncounterTracker<EncounterPF2e | null>, Hotbar<MacroPF2e>>;
         var AutomaticBonusProgression: typeof ABP;
         interface Math {
             eq: (a: number, b: number) => boolean;

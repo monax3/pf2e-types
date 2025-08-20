@@ -3,7 +3,6 @@ import { DamageDicePF2e, ModifierPF2e } from '../../actor/modifiers.ts';
 import { MeleePF2e, WeaponPF2e } from '../../item/index.ts';
 import { NPCAttackDamage } from '../../item/melee/data.ts';
 import { WeaponDamage } from '../../item/weapon/data.ts';
-import { PotencySynthetic } from '../../rules/synthetics.ts';
 import { DamageCategoryUnique, DamageDamageContext, WeaponDamageTemplate } from './types.ts';
 declare class WeaponDamagePF2e {
     #private;
@@ -19,7 +18,7 @@ interface ConvertedNPCDamage extends WeaponDamage {
 interface WeaponDamageCalculateParams {
     weapon: WeaponPF2e<ActorPF2e> | MeleePF2e<ActorPF2e>;
     actor: ActorPF2e;
-    weaponPotency?: PotencySynthetic | null;
+    weaponPotency?: number;
     damageDice?: DamageDicePF2e[];
     modifiers?: ModifierPF2e[];
     context: DamageDamageContext;

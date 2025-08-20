@@ -109,6 +109,7 @@ declare class Immunity extends IWR<ImmunityType> implements ImmunitySource {
         stupefied: string;
         "swarm-attacks": string;
         "swarm-mind": string;
+        time: string;
         trip: string;
         "unarmed-attacks": string;
         unconscious: string;
@@ -187,6 +188,7 @@ declare class Weakness extends IWR<WeaknessType> implements WeaknessSource {
         spells: string;
         spirit: string;
         "splash-damage": string;
+        time: string;
         "unarmed-attacks": string;
         "vampire-weaknesses": string;
         vitality: string;
@@ -218,14 +220,17 @@ declare class Weakness extends IWR<WeaknessType> implements WeaknessSource {
     };
     readonly doubleVs?: never;
     value: number;
+    readonly applyOnce: boolean;
     constructor(data: IWRConstructorData<WeaknessType> & {
         value: number;
+        applyOnce?: boolean;
     });
     toObject(): Readonly<WeaknessDisplayData>;
 }
 type WeaknessDisplayData = IWRDisplayData<WeaknessType> & Pick<Weakness, "value">;
 interface WeaknessSource extends IWRSource<WeaknessType> {
     value: number;
+    applyOnce?: boolean;
 }
 declare class Resistance extends IWR<ResistanceType> implements ResistanceSource {
     protected readonly typeLabels: {
@@ -269,6 +274,7 @@ declare class Resistance extends IWR<ResistanceType> implements ResistanceSource
         sonic: string;
         spells: string;
         spirit: string;
+        time: string;
         "unarmed-attacks": string;
         vitality: string;
         void: string;
@@ -312,6 +318,6 @@ interface ResistanceSource extends IWRSource<ResistanceType> {
     doubleVs?: IWRException<ResistanceType>[];
 }
 /** Weaknesses to things that "[don't] normally deal damage, such as water": applied separately as untyped damage */
-declare const NON_DAMAGE_WEAKNESSES: Set<WeaknessType>;
-export { Immunity, NON_DAMAGE_WEAKNESSES, Resistance, Weakness };
+declare const APPLY_ONCE_WEAKNESSES: Set<WeaknessType>;
+export { Immunity, APPLY_ONCE_WEAKNESSES, Resistance, Weakness };
 export type { ImmunitySource, IWRSource, ResistanceSource, WeaknessSource };

@@ -1,5 +1,5 @@
 import { PhysicalItemPF2e } from '../item/index.ts';
-import { PickAThingPrompt, PickableThing } from './pick-a-thing-prompt.ts';
+import { PickAThingPrompt, PickableThing, PromptTemplateData } from './pick-a-thing-prompt.ts';
 /** A prompt for the user to select an item to receive an attachment */
 declare class ItemAttacher<TItem extends PhysicalItemPF2e> extends PickAThingPrompt<TItem, PhysicalItemPF2e> {
     #private;
@@ -11,6 +11,10 @@ declare class ItemAttacher<TItem extends PhysicalItemPF2e> extends PickAThingPro
     get title(): string;
     protected getSelection(event: MouseEvent): PickableThing<PhysicalItemPF2e> | null;
     resolveSelection(): Promise<PickableThing<PhysicalItemPF2e> | null>;
+    _prepareContext(): Promise<ItemAttacherContext>;
     protected _onRender(context: object, options: fa.ApplicationRenderOptions): Promise<void>;
+}
+interface ItemAttacherContext extends PromptTemplateData {
+    requiresCrafting: boolean;
 }
 export { ItemAttacher };

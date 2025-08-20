@@ -17,6 +17,12 @@ interface AttachedUsage {
     where: string;
     hands?: 0;
 }
+interface InstalledUsage {
+    value: string;
+    type: "installed";
+    where: string;
+    hands?: 0;
+}
 interface CarriedUsage {
     value: "carried";
     type: "carried";
@@ -29,7 +35,7 @@ interface ImplantedUsage {
     where?: never;
     hands?: 0;
 }
-type UsageDetails = HeldUsage | WornUsage | AttachedUsage | CarriedUsage | ImplantedUsage;
+type UsageDetails = HeldUsage | WornUsage | AttachedUsage | InstalledUsage | CarriedUsage | ImplantedUsage;
 type UsageType = UsageDetails["type"];
 declare function isEquipped(usage: UsageDetails, equipped: EquippedData): boolean;
 declare function getUsageDetails(usage: string): UsageDetails;

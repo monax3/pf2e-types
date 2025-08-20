@@ -3,7 +3,7 @@ import { AttackTraitHelpers } from '../creature/helpers.ts';
 import { ModifierPF2e } from '../modifiers.ts';
 import { AbilityItemPF2e, ArmorPF2e, WeaponPF2e } from '../../item/index.ts';
 import { ItemCarryType } from '../../item/physical/index.ts';
-import { ZeroToThree, ZeroToTwo } from '../../data.ts';
+import { ZeroToFour, ZeroToThree, ZeroToTwo } from '../../data.ts';
 import { SheetOptions } from '../../sheet/helpers.ts';
 /** Handle weapon traits that introduce modifiers or add other weapon traits */
 declare class PCAttackTraitHelpers extends AttackTraitHelpers {
@@ -66,6 +66,8 @@ interface CreateAttackModifiersParams {
     item: AbilityItemPF2e<CharacterPF2e> | WeaponPF2e<CharacterPF2e>;
     domains: string[];
 }
+/** Get the proficiency rank of of a weapon or armor for a PC. */
+declare function getItemProficiencyRank(actor: CharacterPF2e, item: ArmorPF2e | WeaponPF2e, itemOptions?: Set<string>): ZeroToFour;
 /** Create a penalty for attempting to Force Open without a crowbar or equivalent tool */
 declare function createForceOpenPenalty(actor: CharacterPF2e, domains: string[]): ModifierPF2e;
 declare function createShoddyPenalty(actor: ActorPF2e, item: WeaponPF2e | ArmorPF2e | null, domains: string[]): ModifierPF2e | null;
@@ -82,4 +84,4 @@ declare function createHinderingPenalty(actor: CharacterPF2e): ModifierPF2e | nu
  * score, this penalty increases to be equal to the armor's check penalty if it's worse."
  */
 declare function createPonderousPenalty(actor: CharacterPF2e): ModifierPF2e | null;
-export { PCAttackTraitHelpers, WeaponAuxiliaryAction, createForceOpenPenalty, createHinderingPenalty, createPonderousPenalty, createShoddyPenalty, imposeOversizedWeaponCondition, };
+export { PCAttackTraitHelpers, WeaponAuxiliaryAction, createForceOpenPenalty, createHinderingPenalty, createPonderousPenalty, createShoddyPenalty, getItemProficiencyRank, imposeOversizedWeaponCondition, };

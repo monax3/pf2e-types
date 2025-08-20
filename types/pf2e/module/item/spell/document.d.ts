@@ -119,7 +119,7 @@ declare class SpellPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> ext
     rollCounteract(event?: MouseEvent): Promise<Rolled<CheckRoll> | null>;
     getOriginData(): ItemOriginFlag;
     update(data: Record<string, unknown>, operation?: Partial<Omit<DatabaseUpdateOperation<null>, "parent" | "pack">>): Promise<this | undefined>;
-    protected _preCreate(data: this["_source"], options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
+    protected _preCreate(data: DeepPartial<this["_source"]>, options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
     protected _preUpdate(changed: DeepPartial<this["_source"]>, options: DatabaseUpdateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
 }
 interface SpellPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends ItemPF2e<TParent> {

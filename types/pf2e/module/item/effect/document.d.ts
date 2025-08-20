@@ -27,7 +27,7 @@ declare class EffectPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> ex
         includeGranter?: boolean;
     }): string[];
     /** Set the start time and initiative roll of a newly created effect */
-    protected _preCreate(data: this["_source"], options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
+    protected _preCreate(data: DeepPartial<this["_source"]>, options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
     protected _preUpdate(changed: DeepPartial<this["_source"]>, options: DatabaseUpdateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
     protected _onDelete(options: DatabaseDeleteCallbackOptions, userId: string): void;
     /** If applicable, reevaluate this effect's badge */

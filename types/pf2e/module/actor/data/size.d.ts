@@ -13,15 +13,16 @@ export declare class ActorSizePF2e {
         height: number;
     };
     /**
-     * @param value A size category
-     * @param [length] A length of a Pathfinder "space"
-     * @param [width]  A width of a Pathfinder "space"
-     * @param [smallIsMedium] Treat small as medium
+     * @param params
+     * @param params.value A size category
+     * @param params.long A length of a Pathfinder "space"
+     * @param params.wide A width of a Pathfinder "space"
+     * @param params.smallIsMedium Treat small as medium
      */
     constructor(params: {
         value?: Size;
-        length?: number;
-        width?: number;
+        long?: number;
+        wide?: number;
         smallIsMedium?: boolean;
     });
     /**

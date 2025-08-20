@@ -14,7 +14,7 @@ declare const SIZE_TO_REACH: {
     readonly huge: 10;
     readonly grg: 15;
 };
-declare const SENSE_TYPES: Set<"darkvision" | "echolocation" | "greater-darkvision" | "infrared-vision" | "lifesense" | "low-light-vision" | "magicsense" | "motion-sense" | "scent" | "see-invisibility" | "spiritsense" | "thoughtsense" | "tremorsense" | "truesight" | "wavesense">;
+declare const SENSE_TYPES: Set<"bloodsense" | "darkvision" | "echolocation" | "greater-darkvision" | "infrared-vision" | "lifesense" | "low-light-vision" | "magicsense" | "motion-sense" | "scent" | "see-invisibility" | "spiritsense" | "thoughtsense" | "tremorsense" | "truesight" | "wavesense">;
 /** Sense types associated with a particular acuities by definition */
 declare const SENSES_WITH_MANDATORY_ACUITIES: {
     [K in SenseType]?: SenseAcuity;
@@ -29,4 +29,4 @@ declare const LANGUAGES_BY_RARITY: {
 };
 declare const LANGUAGES: Language[];
 declare const LANGUAGE_RARITIES: readonly ["common", "uncommon", "rare", "secret"];
-export { ALLIANCES, LANGUAGES, LANGUAGES_BY_RARITY, LANGUAGE_RARITIES, SAVING_THROW_ATTRIBUTES, SENSES_WITH_MANDATORY_ACUITIES, SENSES_WITH_UNLIMITED_RANGE, SENSE_ACUITIES, SENSE_TYPES, SIZE_TO_REACH, };
+export { ALLIANCES, LANGUAGE_RARITIES, LANGUAGES, LANGUAGES_BY_RARITY, SAVING_THROW_ATTRIBUTES, SENSE_ACUITIES, SENSE_TYPES, SENSES_WITH_MANDATORY_ACUITIES, SENSES_WITH_UNLIMITED_RANGE, SIZE_TO_REACH, };

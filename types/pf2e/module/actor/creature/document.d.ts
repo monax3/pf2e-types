@@ -16,7 +16,7 @@ import { CheckRoll } from '../../system/check/index.ts';
 import { Statistic, StatisticDifficultyClass, ArmorStatistic } from '../../system/statistic/index.ts';
 import { PerceptionStatistic } from '../../system/statistic/perception.ts';
 import { CreatureSpeeds, CreatureSystemData, LabeledSpeed, VisionLevel } from './data.ts';
-import { CreatureTrait, CreatureType, CreatureUpdateCallbackOptions, CreatureUpdateOperation, GetReachParameters, ResourceData } from './types.ts';
+import { CreatureType, CreatureUpdateCallbackOptions, CreatureUpdateOperation, GetReachParameters, ResourceData } from './types.ts';
 /** An "actor" in a Pathfinder sense rather than a Foundry one: all should contain attributes and abilities */
 declare abstract class CreaturePF2e<TParent extends TokenDocumentPF2e | null = TokenDocumentPF2e | null> extends ActorPF2e<TParent> {
     /** A separate collection of owned spellcasting entries for convenience */
@@ -103,7 +103,6 @@ declare abstract class CreaturePF2e<TParent extends TokenDocumentPF2e | null = T
 interface CreaturePF2e<TParent extends TokenDocumentPF2e | null = TokenDocumentPF2e | null> extends ActorPF2e<TParent> {
     readonly _source: CreatureSource;
     system: CreatureSystemData;
-    get traits(): Set<CreatureTrait>;
     get hitPoints(): HitPointsSummary;
     /** Extend `DatabaseUpdateOperation` for creatures */
     update(data: Record<string, unknown>, operation?: Partial<CreatureUpdateOperation<TParent>>): Promise<this | undefined>;

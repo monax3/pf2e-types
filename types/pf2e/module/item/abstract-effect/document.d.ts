@@ -32,7 +32,7 @@ declare abstract class AbstractEffectPF2e<TParent extends ActorPF2e | null = Act
     /** Set a self roll option for this effect */
     prepareActorData(): void;
     /** Log whether this effect originated from a spell */
-    protected _preCreate(data: this["_source"], options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
+    protected _preCreate(data: DeepPartial<this["_source"]>, options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
     protected _onCreate(data: this["_source"], options: DatabaseCreateCallbackOptions, userId: string): void;
     protected _onDelete(options: DatabaseDeleteCallbackOptions, userId: string): void;
     /** Attempts to show floaty text and update condition automation, depending on settings */

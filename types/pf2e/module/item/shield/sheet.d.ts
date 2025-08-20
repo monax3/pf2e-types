@@ -21,5 +21,6 @@ interface ShieldSheetData extends PhysicalItemSheetData<ShieldPF2e> {
     }[];
     reinforcing: Record<number, string | null>;
     weaponRunes: typeof RUNE_DATA.weapon | null;
+    grades: Record<string, string>;
 }
 export { ShieldSheetPF2e };

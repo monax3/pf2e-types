@@ -4,10 +4,9 @@ import { ItemSourcePF2e } from '../../../item/base/data/index.ts';
 import { AELikeChangeMode } from '../ae-like.ts';
 import { RuleElementPF2e } from '../base.ts';
 import { ResolvableValueField } from '../data.ts';
+import { ITEM_ALTERATION_HANDLERS } from './handlers.ts';
 import fields = foundry.data.fields;
 declare class ItemAlteration extends foundry.abstract.DataModel<RuleElementPF2e, ItemAlterationSchema> {
-    #private;
-    static VALID_PROPERTIES: readonly ["ac-bonus", "area-size", "badge-max", "badge-value", "bulk", "category", "check-penalty", "damage-dice-faces", "damage-dice-number", "damage-type", "defense-passive", "description", "dex-cap", "focus-point-cost", "frequency-max", "frequency-per", "group", "hardness", "hp-max", "material-type", "name", "other-tags", "pd-recovery-dc", "persistent-damage", "potency", "range-increment", "range-max", "rarity", "resilient", "speed-penalty", "strength", "striking", "traits"];
     static defineSchema(): ItemAlterationSchema;
     get rule(): RuleElementPF2e;
     get actor(): ActorPF2e;
@@ -24,6 +23,6 @@ type ItemAlterationSchema = {
     property: fields.StringField<ItemAlterationProperty, ItemAlterationProperty, true, false, false>;
     value: ResolvableValueField<true, true, false>;
 };
-type ItemAlterationProperty = (typeof ItemAlteration.VALID_PROPERTIES)[number];
+type ItemAlterationProperty = keyof typeof ITEM_ALTERATION_HANDLERS;
 export { ItemAlteration };
-export type { ItemAlterationProperty, ItemAlterationSchema };
+export type { ItemAlterationSchema };
