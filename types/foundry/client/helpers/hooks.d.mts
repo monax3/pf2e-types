@@ -94,344 +94,341 @@ type HookParamsGetProseMirrorMenuDropDowns = HookParameters<
     [foundry.prosemirror.ProseMirrorMenu, Record<string, ProseMirrorDropDownConfig>]
 >;
 
+export interface OnceHooks {
+    init: () => HookReturn;
+    i18nInit: () => HookReturn;
+    setup: () => HookReturn;
+    initializeDynamicTokenRingConfig: (ringConfig: foundry.canvas.placeables.tokens.TokenRingConfig) => HookReturn;
+    initializeCombatConfiguration: (config: foundry.data.CombatConfiguration) => HookReturn;
+    canvasConfig: (config: object) => HookReturn;
+    ready: () => HookReturn;
+}
+
+export interface DefaultApplications {
+    DialogV2: DialogV2;
+    ChatLog: ChatLog;
+    ChatPopout: foundry.applications.sidebar.apps.ChatPopout;
+    CombatTrackerConfig: CombatTrackerConfig;
+    CompendiumDirectory: CompendiumDirectory;
+    ActorDirectory: ActorDirectory<Actor<null>>;
+    ItemDirectory: ItemDirectory<Item<null>>;
+    SceneControls: SceneControls;
+    Settings: Settings;
+    SettingsConfig: SettingsConfig;
+    TokenHUD: TokenHUD;
+    JournalPageSheet: JournalPageSheet<JournalEntryPage>;
+    JournalTextPageSheet: JournalTextPageSheet<JournalEntryPage>;
+    RegionLegend: foundry.applications.ui.RegionLegend;
+    Pause: foundry.applications.ui.GamePause;
+    DocumentSheetV2: foundry.applications.api.DocumentSheetV2;
+    CameraPopout: foundry.applications.apps.av.CameraPopout;
+    CameraViews: foundry.applications.apps.av.CameraViews;
+    CompendiumArtConfig: foundry.applications.apps.CompendiumArtConfig;
+    DocumentSheetConfig: foundry.applications.apps.DocumentSheetConfig;
+    FilePicker: foundry.applications.apps.FilePicker;
+    ImagePopout: foundry.applications.apps.ImagePopout;
+    PermissionConfig: foundry.applications.apps.PermissionConfig;
+    RollResolver: foundry.applications.dice.RollResolver;
+    HeadsUpDisplayContainer: foundry.applications.hud.HeadsUpDisplayContainer;
+    BasePlaceableHUD: foundry.applications.hud.BasePlaceableHUD;
+    AVConfig: foundry.applications.settings.menus.AVConfig;
+    PrototypeTokenConfig: foundry.applications.sheets.PrototypeTokenConfig;
+    ModuleManagement: foundry.applications.sidebar.apps.ModuleManagement;
+    Sidebar: foundry.applications.sidebar.Sidebar;
+    AbstractSidebarTab: foundry.applications.sidebar.AbstractSidebarTab;
+    GamePause: foundry.applications.ui.GamePause;
+    Hotbar: foundry.applications.ui.Hotbar;
+    MainMenu: foundry.applications.ui.MainMenu;
+    Players: foundry.applications.ui.Players;
+    SceneNavigation: foundry.applications.ui.SceneNavigation;
+}
+
+export interface SystemApplications {}
+export type Applications = { [K in keyof DefaultApplications | keyof SystemApplications]: K extends keyof SystemApplications ? SystemApplications[K] : K extends keyof DefaultApplications ? DefaultApplications[K] : never };
+
+export interface ApplicationRenderContexts {
+    TokenHUD: PlaceableHUDContext
+}
+
+export interface DefaultApplicationsV1 {
+    ActorSheet: foundry.appv1.sheets.ActorSheet<Actor>;
+    ItemSheet: foundry.appv1.sheets.ItemSheet<Item, foundry.appv1.api.DocumentSheetV1Options>;
+    Dialog: Dialog;
+}
+
+export interface SystemApplicationsV1 {}
+export type ApplicationsV1 = { [K in keyof DefaultApplicationsV1 | keyof SystemApplicationsV1]: K extends keyof SystemApplicationsV1 ? SystemApplicationsV1[K] : K extends keyof DefaultApplicationsV1 ? DefaultApplicationsV1[K] : never };
+
+export type ApplicationRenderContextOf<K extends keyof Applications> = K extends keyof ApplicationRenderContexts ? ApplicationRenderContexts[K] : foundry.applications.types.ApplicationRenderContext;
+
+export type RenderHooks = { [K in keyof Applications as `render${K}`]: (application: Applications[K], element: HTMLElement, context: ApplicationRenderContextOf<K>, options: foundry.applications.types.ApplicationRenderOptions) => HookReturn; };
+export type CloseHooks = { [K in keyof Applications as `close${K}`]: (application: Applications[K]) => HookReturn; };
+export type GetHeaderControls = { [K in keyof Applications as `getHeaderControls${K}`]: (application: Applications[K], controls: foundry.applications.types.ApplicationHeaderControlsEntry[]) => HookReturn; };
+export type GetDocumentContextOptions = { [K in keyof Applications as `get${K}ContextOptions`]: (application: Applications[K], controls: ContextMenuEntry[]) => HookReturn; };
+
+export type RenderHooksV1 = { [K in keyof ApplicationsV1 as `render${K}`]: (application: ApplicationsV1[K], html: JQuery, data: object) => HookReturn; };
+export type CloseHooksV1 = { [K in keyof ApplicationsV1 as `close${K}`]: (application: ApplicationsV1[K], html: JQuery) => HookReturn; };
+export type GetApplicationHeaderButtonsV1 = { [K in keyof ApplicationsV1 as `get${K}HeaderButtons`]: (application: ApplicationsV1[K], buttons: foundry.appv1.api.ApplicationV1HeaderButton[]) => HookReturn; };
+
+export interface ApplicationHooks extends RenderHooks, CloseHooks, GetHeaderControls, GetDocumentContextOptions, RenderHooksV1, CloseHooksV1, GetApplicationHeaderButtonsV1 { }
+
+export interface DefaultDocumentClasses {
+    Actor: typeof Actor;
+    Card: typeof foundry.documents.Card<foundry.documents.Cards>;
+    ChatMessage: typeof ChatMessage;
+    Token: typeof TokenDocument;
+    Combat: typeof Combat;
+    Item: typeof Item;
+    Combatant: typeof foundry.documents.Combatant;
+    Tile: typeof foundry.documents.TileDocument<Scene | null>;
+    ActiveEffect: typeof foundry.documents.ActiveEffect,
+    ActorDelta: typeof foundry.documents.ActorDelta<TokenDocument | null>,
+    Adventure: typeof foundry.documents.Adventure,
+    AmbientLight: typeof foundry.documents.AmbientLightDocument<Scene | null>,
+    AmbientSound: typeof foundry.documents.AmbientSoundDocument<Scene | null>,
+    Cards: typeof foundry.documents.Cards,
+    CombatantGroup: typeof foundry.documents.CombatantGroup,
+    Drawing: typeof foundry.documents.DrawingDocument,
+    FogExploration: typeof foundry.documents.FogExploration,
+    Folder: typeof foundry.documents.Folder,
+    JournalEntry: typeof foundry.documents.JournalEntry,
+
+    // JournalEntryCategory: foundry.documents.JournalEntryCategory,
+
+    JournalEntryPage: typeof foundry.documents.JournalEntryPage,
+    Macro: typeof foundry.documents.Macro,
+    MeasuredTemplate: typeof foundry.documents.MeasuredTemplateDocument,
+    Note: typeof foundry.documents.NoteDocument<Scene | null>,
+    Playlist: typeof foundry.documents.Playlist,
+    PlaylistSound: typeof foundry.documents.PlaylistSound,
+    RollTable: typeof foundry.documents.RollTable,
+    Scene: typeof foundry.documents.Scene,
+    Region: typeof foundry.documents.RegionDocument,
+    RegionBehavior: typeof foundry.documents.RegionBehavior,
+    Setting: typeof foundry.documents.Setting,
+    TableResult: typeof foundry.documents.TableResult,
+    User: typeof foundry.documents.User,
+    Wall: typeof foundry.documents.WallDocument,
+}
+
+export interface SystemDocumentClasses {}
+export type DocumentClasses = { [K in keyof DefaultDocumentClasses]: K extends keyof SystemDocumentClasses ? SystemDocumentClasses[K] : DefaultDocumentClasses[K] };
+
+export type Documents = {
+    [K in keyof DocumentClasses]: InstanceType<DocumentClasses[K]>;
+};
+
+export type PreCreateDocumentHooks =
+    { [K in keyof Documents as `preCreate${K}`]: (document: Documents[K], data: PreCreate<Documents[K]["_source"]>, options: Partial<DatabaseCreateOperation<Documents[K]["parent"]>>, userId: string) => CancellableHookReturn };
+export type CreateDocumentHooks =
+    { [K in keyof Documents as `create${K}`]: (document: Documents[K], options: Partial<DatabaseCreateOperation<Documents[K]["parent"]>>, userId: string) => HookReturn };
+export type PreUpdateDocumentHooks =
+    { [K in keyof Documents as `preUpdate${K}`]: (document: Documents[K], changed: Record<string, unknown>, options: Partial<DatabaseUpdateOperation<Documents[K]["parent"]>>, userId: string) => CancellableHookReturn };
+export type UpdateDocumentHooks =
+    { [K in keyof Documents as `update${K}`]: (document: Documents[K], changed: Record<string, unknown>, options: Partial<DatabaseUpdateOperation<Documents[K]["parent"]>>, userId: string) => HookReturn };
+export type PreDeleteDocumentHooks =
+    { [K in keyof Documents as `preDelete${K}`]: (document: Documents[K], options: Partial<DatabaseDeleteOperation<Documents[K]["parent"]>>, userId: string) => CancellableHookReturn };
+export type DeleteDocumentHooks =
+    { [K in keyof Documents as `delete${K}`]: (document: Documents[K], options: Partial<DatabaseDeleteOperation<Documents[K]["parent"]>>, userId: string) => HookReturn };
+
+export interface DocumentHooks extends PreCreateDocumentHooks, CreateDocumentHooks, PreUpdateDocumentHooks, UpdateDocumentHooks, PreDeleteDocumentHooks, DeleteDocumentHooks { }
+
+export interface CanvasGroups {
+    CanvasVisibility: foundry.canvas.groups.CanvasVisibility;
+    EffectsCanvasGroup: foundry.canvas.groups.EffectsCanvasGroup;
+    EnvironmentCanvasGroup: foundry.canvas.groups.EnvironmentCanvasGroup;
+    OverlayCanvasGroup: foundry.canvas.groups.OverlayCanvasGroup;
+    PrimaryCanvasGroup: foundry.canvas.groups.PrimaryCanvasGroup;
+    RenderedCanvasGroup: foundry.canvas.groups.RenderedCanvasGroup;
+
+    HiddenCanvasGroup: foundry.canvas.groups.HiddenCanvasGroup;
+    InterfaceCanvasGroup: foundry.canvas.groups.InterfaceCanvasGroup;
+}
+
+export type DrawGroup = { [K in keyof CanvasGroups as `draw${K}`]: (group: CanvasGroups[K]) => HookReturn };
+export type TearDownGroup = { [K in keyof CanvasGroups as `tearDown${K}`]: (group: CanvasGroups[K]) => HookReturn };
+
+interface CanvasLayers {
+    ControlsLayer: foundry.canvas.layers.ControlsLayer;
+    CanvasBackgroundAlterationEffects: foundry.canvas.layers.CanvasBackgroundAlterationEffects;
+    CanvasColorationEffects: foundry.canvas.layers.CanvasColorationEffects;
+    CanvasDarknessEffects: foundry.canvas.layers.CanvasDarknessEffects;
+    CanvasIlluminationEffects: foundry.canvas.layers.CanvasIlluminationEffects;
+    GridLayer: foundry.canvas.layers.GridLayer;
+
+    DrawingsLayer: foundry.canvas.layers.DrawingsLayer;
+    LightingLayer: foundry.canvas.layers.LightingLayer;
+    NotesLayer: foundry.canvas.layers.NotesLayer;
+    WallsLayer: foundry.canvas.layers.WallsLayer;
+    TokenLayer: foundry.canvas.layers.TokenLayer;
+    RegionLayer: foundry.canvas.layers.RegionLayer;
+    SoundsLayer: foundry.canvas.layers.SoundsLayer;
+    TemplateLayer: foundry.canvas.layers.TemplateLayer;
+    TilesLayer: foundry.canvas.layers.TilesLayer;
+}
+
+export type DrawLayer = { [K in keyof CanvasLayers as `draw${K}`]: (layer: CanvasLayers[K]) => HookReturn };
+export type TearDownLayer = { [K in keyof CanvasLayers as `tearDown${K}`]: (layer: CanvasLayers[K]) => HookReturn };
+
+export type InteractionLayers = { [K in keyof CanvasLayers as CanvasLayers[K] extends foundry.canvas.layers.InteractionLayer ? K : never]: CanvasLayers[K] };
+
+export type ActivateLayer = { [K in keyof InteractionLayers as `activate${K}`]: (layer: foundry.canvas.layers.InteractionLayer) => HookReturn };
+export type DeactivateLayer = { [K in keyof InteractionLayers as `deactivate${K}`]: (layer: foundry.canvas.layers.InteractionLayer) => HookReturn };
+
+export interface CanvasHooks extends
+    DrawGroup,
+    TearDownGroup,
+    DrawLayer,
+    TearDownLayer,
+    ActivateLayer,
+    DeactivateLayer { }
+
+export interface PlaceableObjects {
+    Drawing: foundry.canvas.placeables.Drawing;
+    Note: foundry.canvas.placeables.Note;
+    Region: foundry.canvas.placeables.Region;
+    Tile: foundry.canvas.placeables.Tile;
+    Token: foundry.canvas.placeables.Token;
+    MeasuredTemplate: foundry.canvas.placeables.MeasuredTemplate;
+    Wall: foundry.canvas.placeables.Wall;
+    AmbientLight: foundry.canvas.placeables.AmbientLight;
+    AmbientSound: foundry.canvas.placeables.AmbientSound;
+}
+
+export type ControlObject = { [K in keyof PlaceableObjects as `control${K}`]: (object: PlaceableObjects[K], controlled: boolean) => HookReturn };
+export type DestroyObject = { [K in keyof PlaceableObjects as `destroy${K}`]: (object: PlaceableObjects[K]) => HookReturn };
+export type DrawObject = { [K in keyof PlaceableObjects as `draw${K}`]: (object: PlaceableObjects[K]) => HookReturn };
+export type HoverObject = { [K in keyof PlaceableObjects as `hover${K}`]: (object: PlaceableObjects[K], hovered: boolean) => HookReturn };
+export type RefreshObject = { [K in keyof PlaceableObjects as `refresh${K}`]: (object: PlaceableObjects[K]) => HookReturn };
+export type PastePlaceableObject = { [K in keyof PlaceableObjects as `place${K}`]: (objects: PlaceableObjects[K][], data: object[], options: { cut: boolean; }) => HookReturn };
+
+interface PlaceableObjectHooks extends
+    ControlObject,
+    DestroyObject,
+    DrawObject,
+    HoverObject,
+    RefreshObject,
+    PastePlaceableObject { }
+
+export interface DynamicHooks extends
+    ApplicationHooks,
+    DocumentHooks,
+    CanvasHooks,
+    PlaceableObjectHooks { }
+
+export interface StaticHooks extends OnceHooks {
+    rtcSettingsChanged: (settings: foundry.av.AVSettings, changed: object) => HookReturn;
+    applyActiveEffect: (actor: Actor, change: foundry.documents.types.EffectChangeData, current: any, delta: any, changes: object) => HookReturn;
+
+    modifyTokenAttribute: (data: { attribute: string; isData: boolean; isBar: boolean; value: number; }, updates: object, actor: Actor) => HookReturn;
+
+    // dropActorSheetData: (actor: Actor, sheet: foundry.applications.sheets.ActorSheetV2<Actor>, data: object) => HookReturn;
+
+    importAdventure: (adventure: foundry.documents.Adventure, formData: object, created: Record<string, Document[]>, updated: Record<string, Document[]>) => HookReturn;
+    preImportAdventure: (adventure: foundry.documents.Adventure, formData: object, toCreate: Record<string, Document[]>, toUpdate: Record<string, Document[]>) => CancellableHookReturn;
+
+    globalVolumeChanged: (volume: number) => HookReturn;
+
+    canvasConfig: (config: object) => HookReturn;
+    canvasDraw: (canvas: foundry.canvas.Canvas) => HookReturn;
+    canvasInit: (canvas: foundry.canvas.Canvas) => HookReturn;
+    canvasPan: (canvas: foundry.canvas.Canvas, position: foundry.CanvasViewPosition) => HookReturn;
+    canvasReady: (canvas: foundry.canvas.Canvas) => HookReturn;
+    canvasTearDown: (canvas: foundry.canvas.Canvas) => HookReturn;
+
+    dropCanvasData: (canvas: Canvas, data: DropCanvasData, event: DragEvent) => CancellableHookReturn;
+    highlightObjects: (active: boolean) => HookReturn;
+    initializeEdges: () => HookReturn;
+
+    initializeVisionMode: (visibility: foundry.canvas.groups.CanvasVisibility) => HookReturn;
+    initializeVisionSources: (sources: foundry.utils.Collection<string, foundry.canvas.sources.PointVisionSource<foundry.canvas.placeables.AmbientLight | Token>>) => HookReturn;
+    sightRefresh: (visibility: foundry.canvas.groups.CanvasVisibility) => HookReturn;
+    visibilityRefresh: (visibility: foundry.canvas.groups.CanvasVisibility) => HookReturn;
+
+    dealCards: (origin: foundry.documents.Cards, destinations: foundry.documents.Cards[], context: { action: string; fromDelete: object[]; fromUpdate: object[]; toCreate: object[]; }) => HookReturn;
+    passCards: (origin: foundry.documents.Cards, destination: foundry.documents.Cards, context: { action: string; fromDelete: object[]; fromUpdate: object[]; toCreate: object[]; toUpdate: object[]; }) => HookReturn;
+    returnCards: (origin: foundry.documents.Cards, returned: foundry.documents.Card[], context: { fromDelete: object[]; toUpdate: Record<string, object[]>; }) => HookReturn;
+
+    chatBubbleHTML: (token: Token, html: HTMLElement, message: string, options: foundry.canvas.animation.ChatBubbleOptions) => CancellableHookReturn;
+
+    chatInput: (event: KeyboardEvent, options: { recordPending: boolean; }) => CancellableHookReturn;
+    chatMessage: (chatLog: ChatLog, message: string, chatData: { user: string; speaker: foundry.documents.ChatSpeakerData; }) => HookReturn;
+    renderChatInput: (app: ChatLog, element: Record<string, HTMLElement>, context: { previousParent: HTMLElement; }) => HookReturn;
+
+    renderChatMessageHTML: (message: Documents['ChatMessage'], html: HTMLElement, context: foundry.documents.ChatMessageSource) => HookReturn;
+
+    clientSettingChanged: (key: string, value: any, options: object) => HookReturn;
+
+    combatRound: (combat: Combat, updateData: { round: number; turn: number; }, updateOptions: { advanceTime: number; direction: number; }) => HookReturn;
+    combatStart: (combat: Combat, updateData: { round: number; turn: number; }) => HookReturn;
+    combatTurn: (combat: Combat, updateData: { round: number; turn: number; }, updateOptions: { advanceTime: number; direction: number; }) => HookReturn;
+    combatTurnChange: (combat: Combat, prior: foundry.documents.types.CombatHistoryData, current: foundry.documents.types.CombatHistoryData) => HookReturn;
+
+    updateCompendium: (pack: foundry.documents.collections.CompendiumCollection, documents: Document[], options: object, userId: string) => HookReturn;
+
+    applyCompendiumArt: (documentClass: typeof Document, source: object, pack: foundry.documents.collections.CompendiumCollection, art: foundry.helpers.CompendiumArtInfo) => HookReturn;
+
+    initializeLightSources: (group: foundry.canvas.groups.EffectsCanvasGroup) => HookReturn;
+    initializePriorityLightSources: (group: foundry.canvas.groups.EffectsCanvasGroup) => HookReturn;
+    lightingRefresh: (group: foundry.canvas.groups.EffectsCanvasGroup) => HookReturn;
+
+    configureCanvasEnvironment: (config: CanvasEnvironmentConfig) => HookReturn;
+    initializeCanvasEnvironment: () => HookReturn;
+
+    error: (location: string, error: Error, data: object) => HookReturn;
+    hotReload: (data: foundry.HotReloadData) => HookReturn;
+    pauseGame: (paused: boolean, options: { broadcoast?: boolean, userId?: string; }) => HookReturn;
+    streamReady: () => HookReturn;
+    updateWorldTime: (worldTime: number, dt: number, options: object, userId: string) => HookReturn;
+
+    hotbarDrop: (hotbar: Hotbar, data: object, slot: number) => CancellableHookReturn;
+
+    activateCanvasLayer: (layer: foundry.canvas.layers.InteractionLayer) => HookReturn;
+
+    activateNote: (note: foundry.canvas.placeables.Note, options: object) => HookReturn;
+
+    createProseMirrorEditor: (uuid: string, plugins: Record<string, foundry.prosemirror.ProseMirrorPlugin>, options: { state: EditorState; }) => HookReturn;
+
+    getProseMirrorMenuDropDowns: (menu: foundry.prosemirror.ProseMirrorMenu, config: { format: ProseMirrorDropDownConfig; fonts: ProseMirrorDropDownConfig; }) => HookReturn;
+    getProseMirrorMenuItems: (menu: foundry.prosemirror.ProseMirrorMenu, config: ProseMirrorMenuItem[]) => HookReturn;
+
+    initializeRenderedEffectSourceShaders: (source: foundry.canvas.sources.RenderedEffectSource<foundry.canvas.placeables.PlaceableObject>) => HookReturn;
+
+    // TODO dropRollTableSheetData: (table: foundry.documents.RollTable, sheet: foundry.applications.sheets.RollTableConfig, data: object) => HookReturn;
+
+    getSceneControlButtons: (controls: Record<string, SceneControl>) => HookReturn;
+
+    collapseSceneNavigation: (sceneNavigation: foundry.applications.ui.SceneNavigation, collapsed: boolean) => HookReturn;
+
+    changeSidebarTab: (app: foundry.applications.sidebar.AbstractSidebarTab) => HookReturn;
+    collapseSidebar: (sidebar: foundry.applications.sidebar.Sidebar, collapsed: boolean) => HookReturn;
+
+    applyTokenStatusEffect: (token: foundry.canvas.placeables.Token<TokenDocument<Scene>>, statusId: string, active: boolean) => HookReturn;
+    targetToken: (user: User, token: foundry.canvas.placeables.Token<TokenDocument<Scene>>, targeted: boolean) => HookReturn;
+
+    moveToken: (document: TokenDocument, movement: DeepReadonly<foundry.documents.types.TokenMovementOperation>, operation: Partial<DatabaseUpdateOperation<TokenDocument>>, user: User) => HookReturn;
+    pauseToken: (document: TokenDocument) => HookReturn;
+    preMoveToken: (document: TokenDocument, movement: DeepReadonly<foundry.documents.types.TokenMovementOperation>, operation: Partial<DatabaseUpdateOperation<TokenDocument>>) => CancellableHookReturn;
+    recordToken: (document: TokenDocument) => HookReturn;
+    stopToken: (document: TokenDocument) => HookReturn;
+
+    userConnected: (user: User, connected: boolean) => HookReturn;
+
+    initializeWeatherEffects: (weatherEffect: foundry.canvas.layers.WeatherEffects, weatherEffectsConfig: object) => HookReturn;
+}
+
+export interface AllHooks extends
+    OnceHooks,
+    StaticHooks,
+    DynamicHooks { }
+
 declare global {
-    type HookName = keyof Hooks.AllHooks;
-    type HookCallback<H extends HookName> = Hooks.AllHooks[H];
+    type HookName = keyof AllHooks;
+    type HookCallback<H extends HookName> = AllHooks[H];
     type HookParams<H extends HookName> = Parameters<HookCallback<H>>;
     type Hook<H extends HookName> = [H, HookCallback<H>];
-
-    namespace Hooks {
-        type Return = void | Promise<void>;
-        type CancellableReturn = Return | boolean;
-
-        interface OnceHooks {
-            init: () => Return;
-            i18nInit: () => Return;
-            setup: () => Return;
-            initializeDynamicTokenRingConfig: (ringConfig: foundry.canvas.placeables.tokens.TokenRingConfig) => Return;
-            initializeCombatConfiguration: (config: foundry.data.CombatConfiguration) => Return;
-            canvasConfig: (config: object) => Return;
-            ready: () => Return;
-        }
-
-        interface DefaultApplications {
-            DialogV2: DialogV2;
-            ChatLog: ChatLog;
-            ChatPopout: foundry.applications.sidebar.apps.ChatPopout;
-            CombatTrackerConfig: CombatTrackerConfig;
-            CompendiumDirectory: CompendiumDirectory;
-            ActorDirectory: ActorDirectory<Actor<null>>;
-            ItemDirectory: ItemDirectory<Item<null>>;
-            SceneControls: SceneControls;
-            Settings: Settings;
-            SettingsConfig: SettingsConfig;
-            TokenHUD: TokenHUD;
-            JournalPageSheet: JournalPageSheet<JournalEntryPage>;
-            JournalTextPageSheet: JournalTextPageSheet<JournalEntryPage>;
-            RegionLegend: foundry.applications.ui.RegionLegend;
-            Pause: foundry.applications.ui.GamePause;
-            DocumentSheetV2: foundry.applications.api.DocumentSheetV2;
-            CameraPopout: foundry.applications.apps.av.CameraPopout;
-            CameraViews: foundry.applications.apps.av.CameraViews;
-            CompendiumArtConfig: foundry.applications.apps.CompendiumArtConfig;
-            DocumentSheetConfig: foundry.applications.apps.DocumentSheetConfig;
-            FilePicker: foundry.applications.apps.FilePicker;
-            ImagePopout: foundry.applications.apps.ImagePopout;
-            PermissionConfig: foundry.applications.apps.PermissionConfig;
-            RollResolver: foundry.applications.dice.RollResolver;
-            HeadsUpDisplayContainer: foundry.applications.hud.HeadsUpDisplayContainer;
-            BasePlaceableHUD: foundry.applications.hud.BasePlaceableHUD;
-            AVConfig: foundry.applications.settings.menus.AVConfig;
-            PrototypeTokenConfig: foundry.applications.sheets.PrototypeTokenConfig;
-            ModuleManagement: foundry.applications.sidebar.apps.ModuleManagement;
-            Sidebar: foundry.applications.sidebar.Sidebar;
-            AbstractSidebarTab: foundry.applications.sidebar.AbstractSidebarTab;
-            GamePause: foundry.applications.ui.GamePause;
-            Hotbar: foundry.applications.ui.Hotbar;
-            MainMenu: foundry.applications.ui.MainMenu;
-            Players: foundry.applications.ui.Players;
-            SceneNavigation: foundry.applications.ui.SceneNavigation;
-        }
-
-        interface SystemApplications {}
-        type Applications = { [K in keyof DefaultApplications | keyof SystemApplications]: K extends keyof SystemApplications ? SystemApplications[K] : K extends keyof DefaultApplications ? DefaultApplications[K] : never };
-
-        interface ApplicationRenderContexts {
-            TokenHUD: PlaceableHUDContext
-        }
-
-        interface DefaultApplicationsV1 {
-            ActorSheet: foundry.appv1.sheets.ActorSheet<Actor>;
-            ItemSheet: foundry.appv1.sheets.ItemSheet<Item, foundry.appv1.api.DocumentSheetV1Options>;
-            Dialog: Dialog;
-        }
-
-        interface SystemApplicationsV1 {}
-        type ApplicationsV1 = { [K in keyof DefaultApplicationsV1 | keyof SystemApplicationsV1]: K extends keyof SystemApplicationsV1 ? SystemApplicationsV1[K] : K extends keyof DefaultApplicationsV1 ? DefaultApplicationsV1[K] : never };
-
-        type ApplicationRenderContext<K extends keyof Applications> = K extends keyof ApplicationRenderContexts ? ApplicationRenderContexts[K] : foundry.applications.types.ApplicationRenderContext;
-
-        type RenderHooks = { [K in keyof Applications as `render${K}`]: (application: Applications[K], element: HTMLElement, context: ApplicationRenderContext<K>, options: foundry.applications.types.ApplicationRenderOptions) => Hooks.Return; };
-        type CloseHooks = { [K in keyof Applications as `close${K}`]: (application: Applications[K]) => Hooks.Return; };
-        type GetHeaderControls = { [K in keyof Applications as `getHeaderControls${K}`]: (application: Applications[K], controls: foundry.applications.types.ApplicationHeaderControlsEntry[]) => Hooks.Return; };
-        type GetDocumentContextOptions = { [K in keyof Applications as `get${K}ContextOptions`]: (application: Applications[K], controls: ContextMenuEntry[]) => Hooks.Return; };
-
-        type RenderHooksV1 = { [K in keyof ApplicationsV1 as `render${K}`]: (application: ApplicationsV1[K], html: JQuery, data: object) => Hooks.Return; };
-        type CloseHooksV1 = { [K in keyof ApplicationsV1 as `close${K}`]: (application: ApplicationsV1[K], html: JQuery) => Hooks.Return; };
-        type GetApplicationHeaderButtonsV1 = { [K in keyof ApplicationsV1 as `get${K}HeaderButtons`]: (application: ApplicationsV1[K], buttons: foundry.appv1.api.ApplicationV1HeaderButton[]) => Hooks.Return; };
-
-        interface ApplicationHooks extends RenderHooks, CloseHooks, GetHeaderControls, GetDocumentContextOptions, RenderHooksV1, CloseHooksV1, GetApplicationHeaderButtonsV1 { }
-
-        interface DefaultDocumentClasses {
-            Actor: typeof Actor;
-            Card: typeof foundry.documents.Card<foundry.documents.Cards>;
-            ChatMessage: typeof ChatMessage;
-            Token: typeof TokenDocument;
-            Combat: typeof Combat;
-            Item: typeof Item;
-            Combatant: typeof foundry.documents.Combatant;
-            Tile: typeof foundry.documents.TileDocument<Scene | null>;
-            ActiveEffect: typeof foundry.documents.ActiveEffect,
-            ActorDelta: typeof foundry.documents.ActorDelta<TokenDocument | null>,
-            Adventure: typeof foundry.documents.Adventure,
-            AmbientLight: typeof foundry.documents.AmbientLightDocument<Scene | null>,
-            AmbientSound: typeof foundry.documents.AmbientSoundDocument<Scene | null>,
-            Cards: typeof foundry.documents.Cards,
-            CombatantGroup: typeof foundry.documents.CombatantGroup,
-            Drawing: typeof foundry.documents.DrawingDocument,
-            FogExploration: typeof foundry.documents.FogExploration,
-            Folder: typeof foundry.documents.Folder,
-            JournalEntry: typeof foundry.documents.JournalEntry,
-
-            // JournalEntryCategory: foundry.documents.JournalEntryCategory,
-
-            JournalEntryPage: typeof foundry.documents.JournalEntryPage,
-            Macro: typeof foundry.documents.Macro,
-            MeasuredTemplate: typeof foundry.documents.MeasuredTemplateDocument,
-            Note: typeof foundry.documents.NoteDocument<Scene | null>,
-            Playlist: typeof foundry.documents.Playlist,
-            PlaylistSound: typeof foundry.documents.PlaylistSound,
-            RollTable: typeof foundry.documents.RollTable,
-            Scene: typeof foundry.documents.Scene,
-            Region: typeof foundry.documents.RegionDocument,
-            RegionBehavior: typeof foundry.documents.RegionBehavior,
-            Setting: typeof foundry.documents.Setting,
-            TableResult: typeof foundry.documents.TableResult,
-            User: typeof foundry.documents.User,
-            Wall: typeof foundry.documents.WallDocument,
-        }
-
-        interface SystemDocumentClasses {}
-        type DocumentClasses = { [K in keyof DefaultDocumentClasses]: K extends keyof SystemDocumentClasses ? SystemDocumentClasses[K] : DefaultDocumentClasses[K] };
-
-        type Documents = {
-            [K in keyof DocumentClasses]: InstanceType<DocumentClasses[K]>;
-        };
-
-        type PreCreateDocumentHooks =
-            { [K in keyof Documents as `preCreate${K}`]: (document: Documents[K], data: PreCreate<Documents[K]["_source"]>, options: Partial<DatabaseCreateOperation<Documents[K]["parent"]>>, userId: string) => CancellableReturn };
-        type CreateDocumentHooks =
-            { [K in keyof Documents as `create${K}`]: (document: Documents[K], options: Partial<DatabaseCreateOperation<Documents[K]["parent"]>>, userId: string) => Return };
-        type PreUpdateDocumentHooks =
-            { [K in keyof Documents as `preUpdate${K}`]: (document: Documents[K], changed: Record<string, unknown>, options: Partial<DatabaseUpdateOperation<Documents[K]["parent"]>>, userId: string) => CancellableReturn };
-        type UpdateDocumentHooks =
-            { [K in keyof Documents as `update${K}`]: (document: Documents[K], changed: Record<string, unknown>, options: Partial<DatabaseUpdateOperation<Documents[K]["parent"]>>, userId: string) => Return };
-        type PreDeleteDocumentHooks =
-            { [K in keyof Documents as `preDelete${K}`]: (document: Documents[K], options: Partial<DatabaseDeleteOperation<Documents[K]["parent"]>>, userId: string) => CancellableReturn };
-        type DeleteDocumentHooks =
-            { [K in keyof Documents as `delete${K}`]: (document: Documents[K], options: Partial<DatabaseDeleteOperation<Documents[K]["parent"]>>, userId: string) => Return };
-
-        interface DocumentHooks extends PreCreateDocumentHooks, CreateDocumentHooks, PreUpdateDocumentHooks, UpdateDocumentHooks, PreDeleteDocumentHooks, DeleteDocumentHooks { }
-
-        interface CanvasGroups {
-            CanvasVisibility: foundry.canvas.groups.CanvasVisibility;
-            EffectsCanvasGroup: foundry.canvas.groups.EffectsCanvasGroup;
-            EnvironmentCanvasGroup: foundry.canvas.groups.EnvironmentCanvasGroup;
-            OverlayCanvasGroup: foundry.canvas.groups.OverlayCanvasGroup;
-            PrimaryCanvasGroup: foundry.canvas.groups.PrimaryCanvasGroup;
-            RenderedCanvasGroup: foundry.canvas.groups.RenderedCanvasGroup;
-
-            HiddenCanvasGroup: foundry.canvas.groups.HiddenCanvasGroup;
-            InterfaceCanvasGroup: foundry.canvas.groups.InterfaceCanvasGroup;
-        }
-
-        type DrawGroup = { [K in keyof CanvasGroups as `draw${K}`]: (group: CanvasGroups[K]) => Hooks.Return };
-        type TearDownGroup = { [K in keyof CanvasGroups as `tearDown${K}`]: (group: CanvasGroups[K]) => Hooks.Return };
-
-        interface CanvasLayers {
-            ControlsLayer: foundry.canvas.layers.ControlsLayer;
-            CanvasBackgroundAlterationEffects: foundry.canvas.layers.CanvasBackgroundAlterationEffects;
-            CanvasColorationEffects: foundry.canvas.layers.CanvasColorationEffects;
-            CanvasDarknessEffects: foundry.canvas.layers.CanvasDarknessEffects;
-            CanvasIlluminationEffects: foundry.canvas.layers.CanvasIlluminationEffects;
-            GridLayer: foundry.canvas.layers.GridLayer;
-
-            DrawingsLayer: foundry.canvas.layers.DrawingsLayer;
-            LightingLayer: foundry.canvas.layers.LightingLayer;
-            NotesLayer: foundry.canvas.layers.NotesLayer;
-            WallsLayer: foundry.canvas.layers.WallsLayer;
-            TokenLayer: foundry.canvas.layers.TokenLayer;
-            RegionLayer: foundry.canvas.layers.RegionLayer;
-            SoundsLayer: foundry.canvas.layers.SoundsLayer;
-            TemplateLayer: foundry.canvas.layers.TemplateLayer;
-            TilesLayer: foundry.canvas.layers.TilesLayer;
-        }
-
-        type DrawLayer = { [K in keyof CanvasLayers as `draw${K}`]: (layer: CanvasLayers[K]) => Hooks.Return };
-        type TearDownLayer = { [K in keyof CanvasLayers as `tearDown${K}`]: (layer: CanvasLayers[K]) => Hooks.Return };
-
-        type InteractionLayers = { [K in keyof CanvasLayers as CanvasLayers[K] extends foundry.canvas.layers.InteractionLayer ? K : never]: CanvasLayers[K] };
-
-        type ActivateLayer = { [K in keyof InteractionLayers as `activate${K}`]: (layer: foundry.canvas.layers.InteractionLayer) => Hooks.Return };
-        type DeactivateLayer = { [K in keyof InteractionLayers as `deactivate${K}`]: (layer: foundry.canvas.layers.InteractionLayer) => Hooks.Return };
-
-        interface CanvasHooks extends
-            DrawGroup,
-            TearDownGroup,
-            DrawLayer,
-            TearDownLayer,
-            ActivateLayer,
-            DeactivateLayer { }
-
-        interface PlaceableObjects {
-            Drawing: foundry.canvas.placeables.Drawing;
-            Note: foundry.canvas.placeables.Note;
-            Region: foundry.canvas.placeables.Region;
-            Tile: foundry.canvas.placeables.Tile;
-            Token: foundry.canvas.placeables.Token;
-            MeasuredTemplate: foundry.canvas.placeables.MeasuredTemplate;
-            Wall: foundry.canvas.placeables.Wall;
-            AmbientLight: foundry.canvas.placeables.AmbientLight;
-            AmbientSound: foundry.canvas.placeables.AmbientSound;
-        }
-
-        type ControlObject = { [K in keyof PlaceableObjects as `control${K}`]: (object: PlaceableObjects[K], controlled: boolean) => Hooks.Return };
-        type DestroyObject = { [K in keyof PlaceableObjects as `destroy${K}`]: (object: PlaceableObjects[K]) => Hooks.Return };
-        type DrawObject = { [K in keyof PlaceableObjects as `draw${K}`]: (object: PlaceableObjects[K]) => Hooks.Return };
-        type HoverObject = { [K in keyof PlaceableObjects as `hover${K}`]: (object: PlaceableObjects[K], hovered: boolean) => Hooks.Return };
-        type RefreshObject = { [K in keyof PlaceableObjects as `refresh${K}`]: (object: PlaceableObjects[K]) => Hooks.Return };
-        type PastePlaceableObject = { [K in keyof PlaceableObjects as `place${K}`]: (objects: PlaceableObjects[K][], data: object[], options: { cut: boolean; }) => Hooks.Return };
-
-        interface PlaceableObjectHooks extends
-            Hooks.ControlObject,
-            Hooks.DestroyObject,
-            Hooks.DrawObject,
-            Hooks.HoverObject,
-            Hooks.RefreshObject,
-            Hooks.PastePlaceableObject { }
-
-        interface DynamicHooks extends
-            ApplicationHooks,
-            DocumentHooks,
-            CanvasHooks,
-            PlaceableObjectHooks { }
-
-        interface StaticHooks extends OnceHooks {
-            rtcSettingsChanged: (settings: foundry.av.AVSettings, changed: object) => Return;
-            applyActiveEffect: (actor: Actor, change: foundry.documents.types.EffectChangeData, current: any, delta: any, changes: object) => Return;
-
-            modifyTokenAttribute: (data: { attribute: string; isData: boolean; isBar: boolean; value: number; }, updates: object, actor: Actor) => Return;
-
-            // dropActorSheetData: (actor: Actor, sheet: foundry.applications.sheets.ActorSheetV2<Actor>, data: object) => Return;
-
-            importAdventure: (adventure: foundry.documents.Adventure, formData: object, created: Record<string, Document[]>, updated: Record<string, Document[]>) => Return;
-            preImportAdventure: (adventure: foundry.documents.Adventure, formData: object, toCreate: Record<string, Document[]>, toUpdate: Record<string, Document[]>) => CancellableReturn;
-
-            globalVolumeChanged: (volume: number) => Return;
-
-            canvasConfig: (config: object) => Return;
-            canvasDraw: (canvas: foundry.canvas.Canvas) => Return;
-            canvasInit: (canvas: foundry.canvas.Canvas) => Return;
-            canvasPan: (canvas: foundry.canvas.Canvas, position: foundry.CanvasViewPosition) => Return;
-            canvasReady: (canvas: foundry.canvas.Canvas) => Return;
-            canvasTearDown: (canvas: foundry.canvas.Canvas) => Return;
-
-            dropCanvasData: (canvas: Canvas, data: DropCanvasData, event: DragEvent) => CancellableReturn;
-            highlightObjects: (active: boolean) => Return;
-            initializeEdges: () => Return;
-
-            initializeVisionMode: (visibility: foundry.canvas.groups.CanvasVisibility) => Return;
-            initializeVisionSources: (sources: foundry.utils.Collection<string, foundry.canvas.sources.PointVisionSource<foundry.canvas.placeables.AmbientLight | Token>>) => Return;
-            sightRefresh: (visibility: foundry.canvas.groups.CanvasVisibility) => Return;
-            visibilityRefresh: (visibility: foundry.canvas.groups.CanvasVisibility) => Return;
-
-            dealCards: (origin: foundry.documents.Cards, destinations: foundry.documents.Cards[], context: { action: string; fromDelete: object[]; fromUpdate: object[]; toCreate: object[]; }) => Return;
-            passCards: (origin: foundry.documents.Cards, destination: foundry.documents.Cards, context: { action: string; fromDelete: object[]; fromUpdate: object[]; toCreate: object[]; toUpdate: object[]; }) => Return;
-            returnCards: (origin: foundry.documents.Cards, returned: foundry.documents.Card[], context: { fromDelete: object[]; toUpdate: Record<string, object[]>; }) => Return;
-
-            chatBubbleHTML: (token: Token, html: HTMLElement, message: string, options: foundry.canvas.animation.ChatBubbleOptions) => CancellableReturn;
-
-            chatInput: (event: KeyboardEvent, options: { recordPending: boolean; }) => CancellableReturn;
-            chatMessage: (chatLog: ChatLog, message: string, chatData: { user: string; speaker: foundry.documents.ChatSpeakerData; }) => Return;
-            renderChatInput: (app: ChatLog, element: Record<string, HTMLElement>, context: { previousParent: HTMLElement; }) => Return;
-
-            renderChatMessageHTML: (message: ChatMessage, html: HTMLElement, context: foundry.documents.ChatMessageSource) => Return;
-
-            clientSettingChanged: (key: string, value: any, options: object) => Return;
-
-            combatRound: (combat: Combat, updateData: { round: number; turn: number; }, updateOptions: { advanceTime: number; direction: number; }) => Return;
-            combatStart: (combat: Combat, updateData: { round: number; turn: number; }) => Return;
-            combatTurn: (combat: Combat, updateData: { round: number; turn: number; }, updateOptions: { advanceTime: number; direction: number; }) => Return;
-            combatTurnChange: (combat: Combat, prior: foundry.documents.types.CombatHistoryData, current: foundry.documents.types.CombatHistoryData) => Return;
-
-            updateCompendium: (pack: foundry.documents.collections.CompendiumCollection, documents: Document[], options: object, userId: string) => Return;
-
-            applyCompendiumArt: (documentClass: typeof Document, source: object, pack: foundry.documents.collections.CompendiumCollection, art: foundry.helpers.CompendiumArtInfo) => Return;
-
-            initializeLightSources: (group: foundry.canvas.groups.EffectsCanvasGroup) => Return;
-            initializePriorityLightSources: (group: foundry.canvas.groups.EffectsCanvasGroup) => Return;
-            lightingRefresh: (group: foundry.canvas.groups.EffectsCanvasGroup) => Return;
-
-            configureCanvasEnvironment: (config: CanvasEnvironmentConfig) => Return;
-            initializeCanvasEnvironment: () => Return;
-
-            error: (location: string, error: Error, data: object) => Return;
-            hotReload: (data: foundry.HotReloadData) => Return;
-            pauseGame: (paused: boolean, options: { broadcoast?: boolean, userId?: string; }) => Return;
-            streamReady: () => Return;
-            updateWorldTime: (worldTime: number, dt: number, options: object, userId: string) => Return;
-
-            hotbarDrop: (hotbar: Hotbar, data: object, slot: number) => CancellableReturn;
-
-            activateCanvasLayer: (layer: foundry.canvas.layers.InteractionLayer) => Return;
-
-            activateNote: (note: foundry.canvas.placeables.Note, options: object) => Return;
-
-            createProseMirrorEditor: (uuid: string, plugins: Record<string, foundry.prosemirror.ProseMirrorPlugin>, options: { state: EditorState; }) => Return;
-
-            getProseMirrorMenuDropDowns: (menu: foundry.prosemirror.ProseMirrorMenu, config: { format: ProseMirrorDropDownConfig; fonts: ProseMirrorDropDownConfig; }) => Return;
-            getProseMirrorMenuItems: (menu: foundry.prosemirror.ProseMirrorMenu, config: ProseMirrorMenuItem[]) => Return;
-
-            initializeRenderedEffectSourceShaders: (source: foundry.canvas.sources.RenderedEffectSource<foundry.canvas.placeables.PlaceableObject>) => Return;
-
-            // TODO dropRollTableSheetData: (table: foundry.documents.RollTable, sheet: foundry.applications.sheets.RollTableConfig, data: object) => Return;
-
-            getSceneControlButtons: (controls: Record<string, SceneControl>) => Return;
-
-            collapseSceneNavigation: (sceneNavigation: foundry.applications.ui.SceneNavigation, collapsed: boolean) => Return;
-
-            changeSidebarTab: (app: foundry.applications.sidebar.AbstractSidebarTab) => Return;
-            collapseSidebar: (sidebar: foundry.applications.sidebar.Sidebar, collapsed: boolean) => Return;
-
-            applyTokenStatusEffect: (token: foundry.canvas.placeables.Token<TokenDocument<Scene>>, statusId: string, active: boolean) => Return;
-            targetToken: (user: User, token: foundry.canvas.placeables.Token<TokenDocument<Scene>>, targeted: boolean) => Return;
-
-            moveToken: (document: TokenDocument, movement: DeepReadonly<foundry.documents.types.TokenMovementOperation>, operation: Partial<DatabaseUpdateOperation<TokenDocument>>, user: User) => Return;
-            pauseToken: (document: TokenDocument) => Return;
-            preMoveToken: (document: TokenDocument, movement: DeepReadonly<foundry.documents.types.TokenMovementOperation>, operation: Partial<DatabaseUpdateOperation<TokenDocument>>) => CancellableReturn;
-            recordToken: (document: TokenDocument) => Return;
-            stopToken: (document: TokenDocument) => Return;
-
-            userConnected: (user: User, connected: boolean) => Return;
-
-            initializeWeatherEffects: (weatherEffect: foundry.canvas.layers.WeatherEffects, weatherEffectsConfig: object) => Return;
-        }
-
-        interface AllHooks extends
-            Hooks.OnceHooks,
-            Hooks.StaticHooks,
-            Hooks.DynamicHooks { }
-    }
+    type HookReturn = void | Promise<void>;
+    type CancellableHookReturn = HookReturn | boolean;
 
     class Hooks {
         /**

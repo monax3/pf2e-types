@@ -99,7 +99,7 @@ interface CreatureAttributes extends ActorAttributes {
     hardness: {
         value: number;
     };
-    /** The creature's natural reach */
+    /** The creature's natural reach in feet */
     reach: {
         /** The default reach for all actions requiring one */
         base: number;

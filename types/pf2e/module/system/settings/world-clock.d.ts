@@ -18,7 +18,7 @@ type WorldClockSettingSchema = {
 };
 export interface WorldClockSettingData extends fields.SourceFromSchema<WorldClockSettingSchema> {
 }
-declare const WorldClockSettings_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplicationMixin_base, typeof fa.api.HandlebarsApplicationMixin_base & typeof fa.api.ApplicationV2>;
+declare const WorldClockSettings_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplication, typeof fa.api.HandlebarsApplication & typeof fa.api.ApplicationV2>;
 export declare class WorldClockSettings extends WorldClockSettings_base {
     #private;
     constructor(options?: DeepPartial<ApplicationConfiguration>);

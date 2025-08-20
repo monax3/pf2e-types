@@ -12,6 +12,7 @@ import { ClientDocument } from "../documents/abstract/client-document.mjs";
 import { CompendiumIndexData } from "../documents/collections/compendium-collection.mjs";
 import Document from "../../common/abstract/document.mjs";
 import { COMPENDIUM_DOCUMENT_TYPES } from "../../common/constants.mjs";
+import { Documents, DocumentClasses } from "../helpers/hooks.mjs";
 
 /**
  * Clean a provided HTML fragment, closing unbalanced tags and stripping some undesirable properties
@@ -44,9 +45,9 @@ export function readTextFromFile(file: File): Promise<string>;
  * @param options.invalid Allow retrieving an invalid Document.
  * @returns Returns the Document if it could be found, otherwise null.
  */
-export function fromUuid(uuid: ActorUUID, relative?: Maybe<ClientDocument>): Promise<Hooks.Documents['Actor'] | null>;
-export function fromUuid(uuid: ItemUUID, relative?: Maybe<ClientDocument>): Promise<Hooks.Documents['Item'] | null>;
-export function fromUuid(uuid: TokenDocumentUUID, relative?: Maybe<ClientDocument>): Promise<Hooks.Documents['Token'] | null>;
+export function fromUuid(uuid: ActorUUID, relative?: Maybe<ClientDocument>): Promise<Documents['Actor'] | null>;
+export function fromUuid(uuid: ItemUUID, relative?: Maybe<ClientDocument>): Promise<Documents['Item'] | null>;
+export function fromUuid(uuid: TokenDocumentUUID, relative?: Maybe<ClientDocument>): Promise<Documents['Token'] | null>;
 export function fromUuid(uuid: CompendiumUUID, relative?: Maybe<ClientDocument>): Promise<CompendiumDocument | null>;
 export function fromUuid<TDocument extends ClientDocument>(
     uuid: string,
@@ -86,7 +87,7 @@ export function fromUuidSync<
  * @param documentName The canonical Document name, for example "Actor"
  * @returns The configured Document class implementation
  */
-export function getDocumentClass<K extends keyof Hooks.DocumentClasses>(documentName: K): Hooks.DocumentClasses[K];
+export function getDocumentClass<K extends keyof DocumentClasses>(documentName: K): DocumentClasses[K];
 
 /**
  * Given a source object to sort, a target to sort relative to, and an Array of siblings in the container:

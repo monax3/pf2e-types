@@ -4,7 +4,7 @@ import { default as Actor } from '../../../documents/actor.mjs';
 import { default as TokenDocument } from '../../../documents/token.mjs';
 import { DataSchema } from '../../../../common/abstract/_types.mjs';
 import { PrototypeToken } from '../../../../common/data/_module.mjs';
-import { HandlebarsApplicationMixin_base } from '../../api/handlebars-application.mjs';
+import { HandlebarsApplication } from '../../api/handlebars-application.mjs';
 export declare abstract class TokenApplicationMixin_base {
     /**
      * Localized Token Display Modes
@@ -85,4 +85,4 @@ export declare abstract class TokenApplicationMixin_base {
 /**
  * A mixin for UI shared between TokenDocument and PrototypeToken sheets
  */
-export default function TokenApplicationMixin<TBase extends AbstractConstructorOf<ApplicationV2>>(Base: TBase): AbstractMixin<TBase, TokenApplicationMixin_base & HandlebarsApplicationMixin_base, typeof TokenApplicationMixin_base & typeof HandlebarsApplicationMixin_base & typeof ApplicationV2>;
+export default function TokenApplicationMixin<TBase extends AbstractConstructorOf<ApplicationV2>>(Base: TBase): AbstractMixin<TBase, TokenApplicationMixin_base & HandlebarsApplication, typeof TokenApplicationMixin_base & typeof HandlebarsApplication & typeof ApplicationV2>;

@@ -1,7 +1,7 @@
 import { ActorPF2e } from '../actor/index.ts';
 import { HandlebarsRenderOptions } from "../../../foundry/client/applications/api/handlebars-application.mts";
 import { AbstractEffectPF2e } from '../item/index.ts';
-declare const EffectsPanel_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplicationMixin_base, typeof fa.api.HandlebarsApplicationMixin_base & typeof fa.api.ApplicationV2>;
+declare const EffectsPanel_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplication, typeof fa.api.HandlebarsApplication & typeof fa.api.ApplicationV2>;
 export declare class EffectsPanel extends EffectsPanel_base {
     #private;
     /**

@@ -8,7 +8,7 @@ interface WorldClockData {
     user: User;
     sign: "+" | "-";
 }
-declare const WorldClock_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplicationMixin_base, typeof fa.api.HandlebarsApplicationMixin_base & typeof fa.api.ApplicationV2>;
+declare const WorldClock_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplication, typeof fa.api.HandlebarsApplication & typeof fa.api.ApplicationV2>;
 export declare class WorldClock extends WorldClock_base {
     #private;
     constructor();

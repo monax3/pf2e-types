@@ -29,4 +29,4 @@ declare const coinCompendiumIds: {
     sp: string;
     cp: string;
 };
-export { CoinsPF2e, coinCompendiumIds };
+export { coinCompendiumIds, CoinsPF2e };

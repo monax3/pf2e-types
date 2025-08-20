@@ -1,4 +1,4 @@
-declare const CompendiumBrowserSettingsApp_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplicationMixin_base, typeof fa.api.HandlebarsApplicationMixin_base & typeof fa.api.ApplicationV2>;
+declare const CompendiumBrowserSettingsApp_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplication, typeof fa.api.HandlebarsApplication & typeof fa.api.ApplicationV2>;
 declare class CompendiumBrowserSettingsApp extends CompendiumBrowserSettingsApp_base {
     #private;
     static DEFAULT_OPTIONS: DeepPartial<fa.ApplicationConfiguration>;

@@ -1,5 +1,6 @@
 import { HandlebarsRenderOptions } from "../../../foundry/client/applications/api/handlebars-application.mts";
 import { ScenePF2e } from '../scene/index.ts';
+import "nouislider/dist/nouislider.min.css";
 export declare class SceneDarknessAdjuster extends fa.api.ApplicationV2 {
     #private;
     static get instance(): SceneDarknessAdjuster;

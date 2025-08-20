@@ -1,6 +1,6 @@
 {
     "name": "pf2e-types",
-    "version": "7.4.0",
+    "version": "7.4.1",
     "type": "module",
     "types": "./index.d.ts",
     "scripts": {
@@ -13,6 +13,7 @@
         "./lib-wrapper": "./types/lib-wrapper/index.d.ts",
         "./quench": "./types/quench/index.d.ts",
         "./en.json": "./types/pf2e/en.json",
+        "./hooks": "./types/foundry/client/helpers/hooks.d.mts",
         "./foundry": "./types/foundry/client/client.d.mts",
         "./foundry/abstract/types": "./types/foundry/common/abstract/_types.d.mts",
         "./foundry/applications/api": "./types/foundry/client/applications/api/_module.d.mts",

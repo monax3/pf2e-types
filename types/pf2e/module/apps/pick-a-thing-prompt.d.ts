@@ -2,7 +2,7 @@ import { ItemPF2e } from '../item/index.ts';
 import { UserPF2e } from '../user/document.ts';
 import { Predicate } from '../system/predication.ts';
 import { default as Tagify } from '@yaireo/tagify';
-declare const PickAThingPrompt_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplicationMixin_base, typeof fa.api.HandlebarsApplicationMixin_base & typeof fa.api.ApplicationV2>;
+declare const PickAThingPrompt_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplication, typeof fa.api.HandlebarsApplication & typeof fa.api.ApplicationV2>;
 /** Prompt the user to pick from a number of options */
 declare abstract class PickAThingPrompt<TItem extends ItemPF2e, TThing extends string | number | object> extends PickAThingPrompt_base {
     #private;

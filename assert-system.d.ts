@@ -10,25 +10,23 @@ import type {
     MeasuredTemplateDocumentPF2e,
 } from "./types/pf2e/exports/scene.d.ts";
 
-declare global {
-    namespace Hooks {
-        interface SystemDocumentClasses {
-            ActiveEffect: typeof ActiveEffectPF2e<ActorPF2e | ItemPF2e | null>;
-            Actor: typeof ActorPF2e;
-            ChatMessage: typeof ChatMessagePF2e;
-            Token: typeof TokenDocumentPF2e;
-            Combat: typeof EncounterPF2e;
-            MeasuredTemplate: typeof MeasuredTemplateDocumentPF2e;
-            Item: typeof ItemPF2e;
-            Combatant: typeof CombatantPF2e;
-            Tile: typeof TileDocumentPF2e;
-            AmbientLight: typeof AmbientLightDocumentPF2e;
-            Region: typeof RegionDocumentPF2e;
-        }
+declare module 'pf2e-types/hooks' {
+    interface SystemDocumentClasses {
+        ActiveEffect: typeof ActiveEffectPF2e<ActorPF2e | ItemPF2e | null>;
+        Actor: typeof ActorPF2e;
+        ChatMessage: typeof ChatMessagePF2e;
+        Token: typeof TokenDocumentPF2e;
+        Combat: typeof EncounterPF2e;
+        MeasuredTemplate: typeof MeasuredTemplateDocumentPF2e;
+        Item: typeof ItemPF2e;
+        Combatant: typeof CombatantPF2e;
+        Tile: typeof TileDocumentPF2e;
+        AmbientLight: typeof AmbientLightDocumentPF2e;
+        Region: typeof RegionDocumentPF2e;
+    }
 
-        interface SystemApplicationsV1 {
-            ActorSheet: ActorSheetPF2e<ActorPF2e>;
-            ItemSheet: ItemSheetPF2e<ItemPF2e>;
-        }
+    interface SystemApplicationsV1 {
+        ActorSheet: ActorSheetPF2e<ActorPF2e>;
+        ItemSheet: ItemSheetPF2e<ItemPF2e>;
     }
 }

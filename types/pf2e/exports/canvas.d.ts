@@ -5,6 +5,7 @@ export type * from "../module/canvas/index.d.ts";
 export type * from "../module/canvas/helpers.d.ts";
 export type * from "../module/canvas/effect-area-square.d.ts";
 export type * from "../module/canvas/drop-canvas-data.d.ts";
+export type * from "../module/canvas/door-control.d.ts";
 export type * from "../module/canvas/ambient-light.d.ts";
 export type * from "../module/canvas/token/object.d.ts";
 export type * from "../module/canvas/token/index.d.ts";

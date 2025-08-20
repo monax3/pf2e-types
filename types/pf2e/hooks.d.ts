@@ -6,32 +6,30 @@ import { EncounterPF2e } from './module/encounter/document.ts';
 import { CheckRoll } from './module/system/check/roll.ts';
 import { DamageRoll } from './module/system/damage/roll.ts';
 import { WorldClockSettings } from './module/system/settings/world-clock.ts';
-declare global {
-    namespace Hooks {
-        interface SystemApplications {
-            WorldClockSettings: WorldClockSettings;
-        }
+declare module "../foundry/client/helpers/hooks.mjs" {
+    interface SystemApplications {
+        WorldClockSettings: WorldClockSettings;
+    }
 
-        interface AllHooks {
-            "pf2e.startTurn": (combatant: Maybe<CombatantPF2e>, encounter: EncounterPF2e, userId: string) => Return;
-            "pf2e.endTurn": (combatant: Maybe<CombatantPF2e>, encounter: EncounterPF2e, userId: string) => Return;
-            "pf2e.preReroll": (
-                oldRoll: Rolled<CheckRoll>,
-                newRoll: CheckRoll,
-                resource: Maybe<ResourceData>,
-                keep?: "new" | "lower" | "higher",
-            ) => Return;
-            "pf2e.reroll": (
-                oldRoll: Rolled<CheckRoll>,
-                newRoll: Rolled<CheckRoll>,
-                resource: Maybe<ResourceData>,
-                keep?: "new" | "lower" | "higher",
-            ) => Return;
-            "pf2e.damageRoll": (roll: Rolled<DamageRoll>) => Return;
-            "pf2e.systemReady": () => Return;
-            "pf2e.restForTheNight": (actor: ActorPF2e) => Return;
-            migrationComplete: () => Return;
-            "babele.ready": () => Return;
-        }
+    interface AllHooks {
+        "pf2e.startTurn": (combatant: Maybe<CombatantPF2e>, encounter: EncounterPF2e, userId: string) => HookReturn;
+        "pf2e.endTurn": (combatant: Maybe<CombatantPF2e>, encounter: EncounterPF2e, userId: string) => HookReturn;
+        "pf2e.preReroll": (
+            oldRoll: Rolled<CheckRoll>,
+            newRoll: CheckRoll,
+            resource: Maybe<ResourceData>,
+            keep?: "new" | "lower" | "higher",
+        ) => HookReturn;
+        "pf2e.reroll": (
+            oldRoll: Rolled<CheckRoll>,
+            newRoll: Rolled<CheckRoll>,
+            resource: Maybe<ResourceData>,
+            keep?: "new" | "lower" | "higher",
+        ) => HookReturn;
+        "pf2e.damageRoll": (roll: Rolled<DamageRoll>) => HookReturn;
+        "pf2e.systemReady": () => HookReturn;
+        "pf2e.restForTheNight": (actor: ActorPF2e) => HookReturn;
+        migrationComplete: () => HookReturn;
+        "babele.ready": () => HookReturn;
     }
 }

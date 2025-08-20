@@ -1,4 +1,4 @@
-import { TokenAnimationOptions, TokenResourceData, TokenShape } from "../../../../foundry/client/canvas/placeables/token.mts";
+import { TokenResourceData, TokenShape } from "../../../../foundry/client/canvas/placeables/token.mts";
 import { TokenUpdateCallbackOptions } from "../../../../foundry/client/documents/token.mts";
 import { Point } from "../../../../foundry/common/_types.mts";
 import { GridOffset2D } from "../../../../foundry/common/grid/_types.mts";
@@ -65,7 +65,7 @@ declare class TokenPF2e<TDocument extends TokenDocumentPF2e = TokenDocumentPF2e>
      */
     get isVisible(): boolean;
     /** A reference to an animation that is currently in progress for this Token, if any */
-    get animation(): Promise<boolean> | null;
+    get animation(): Promise<void> | null;
     /** Is this token currently animating? */
     get isAnimating(): boolean;
     /** Is rules-based vision enabled, and does this token's actor have low-light vision (inclusive of darkvision)? */
@@ -143,8 +143,6 @@ declare class TokenPF2e<TDocument extends TokenDocumentPF2e = TokenDocumentPF2e>
     distanceTo(target: TokenOrPoint, { reach }?: {
         reach?: number | null;
     }): number;
-    /** Handle system "spin" animation option */
-    animate(updateData: Record<string, unknown>, options?: TokenAnimationOptionsPF2e): Promise<void>;
     /** Obscure the token's sprite if a hearing or tremorsense detection filter is applied to it */
     render(renderer: PIXI.Renderer): void;
     protected _destroy(): void;
@@ -166,6 +164,8 @@ declare class TokenPF2e<TDocument extends TokenDocumentPF2e = TokenDocumentPF2e>
         hoverOutOthers?: boolean;
     }): boolean | void;
     protected _onHoverOut(event: PIXI.FederatedPointerEvent): boolean | void;
+    /** Require that a loot actor or dead creature is in reach for a player to view its sheet. */
+    protected _onClickLeft2(event: PIXI.FederatedPointerEvent): void;
     /** Reset aura renders when token size or GM hidden changes. */
     _onUpdate(changed: DeepPartial<TDocument["_source"]>, options: TokenUpdateCallbackOptions, userId: string): void;
 }
@@ -183,13 +183,10 @@ type ShowFloatyEffectParams = number | {
 } | {
     delete: NumericFloatyEffect;
 };
-interface TokenAnimationOptionsPF2e extends TokenAnimationOptions {
-    spin?: boolean;
-}
 type TokenOrPoint = TokenPF2e | (Point & {
     actor?: never;
     document?: never;
     mechanicalBounds?: never;
 });
 export { TokenPF2e };
-export type { ShowFloatyEffectParams, TokenAnimationOptionsPF2e };
+export type { ShowFloatyEffectParams };

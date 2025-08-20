@@ -3,6 +3,7 @@ import { DexterityModifierCapData } from '../actor/character/types.ts';
 import { LabeledSpeed, SenseData } from '../actor/creature/data.ts';
 import { DamageDicePF2e, DeferredDamageDiceOptions, DeferredPromise, DeferredValue, ModifierAdjustment, ModifierPF2e } from '../actor/modifiers.ts';
 import { MovementType } from '../actor/types.ts';
+import { TokenAnimationOptions } from "../../../foundry/client/_module.mts";
 import { TokenDocumentUUID } from "../../../foundry/client/documents/_module.mts";
 import { ImageFilePath, VideoFilePath } from "../../../foundry/common/constants.mts";
 import { TokenSource } from "../../../foundry/common/documents/token.mts";
@@ -12,7 +13,6 @@ import { ConditionSource, EffectSource } from '../item/base/data/index.ts';
 import { WeaponRuneSource } from '../item/weapon/data.ts';
 import { WeaponPropertyRuneType } from '../item/weapon/types.ts';
 import { ActiveEffectPF2e } from '../active-effect.ts';
-import { TokenAnimationOptionsPF2e } from '../canvas/token/object.ts';
 import { RollNotePF2e } from '../notes.ts';
 import { MaterialDamageEffect } from '../system/damage/types.ts';
 import { DegreeOfSuccessAdjustment } from '../system/degree-of-success.ts';
@@ -71,7 +71,7 @@ interface RuleElementSynthetics {
             colors: TokenDocument["ring"]["colors"];
             effects: TokenDocument["ring"]["effects"];
         };
-        animation?: TokenAnimationOptionsPF2e;
+        animation?: TokenAnimationOptions;
     };
     weaponPotency: Record<string, PotencySynthetic[]>;
 }

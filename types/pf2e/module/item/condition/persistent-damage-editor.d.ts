@@ -1,7 +1,7 @@
 import { ActorPF2e } from '../../actor/index.ts';
 import { ApplicationConfiguration } from "../../../../foundry/client/applications/_module.mts";
 import { DamageType } from '../../system/damage/types.ts';
-declare const PersistentDamageEditor_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplicationMixin_base, typeof fa.api.HandlebarsApplicationMixin_base & typeof fa.api.ApplicationV2>;
+declare const PersistentDamageEditor_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplication, typeof fa.api.HandlebarsApplication & typeof fa.api.ApplicationV2>;
 declare class PersistentDamageEditor extends PersistentDamageEditor_base {
     #private;
     static DEFAULT_OPTIONS: DeepPartial<fa.ApplicationConfiguration>;

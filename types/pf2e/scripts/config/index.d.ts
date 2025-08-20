@@ -4964,35 +4964,6 @@ export declare const PF2ECONFIG: {
         urban: string;
     };
     SETTINGS: {
-        automation: {
-            rulesBasedVision: {
-                name: string;
-                hint: string;
-            };
-            iwr: {
-                name: string;
-                hint: string;
-            };
-            removeExpiredEffects: {
-                name: string;
-                hint: string;
-            };
-            flankingDetection: {
-                name: string;
-                hint: string;
-            };
-            actorsDeadAtZero: {
-                name: string;
-                hint: string;
-                neither: string;
-                npcsOnly: string;
-                both: string;
-            };
-            lootableNPCs: {
-                name: string;
-                hint: string;
-            };
-        };
         CampaignFeats: {
             name: string;
             hint: string;

@@ -76,32 +76,4 @@ export { CanvasDocument } from "./documents/abstract/canvas-document.mjs";
 export { ClientDocument } from "./documents/abstract/client-document.mjs";
 export { ProseMirrorInputConfig } from "./applications/elements/prosemirror-editor.mjs";
 export { default as ClientPackage } from "./packages/client-package.mjs";
-
-import ApplicationV2 from "./applications/api/application.mjs";
-import { HandlebarsApplicationMixin_base } from "./applications/api/handlebars-application.mjs";
-
-export type HandlebarsApplication<T extends AbstractConstructorOf<ApplicationV2>> = AbstractMixin<T, HandlebarsApplicationMixin_base, typeof HandlebarsApplicationMixin_base & typeof ApplicationV2>;
-
-/* FIXME missing types
-FrameViewerConfiguration,
-AdventureContentTreeNode,
-BrowserTest,
-ClipperPoints,
-ContextMenuJQueryCallback,
-DependencyResolutionDescriptor,
-DrawingConfigConfiguration,
-FontTypes,
-HTMLColorPickerOptions,
-HTMLDocumentTagsOptions,
-HTMLRangePickerOptions,
-HTMLStringTagsOptions,
-HookedFunction,
-JournalSheetCategoryContext,
-JournalSheetOptions,
-JournalSheetPageContext,
-RenderedEffectSourceAnimationConfig,
-StringTagsInputConfig,
-TextureCacheEntry,
-TextureCacheMap,
-WorldConfigOptions,
-*/
+export { HandlebarsApplication } from "./applications/api/handlebars-application.mjs";

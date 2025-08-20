@@ -56,23 +56,21 @@ export interface DicePreset {
     fixme: never;
 }
 
-declare global {
-    namespace Hooks {
-        interface AllHooks {
-            diceSoNiceInit: (dice3d: Dice3D) => CancellableReturn;
-            diceSoNiceReady: (dice3d: Dice3D) => CancellableReturn;
-            diceSoNiceMessageProcessed: (messageId: string, interception: { willTrigger3DRoll: boolean }) => Return;
-            diceSoNiceRollStart: (
-                messageId: string,
-                context: { roll: Roll; user: User; users: User[] | null; blind: boolean },
-            ) => Return;
-            diceSoNiceRollComplete: (messageId: string) => Return;
-            diceSoNiceModelLoaded: (preset: DicePreset) => Return;
-        }
+declare module 'pf2e-types/hooks' {
+    interface AllHooks {
+        diceSoNiceInit: (dice3d: Dice3D) => CancellableHookReturn;
+        diceSoNiceReady: (dice3d: Dice3D) => CancellableHookReturn;
+        diceSoNiceMessageProcessed: (messageId: string, interception: { willTrigger3DRoll: boolean }) => HookReturn;
+        diceSoNiceRollStart: (
+            messageId: string,
+            context: { roll: Roll; user: User; users: User[] | null; blind: boolean },
+        ) => HookReturn;
+        diceSoNiceRollComplete: (messageId: string) => HookReturn;
+        diceSoNiceModelLoaded: (preset: DicePreset) => HookReturn;
     }
 }
 
-declare module "types/pf2e/global.ts" {
+declare module "pf2e-types" {
     interface GamePF2e {
         dice3d?: {
             waitFor3DAnimationByMessageID(messageId: string): Promise<boolean>;
