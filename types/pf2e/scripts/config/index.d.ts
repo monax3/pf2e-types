@@ -3304,6 +3304,7 @@ export declare const PF2ECONFIG: {
         invested: string;
         "launching-dart": string;
         magical: string;
+        mythic: string;
         relic: string;
         "shield-throw-20": string;
         "shield-throw-30": string;

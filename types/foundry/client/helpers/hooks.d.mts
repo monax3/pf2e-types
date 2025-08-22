@@ -105,6 +105,7 @@ export interface OnceHooks {
 }
 
 export interface DefaultApplications {
+    ApplicationV2: ApplicationV2;
     DialogV2: DialogV2;
     ChatLog: ChatLog;
     ChatPopout: foundry.applications.sidebar.apps.ChatPopout;
@@ -119,7 +120,6 @@ export interface DefaultApplications {
     JournalPageSheet: JournalPageSheet<JournalEntryPage>;
     JournalTextPageSheet: JournalTextPageSheet<JournalEntryPage>;
     RegionLegend: foundry.applications.ui.RegionLegend;
-    Pause: foundry.applications.ui.GamePause;
     DocumentSheetV2: foundry.applications.api.DocumentSheetV2;
     CameraPopout: foundry.applications.apps.av.CameraPopout;
     CameraViews: foundry.applications.apps.av.CameraViews;

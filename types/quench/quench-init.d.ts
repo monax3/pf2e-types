@@ -9,7 +9,7 @@ declare global {
         _cleanReferencesAfterRun: boolean;
     }
 }
-declare module 'pf2e-types/hooks' {
+declare module "pf2e-types/hooks" {
     interface AllHooks {
         /**
          * A hook event that fires when Quench is ready to register batches.

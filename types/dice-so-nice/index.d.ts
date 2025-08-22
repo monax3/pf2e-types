@@ -56,7 +56,7 @@ export interface DicePreset {
     fixme: never;
 }
 
-declare module 'pf2e-types/hooks' {
+declare module "pf2e-types/hooks" {
     interface AllHooks {
         diceSoNiceInit: (dice3d: Dice3D) => CancellableHookReturn;
         diceSoNiceReady: (dice3d: Dice3D) => CancellableHookReturn;

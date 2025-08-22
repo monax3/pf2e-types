@@ -3,13 +3,6 @@ declare global {
     namespace Chai {
         interface AssertStatic {
             /**
-             * Asserts that object is truthy.
-             *
-             * @param object   Object to test.
-             * @param message    Message to display on error.
-             */
-            ok(value: unknown, message?: string): void;
-            /**
              * Asserts equality of serialised argument (actual) and previously stored snapshot (expected)
              *
              * @param obj - The actual value to be compared to the snapshot

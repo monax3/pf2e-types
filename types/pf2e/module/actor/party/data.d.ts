@@ -1,3 +1,4 @@
+import { CreatureReach } from '../creature/index.ts';
 import { ActorAttributes, ActorDetails, BaseActorSourcePF2e } from '../data/base.ts';
 import { ActorSystemModel, ActorSystemSchema } from '../data/model.ts';
 import { ModelPropFromDataField, ModelPropsFromSchema, SourceFromDataField, SourceFromSchema } from "../../../../foundry/common/data/fields.mts";
@@ -33,12 +34,13 @@ interface PartyDetailsSource extends SourceFromDataField<PartySystemSchema["deta
     readonly level?: never;
 }
 interface PartyAttributes extends Omit<ActorAttributes, "initiative" | "ac" | "hp"> {
-    immunities: never[];
-    weaknesses: never[];
-    resistances: never[];
     speed: {
         total: number;
     };
+    reach: CreatureReach;
+    immunities: never[];
+    weaknesses: never[];
+    resistances: never[];
 }
 interface PartyDetails extends ModelPropFromDataField<PartySystemSchema["details"]>, ActorDetails {
 }

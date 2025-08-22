@@ -2,7 +2,6 @@ import { PartialSettingsData, SettingsMenuPF2e } from '../menu.ts';
 import { CustomDamageData, HomebrewElementsSheetData, HomebrewKey, HomebrewTag, HomebrewTraitKey, LanguageSettings, ModuleHomebrewData } from './data.ts';
 import { ReservedTermsRecord } from './helpers.ts';
 import { LanguagesManager } from './languages.ts';
-import "@yaireo/tagify/dist/tagify.css";
 import appv1 = foundry.appv1;
 declare class HomebrewElements extends SettingsMenuPF2e {
     #private;

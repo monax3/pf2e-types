@@ -92,6 +92,12 @@ interface SaveData extends AttributeBasedTraceData {
     saveDetail?: string;
 }
 type CreatureSaves = Record<SaveType, SaveData>;
+interface CreatureReach {
+    /** The default reach for all actions requiring one */
+    base: number;
+    /** Its reach for the purpose of manipulate actions, usually the same as its base reach */
+    manipulate: number;
+}
 /** Miscallenous but mechanically relevant creature attributes.  */
 interface CreatureAttributes extends ActorAttributes {
     hp: ActorHitPoints;
@@ -100,12 +106,7 @@ interface CreatureAttributes extends ActorAttributes {
         value: number;
     };
     /** The creature's natural reach in feet */
-    reach: {
-        /** The default reach for all actions requiring one */
-        base: number;
-        /** Its reach for the purpose of manipulate actions, usually the same as its base reach */
-        manipulate: number;
-    };
+    reach: CreatureReach;
     shield?: HeldShieldData;
     speed: CreatureSpeeds;
     /** The current dying level (and maximum) for this creature. */
@@ -179,4 +180,4 @@ interface HeldShieldData {
     icon: ImageFilePath;
 }
 export { VisionLevels };
-export type { Abilities, AbilityData, BaseCreatureSource, CreatureActorType, CreatureAttributes, CreatureDetails, CreatureDetailsSource, CreatureHitPointsSource, CreatureInitiativeSource, CreatureLanguagesData, CreaturePerceptionData, CreatureResources, CreatureResourcesSource, CreatureSaves, CreatureSpeeds, CreatureSystemData, CreatureSystemSource, CreatureTraitsData, CreatureTraitsSource, HeldShieldData, LabeledSpeed, SaveData, SenseData, SkillData, VisionLevel, };
+export type { Abilities, AbilityData, BaseCreatureSource, CreatureActorType, CreatureAttributes, CreatureDetails, CreatureDetailsSource, CreatureHitPointsSource, CreatureInitiativeSource, CreatureLanguagesData, CreaturePerceptionData, CreatureReach, CreatureResources, CreatureResourcesSource, CreatureSaves, CreatureSpeeds, CreatureSystemData, CreatureSystemSource, CreatureTraitsData, CreatureTraitsSource, HeldShieldData, LabeledSpeed, SaveData, SenseData, SkillData, VisionLevel, };
