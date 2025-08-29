@@ -8,7 +8,7 @@ import DocumentSheetV2 from "../../applications/api/document-sheet.mjs";
 import { Folder, Setting, WorldDocument } from "../_module.mjs";
 import CompendiumCollection from "../collections/compendium-collection.mjs";
 import { DirectoryCollectionConstructor } from "./directory-collection-mixin.mjs";
-import type { EnfolderableDocument } from "../folder.mts";
+import { EnfolderableDocument } from "../folder.mjs";
 
 export const DirectoryCollectionMix: DirectoryCollectionConstructor;
 
@@ -18,7 +18,7 @@ export const DirectoryCollectionMix: DirectoryCollectionConstructor;
  * @param data An array of data objects from which to create Document instances
  */
 export default abstract class WorldCollection<
-    TDocument extends WorldDocument | Setting,
+    TDocument extends WorldDocument | Setting | Folder,
 > extends DirectoryCollectionMix<TDocument> {
     /* -------------------------------------------- */
     /*  Collection Properties                       */
@@ -34,7 +34,7 @@ export default abstract class WorldCollection<
     get directory(): DocumentDirectory<TDocument> | null;
 
     /** The source data is, itself, a mapping of IDs to data objects */
-    protected readonly _source: TDocument["_source"];
+    // protected readonly _source: TDocument["_source"];
 
     /** An Array of application references which will be automatically updated when the collection content changes */
     apps: (Application | ApplicationV2)[];
@@ -88,7 +88,7 @@ export default abstract class WorldCollection<
     static documentName: string;
 
     /** Return a reference to the singleton instance of this WorldCollection, or null if it has not yet been created. */
-    static get instance(): WorldCollection<WorldDocument>;
+    static get instance(): WorldCollection<any> | null;
 
     /* -------------------------------------------- */
     /*  Collection Methods                          */

@@ -9,6 +9,7 @@ export type * from "../module/canvas/door-control.d.ts";
 export type * from "../module/canvas/ambient-light.d.ts";
 export type * from "../module/canvas/token/object.d.ts";
 export type * from "../module/canvas/token/index.d.ts";
+export type * from "../module/canvas/token/movement/terrain-data.d.ts";
 export type * from "../module/canvas/token/flanking-highlight/renderer.d.ts";
 export type * from "../module/canvas/token/aura/util.d.ts";
 export type * from "../module/canvas/token/aura/renderer.d.ts";

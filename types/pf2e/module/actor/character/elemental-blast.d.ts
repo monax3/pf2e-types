@@ -82,6 +82,7 @@ interface ElementalBlastConfig extends Omit<fields.ModelPropsFromSchema<BlastCon
         label: string;
     };
     statistic: Statistic;
+    item: AbilityItemPF2e<CharacterPF2e>;
     actionCost: 1 | 2;
     ready: boolean;
     maps: {

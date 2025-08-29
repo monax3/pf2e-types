@@ -51,7 +51,7 @@ export interface LightData<TParent extends DataModel | null>
 
 export type LightSource = fields.SourceFromSchema<LightDataSchema>;
 
-type LightDataSchema = {
+export type LightDataSchema = {
     /** An opacity for the emitted light, if any */
     alpha: fields.AlphaField;
     /** The angle of emission for this point source */
@@ -368,6 +368,7 @@ type PrototypeTokenSchema = Omit<
 };
 
 export type PrototypeTokenSource = fields.SourceFromSchema<PrototypeTokenSchema>;
+export type PrototypeTokenData = fields.ModelPropsFromSchemaWithOptional<PrototypeTokenSchema>;
 
 /**
  * A minimal data model used to represent a tombstone entry inside an {@link EmbeddedCollectionDelta}.

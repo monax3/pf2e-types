@@ -20,8 +20,9 @@ import {
     TokenDocument,
     User,
 } from "../documents/_module.mjs";
+import { CanvasEnvironmentConfig } from "../client.mjs";
 import { DocumentUUID } from "../utils/helpers.mjs";
-import { DatabaseCreateOperation, type DatabaseDeleteOperation, type DatabaseUpdateOperation } from "../../common/abstract/_types.mjs";
+import { DatabaseCreateOperation, DatabaseDeleteOperation, DatabaseUpdateOperation } from "../../common/abstract/_types.mjs";
 import Document from "../../common/abstract/document.mjs";
 import type ApplicationV2 from "../applications/api/application.mjs";
 import type TokenHUD from "../applications/hud/token-hud.mjs";
@@ -33,11 +34,13 @@ import type { SceneControl } from "../applications/ui/scene-controls.mjs";
 import Application from "../appv1/api/application-v1.mjs";
 import Dialog from "../appv1/api/dialog-v1.mjs";
 import { JournalPageSheet, JournalTextPageSheet } from "../appv1/sheets/journal-page-sheet.mjs";
-import type { TokenRingConfig } from "../canvas/placeables/tokens/_module.mjs";
-import type { PlaceableHUDContext } from "../applications/hud/placeable-hud.mjs";
+import { TokenRingConfig } from "../canvas/placeables/tokens/_module.mjs";
+import { PlaceableHUDContext } from "../applications/hud/placeable-hud.mjs";
+import JournalSheet from "../appv1/sheets/journal-sheet.mjs";
+import CombatConfiguration from "../data/combat-config.mjs";
 
-type HookCallback<P extends unknown[]> = (...args: P) => boolean | void | Promise<boolean | void>;
-type HookParameters<H extends string, C extends unknown[]> = [hook: H, callback: HookCallback<C>];
+type oldHookCallback<P extends unknown[]> = (...args: P) => boolean | void | Promise<boolean | void>;
+type HookParameters<H extends string, C extends unknown[]> = [hook: H, callback: oldHookCallback<C>];
 
 // Sequence of hooks called on world load
 type HookParamsInit = HookParameters<"init", never[]>;
@@ -98,8 +101,8 @@ export interface OnceHooks {
     init: () => HookReturn;
     i18nInit: () => HookReturn;
     setup: () => HookReturn;
-    initializeDynamicTokenRingConfig: (ringConfig: foundry.canvas.placeables.tokens.TokenRingConfig) => HookReturn;
-    initializeCombatConfiguration: (config: foundry.data.CombatConfiguration) => HookReturn;
+    initializeDynamicTokenRingConfig: (ringConfig: TokenRingConfig) => HookReturn;
+    initializeCombatConfiguration: (config: CombatConfiguration) => HookReturn;
     canvasConfig: (config: object) => HookReturn;
     ready: () => HookReturn;
 }
@@ -117,6 +120,7 @@ export interface DefaultApplications {
     Settings: Settings;
     SettingsConfig: SettingsConfig;
     TokenHUD: TokenHUD;
+    JournalSheet: JournalSheet<JournalEntry>;
     JournalPageSheet: JournalPageSheet<JournalEntryPage>;
     JournalTextPageSheet: JournalTextPageSheet<JournalEntryPage>;
     RegionLegend: foundry.applications.ui.RegionLegend;
@@ -173,40 +177,37 @@ export type GetApplicationHeaderButtonsV1 = { [K in keyof ApplicationsV1 as `get
 export interface ApplicationHooks extends RenderHooks, CloseHooks, GetHeaderControls, GetDocumentContextOptions, RenderHooksV1, CloseHooksV1, GetApplicationHeaderButtonsV1 { }
 
 export interface DefaultDocumentClasses {
-    Actor: typeof Actor;
-    Card: typeof foundry.documents.Card<foundry.documents.Cards>;
-    ChatMessage: typeof ChatMessage;
-    Token: typeof TokenDocument;
-    Combat: typeof Combat;
-    Item: typeof Item;
-    Combatant: typeof foundry.documents.Combatant;
-    Tile: typeof foundry.documents.TileDocument<Scene | null>;
     ActiveEffect: typeof foundry.documents.ActiveEffect,
+    Actor: typeof Actor<null>;
     ActorDelta: typeof foundry.documents.ActorDelta<TokenDocument | null>,
     Adventure: typeof foundry.documents.Adventure,
     AmbientLight: typeof foundry.documents.AmbientLightDocument<Scene | null>,
     AmbientSound: typeof foundry.documents.AmbientSoundDocument<Scene | null>,
+    Card: typeof foundry.documents.Card<foundry.documents.Cards>;
     Cards: typeof foundry.documents.Cards,
+    ChatMessage: typeof ChatMessage<User | null>;
+    Combat: typeof Combat;
+    Combatant: typeof foundry.documents.Combatant;
     CombatantGroup: typeof foundry.documents.CombatantGroup,
     Drawing: typeof foundry.documents.DrawingDocument,
     FogExploration: typeof foundry.documents.FogExploration,
-    Folder: typeof foundry.documents.Folder,
+    Item: typeof Item<null>;
     JournalEntry: typeof foundry.documents.JournalEntry,
-
     // JournalEntryCategory: foundry.documents.JournalEntryCategory,
-
     JournalEntryPage: typeof foundry.documents.JournalEntryPage,
     Macro: typeof foundry.documents.Macro,
     MeasuredTemplate: typeof foundry.documents.MeasuredTemplateDocument,
     Note: typeof foundry.documents.NoteDocument<Scene | null>,
     Playlist: typeof foundry.documents.Playlist,
     PlaylistSound: typeof foundry.documents.PlaylistSound,
-    RollTable: typeof foundry.documents.RollTable,
-    Scene: typeof foundry.documents.Scene,
     Region: typeof foundry.documents.RegionDocument,
     RegionBehavior: typeof foundry.documents.RegionBehavior,
+    RollTable: typeof foundry.documents.RollTable,
+    Scene: typeof foundry.documents.Scene,
     Setting: typeof foundry.documents.Setting,
     TableResult: typeof foundry.documents.TableResult,
+    Tile: typeof foundry.documents.TileDocument<Scene | null>;
+    Token: typeof TokenDocument;
     User: typeof foundry.documents.User,
     Wall: typeof foundry.documents.WallDocument,
 }
@@ -422,6 +423,13 @@ export interface AllHooks extends
     StaticHooks,
     DynamicHooks { }
 
+export interface HookedFunction<H extends HookName> {
+    fn: HookCallback<H>;
+    hook: H;
+    id: number;
+    once: boolean;
+}
+
 declare global {
     type HookName = keyof AllHooks;
     type HookCallback<H extends HookName> = AllHooks[H];
@@ -431,6 +439,8 @@ declare global {
     type CancellableHookReturn = HookReturn | boolean;
 
     class Hooks {
+        static get events(): { [H in HookName]: HookedFunction<H>[] | undefined }
+
         /**
          * Register a callback handler which should be triggered when a hook is triggered.
          *
@@ -476,16 +486,6 @@ declare global {
          */
         static call<K extends HookName>(hook: K, ...args: HookParams<K>): boolean;
     }
-}
-
-export interface CanvasEnvironmentConfig {
-    backgroundColor?: any;
-    brightestColor?: any;
-    darknessColor?: any;
-    daylightColor?: any;
-    environment?: any;
-    fogExploredColor?: any;
-    fogUnexploredColor?: any;
 }
 
 export interface DropCanvasData<T extends string = string, D extends object = object> {

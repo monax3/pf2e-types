@@ -6,7 +6,7 @@ import { MovementType } from '../actor/types.ts';
 import { TokenAnimationOptions } from "../../../foundry/client/_module.mts";
 import { TokenDocumentUUID } from "../../../foundry/client/documents/_module.mts";
 import { ImageFilePath, VideoFilePath } from "../../../foundry/common/constants.mts";
-import { TokenSource } from "../../../foundry/common/documents/token.mts";
+import { TokenData, TokenRingData } from "../../../foundry/common/documents/token.mts";
 import { ItemPF2e, MeleePF2e, WeaponPF2e } from '../item/index.ts';
 import { AbilityTrait } from '../item/ability/index.ts';
 import { ConditionSource, EffectSource } from '../item/base/data/index.ts';
@@ -55,7 +55,7 @@ interface RuleElementSynthetics {
     toggles: Record<string, Record<string, RollOptionToggle>>;
     tokenEffectIcons: ActiveEffectPF2e<ItemPF2e>[];
     tokenMarks: Map<TokenDocumentUUID, string[]>;
-    tokenOverrides: DeepPartial<Pick<TokenSource, "light" | "name">> & {
+    tokenOverrides: DeepPartial<Pick<TokenData, "light" | "name">> & {
         alpha?: number | null;
         texture?: {
             src: ImageFilePath | VideoFilePath;
@@ -66,11 +66,7 @@ interface RuleElementSynthetics {
             scaleX: number;
             scaleY: number;
         };
-        ring?: {
-            subject: TokenDocument["ring"]["subject"];
-            colors: TokenDocument["ring"]["colors"];
-            effects: TokenDocument["ring"]["effects"];
-        };
+        ring?: TokenRingData;
         animation?: TokenAnimationOptions;
     };
     weaponPotency: Record<string, PotencySynthetic[]>;

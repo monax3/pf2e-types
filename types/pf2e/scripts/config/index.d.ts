@@ -3455,6 +3455,7 @@ export declare const PF2ECONFIG: {
         artifact: string;
         clockwork: string;
         magical: string;
+        tech: string;
         teleportation: string;
     };
     weaponTraits: {

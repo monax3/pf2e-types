@@ -2272,6 +2272,7 @@ declare const vehicleTraits: {
     artifact: string;
     clockwork: string;
     magical: string;
+    tech: string;
     teleportation: string;
 };
 declare const equipmentTraits: {

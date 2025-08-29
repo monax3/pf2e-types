@@ -161,7 +161,7 @@
 - [ ] foundry.HTMLStringTagsOptions
 - [x] foundry.HandlebarsRenderOptions
 - [x] foundry.HandlebarsTemplatePart
-- [ ] foundry.HookedFunction
+- [x] foundry.HookedFunction
 - [x] foundry.HotbarSlotData
 - [x] foundry.HoverFadeState
 - [x] foundry.ImagePopoutConfiguration
@@ -240,7 +240,7 @@
 - [x] foundry.abstract.types.DatabaseUpdateOperation
 - [ ] foundry.abstract.types.DocumentClassMetadata
 - [ ] foundry.abstract.types.DocumentCloneOptions
-- [ ] foundry.abstract.types.DocumentConstructionContext
+- [x] foundry.abstract.types.DocumentConstructionContext
 - [ ] foundry.abstract.types.DocumentPermissionTest
 - [x] foundry.abstract.types.DocumentSocketRequest
 - [x] foundry.applications.fields.CustomFormGroup
@@ -359,7 +359,7 @@
 - [x] foundry.documents.types.ActiveEffectData
 - [x] foundry.documents.types.ActiveEffectDuration
 - [x] foundry.documents.types.ActorData
-- [x] foundry.documents.types.ActorDeltaData
+- [ ] foundry.documents.types.ActorDeltaData
 - [x] foundry.documents.types.AdventureData
 - [x] foundry.documents.types.AdventureImportData
 - [x] foundry.documents.types.AdventureImportOptions
@@ -385,18 +385,18 @@
 - [x] foundry.documents.types.EffectDurationData
 - [x] foundry.documents.types.EnvironmentData
 - [x] foundry.documents.types.FogExplorationData
-- [ ] foundry.documents.types.FolderChildNode
+- [x] foundry.documents.types.FolderChildNode
 - [x] foundry.documents.types.FolderData
 - [x] foundry.documents.types.GlobalLightData
 - [x] foundry.documents.types.GridData
 - [x] foundry.documents.types.ItemData
-- [ ] foundry.documents.types.JournalEntryCategoryData
+- [x] foundry.documents.types.JournalEntryCategoryData
 - [x] foundry.documents.types.JournalEntryData
 - [x] foundry.documents.types.JournalEntryPageData
-- [ ] foundry.documents.types.JournalEntryPageImageData
-- [ ] foundry.documents.types.JournalEntryPageTextData
-- [ ] foundry.documents.types.JournalEntryPageTitleData
-- [ ] foundry.documents.types.JournalEntryPageVideoData
+- [x] foundry.documents.types.JournalEntryPageImageData
+- [x] foundry.documents.types.JournalEntryPageTextData
+- [x] foundry.documents.types.JournalEntryPageTitleData
+- [x] foundry.documents.types.JournalEntryPageVideoData
 - [x] foundry.documents.types.MacroData
 - [x] foundry.documents.types.MeasuredTemplateData
 - [x] foundry.documents.types.NoteData
@@ -413,7 +413,7 @@
 - [x] foundry.documents.types.RegionMovementSegment
 - [x] foundry.documents.types.RegionRegionBoundaryEvent
 - [x] foundry.documents.types.RegionSegmentizeMovementPathWaypoint
-- [ ] foundry.documents.types.RegionSocketEvent
+- [x] foundry.documents.types.RegionSocketEvent
 - [x] foundry.documents.types.RegionTokenAnimateEvent
 - [x] foundry.documents.types.RegionTokenAnimateEventData
 - [x] foundry.documents.types.RegionTokenAnimateInEvent
@@ -439,14 +439,14 @@
 - [x] foundry.documents.types.RollTableDraw
 - [x] foundry.documents.types.SceneData
 - [x] foundry.documents.types.SceneDimensions
-- [ ] foundry.documents.types.SceneEnvironmentData
+- [x] foundry.documents.types.SceneEnvironmentData
 - [x] foundry.documents.types.SettingData
 - [x] foundry.documents.types.TableResultData
 - [x] foundry.documents.types.TileData
 - [x] foundry.documents.types.TileOcclusionData
-- [ ] foundry.documents.types.TileRestrictionsData
+- [x] foundry.documents.types.TileRestrictionsData
 - [x] foundry.documents.types.TileVideoData
-- [ ] foundry.documents.types.TokenBarData
+- [x] foundry.documents.types.TokenBarData
 - [x] foundry.documents.types.TokenCompleteMovementWaypoint
 - [x] foundry.documents.types.TokenData
 - [x] foundry.documents.types.TokenDetectionMode
@@ -459,7 +459,7 @@
 - [x] foundry.documents.types.TokenMeasuredMovementWaypoint
 - [x] foundry.documents.types.TokenMovementContinuationData
 - [x] foundry.documents.types.TokenMovementContinuationHandle
-- [ ] foundry.documents.types.TokenMovementCostAggregator
+- [x] foundry.documents.types.TokenMovementCostAggregator
 - [x] foundry.documents.types.TokenMovementCostFunction
 - [x] foundry.documents.types.TokenMovementData
 - [x] foundry.documents.types.TokenMovementHistoryData
@@ -469,14 +469,14 @@
 - [x] foundry.documents.types.TokenMovementSegmentData
 - [x] foundry.documents.types.TokenMovementState
 - [x] foundry.documents.types.TokenMovementWaypoint
-- [ ] foundry.documents.types.TokenOcclusionData
+- [x] foundry.documents.types.TokenOcclusionData
 - [x] foundry.documents.types.TokenPosition
 - [x] foundry.documents.types.TokenRegionMovementSegment
 - [x] foundry.documents.types.TokenRegionMovementWaypoint
 - [x] foundry.documents.types.TokenResumeMovementCallback
-- [ ] foundry.documents.types.TokenRingData
+- [x] foundry.documents.types.TokenRingData
 - [x] foundry.documents.types.TokenSegmentizeMovementWaypoint
-- [ ] foundry.documents.types.TokenSightData
+- [x] foundry.documents.types.TokenSightData
 - [x] foundry.documents.types.TrackedAttributesDescription
 - [x] foundry.documents.types.UserData
 - [x] foundry.documents.types.WallData
@@ -1072,7 +1072,7 @@
 - [ ] foundry.data.regionBehaviors.DisplayScrollingTextRegionBehaviorType
 - [x] foundry.data.regionBehaviors.ExecuteMacroRegionBehaviorType
 - [x] foundry.data.regionBehaviors.ExecuteScriptRegionBehaviorType
-- [ ] foundry.data.regionBehaviors.ModifyMovementCostRegionBehaviorType
+- [x] foundry.data.regionBehaviors.ModifyMovementCostRegionBehaviorType
 - [x] foundry.data.regionBehaviors.PauseGameRegionBehaviorType
 - [x] foundry.data.regionBehaviors.RegionBehaviorType
 - [x] foundry.data.regionBehaviors.SuppressWeatherRegionBehaviorType

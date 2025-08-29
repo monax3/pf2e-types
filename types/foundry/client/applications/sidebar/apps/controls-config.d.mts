@@ -1,7 +1,7 @@
+import { KeybindingActionBinding } from "../../../_types.mjs";
 import { ApplicationRenderContext } from "../../_module.mjs";
 import CategoryBrowser, { CategoryBrowserConfiguration } from "../../api/category-browser.mjs";
 import { HandlebarsRenderOptions, HandlebarsTemplatePart } from "../../api/handlebars-application.mjs";
-import { KeybindingActionBinding } from "../../../../common/_types.mjs";
 
 /**
  * View and edit keybinding and (readonly) mouse actions.

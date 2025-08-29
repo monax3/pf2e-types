@@ -1,6 +1,6 @@
 {
     "name": "pf2e-types",
-    "version": "7.4.2",
+    "version": "7.4.3",
     "type": "module",
     "types": "./index.d.ts",
     "scripts": {

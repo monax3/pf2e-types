@@ -1,5 +1,6 @@
 import { TextureData } from '../../../common/data/data.mjs';
-import type * as fields from "../../../common/data/fields.mjs";
+import * as fields from "../../../common/data/fields.mjs";
+
 export interface PrimaryCanvasObjectData {
     /** The x-coordinate of the PCO location */
     x: number;

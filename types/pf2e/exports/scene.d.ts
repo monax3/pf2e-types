@@ -22,3 +22,4 @@ export type * from "../module/scene/region-behavior/index.d.ts";
 export type * from "../module/scene/region-behavior/environment.d.ts";
 export type * from "../module/scene/region-behavior/environment-feature.d.ts";
 export type * from "../module/scene/region-behavior/document.d.ts";
+export type * from "../module/scene/region-behavior/difficult-terrain.d.ts";

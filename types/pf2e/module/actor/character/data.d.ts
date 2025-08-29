@@ -178,6 +178,7 @@ interface AttributeBoostsSource {
 }
 interface CharacterResourcesSource {
     heroPoints: ValueAndMax;
+    mythicPoints: ValueAndMax;
     focus?: {
         value: number;
         max?: never;

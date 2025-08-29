@@ -1,4 +1,5 @@
-import { ElevatedPoint, TokenDimensions, TokenPosition } from "../_types.mjs";
+import { ElevatedPoint } from "../_types.mjs";
+import { TokenDimensions, TokenPosition } from "./_types.mjs";
 import Document, { DocumentMetadata } from "../abstract/document.mjs";
 import { ImageFilePath, TokenDisplayMode, TokenDisposition, VideoFilePath } from "../constants.mjs";
 import { GridOffset3D } from "../grid/_types.mjs";
@@ -72,7 +73,7 @@ export default class BaseToken<TParent extends BaseScene | null = BaseScene | nu
 
 export default interface BaseToken<TParent extends BaseScene | null = BaseScene | null>
     extends Document<TParent, TokenSchema>,
-        fields.ModelPropsFromSchema<TokenSchema> {
+        fields.ModelPropsFromSchemaWithOptional<TokenSchema> {
     delta: BaseActorDelta<this> | null;
     light: data.LightData<this>;
 }
@@ -87,6 +88,68 @@ interface TokenMetadata extends DocumentMetadata {
         ActorDelta: "delta";
     };
 }
+
+type TokenBarSchema = {
+    /** The attribute path within the Token's Actor data which should be displayed */
+    attribute: fields.StringField<string, string, true, true, true>;
+}
+
+export type TokenBarData = fields.ModelPropsFromSchemaWithOptional<TokenBarSchema>;
+
+type TokenDetectionSchema = {
+    /** The id of the detection mode, a key from CONFIG.Canvas.detectionModes */
+    id: fields.StringField;
+    /** Whether or not this detection mode is presently enabled */
+    enabled: fields.BooleanField;
+    /** The maximum range in distance units at which this mode can detect targets */
+    range: fields.NumberField<number, number, true, true, true>;
+}
+
+export type TokenDetectionMode = fields.ModelPropsFromSchema<TokenDetectionSchema>;
+
+type TokenOcclusionSchema = {
+    radius: fields.NumberField<number, number, false, false>;
+}
+
+export type TokenOcclusionData = fields.ModelPropsFromSchema<TokenOcclusionSchema>;
+
+type TokenRingSchema = {
+    enabled: fields.BooleanField<boolean, boolean, false, false, false>;
+    colors: fields.DefaultSchemaField<{
+        ring: fields.ColorField<false, true, false>;
+        background: fields.ColorField<false, true, false>;
+    }, false, false, false>;
+    effects: fields.NumberField<number, number, false, false, false>;
+    subject: fields.SchemaField<{
+        scale: fields.NumberField<number, number, false, false, false>;
+        texture: fields.FilePathField<CONST.FilePath, ImageFilePath, false, false, false>;
+    }>;
+};
+
+export type TokenRingData = fields.ModelPropsFromSchemaWithOptional<TokenRingSchema>;
+
+type TokenSightSchema = {
+    /** Should vision computation and rendering be active for this Token? */
+    enabled: fields.BooleanField;
+    /** How far in distance units the Token can see without the aid of a light source */
+    range: fields.NumberField<number, number, true, true, true>;
+    /** An angle at which the Token can see relative to their direction of facing */
+    angle: fields.AngleField;
+    /** The vision mode which is used to render the appearance of the visible area */
+    visionMode: fields.StringField<string, string, true, false, true>;
+    /** A special color which applies a hue to the visible area */
+    color: fields.ColorField;
+    /** A degree of attenuation which gradually fades the edges of the visible area */
+    attenuation: fields.AlphaField;
+    /** An advanced customization for the perceived brightness of the visible area */
+    brightness: fields.NumberField<number, number, true, false>;
+    /** An advanced customization of color saturation within the visible area */
+    saturation: fields.NumberField<number, number, true, false>;
+    /** An advanced customization for contrast within the visible area */
+    contrast: fields.NumberField<number, number, true, false>;
+}
+
+export type TokenSightData = fields.ModelPropsFromSchemaWithOptional<TokenSightSchema>;
 
 type TokenSchema = {
     /** The Token _id which uniquely identifies it within its parent Scene */
@@ -138,69 +201,24 @@ type TokenSchema = {
     /** The display mode of Token resource bars, from CONST.TOKEN_DISPLAY_MODES */
     displayBars: fields.NumberField<TokenDisplayMode, TokenDisplayMode, true>;
     /** The configuration of the Token's primary resource bar */
-    bar1: fields.SchemaField<{
-        /** The attribute path within the Token's Actor data which should be displayed */
-        attribute: fields.StringField<string, string, true, true, true>;
-    }>;
+    bar1: fields.SchemaField<TokenBarSchema>;
     /** The configuration of the Token's secondary resource bar */
-    bar2: fields.SchemaField<{
-        /** The attribute path within the Token's Actor data which should be displayed */
-        attribute: fields.StringField<string, string, true, true, true>;
-    }>;
+    bar2: fields.SchemaField<TokenBarSchema>;
     /** Configuration of the light source that this Token emits */
     light: fields.EmbeddedDataField<data.LightData<BaseToken>>;
     /** Configuration of sight and vision properties for the Token */
-    sight: fields.SchemaField<{
-        /** Should vision computation and rendering be active for this Token? */
-        enabled: fields.BooleanField;
-        /** How far in distance units the Token can see without the aid of a light source */
-        range: fields.NumberField<number, number, true, true, true>;
-        /** An angle at which the Token can see relative to their direction of facing */
-        angle: fields.AngleField;
-        /** The vision mode which is used to render the appearance of the visible area */
-        visionMode: fields.StringField<string, string, true, false, true>;
-        /** A special color which applies a hue to the visible area */
-        color: fields.ColorField;
-        /** A degree of attenuation which gradually fades the edges of the visible area */
-        attenuation: fields.AlphaField;
-        /** An advanced customization for the perceived brightness of the visible area */
-        brightness: fields.NumberField<number, number, true, false>;
-        /** An advanced customization of color saturation within the visible area */
-        saturation: fields.NumberField<number, number, true, false>;
-        /** An advanced customization for contrast within the visible area */
-        contrast: fields.NumberField<number, number, true, false>;
-    }>;
+    sight: fields.SchemaField<TokenSightSchema>;
     /** An array of detection modes which are available to this Token */
-    detectionModes: fields.ArrayField<
-        fields.SchemaField<{
-            /** The id of the detection mode, a key from CONFIG.Canvas.detectionModes */
-            id: fields.StringField<string>;
-            /** Whether or not this detection mode is presently enabled */
-            enabled: fields.BooleanField;
-            /** The maximum range in distance units at which this mode can detect targets */
-            range: fields.NumberField<number, number, true, true, true>;
-        }>
-    >;
-    occludable: fields.SchemaField<{
-        radius: fields.NumberField<number, number, false, false>;
-    }>;
-    ring: fields.SchemaField<{
-        enabled: fields.BooleanField;
-        colors: fields.SchemaField<{
-            ring: fields.ColorField;
-            background: fields.ColorField;
-        }>;
-        effects: fields.NumberField<number, number, true, false, true>;
-        subject: fields.SchemaField<{
-            scale: fields.NumberField;
-            texture: fields.FilePathField<ImageFilePath>;
-        }>;
-    }>;
+    detectionModes: fields.ArrayField<fields.SchemaField<TokenDetectionSchema>>;
+    occludable: fields.SchemaField<TokenOcclusionSchema>;
+    ring: fields.SchemaField<TokenRingSchema>;
     /** An object of optional key/value flags */
     flags: fields.DocumentFlagsField;
 };
 
 export type TokenSource = fields.SourceFromSchema<TokenSchema>;
+
+export type TokenData = fields.ModelPropsFromSchemaWithOptional<TokenSchema>;
 
 export class ActorDeltaField<
     TDocument extends BaseActorDelta<BaseToken> = BaseActorDelta<BaseToken>,

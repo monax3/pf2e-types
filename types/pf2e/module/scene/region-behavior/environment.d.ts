@@ -1,4 +1,4 @@
-import { RegionEventType } from "../../../../foundry/client/data/region-behaviors/base.mts";
+import { RegionEventType } from "../../../../foundry/common/constants.mjs";
 import { ModelPropsFromSchema, SetField, SourceFromSchema, StringField } from "../../../../foundry/common/data/fields.mts";
 import { RegionBehaviorPF2e } from './document.ts';
 import { RegionEventPF2e } from './types.ts';
