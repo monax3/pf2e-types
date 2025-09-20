@@ -13,4 +13,4 @@ type Destroyable = Tagify<{
 }> | Tagify<Tagify.TagData> | Sortable | JQueryTooltipster.ITooltipsterInstance;
 declare function createSortable(list: HTMLElement, options: Sortable.Options): Sortable;
 declare function createTooltipster(target: HTMLElement, options: JQueryTooltipster.ITooltipsterOptions): JQuery;
-export { DestroyableManager, createSortable, createTooltipster };
+export { createSortable, createTooltipster, DestroyableManager };

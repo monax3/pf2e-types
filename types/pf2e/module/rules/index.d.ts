@@ -1,5 +1,5 @@
 import { LaxSchemaField } from '../system/schema-data-fields.ts';
-import { RuleElementPF2e } from './rule-element/base.ts';
+import { RuleElement } from './rule-element/base.ts';
 import { RuleElementOptions, RuleElementSchema, RuleElementSource } from './rule-element/index.ts';
 export type { RuleElementSynthetics } from './synthetics.ts';
 /**
@@ -9,9 +9,9 @@ declare class RuleElements {
     static readonly builtin: Record<string, RuleElementConstructor | undefined>;
     static custom: Record<string, RuleElementConstructor | undefined>;
     static get all(): Record<string, RuleElementConstructor | undefined>;
-    static fromOwnedItem(options: RuleElementOptions): RuleElementPF2e[];
+    static fromOwnedItem(options: RuleElementOptions): RuleElement[];
 }
 type RuleElementConstructor = {
     schema: LaxSchemaField<RuleElementSchema>;
-} & (new (data: RuleElementSource, options: RuleElementOptions) => RuleElementPF2e);
-export { RuleElementOptions, RuleElementPF2e, RuleElements, RuleElementSource };
+} & (new (data: RuleElementSource, options: RuleElementOptions) => RuleElement);
+export { RuleElement, RuleElementOptions, RuleElements, RuleElementSource };

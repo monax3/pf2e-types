@@ -9,7 +9,7 @@ declare class ActorDirectoryPF2e extends fa.sidebar.tabs.ActorDirectory<ActorPF2
     static PARTS: Record<string, HandlebarsTemplatePart>;
     protected static _entryPartial: string;
     _preparePartContext(partId: string, context: object, options: HandlebarsRenderOptions): Promise<object>;
-    protected _prepareFooterContext(context: object & {
+    protected _prepareFooterContext(context: fa.ApplicationRenderContext & {
         buttons?: object[];
     }, options: HandlebarsRenderOptions): Promise<void>;
     saveActivePartyFolderState(): Promise<void>;

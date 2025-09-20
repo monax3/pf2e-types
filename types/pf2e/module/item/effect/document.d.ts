@@ -3,7 +3,7 @@ import { DatabaseCreateCallbackOptions, DatabaseDeleteCallbackOptions, DatabaseU
 import { EffectBadge } from '../abstract-effect/data.ts';
 import { AbstractEffectPF2e } from '../abstract-effect/index.ts';
 import { BadgeReevaluationEventType } from '../abstract-effect/types.ts';
-import { RuleElementOptions, RuleElementPF2e } from '../../rules/index.ts';
+import { RuleElement, RuleElementOptions } from '../../rules/index.ts';
 import { EffectFlags, EffectSource, EffectSystemData } from './data.ts';
 declare class EffectPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends AbstractEffectPF2e<TParent> {
     #private;
@@ -17,7 +17,7 @@ declare class EffectPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> ex
     get fromAura(): boolean;
     prepareBaseData(): void;
     /** Unless this effect is temporarily constructed, ignore rule elements if it is expired */
-    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElementPF2e[];
+    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElement[];
     /** Increases if this is a counter effect, otherwise ignored outright */
     increase(): Promise<void>;
     /** Decreases if this is a counter effect, otherwise deletes entirely */

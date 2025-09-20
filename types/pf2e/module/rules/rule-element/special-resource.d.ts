@@ -2,10 +2,10 @@ import { ActorType, CreaturePF2e } from '../../actor/index.ts';
 import { ActorGroupUpdate } from '../../actor/types.ts';
 import { ItemUUID } from "../../../../foundry/client/documents/_module.mts";
 import { AnyChoiceField } from '../../system/schema-data-fields.ts';
-import { RuleElementPF2e, RuleElementOptions } from './base.ts';
+import { RuleElement, RuleElementOptions } from './base.ts';
 import { ModelPropsFromRESchema, ResolvableValueField, RuleElementSchema, RuleElementSource } from './data.ts';
 import fields = foundry.data.fields;
-declare class SpecialResourceRuleElement extends RuleElementPF2e<SpecialResourceSchema> {
+declare class SpecialResourceRuleElement extends RuleElement<SpecialResourceSchema> {
     #private;
     protected static validActorTypes: ActorType[];
     constructor(source: SpecialResourceSource, options: RuleElementOptions);
@@ -23,13 +23,13 @@ declare class SpecialResourceRuleElement extends RuleElementPF2e<SpecialResource
     /** Returns data that when applied updates this resources uses based on renewal rules */
     renewUses(duration: "turn" | "round" | "day"): Promise<ActorGroupUpdate>;
     /** If an item uuid is specified, create it when this resource is first attached */
-    preCreate({ tempItems, pendingItems }: RuleElementPF2e.PreCreateParams): Promise<void>;
+    preCreate({ tempItems, pendingItems }: RuleElement.PreCreateParams): Promise<void>;
     /** Treat special resources as upgrades during the AELike phase */
     onApplyActiveEffects(): void;
     /** Finish initializing the special resource, flooring values and assigning the value. If its from an item, use as the source of truth */
     beforePrepareData(): void;
 }
-interface SpecialResourceRuleElement extends RuleElementPF2e<SpecialResourceSchema>, ModelPropsFromRESchema<SpecialResourceSchema> {
+interface SpecialResourceRuleElement extends RuleElement<SpecialResourceSchema>, ModelPropsFromRESchema<SpecialResourceSchema> {
     slug: string;
     max: number;
     value: number;

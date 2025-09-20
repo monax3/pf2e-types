@@ -39,7 +39,7 @@ declare class MeleePF2e<TParent extends ActorPF2e | null = ActorPF2e | null> ext
         includeGranter?: boolean;
     }): string[];
     /** Treat this item like a strike in this context and post it as one */
-    toMessage(_event?: MouseEvent, { create }?: {
+    toMessage(_event?: PointerEvent, { create }?: {
         create?: boolean;
     }): Promise<ChatMessagePF2e | undefined>;
 }

@@ -14,6 +14,7 @@ export type * from "../module/system/tag-selector/index.d.ts";
 export type * from "../module/system/tag-selector/basic.d.ts";
 export type * from "../module/system/tag-selector/base.d.ts";
 export type * from "../module/system/statistic/statistic.d.ts";
+export type * from "../module/system/statistic/speed.d.ts";
 export type * from "../module/system/statistic/perception.d.ts";
 export type * from "../module/system/statistic/index.d.ts";
 export type * from "../module/system/statistic/hit-points.d.ts";

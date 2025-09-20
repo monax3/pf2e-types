@@ -4,7 +4,7 @@ import { DatabaseDeleteCallbackOptions } from "../../../../foundry/common/abstra
 import { ActorUUID } from "../../../../foundry/common/documents/_module.mts";
 import { ItemType } from '../../item/base/data/index.ts';
 import { CombatantPF2e, EncounterPF2e } from '../../encounter/index.ts';
-import { RuleElementPF2e } from '../../rules/index.ts';
+import { RuleElement } from '../../rules/index.ts';
 import { TokenDocumentPF2e } from '../../scene/index.ts';
 import { Statistic } from '../../system/statistic/index.ts';
 import { FamiliarSource, FamiliarSystemData } from './data.ts';
@@ -26,7 +26,7 @@ declare class FamiliarPF2e<TParent extends TokenDocumentPF2e | null = TokenDocum
     /** Set base emphemeral data for later updating by derived-data preparation. */
     prepareBaseData(): void;
     /** Skip rule-element preparation if there is no master */
-    protected prepareRuleElements(): RuleElementPF2e[];
+    protected prepareRuleElements(): RuleElement[];
     prepareDerivedData(): void;
     /** Detect if a familiar is being reassigned from a master */
     protected _preUpdate(changed: DeepPartial<this["_source"]>, options: CreatureUpdateCallbackOptions & {

@@ -1,6 +1,6 @@
 import { ApplicationConfiguration, FormFooterButton } from "../../../../foundry/client/applications/_module.mts";
 import fields = foundry.data.fields;
-interface SettingsContext {
+interface SettingsContext extends fa.ApplicationRenderContext {
     rootId: string;
     fields: WorldClockSettingSchema;
     settings: WorldClockSettingData;

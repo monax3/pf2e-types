@@ -1,9 +1,9 @@
 import { ActorPF2e, PartyPF2e } from '../index.ts';
 import { HitPointsSummary } from '../base.ts';
 import { CreatureSource } from '../data/index.ts';
-import { StatisticModifier } from '../modifiers.ts';
+import { Modifier } from '../modifiers.ts';
 import { ActorSpellcasting } from '../spellcasting.ts';
-import { MovementType, SaveType, SkillSlug } from '../types.ts';
+import { SaveType, SkillSlug } from '../types.ts';
 import { Rolled } from "../../../../foundry/client/dice/_module.mts";
 import { DatabaseDeleteCallbackOptions, DatabaseDeleteOperation, DatabaseUpdateOperation } from "../../../../foundry/common/abstract/_types.mts";
 import { ArmorPF2e, ItemPF2e, PhysicalItemPF2e, ShieldPF2e } from '../../item/index.ts';
@@ -15,8 +15,8 @@ import { TokenDocumentPF2e } from '../../scene/index.ts';
 import { CheckRoll } from '../../system/check/index.ts';
 import { Statistic, StatisticDifficultyClass, ArmorStatistic } from '../../system/statistic/index.ts';
 import { PerceptionStatistic } from '../../system/statistic/perception.ts';
-import { CreatureSpeeds, CreatureSystemData, LabeledSpeed, VisionLevel } from './data.ts';
-import { CreatureType, CreatureUpdateCallbackOptions, CreatureUpdateOperation, GetReachParameters, ResourceData } from './types.ts';
+import { CreatureSystemData, VisionLevel } from './data.ts';
+import { CreatureMovement, CreatureType, CreatureUpdateCallbackOptions, CreatureUpdateOperation, GetReachParameters, ResourceData } from './types.ts';
 /** An "actor" in a Pathfinder sense rather than a Foundry one: all should contain attributes and abilities */
 declare abstract class CreaturePF2e<TParent extends TokenDocumentPF2e | null = TokenDocumentPF2e | null> extends ActorPF2e<TParent> {
     /** A separate collection of owned spellcasting entries for convenience */
@@ -29,6 +29,7 @@ declare abstract class CreaturePF2e<TParent extends TokenDocumentPF2e | null = T
     /** Saving throw rolls for the creature, built during data prep */
     saves: Record<SaveType, Statistic>;
     perception: PerceptionStatistic;
+    movement: CreatureMovement<this>;
     get allowedItemTypes(): (ItemType | "physical")[];
     /** Types of creatures (as provided by bestiaries 1-3) of which this creature is a member */
     get creatureTypes(): CreatureType[];
@@ -55,7 +56,9 @@ declare abstract class CreaturePF2e<TParent extends TokenDocumentPF2e | null = T
     get heldShield(): ShieldPF2e<this> | null;
     /** Retrieve percpetion and spellcasting statistics */
     getStatistic(slug: SaveType | SkillSlug | "perception"): Statistic<this>;
-    getStatistic(slug: string): Statistic<this> | null;
+    getStatistic(slug: string, options?: {
+        item: ItemPF2e | null;
+    }): Statistic<this> | null;
     protected _initialize(options?: Record<string, unknown>): void;
     prepareData(): void;
     /** Setup base ephemeral data to be modified by active effects and derived-data preparation */
@@ -63,6 +66,7 @@ declare abstract class CreaturePF2e<TParent extends TokenDocumentPF2e | null = T
     prepareEmbeddedDocuments(): void;
     protected prepareDataFromItems(): void;
     prepareDerivedData(): void;
+    /** Extract and add custom modifiers. */
     protected prepareSynthetics(): void;
     /**
      * Changes the carry type of an item (held/worn/stowed/etc) and/or regrips/reslots
@@ -78,10 +82,9 @@ declare abstract class CreaturePF2e<TParent extends TokenDocumentPF2e | null = T
     /** Removes a custom modifier by slug */
     removeCustomModifier(stat: string, slug: string): Promise<void>;
     /**
-     * Roll a Recovery Check
-     * Prompt the user for input regarding Advantage/Disadvantage and any Situational Bonus
+     * Roll a Dying Recovery Check
      */
-    rollRecovery(event?: MouseEvent): Promise<Rolled<CheckRoll> | null>;
+    rollRecovery(event?: PointerEvent): Promise<Rolled<CheckRoll> | null>;
     /** Returns a resource by slug or by key */
     getResource(resource: string): ResourceData | null;
     /**
@@ -91,9 +94,11 @@ declare abstract class CreaturePF2e<TParent extends TokenDocumentPF2e | null = T
     updateResource(resource: string, value: number, { render }?: {
         render?: boolean;
     }): Promise<void>;
-    prepareSpeed(movementType: "land"): this["system"]["attributes"]["speed"];
-    prepareSpeed(movementType: Exclude<MovementType, "land">): (LabeledSpeed & StatisticModifier) | null;
-    prepareSpeed(movementType: MovementType): CreatureSpeeds | (LabeledSpeed & StatisticModifier) | null;
+    /**
+     * Prepare this creature's movement data
+     * @param modifiers Modifiers in addition to those extracted
+     */
+    prepareMovementData(modifiers?: Modifier[]): void;
     /** Remove any features linked to a to-be-deleted ABC item */
     deleteEmbeddedDocuments(embeddedName: "ActiveEffect" | "Item", ids: string[], operation?: Partial<DatabaseDeleteOperation<this>>): Promise<ActiveEffectPF2e<this>[] | ItemPF2e<this>[]>;
     protected _preUpdate(changed: DeepPartial<this["_source"]>, options: CreatureUpdateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;

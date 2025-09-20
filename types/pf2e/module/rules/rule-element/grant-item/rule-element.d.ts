@@ -2,10 +2,10 @@ import { ActorType } from '../../../actor/index.ts';
 import { SourceFromSchema } from "../../../../../foundry/common/data/fields.mts";
 import { ItemSourcePF2e } from '../../../item/base/data/index.ts';
 import { ItemGrantDeleteAction } from '../../../item/base/data/system.ts';
-import { RuleElementOptions, RuleElementPF2e } from '../base.ts';
+import { RuleElement, RuleElementOptions } from '../base.ts';
 import { ModelPropsFromRESchema, RuleElementSource } from '../data.ts';
 import { GrantItemSchema } from './schema.ts';
-declare class GrantItemRuleElement extends RuleElementPF2e<GrantItemSchema> {
+declare class GrantItemRuleElement extends RuleElement<GrantItemSchema> {
     #private;
     static validActorTypes: ActorType[];
     /** The id of the granted item */
@@ -21,7 +21,7 @@ declare class GrantItemRuleElement extends RuleElementPF2e<GrantItemSchema> {
     static defineSchema(): GrantItemSchema;
     static ON_DELETE_ACTIONS: readonly ["cascade", "detach", "restrict"];
     static validateJoint(data: SourceFromSchema<GrantItemSchema>): void;
-    preCreate(args: RuleElementPF2e.PreCreateParams): Promise<void>;
+    preCreate(args: RuleElement.PreCreateParams): Promise<void>;
     /** Grant an item if this rule element permits it and the predicate passes */
     preUpdateActor(): Promise<{
         create: ItemSourcePF2e[];
@@ -30,7 +30,7 @@ declare class GrantItemRuleElement extends RuleElementPF2e<GrantItemSchema> {
     /** Add an in-memory-only condition to the actor */
     onApplyActiveEffects(): void;
 }
-interface GrantItemRuleElement extends RuleElementPF2e<GrantItemSchema>, ModelPropsFromRESchema<GrantItemSchema> {
+interface GrantItemRuleElement extends RuleElement<GrantItemSchema>, ModelPropsFromRESchema<GrantItemSchema> {
 }
 interface GrantItemSource extends RuleElementSource {
     uuid?: unknown;

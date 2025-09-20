@@ -107,16 +107,16 @@ declare class SpellPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> ext
         includeGranter?: boolean;
         includeVariants?: boolean;
     }): string[];
-    toMessage(event?: Maybe<MouseEvent>, { create, data, rollMode }?: SpellToMessageOptions): Promise<ChatMessagePF2e | undefined>;
+    toMessage(event?: Maybe<PointerEvent>, { create, data, rollMode }?: SpellToMessageOptions): Promise<ChatMessagePF2e | undefined>;
     getDescriptionData(): Promise<ItemDescriptionData>;
     getChatData(this: SpellPF2e<ActorPF2e>, htmlOptions?: EnrichmentOptionsPF2e, rollOptions?: {
         castRank?: number | string;
         groupId?: SpellSlotGroupId;
     }): Promise<RawItemChatData>;
-    rollAttack(this: SpellPF2e<ActorPF2e>, event: MouseEvent, attackNumber?: number, context?: StatisticRollParameters): Promise<Rolled<CheckRoll> | null>;
-    rollDamage(this: SpellPF2e<ActorPF2e>, event: MouseEvent, mapIncreases?: ZeroToTwo): Promise<Rolled<DamageRoll> | null>;
+    rollAttack(this: SpellPF2e<ActorPF2e>, event: PointerEvent, attackNumber?: number, context?: StatisticRollParameters): Promise<Rolled<CheckRoll> | null>;
+    rollDamage(this: SpellPF2e<ActorPF2e>, event: PointerEvent, mapIncreases?: ZeroToTwo): Promise<Rolled<DamageRoll> | null>;
     /** Roll counteract check */
-    rollCounteract(event?: MouseEvent): Promise<Rolled<CheckRoll> | null>;
+    rollCounteract(event?: PointerEvent): Promise<Rolled<CheckRoll> | null>;
     getOriginData(): ItemOriginFlag;
     update(data: Record<string, unknown>, operation?: Partial<Omit<DatabaseUpdateOperation<null>, "parent" | "pack">>): Promise<this | undefined>;
     protected _preCreate(data: DeepPartial<this["_source"]>, options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;

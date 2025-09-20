@@ -2,14 +2,13 @@ import { ActorPF2e } from '../../../base.ts';
 import { CraftingAbility } from '../../crafting/ability.ts';
 import { CharacterPF2e } from '../../document.ts';
 import { ResourceData } from '../../../creature/index.ts';
-import { ApplicationConfiguration, ApplicationRenderOptions } from "../../../../../../foundry/client/applications/_types.mts";
 import { ItemUUID } from "../../../../../../foundry/common/documents/_module.mts";
 import { AbilityItemPF2e, FeatPF2e, PhysicalItemPF2e } from '../../../../item/index.ts';
 import { ItemType, TraitChatData } from '../../../../item/base/data/index.ts';
 import { Rarity } from '../../../../data.ts';
 import { SvelteApplicationRenderContext } from '../../../../sheet/mixin.svelte.ts';
 import { default as MiniSearch } from 'minisearch';
-interface FormulaPickerConfiguration extends ApplicationConfiguration {
+interface FormulaPickerConfiguration extends fa.ApplicationConfiguration {
     actor: CharacterPF2e;
     ability: CraftingAbility;
     item?: FeatPF2e | AbilityItemPF2e;
@@ -39,7 +38,7 @@ declare class FormulaPicker extends FormulaPicker_base {
     constructor(options: Partial<FormulaPickerConfiguration>);
     get title(): string;
     /** Overriden to re-render when the actor re-renders */
-    _onFirstRender(context: object, options: ApplicationRenderOptions): void;
+    protected _onFirstRender(context: fa.ApplicationRenderContext, options: fa.ApplicationRenderOptions): Promise<void>;
     protected _onClose(options: fa.ApplicationClosingOptions): void;
     resolveSelection(): Promise<PhysicalItemPF2e | null>;
     protected _prepareContext(): Promise<FormulaPickerContext>;

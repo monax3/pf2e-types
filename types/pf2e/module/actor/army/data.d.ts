@@ -81,7 +81,7 @@ type ArmyDetailsSchema = {
     level: fields.SchemaField<{
         value: fields.NumberField<number, number, true, false, true>;
     }>;
-    description: fields.StringField<string, string, true, false, true>;
+    description: fields.HTMLField;
 };
 type ArmyTraitsSchema = {
     value: fields.ArrayField<fields.StringField<string, string, true, false>>;

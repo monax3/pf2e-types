@@ -14,7 +14,7 @@ interface LootSystemData extends ActorSystemModel<LootPF2e, LootSystemSchema>, f
 }
 type LootSystemSchema = ActorSystemSchema & {
     details: fields.SchemaField<{
-        description: fields.HTMLField<string, string, true, false, true>;
+        description: fields.HTMLField;
         level: fields.SchemaField<{
             value: fields.NumberField<number, number, true, false, true>;
         }>;
@@ -38,4 +38,4 @@ interface LootAttributes {
     flanking: FlankingData;
 }
 export { LootSystemData };
-export type { LootSource, LootSystemSource };
+export type { LootSource, LootSystemSchema, LootSystemSource };

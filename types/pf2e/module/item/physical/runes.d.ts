@@ -1,5 +1,5 @@
 import { CreatureTrait } from '../../actor/creature/index.ts';
-import { DamageDicePF2e, DamageDiceParameters, ModifierAdjustment, ModifierObjectParams, ModifierPF2e } from '../../actor/modifiers.ts';
+import { DamageDicePF2e, DamageDiceParameters, Modifier, ModifierAdjustment, ModifierObjectParams } from '../../actor/modifiers.ts';
 import { ResistanceType } from '../../actor/types.ts';
 import { ArmorPF2e, MeleePF2e, PhysicalItemPF2e, WeaponPF2e } from '../index.ts';
 import { ArmorPropertyRuneType, ResilientRuneType } from '../armor/types.ts';
@@ -14,7 +14,7 @@ declare function getPropertyRuneSlots(item: WeaponPF2e | ArmorPF2e): ZeroToFour;
 declare function prunePropertyRunes<T extends string>(runes: (string | null)[], validTypes: Record<T, unknown>): T[];
 declare function getRuneValuationData(item: PhysicalItemPF2e): RuneData[];
 declare function getPropertyRuneDegreeAdjustments(item: WeaponPF2e): DegreeOfSuccessAdjustment[];
-declare function getPropertyRuneDamage(weapon: WeaponPF2e | MeleePF2e, runes: WeaponPropertyRuneType[], options: Set<string>): (DamageDicePF2e | ModifierPF2e)[];
+declare function getPropertyRuneDamage(weapon: WeaponPF2e | MeleePF2e, runes: WeaponPropertyRuneType[], options: Set<string>): (DamageDicePF2e | Modifier)[];
 declare function getPropertyRuneStrikeAdjustments(runes: WeaponPropertyRuneType[]): StrikeAdjustment[];
 declare function getPropertyRuneModifierAdjustments(runes: WeaponPropertyRuneType[]): ModifierAdjustment[];
 type RuneDiceProperty = "slug" | "damageType" | "category" | "predicate" | "critical";
@@ -91,7 +91,6 @@ declare const RUNE_DATA: {
             shadow: ArmorPropertyRuneData<"shadow">;
             ethereal: ArmorPropertyRuneData<"ethereal">;
             portable: ArmorPropertyRuneData<"portable">;
-            ready: ArmorPropertyRuneData<"ready">;
             acidResistant: ArmorPropertyRuneData<"acidResistant">;
             advancing: ArmorPropertyRuneData<"advancing">;
             aimAiding: ArmorPropertyRuneData<"aimAiding">;
@@ -136,6 +135,7 @@ declare const RUNE_DATA: {
             moderateDread: ArmorPropertyRuneData<"moderateDread">;
             quenching: ArmorPropertyRuneData<"quenching">;
             raiment: ArmorPropertyRuneData<"raiment">;
+            ready: ArmorPropertyRuneData<"ready">;
             rockBraced: ArmorPropertyRuneData<"rockBraced">;
             sinisterKnight: ArmorPropertyRuneData<"sinisterKnight">;
             sizeChanging: ArmorPropertyRuneData<"sizeChanging">;

@@ -2,14 +2,14 @@ import { StringField } from "../../../../foundry/common/data/fields.mts";
 import { UserVisibility } from '../../../scripts/ui/user-visibility.ts';
 import { DegreeOfSuccessString } from '../../system/degree-of-success.ts';
 import { DataUnionField, StrictStringField } from '../../system/schema-data-fields.ts';
-import { RuleElementPF2e } from './base.ts';
+import { RuleElement } from './base.ts';
 import { ModelPropsFromRESchema, ResolvableValueField, RuleElementSchema, RuleElementSource } from './data.ts';
 import fields = foundry.data.fields;
-declare class RollNoteRuleElement extends RuleElementPF2e<RollNoteSchema> {
+declare class RollNoteRuleElement extends RuleElement<RollNoteSchema> {
     static defineSchema(): RollNoteSchema;
     beforePrepareData(): void;
 }
-interface RollNoteRuleElement extends RuleElementPF2e<RollNoteSchema>, ModelPropsFromRESchema<RollNoteSchema> {
+interface RollNoteRuleElement extends RuleElement<RollNoteSchema>, ModelPropsFromRESchema<RollNoteSchema> {
 }
 type RollNoteSchema = RuleElementSchema & {
     /** The statistic(s) slugs of the rolls for which this note will be appended */
@@ -22,6 +22,8 @@ type RollNoteSchema = RuleElementSchema & {
     outcome: fields.ArrayField<StringField<DegreeOfSuccessString, DegreeOfSuccessString, true, false, false>, DegreeOfSuccessString[], DegreeOfSuccessString[], false, false, false>;
     /** The main text of the note */
     text: DataUnionField<StrictStringField<string, string, true, false, false> | ResolvableValueField<true, false, false>>;
+    /** Whether this rule element is for use with battle forms */
+    battleForm: fields.BooleanField<boolean, boolean, false, false, true>;
 };
 interface NoteRESource extends RuleElementSource {
     selector?: unknown;

@@ -8,7 +8,7 @@ import { ActorSheetOptions } from "../../../../../foundry/client/appv1/sheets/ac
 import { DropCanvasData } from "../../../../../foundry/client/helpers/hooks.mts";
 import { ItemPF2e, CampaignFeaturePF2e } from '../../../item/index.ts';
 import { ItemSourcePF2e } from '../../../item/base/data/index.ts';
-import { DropCanvasItemDataPF2e } from '../../../canvas/drop-canvas-data.ts';
+import { DropCanvasItemData } from '../../../canvas/drop-canvas-data.ts';
 import { ValueAndMax } from '../../../data.ts';
 import { AdjustedValue, SheetOption, SheetOptions } from '../../../sheet/helpers.ts';
 import { Statistic } from '../../../system/statistic/index.ts';
@@ -35,7 +35,7 @@ declare class KingdomSheetPF2e extends ActorSheetPF2e<PartyPF2e> {
     protected filterActions(trait: string | null, options?: {
         instant?: boolean;
     }): void;
-    protected _onDropItem(event: DragEvent, data: DropCanvasItemDataPF2e): Promise<ItemPF2e[]>;
+    protected _onDropItem(event: DragEvent, data: DropCanvasItemData): Promise<ItemPF2e[]>;
     /** Handle a drop event for an existing Owned Item to sort that item */
     protected _onSortItem(event: DragEvent, itemData: ItemSourcePF2e): Promise<ItemPF2e[]>;
     protected _onDropActor(event: DragEvent, data: DropCanvasData<"Actor", PartyPF2e>): Promise<false | void>;

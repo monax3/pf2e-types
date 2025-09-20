@@ -1,5 +1,5 @@
 import { ActorPF2e } from '../../actor/index.ts';
-import { DamageDicePF2e, ModifierPF2e } from '../../actor/modifiers.ts';
+import { DamageDicePF2e, Modifier } from '../../actor/modifiers.ts';
 import { MeleePF2e, WeaponPF2e } from '../../item/index.ts';
 import { NPCAttackDamage } from '../../item/melee/data.ts';
 import { WeaponDamage } from '../../item/weapon/data.ts';
@@ -20,7 +20,7 @@ interface WeaponDamageCalculateParams {
     actor: ActorPF2e;
     weaponPotency?: number;
     damageDice?: DamageDicePF2e[];
-    modifiers?: ModifierPF2e[];
+    modifiers?: Modifier[];
     context: DamageDamageContext;
 }
 interface NPCStrikeCalculateParams {

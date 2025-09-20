@@ -1,6 +1,6 @@
 import { ActorPF2e } from '../../actor/index.ts';
 import { StrikeData } from '../../actor/data/base.ts';
-import { ModifierPF2e } from '../../actor/modifiers.ts';
+import { Modifier } from '../../actor/modifiers.ts';
 import { DCSlug } from '../../actor/types.ts';
 import { Rolled } from "../../../../foundry/client/dice/_module.mts";
 import { ItemPF2e } from '../../item/index.ts';
@@ -29,7 +29,7 @@ interface CheckContextOptions<TItem extends ItemPF2e<ActorPF2e>> {
 }
 interface CheckContextData<TItem extends ItemPF2e<ActorPF2e>> {
     item?: TItem;
-    modifiers?: ModifierPF2e[];
+    modifiers?: Modifier[];
     rollOptions: string[];
     slug: string;
     target?: ActorPF2e | null;
@@ -37,7 +37,7 @@ interface CheckContextData<TItem extends ItemPF2e<ActorPF2e>> {
 interface CheckMacroContext<TItem extends ItemPF2e<ActorPF2e>> {
     type: CheckType;
     item?: TItem;
-    modifiers?: ModifierPF2e[];
+    modifiers?: Modifier[];
     rollOptions: string[];
     slug: string;
     statistic: Statistic | (StrikeData & {
@@ -80,7 +80,7 @@ interface ActionDefaultOptions {
     event?: Event | null;
     actors?: ActorPF2e | ActorPF2e[];
     glyph?: ActionGlyph;
-    modifiers?: ModifierPF2e[];
+    modifiers?: Modifier[];
     callback?: (result: CheckResultCallback) => void;
 }
 interface SkillActionOptions extends ActionDefaultOptions {

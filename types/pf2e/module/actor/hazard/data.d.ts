@@ -77,7 +77,7 @@ type HazardAttributesSchema = {
 };
 type HazardAttributesSource = fields.SourceFromSchema<HazardAttributesSchema>;
 type HazardDetailsSchema = {
-    description: fields.StringField<string, string, true, false, true>;
+    description: fields.HTMLField;
     level: fields.SchemaField<{
         value: fields.NumberField<number, number, true, false, true>;
     }>;

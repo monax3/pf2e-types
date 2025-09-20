@@ -1271,7 +1271,7 @@
 - [x] foundry.utils.debounce
 - [ ] foundry.utils.debouncedReload
 - [x] foundry.utils.deepClone
-- [ ] foundry.utils.deepFreeze
+- [x] foundry.utils.deepFreeze
 - [ ] foundry.utils.deepSeal
 - [ ] foundry.utils.deleteProperty
 - [x] foundry.utils.diffObject

@@ -3,11 +3,11 @@ import { IWRType } from '../../../actor/types.ts';
 import { Predicate } from '../../../system/predication.ts';
 import { DataUnionField, PredicateField, StrictArrayField, StrictStringField } from '../../../system/schema-data-fields.ts';
 import { AELikeChangeMode } from '../ae-like.ts';
-import { RuleElementPF2e } from '../base.ts';
+import { RuleElement } from '../base.ts';
 import { ModelPropsFromRESchema, RuleElementSchema, RuleElementSource, RuleValue } from '../data.ts';
 import fields = foundry.data.fields;
 /** @category RuleElement */
-declare abstract class IWRRuleElement<TSchema extends IWRRuleSchema> extends RuleElementPF2e<TSchema> {
+declare abstract class IWRRuleElement<TSchema extends IWRRuleSchema> extends RuleElement<TSchema> {
     #private;
     abstract value: RuleValue | null;
     static get dictionary(): Record<string, string | undefined>;
@@ -19,7 +19,7 @@ declare abstract class IWRRuleElement<TSchema extends IWRRuleSchema> extends Rul
     abstract getIWR(value?: number): Immunity[] | Weakness[] | Resistance[];
     afterPrepareData(): void;
 }
-interface IWRRuleElement<TSchema extends IWRRuleSchema> extends RuleElementPF2e<TSchema>, ModelPropsFromRESchema<IWRRuleSchema> {
+interface IWRRuleElement<TSchema extends IWRRuleSchema> extends RuleElement<TSchema>, ModelPropsFromRESchema<IWRRuleSchema> {
     constructor: typeof IWRRuleElement<TSchema>;
 }
 type IWRRuleSchema = RuleElementSchema & {

@@ -17,7 +17,6 @@ import {
     TokenDocument,
     TokenGetCompleteMovementPathWaypoint,
     TokenMeasuredMovementWaypoint,
-    TokenMovementCostFunction,
     TokenMovementSegmentData,
     TokenMovementWaypoint,
 } from "./documents/_module.mjs";
@@ -71,58 +70,6 @@ export interface RulerWaypoint {
      * The next waypoint, if any.
      */
     next: RulerWaypoint | null;
-}
-
-export interface TokenMeasureMovementPathWaypoint {
-    /** The top-left x-coordinate in pixels (integer). Default: the previous or source x-coordinate. */
-    x?: number;
-
-    /**
-     * The top-left y-coordinate in pixels (integer).
-     *                                  Default: the previous or source y-coordinate.
-     */
-    y?: number;
-    /**
-     * The elevation in grid units.
-     *                          Default: the previous or source elevation.
-     */
-    elevation?: number;
-    /**
-     * The width in grid spaces (positive).
-     *                              Default: the previous or source width.
-     */
-    width?: number;
-    /**
-     * The height in grid spaces (positive).
-     *                             Default: the previous or source height.
-     */
-    height?: number;
-    /**
-     * The shape type (see {@link CONST.TOKEN_SHAPES}).
-     *                        Default: the previous or source shape.
-     */
-    shape?: TokenShape;
-    /**
-     * The movement action from the previous to this waypoint.
-     *                             Default: `CONFIG.Token.movement.defaultAction`.
-     */
-    action?: string;
-    /**
-     * Teleport from the previous to this waypoint? Default: `false`.
-     */
-    teleport?: boolean;
-    /**
-     * Is the movement from the previous to this waypoint forced?
-     *                      Default: `false`.
-     */
-    forced?: boolean;
-    /**
-     * The terrain data of this segment. Default: `null`.
-     */
-    terrain?: DataModel | null;
-
-    /** A predetermined cost (nonnegative) or cost function to be used instead of `options.cost`. */
-    cost?: number | TokenMovementCostFunction;
 }
 
 export interface TokenFindMovementPathWaypoint {
@@ -515,6 +462,14 @@ export interface TokenPlannedMovement {
 
 export interface TokenRulerWaypointData {
     /**
+     * The config of the movement action
+     */
+    actionConfig: TokenMovementActionConfig;
+    /**
+     * The ID of movement, or null if planned movement.
+     */
+    movementId: string | null;
+    /**
      * The index of the waypoint, which is equal to the number of
      * explicit waypoints from the first to this waypoint.
      */
@@ -538,10 +493,7 @@ export interface TokenRulerWaypointData {
     /**
      * The size of the Token in pixels at this waypoint.
      */
-    size: {
-        width: number;
-        height: number;
-    };
+    size: { width: number; height: number };
     /**
      * The ray from the center point of previous to the center
      * point of this waypoint, or null if there is no previous
@@ -562,7 +514,7 @@ export interface TokenRulerWaypointData {
     next: TokenRulerWaypoint | null;
 }
 
-export interface TokenRulerWaypoint extends TokenMeasuredMovementWaypoint, TokenRulerWaypointData {}
+export interface TokenRulerWaypoint extends Omit<TokenMeasuredMovementWaypoint, "movementId">, TokenRulerWaypointData {}
 
 export interface TokenDragContext {
     token: Token;
@@ -736,6 +688,9 @@ export interface TokenMovementActionConfig {
 
     /** The icon of the movement action. */
     icon: string;
+
+    /** An image filename. Takes precedence over the icon if both are supplied. */
+    img: string | null;
 
     /**
      * The number that is used to sort the movement actions / movement action configs.

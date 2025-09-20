@@ -1,9 +1,9 @@
 import { DamageDiceOverride } from '../../actor/modifiers.ts';
 import { SlugField } from '../../system/schema-data-fields.ts';
-import { RuleElementOptions, RuleElementPF2e } from './base.ts';
+import { RuleElement, RuleElementOptions } from './base.ts';
 import { ModelPropsFromRESchema, ResolvableValueField, RuleElementSchema, RuleElementSource } from './data.ts';
 import fields = foundry.data.fields;
-declare class DamageDiceRuleElement extends RuleElementPF2e<DamageDiceRuleSchema> {
+declare class DamageDiceRuleElement extends RuleElement<DamageDiceRuleSchema> {
     #private;
     constructor(data: DamageDiceSource, options: RuleElementOptions);
     static defineSchema(): DamageDiceRuleSchema;
@@ -22,7 +22,7 @@ interface DamageDiceSource extends RuleElementSource {
     damageCategory?: JSONValue;
     hideIfDisabled?: JSONValue;
 }
-interface DamageDiceRuleElement extends RuleElementPF2e<DamageDiceRuleSchema>, ModelPropsFromRESchema<DamageDiceRuleSchema> {
+interface DamageDiceRuleElement extends RuleElement<DamageDiceRuleSchema>, ModelPropsFromRESchema<DamageDiceRuleSchema> {
 }
 type DamageDiceRuleSchema = RuleElementSchema & {
     /** All domains to add a modifier to */
@@ -51,5 +51,7 @@ type DamageDiceRuleSchema = RuleElementSchema & {
     override: fields.ObjectField<DamageDiceOverride, DamageDiceOverride, false, true, false>;
     /** Hide this dice change from breakdown tooltips if it is disabled */
     hideIfDisabled: fields.BooleanField<boolean, boolean, false, false, true>;
+    /** Whether this rule element is for use with battle forms */
+    battleForm: fields.BooleanField;
 };
 export { DamageDiceRuleElement };

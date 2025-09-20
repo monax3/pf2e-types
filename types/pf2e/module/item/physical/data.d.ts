@@ -3,9 +3,9 @@ import { ImageFilePath } from "../../../../foundry/common/constants.mts";
 import { PhysicalItemSource } from '../base/data/index.ts';
 import { Size, TraitsWithRarity, ZeroToTwo } from '../../data.ts';
 import { MaterialDamageEffect } from '../../system/damage/types.ts';
-import { BaseItemSourcePF2e, ItemSystemData, ItemSystemSource } from '../base/data/system.ts';
+import { BaseItemSourcePF2e, ItemSystemData, ItemSystemSource, TraitConfig } from '../base/data/system.ts';
 import { ITEM_CARRY_TYPES } from '../base/data/values.ts';
-import { CoinsPF2e } from './helpers.ts';
+import { Coins } from './helpers.ts';
 import { PhysicalItemTrait, PhysicalItemType, PreciousMaterialGrade, PreciousMaterialType } from './types.ts';
 import { UsageDetails } from './usage.ts';
 type ItemCarryType = (typeof ITEM_CARRY_TYPES)[number];
@@ -105,6 +105,7 @@ type EquippedData = {
 };
 interface PhysicalItemTraits<T extends PhysicalItemTrait> extends TraitsWithRarity<T> {
     otherTags: string[];
+    config?: TraitConfig;
 }
 interface PhysicalItemHPSource {
     value: number;
@@ -113,19 +114,19 @@ interface PhysicalItemHPSource {
 interface PhysicalItemHitPoints extends PhysicalItemHPSource {
     brokenThreshold: number;
 }
-type Coins = {
+type RawCoins = {
     pp?: number;
     gp?: number;
     sp?: number;
     cp?: number;
 };
 interface PartialPrice {
-    value: Coins;
+    value: RawCoins;
     per?: number;
     /** Whether the price adjusts according to its size */
     sizeSensitive?: boolean;
 }
 interface Price extends Required<PartialPrice> {
-    value: CoinsPF2e;
+    value: Coins;
 }
-export type { BasePhysicalItemSource, BulkData, Coins, EquippedData, IdentificationData, IdentificationStatus, IdentifiedData, Investable, ItemCarryType, ItemMaterialData, ItemMaterialSource, MystifiedData, PartialPrice, PhysicalItemHitPoints, PhysicalItemHPSource, PhysicalItemTrait, PhysicalItemTraits, PhysicalSystemData, PhysicalSystemSource, Price, };
+export type { BasePhysicalItemSource, BulkData, EquippedData, IdentificationData, IdentificationStatus, IdentifiedData, Investable, ItemCarryType, ItemMaterialData, ItemMaterialSource, MystifiedData, PartialPrice, PhysicalItemHitPoints, PhysicalItemHPSource, PhysicalItemTrait, PhysicalItemTraits, PhysicalSystemData, PhysicalSystemSource, Price, RawCoins, };

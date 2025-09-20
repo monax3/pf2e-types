@@ -1,6 +1,7 @@
 import { AbilityTrait, ActionCategory } from '../../item/ability/index.ts';
 import { ActionType } from '../../item/base/data/index.ts';
 import { BaseSpellcastingEntry } from '../../item/spellcasting-entry/index.ts';
+import { SvelteApplicationRenderContext } from '../../sheet/mixin.svelte.ts';
 import { BrowserTab, BrowserTabs, ContentTabName, PackInfo, SourceInfo, TabData, TabName } from './data.ts';
 import { PackLoader } from './loader.ts';
 import { BrowserFilter } from './tabs/data.ts';
@@ -19,7 +20,7 @@ declare class CompendiumBrowser extends CompendiumBrowser_base {
     tabsArray: BrowserTab[];
     constructor(options?: Partial<fa.ApplicationConfiguration>);
     static DEFAULT_OPTIONS: DeepPartial<fa.ApplicationConfiguration>;
-    protected _onFirstRender(context: object, options: fa.ApplicationRenderOptions): void;
+    protected _onFirstRender(context: fa.ApplicationRenderContext, options: fa.ApplicationRenderOptions): Promise<void>;
     protected _onClose(options: fa.ApplicationClosingOptions): void;
     protected _getHeaderControls(): fa.ApplicationHeaderControlsEntry[];
     protected _prepareContext(_options: fa.ApplicationRenderOptions): Promise<CompendiumBrowserContext>;
@@ -36,7 +37,7 @@ declare class CompendiumBrowser extends CompendiumBrowser_base {
     loadedPacksAll(): string[];
     resetInitializedTabs(): Promise<void>;
 }
-interface CompendiumBrowserContext {
+interface CompendiumBrowserContext extends SvelteApplicationRenderContext {
     state: CompendiumBrowserState;
 }
 interface CompendiumBrowserState {

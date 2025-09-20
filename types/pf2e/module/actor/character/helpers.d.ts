@@ -1,6 +1,6 @@
 import { ActorPF2e, CharacterPF2e } from '../index.ts';
 import { AttackTraitHelpers } from '../creature/helpers.ts';
-import { ModifierPF2e } from '../modifiers.ts';
+import { Modifier } from '../modifiers.ts';
 import { AbilityItemPF2e, ArmorPF2e, WeaponPF2e } from '../../item/index.ts';
 import { ItemCarryType } from '../../item/physical/index.ts';
 import { ZeroToFour, ZeroToThree, ZeroToTwo } from '../../data.ts';
@@ -8,7 +8,7 @@ import { SheetOptions } from '../../sheet/helpers.ts';
 /** Handle weapon traits that introduce modifiers or add other weapon traits */
 declare class PCAttackTraitHelpers extends AttackTraitHelpers {
     static adjustWeapon(weapon: WeaponPF2e): void;
-    static createAttackModifiers({ item, domains }: CreateAttackModifiersParams): ModifierPF2e[];
+    static createAttackModifiers({ item, domains }: CreateAttackModifiersParams): Modifier[];
 }
 interface AuxiliaryInteractParams {
     weapon: WeaponPF2e<CharacterPF2e>;
@@ -69,19 +69,19 @@ interface CreateAttackModifiersParams {
 /** Get the proficiency rank of of a weapon or armor for a PC. */
 declare function getItemProficiencyRank(actor: CharacterPF2e, item: ArmorPF2e | WeaponPF2e, itemOptions?: Set<string>): ZeroToFour;
 /** Create a penalty for attempting to Force Open without a crowbar or equivalent tool */
-declare function createForceOpenPenalty(actor: CharacterPF2e, domains: string[]): ModifierPF2e;
-declare function createShoddyPenalty(actor: ActorPF2e, item: WeaponPF2e | ArmorPF2e | null, domains: string[]): ModifierPF2e | null;
+declare function createForceOpenPenalty(actor: CharacterPF2e, domains: string[]): Modifier;
+declare function createShoddyPenalty(actor: ActorPF2e, item: WeaponPF2e | ArmorPF2e | null, domains: string[]): Modifier | null;
 /**
  * Create a penalty for wearing armor with the "ponderous" trait
  * "You take a –5 penalty to all your Speeds (to a minimum of a 5-foot Speed). This is separate from and in addition to
  * the armor's Speed penalty, and affects you even if your Strength or an ability lets you reduce or ignore the armor's
  * Speed penalty."
  */
-declare function createHinderingPenalty(actor: CharacterPF2e): ModifierPF2e | null;
+declare function createHinderingPenalty(actor: CharacterPF2e): Modifier | null;
 /**
  * Create a penalty for wearing armor with the "ponderous" trait
  * "While wearing the armor, you take a –1 penalty to initiative checks. If you don't meet the armor's required Strength
  * score, this penalty increases to be equal to the armor's check penalty if it's worse."
  */
-declare function createPonderousPenalty(actor: CharacterPF2e): ModifierPF2e | null;
+declare function createPonderousPenalty(actor: CharacterPF2e): Modifier | null;
 export { PCAttackTraitHelpers, WeaponAuxiliaryAction, createForceOpenPenalty, createHinderingPenalty, createPonderousPenalty, createShoddyPenalty, getItemProficiencyRank, imposeOversizedWeaponCondition, };

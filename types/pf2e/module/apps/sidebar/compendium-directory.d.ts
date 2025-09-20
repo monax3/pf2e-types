@@ -9,7 +9,6 @@ declare class CompendiumDirectoryPF2e extends fa.sidebar.tabs.CompendiumDirector
     static readonly STOP_WORDS: Set<string>;
     /** Include ability to search and drag document search results */
     static DEFAULT_OPTIONS: DeepPartial<ApplicationConfiguration>;
-    matchDragDrop: fa.ux.DragDrop;
     static PARTS: {
         match: {
             template: string;

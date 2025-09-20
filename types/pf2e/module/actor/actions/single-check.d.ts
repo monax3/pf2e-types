@@ -1,5 +1,5 @@
 import { ActorPF2e } from '../index.ts';
-import { ModifierPF2e, RawModifier } from '../modifiers.ts';
+import { Modifier, RawModifier } from '../modifiers.ts';
 import { DCSlug } from '../types.ts';
 import { ItemPF2e } from '../../item/index.ts';
 import { RollNoteSource } from '../../notes.ts';
@@ -37,7 +37,7 @@ interface ActionCheckPreview {
 }
 interface SingleCheckActionUseOptions extends ActionUseOptions {
     difficultyClass: CheckDC | DCSlug | number;
-    modifiers: ModifierPF2e[];
+    modifiers: Modifier[];
     multipleAttackPenalty: number;
     notes: SingleCheckActionRollNoteData[];
     rollOptions: string[];

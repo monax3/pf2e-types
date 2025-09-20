@@ -1,6 +1,6 @@
 import { ActorPF2e, CreaturePF2e } from '../../actor/index.ts';
 import { TraitViewData } from '../../actor/data/base.ts';
-import { ModifierPF2e } from '../../actor/modifiers.ts';
+import { Modifier } from '../../actor/modifiers.ts';
 import { AttributeString } from '../../actor/types.ts';
 import { Rolled } from "../../../../foundry/client/dice/_module.mts";
 import { RollMode } from "../../../../foundry/common/constants.mts";
@@ -27,7 +27,7 @@ declare class Statistic<TActor extends ActorPF2e = ActorPF2e> extends BaseStatis
     config: RollOptionConfig;
     constructor(actor: TActor, data: StatisticData, config?: RollOptionConfig);
     /** Get the attribute modifier used with this statistic. Since NPC statistics are contrived, create a new one. */
-    get attributeModifier(): ModifierPF2e | null;
+    get attributeModifier(): Modifier | null;
     get check(): StatisticCheck<this>;
     get dc(): StatisticDifficultyClass<this>;
     /** Convenience getter to the statistic's total modifier */
@@ -41,7 +41,7 @@ declare class Statistic<TActor extends ActorPF2e = ActorPF2e> extends BaseStatis
     clone(data: Omit<DeepPartial<StatisticData>, "check" | "dc" | "modifiers"> & {
         dc?: Partial<StatisticDifficultyClassData>;
         check?: Partial<StatisticCheckData>;
-        modifiers?: ModifierPF2e[];
+        modifiers?: Modifier[];
     }): this;
     /**
      * Extend this statistic into a new cloned statistic with additional data.
@@ -50,7 +50,7 @@ declare class Statistic<TActor extends ActorPF2e = ActorPF2e> extends BaseStatis
     extend(data: Omit<DeepPartial<StatisticData>, "check" | "dc" | "modifiers"> & {
         dc?: Partial<StatisticDifficultyClassData>;
         check?: Partial<StatisticCheckData>;
-        modifiers?: ModifierPF2e[];
+        modifiers?: Modifier[];
     }): this;
     /** Shortcut to `this#check#roll` */
     roll(args?: StatisticRollParameters): Promise<Rolled<CheckRoll> | null>;
@@ -71,7 +71,7 @@ declare class StatisticCheck<TParent extends Statistic = Statistic> {
     label: string;
     domains: string[];
     mod: number;
-    modifiers: ModifierPF2e[];
+    modifiers: Modifier[];
     constructor(parent: TParent, data: StatisticData, config?: RollOptionConfig);
     get actor(): ActorPF2e;
     createRollOptions(args?: RollOptionConfig): Set<string>;
@@ -104,7 +104,7 @@ interface StatisticRollParameters {
     /** Any additional options that should be used in the roll. */
     extraRollOptions?: string[];
     /** Additional modifiers */
-    modifiers?: ModifierPF2e[];
+    modifiers?: Modifier[];
     /** The originating item of this attack, if any */
     item?: ItemPF2e<ActorPF2e> | null;
     /** The roll mode (i.e., 'roll', 'blindroll', etc) to use when rendering this roll. */
@@ -128,7 +128,7 @@ declare class StatisticDifficultyClass<TParent extends Statistic = Statistic> {
     parent: TParent;
     domains: string[];
     label?: string;
-    modifiers: ModifierPF2e[];
+    modifiers: Modifier[];
     options: Set<string>;
     constructor(parent: TParent, data: StatisticData, options?: RollOptionConfig);
     get value(): number;

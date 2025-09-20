@@ -47,7 +47,7 @@ declare function eventToRollParams(event: Maybe<Event>, rollType: {
 /** Set roll mode from a user's input: used for messages that are not actually rolls. */
 declare function eventToRollMode(event: Maybe<Event>): RollMode | "roll";
 /** Returns true if the control key is held down, handling mac */
-declare function isControlDown(event: MouseEvent | KeyboardEvent | TouchEvent): boolean;
+declare function isControlDown(event: PointerEvent | KeyboardEvent | TouchEvent | WheelEvent): boolean;
 /** Given a uuid, loads the item and sends it to chat, potentially recontextualizing it with a given actor */
 declare function sendItemToChat(itemUuid: ItemUUID, options: {
     event?: Event;

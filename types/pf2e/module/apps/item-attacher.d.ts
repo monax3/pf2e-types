@@ -1,20 +1,29 @@
-import { PhysicalItemPF2e } from '../item/index.ts';
-import { PickAThingPrompt, PickableThing, PromptTemplateData } from './pick-a-thing-prompt.ts';
+import { ApplicationRenderContext } from "../../../foundry/client/applications/_module.mjs";
+import { ItemPF2e, PhysicalItemPF2e } from '../item/index.ts';
+import { UserPF2e } from '../user/document.ts';
+declare const ItemAttacher_base: AbstractMixin<typeof fa.api.ApplicationV2, fa.api.HandlebarsApplication, typeof fa.api.HandlebarsApplication & typeof fa.api.ApplicationV2>;
 /** A prompt for the user to select an item to receive an attachment */
-declare class ItemAttacher<TItem extends PhysicalItemPF2e> extends PickAThingPrompt<TItem, PhysicalItemPF2e> {
+declare class ItemAttacher extends ItemAttacher_base {
     #private;
+    constructor({ item }: {
+        item: PhysicalItemPF2e;
+    });
     static DEFAULT_OPTIONS: DeepPartial<fa.ApplicationConfiguration>;
     static PARTS: Record<string, fa.api.HandlebarsTemplatePart>;
-    constructor({ item }: {
-        item: TItem;
-    });
+    item: PhysicalItemPF2e;
+    choices: PhysicalItemPF2e[];
     get title(): string;
-    protected getSelection(event: MouseEvent): PickableThing<PhysicalItemPF2e> | null;
-    resolveSelection(): Promise<PickableThing<PhysicalItemPF2e> | null>;
+    protected _canRender(options: fa.ApplicationRenderOptions): boolean | void;
     _prepareContext(): Promise<ItemAttacherContext>;
-    protected _onRender(context: object, options: fa.ApplicationRenderOptions): Promise<void>;
 }
-interface ItemAttacherContext extends PromptTemplateData {
+interface ItemAttacherContext extends ApplicationRenderContext {
+    choices: {
+        label: string;
+        value: number;
+    }[];
+    /** An item pertinent to the selection being made */
+    item: ItemPF2e;
+    user: UserPF2e;
     requiresCrafting: boolean;
 }
 export { ItemAttacher };

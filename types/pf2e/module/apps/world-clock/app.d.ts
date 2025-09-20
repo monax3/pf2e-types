@@ -1,7 +1,7 @@
 import { HandlebarsRenderOptions, HandlebarsTemplatePart } from "../../../../foundry/client/applications/api/handlebars-application.mts";
 import { DateTime } from 'luxon';
 import { animateDarkness } from './animate-darkness.ts';
-interface WorldClockData {
+interface WorldClockRenderContext extends fa.ApplicationRenderContext {
     date: string;
     time: string;
     options?: object;
@@ -33,10 +33,10 @@ export declare class WorldClock extends WorldClock_base {
     get month(): string;
     /** The day of the week in the game */
     get weekday(): string;
-    protected _prepareContext(options: HandlebarsRenderOptions): Promise<WorldClockData>;
+    protected _prepareContext(options: HandlebarsRenderOptions): Promise<WorldClockRenderContext>;
     protected _getHeaderControls(): fa.ApplicationHeaderControlsEntry[];
     /** Advance the world time by a static or input value */
-    protected _onRender(context: WorldClockData, options: HandlebarsRenderOptions): Promise<void>;
+    protected _onRender(context: WorldClockRenderContext, options: HandlebarsRenderOptions): Promise<void>;
     protected _onClose(options: fa.ApplicationClosingOptions): Promise<void>;
     /** Create a message informing the user that scene darkness is synced to world time */
     static createSyncedMessage(): HTMLSpanElement;

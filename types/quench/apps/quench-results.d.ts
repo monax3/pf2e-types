@@ -2,6 +2,7 @@ import type { Quench } from "../quench.js";
 import { MissingSnapshotError } from "../utils/quench-snapshot-error.js";
 import ApplicationV2 = foundry.applications.api.ApplicationV2;
 import HandlebarsApplicationMixin = foundry.applications.api.HandlebarsApplicationMixin;
+import ApplicationRenderContext = foundry.applications.ApplicationRenderContext;
 // declare const QuenchResults_base: import("fvtt-types/utils").Mixin<typeof HandlebarsApplicationMixin.HandlebarsApplication, typeof ApplicationV2>;
 /**
  * The visual UI for representing Quench test batches and the tests results thereof.
@@ -166,7 +167,7 @@ export declare class QuenchResults extends HandlebarsApplicationMixin(Applicatio
      */
     handleRunEnd(stats: Mocha.Stats): void;
 }
-interface QuenchResultData {
+interface QuenchResultData extends ApplicationRenderContext {
     anyBatches: boolean;
     batches: {
         name: string;

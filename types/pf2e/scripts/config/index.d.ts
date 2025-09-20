@@ -1281,6 +1281,9 @@ export declare const PF2ECONFIG: {
         plant: string;
         ponderous: string;
         relic: string;
+        "resilient-1": string;
+        "resilient-2": string;
+        "resilient-3": string;
         tech: string;
         arcane: string;
         divine: string;
@@ -4407,43 +4410,43 @@ export declare const PF2ECONFIG: {
     weaponImprovements: {
         commercial: {
             level: number;
-            tracking: number;
+            tracking: 0;
             dice: number;
             credits: number;
         };
         tactical: {
             level: number;
-            tracking: number;
+            tracking: 1;
             dice: number;
             credits: number;
         };
         advanced: {
             level: number;
-            tracking: number;
+            tracking: 1;
             dice: number;
             credits: number;
         };
         superior: {
             level: number;
-            tracking: number;
+            tracking: 2;
             dice: number;
             credits: number;
         };
         elite: {
             level: number;
-            tracking: number;
+            tracking: 2;
             dice: number;
             credits: number;
         };
         ultimate: {
             level: number;
-            tracking: number;
+            tracking: 3;
             dice: number;
             credits: number;
         };
         paragon: {
             level: number;
-            tracking: number;
+            tracking: 3;
             dice: number;
             credits: number;
         };
@@ -4452,43 +4455,43 @@ export declare const PF2ECONFIG: {
         commercial: {
             level: number;
             bonus: number;
-            resilient: number;
+            resilient: 0;
             credits: number;
         };
         tactical: {
             level: number;
             bonus: number;
-            resilient: number;
+            resilient: 0;
             credits: number;
         };
         advanced: {
             level: number;
             bonus: number;
-            resilient: number;
+            resilient: 1;
             credits: number;
         };
         superior: {
             level: number;
             bonus: number;
-            resilient: number;
+            resilient: 1;
             credits: number;
         };
         elite: {
             level: number;
             bonus: number;
-            resilient: number;
+            resilient: 2;
             credits: number;
         };
         ultimate: {
             level: number;
             bonus: number;
-            resilient: number;
+            resilient: 2;
             credits: number;
         };
         paragon: {
             level: number;
             bonus: number;
-            resilient: number;
+            resilient: 3;
             credits: number;
         };
     };
@@ -4718,7 +4721,6 @@ export declare const PF2ECONFIG: {
     };
     actorSizes: Record<"tiny" | "sm" | "med" | "lg" | "huge" | "grg", string>;
     actorTypes: Record<"army" | "character" | "familiar" | "hazard" | "loot" | "npc" | "party" | "vehicle", string>;
-    speedTypes: Record<"land" | "burrow" | "climb" | "fly" | "swim", string>;
     prerequisitePlaceholders: {
         prerequisite1: string;
         prerequisite2: string;

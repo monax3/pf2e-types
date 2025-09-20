@@ -6,6 +6,7 @@ export declare class DelegatedCollection<V> {
     [Symbol.iterator](): IterableIterator<V>;
     get size(): number;
     get contents(): V[];
+    values(): MapIterator<V>;
     get<T extends V = V>(key: Maybe<string>, { strict }: {
         strict: true;
     }): T;

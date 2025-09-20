@@ -13,6 +13,7 @@ export declare class EncounterTracker<TEncounter extends EncounterPF2e | null> e
     };
     protected _configureRenderOptions(options: Partial<HandlebarsRenderOptions>): void;
     protected _preparePartContext(partId: string, context: ApplicationRenderContext, options: HandlebarsRenderOptions): Promise<ApplicationRenderContext>;
+    protected _renderHTML(context: object, options: HandlebarsRenderOptions): Promise<Record<string, HTMLElement>>;
     /** Show encounter analysis data if obtainable */
     protected _onRender(context: ApplicationRenderContext, options: HandlebarsRenderOptions): Promise<void>;
     /** Refresh the list of users targeting a combatant's token as well as the active state of the target toggle */

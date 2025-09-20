@@ -49,13 +49,12 @@ declare class TokenPF2e<TDocument extends TokenDocumentPF2e = TokenDocumentPF2e>
         refreshRingVisuals: object;
         recoverFromPreview: object;
     } & {
-        refreshDistanceText: {};
+        refreshDistanceLabel: {};
     };
     /** Visual representation and proximity-detection facilities for auras */
     readonly auras: AuraRenderers;
     /** Visual rendering of lines from token to flanking buddy tokens on highlight */
     readonly flankingHighlight: FlankingHighlightRenderer;
-    get isTiny(): boolean;
     /** This token's shape at its canvas position */
     get localShape(): TokenShape;
     /** The grid offsets representing this token's shape */
@@ -146,7 +145,6 @@ declare class TokenPF2e<TDocument extends TokenDocumentPF2e = TokenDocumentPF2e>
     /** Obscure the token's sprite if a hearing or tremorsense detection filter is applied to it */
     render(renderer: PIXI.Renderer): void;
     protected _destroy(): void;
-    protected _draw(options?: object): Promise<void>;
     /** Players can view an actor's sheet if the actor is lootable. */
     protected _canView(user: User, event: PIXI.FederatedPointerEvent): boolean;
     /** Prevent players from controlling an NPC when it's lootable */

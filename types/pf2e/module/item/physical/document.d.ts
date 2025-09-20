@@ -5,11 +5,11 @@ import { DatabaseCreateCallbackOptions, DatabaseDeleteOperation, DatabaseUpdateC
 import { ItemPF2e, ContainerPF2e } from '../index.ts';
 import { ItemSourcePF2e, PhysicalItemSource, RawItemChatData, TraitChatData } from '../base/data/index.ts';
 import { Rarity, Size, ZeroToTwo } from '../../data.ts';
-import { RuleElementOptions, RuleElementPF2e } from '../../rules/index.ts';
+import { RuleElement, RuleElementOptions } from '../../rules/index.ts';
 import { EffectSpinoff } from '../../rules/rule-element/effect-spinoff/spinoff.ts';
 import { Bulk } from './bulk.ts';
 import { IdentificationStatus, ItemCarryType, ItemMaterialData, MystifiedData, PhysicalItemHitPoints, PhysicalItemTrait, PhysicalSystemData, Price } from './data.ts';
-import { CoinsPF2e } from './helpers.ts';
+import { Coins } from './helpers.ts';
 declare abstract class PhysicalItemPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends ItemPF2e<TParent> {
     /** The item in which this item is embedded */
     parentItem: PhysicalItemPF2e | null;
@@ -42,7 +42,7 @@ declare abstract class PhysicalItemPF2e<TParent extends ActorPF2e | null = Actor
     get isAttachable(): boolean;
     get price(): Price;
     /** The monetary value of the entire item stack */
-    get assetValue(): CoinsPF2e;
+    get assetValue(): Coins;
     get identificationStatus(): IdentificationStatus;
     get isIdentified(): boolean;
     get isAlchemical(): boolean;
@@ -76,7 +76,7 @@ declare abstract class PhysicalItemPF2e<TParent extends ActorPF2e | null = Actor
     /** Refresh certain derived properties in case of special data preparation from subclasses */
     prepareDerivedData(): void;
     prepareSiblingData(): void;
-    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElementPF2e[];
+    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElement[];
     /** After item alterations have occurred, ensure that this item's hit points are no higher than its maximum */
     onPrepareSynthetics(): void;
     prepareActorData(): void;

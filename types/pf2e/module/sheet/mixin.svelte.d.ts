@@ -3,7 +3,7 @@ interface SvelteApplicationRenderContext extends fa.ApplicationRenderContext {
     /** State data tracked by the root component: objects herein must be plain object. */
     state: object;
     /** This application instance */
-    foundryApp: SvelteApplication;
+    foundryApp?: SvelteApplication;
 }
 export declare abstract class SvelteApplicationMixin_base {
     protected abstract root: svelte.Component<any>;

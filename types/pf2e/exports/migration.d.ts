@@ -3,6 +3,7 @@ export type * from "../module/migration/base.d.ts";
 export type * from "../module/migration/runner/index.d.ts";
 export type * from "../module/migration/runner/base.d.ts";
 export type * from "../module/migration/migrations/index.d.ts";
+export type * from "../module/migration/migrations/943-update-speed-paths.d.ts";
 export type * from "../module/migration/migrations/942-equipment-grade.d.ts";
 export type * from "../module/migration/migrations/941-invested-grafts.d.ts";
 export type * from "../module/migration/migrations/940-weapon-expend.d.ts";

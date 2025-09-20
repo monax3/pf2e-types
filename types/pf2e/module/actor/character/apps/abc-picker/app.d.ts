@@ -34,7 +34,7 @@ interface ABCPickerContext extends SvelteApplicationRenderContext {
         items: ABCItemRef[];
     };
 }
-declare const ABCPicker_base: AbstractMixin<AbstractConstructorOf<fa.api.ApplicationV2<fa.ApplicationConfiguration, fa.ApplicationRenderOptions, object>> & {
+declare const ABCPicker_base: AbstractMixin<AbstractConstructorOf<fa.api.ApplicationV2<fa.ApplicationConfiguration, fa.ApplicationRenderOptions, fa.ApplicationRenderContext>> & {
     DEFAULT_OPTIONS: DeepPartial<ABCPickerConfiguration>;
 }, import('../../../../sheet/mixin.svelte.ts').SvelteApplicationMixin_base, typeof import('../../../../sheet/mixin.svelte.ts').SvelteApplicationMixin_base & typeof fa.api.ApplicationV2>;
 /** A `Compendium`-like application for presenting A(H)BCD options for a character */

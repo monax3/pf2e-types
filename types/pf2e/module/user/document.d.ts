@@ -1,6 +1,7 @@
 import { ActorPF2e } from '../actor/index.ts';
 import { default as UserTargets } from "../../../foundry/client/canvas/placeables/tokens/targets.mts";
 import { DatabaseUpdateCallbackOptions } from "../../../foundry/common/abstract/_types.mts";
+import { TradeQueryData, TradeQueryResponse } from '../apps/trade-dialog/app.ts';
 import { TokenPF2e } from '../canvas/index.ts';
 import { ScenePF2e, TokenDocumentPF2e } from '../scene/index.ts';
 import { UserFlagsPF2e, UserSettingsPF2e, UserSourcePF2e } from './data.ts';
@@ -20,5 +21,11 @@ interface UserPF2e extends User {
     targets: UserTargets<TokenPF2e<TokenDocumentPF2e<ScenePF2e>>>;
     flags: UserFlagsPF2e;
     readonly _source: UserSourcePF2e;
+    query(name: "pf2e.trade", data: TradeQueryData, options?: {
+        timeout?: number;
+    }): Promise<TradeQueryResponse>;
+    query(name: string, data: object, options?: {
+        timeout?: number;
+    }): Promise<unknown>;
 }
 export { UserPF2e };

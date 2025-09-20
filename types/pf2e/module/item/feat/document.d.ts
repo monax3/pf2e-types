@@ -6,7 +6,7 @@ import { DatabaseCreateCallbackOptions, DatabaseUpdateCallbackOptions } from "..
 import { ItemPF2e, HeritagePF2e } from '../index.ts';
 import { ActionCost, Frequency, RawItemChatData } from '../base/data/index.ts';
 import { Rarity } from '../../data.ts';
-import { RuleElementOptions, RuleElementPF2e } from '../../rules/index.ts';
+import { RuleElement, RuleElementOptions } from '../../rules/index.ts';
 import { EnrichmentOptionsPF2e } from '../../system/text-editor.ts';
 import { FeatSource, FeatSystemData } from './data.ts';
 import { FeatOrFeatureCategory, FeatTrait } from './types.ts';
@@ -39,7 +39,7 @@ declare class FeatPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> exte
     prepareSiblingData(): void;
     onPrepareSynthetics(this: FeatPF2e<ActorPF2e>): void;
     /** Overriden to not create rule elements when suppressed */
-    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElementPF2e[];
+    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElement[];
     getChatData(this: FeatPF2e<ActorPF2e>, htmlOptions?: EnrichmentOptionsPF2e): Promise<RawItemChatData>;
     /** Generate a list of strings for use in predication */
     getRollOptions(prefix?: string, options?: {

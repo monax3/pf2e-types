@@ -1,16 +1,16 @@
 import { ItemPF2e } from '../../../index.ts';
-import { RuleElementPF2e, RuleElementSource } from '../../../../rules/index.ts';
+import { RuleElement, RuleElementSource } from '../../../../rules/index.ts';
 import { RuleElementSchema } from '../../../../rules/rule-element/data.ts';
 import { LaxSchemaField } from '../../../../system/schema-data-fields.ts';
 import { ItemSheetPF2e } from '../index.ts';
-interface RuleElementFormOptions<TSource extends RuleElementSource, TObject extends RuleElementPF2e | null> {
+interface RuleElementFormOptions<TSource extends RuleElementSource, TObject extends RuleElement | null> {
     sheet: ItemSheetPF2e<ItemPF2e>;
     index: number;
     rule: TSource;
     object: TObject;
 }
 /** Base Rule Element form handler. Form handlers intercept sheet events to support new UI */
-declare class RuleElementForm<TSource extends RuleElementSource = RuleElementSource, TObject extends RuleElementPF2e | null = RuleElementPF2e | null> {
+declare class RuleElementForm<TSource extends RuleElementSource = RuleElementSource, TObject extends RuleElement | null = RuleElement | null> {
     #private;
     template: string;
     sheet: ItemSheetPF2e<ItemPF2e>;
@@ -41,7 +41,7 @@ declare class RuleElementForm<TSource extends RuleElementSource = RuleElementSou
     protected activateTab(html: HTMLElement, tabName: Maybe<string>): void;
     updateObject(source: TSource & Partial<Record<string, JSONValue>>): void;
 }
-interface RuleElementFormSheetData<TSource extends RuleElementSource, TObject extends RuleElementPF2e | null> extends Omit<RuleElementFormOptions<TSource, TObject>, "sheet"> {
+interface RuleElementFormSheetData<TSource extends RuleElementSource, TObject extends RuleElement | null> extends Omit<RuleElementFormOptions<TSource, TObject>, "sheet"> {
     item: ItemPF2e;
     label: string;
     /** A prefix for use in label-input/select pairs */

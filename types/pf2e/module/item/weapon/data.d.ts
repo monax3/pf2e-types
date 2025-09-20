@@ -1,6 +1,6 @@
 import { AttributeString } from '../../actor/types.ts';
 import { PhysicalItemSource } from '../base/data/index.ts';
-import { ItemFlagsPF2e } from '../base/data/system.ts';
+import { ItemFlagsPF2e, TraitConfig } from '../base/data/system.ts';
 import { BasePhysicalItemSource, Grade, Investable, ItemMaterialData, ItemMaterialSource, PhysicalItemTraits, PhysicalSystemData, PhysicalSystemSource, UsageDetails } from '../physical/index.ts';
 import { ZeroToFour } from '../../data.ts';
 import { DamageDieSize, DamageType } from '../../system/damage/index.ts';
@@ -134,6 +134,7 @@ type WeaponUsageDetails = UsageDetails & Required<WeaponSystemSource["usage"]>;
 interface WeaponTraits extends WeaponTraitsSource {
     otherTags: OtherWeaponTag[];
     toggles: WeaponTraitToggles;
+    config: TraitConfig;
 }
 interface WeaponMaterialData extends ItemMaterialData {
     type: WeaponMaterialType | null;

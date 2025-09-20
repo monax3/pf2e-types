@@ -2,8 +2,11 @@ import { ApplicationRenderContext, ApplicationRenderOptions } from "../applicati
 import { EditorState } from "prosemirror-state";
 import type { DialogV2 } from "../applications/api/_module.mjs";
 import type { CombatTrackerConfig } from "../applications/apps/_module.mjs";
+import HeadsUpDisplayContainer from "../applications/hud/container.mjs";
+import { PlaceableHUDContext } from "../applications/hud/placeable-hud.mjs";
 import SettingsConfig from "../applications/settings/config.mjs";
 import ChatPopout from "../applications/sidebar/apps/chat-popout.mjs";
+import RegionLegend from "../applications/ui/region-legend.mjs";
 import { ContextMenuEntry } from "../applications/ux/context-menu.mjs";
 import Canvas from "../canvas/board.mjs";
 import LightingLayer from "../canvas/layers/lighting.mjs";
@@ -35,7 +38,6 @@ import Application from "../appv1/api/application-v1.mjs";
 import Dialog from "../appv1/api/dialog-v1.mjs";
 import { JournalPageSheet, JournalTextPageSheet } from "../appv1/sheets/journal-page-sheet.mjs";
 import { TokenRingConfig } from "../canvas/placeables/tokens/_module.mjs";
-import { PlaceableHUDContext } from "../applications/hud/placeable-hud.mjs";
 import JournalSheet from "../appv1/sheets/journal-sheet.mjs";
 import CombatConfiguration from "../data/combat-config.mjs";
 
@@ -51,8 +53,8 @@ type HookParamsCanvasReady = HookParameters<"canvasReady", [Canvas]>;
 type HookParamsReady = HookParameters<"ready", never[]>;
 
 type HookParamsClose<T extends ApplicationV2, N extends string> = HookParameters<`close${N}`, [T]>;
-type HookParamsDeleteCombat = HookParameters<"deleteCombat", [Combat, { [key: string]: unknown; }, string]>;
-type HookParamsDropCanvasData = HookParameters<"dropCanvasData", [Canvas, DropCanvasData]>;
+type HookParamsDeleteCombat = HookParameters<"deleteCombat", [Combat, { [key: string]: unknown }, string]>;
+type HookParamsDropCanvasData = HookParameters<"dropCanvasData", [Canvas, DropCanvasData, DragEvent]>;
 type HookParamsGetChatLogEntryContext = HookParameters<"getChatLogEntryContext", [HTMLElement, ContextMenuEntry[]]>;
 type HookParamsGetSceneControlButtons = HookParameters<"getSceneControlButtons", [Record<string, SceneControl>]>;
 type HookParamsHotbarDrop = HookParameters<"hotbarDrop", [Hotbar<Macro>, DropCanvasData, string]>;
@@ -75,17 +77,17 @@ type HookParamsPreUpdateToken = HookParameters<
         string,
     ]
 >;
-type HookParamsRender<T extends Application | ApplicationV2, N extends string> = HookParameters<
+type HookParamsRender<
+    T extends Application | ApplicationV2,
+    N extends string,
+    C extends ApplicationRenderContext = ApplicationRenderContext,
+> = HookParameters<
     `render${N}`,
     T extends Application
-    ? [T, JQuery, Awaited<ReturnType<T["getData"]>>]
-    : [T, HTMLElement, T extends ApplicationV2<infer _First, infer _Second, infer U> ? U : never]
+        ? [T, JQuery, Awaited<ReturnType<T["getData"]>>]
+        : [T, HTMLElement, C, ApplicationRenderOptions]
 >;
 type HookParamsRenderChatMessageHTML = HookParameters<"renderChatMessageHTML", [ChatMessage, string, object]>;
-type HookParamsRenderChatPopout = HookParameters<
-    "renderChatPopout",
-    [ChatPopout, HTMLElement, ApplicationRenderContext, ApplicationRenderOptions]
->;
 type HookParamsTargetToken = HookParameters<"targetToken", [User, Token<TokenDocument<Scene>>, boolean]>;
 type HookParamsUpdate<T extends foundry.abstract.Document, N extends string> = HookParameters<
     `update${N}`,

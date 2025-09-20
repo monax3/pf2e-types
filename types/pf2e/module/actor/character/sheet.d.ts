@@ -7,10 +7,10 @@ import { ActorSheetOptions } from "../../../../foundry/client/appv1/sheets/actor
 import { AncestryPF2e, BackgroundPF2e, ClassPF2e, DeityPF2e, FeatPF2e, HeritagePF2e, PhysicalItemPF2e, ItemPF2e } from '../../item/index.ts';
 import { TraitToggleViewData } from '../../item/ability/trait-toggles.ts';
 import { ItemSourcePF2e } from '../../item/base/data/index.ts';
-import { CoinsPF2e } from '../../item/physical/coins.ts';
+import { Coins } from '../../item/physical/coins.ts';
 import { MagicTradition } from '../../item/spell/types.ts';
 import { SpellcastingSheetData } from '../../item/spellcasting-entry/types.ts';
-import { DropCanvasItemDataPF2e } from '../../canvas/drop-canvas-data.ts';
+import { DropCanvasItemData } from '../../canvas/drop-canvas-data.ts';
 import { LabeledValueAndMax, ZeroToFour } from '../../data.ts';
 import { DamageType } from '../../system/damage/types.ts';
 import { CreatureSheetPF2e } from '../creature/sheet.ts';
@@ -34,7 +34,7 @@ declare class CharacterSheetPF2e<TActor extends CharacterPF2e> extends CreatureS
     protected activateClickListener(html: HTMLElement): SheetClickActionHandlers;
     /** Toggle availability of the roll-initiative link on the sidebar */
     toggleInitiativeLink(link?: HTMLElement | null): void;
-    protected _onDropItem(event: DragEvent, data: DropCanvasItemDataPF2e): Promise<ItemPF2e[]>;
+    protected _onDropItem(event: DragEvent, data: DropCanvasItemData): Promise<ItemPF2e[]>;
     _onDrop(event: DragEvent): Promise<boolean | void>;
     /** Handle a drop event for an existing Owned Item to sort that item */
     protected _onSortItem(event: DragEvent, itemData: ItemSourcePF2e): Promise<ItemPF2e[]>;
@@ -61,7 +61,7 @@ interface FormulaSheetData {
     item: ItemPF2e;
     dc: number;
     batchSize: number;
-    cost: CoinsPF2e;
+    cost: Coins;
 }
 interface FormulaByLevel {
     level: string;

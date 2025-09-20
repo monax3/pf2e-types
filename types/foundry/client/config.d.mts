@@ -460,7 +460,10 @@ export default interface Config<
     Token: {
         documentClass: ConstructorOf<TTokenDocument>;
         objectClass: ConstructorOf<NonNullable<TTokenDocument["object"]>>;
+        layerClass: ConstructorOf<layers.TokenLayer>;
         prototypeSheetClass: ConstructorOf<PrototypeTokenConfig>;
+        hudClass: ConstructorOf<applications.hud.TokenHUD>;
+        rulerClass: ConstructorOf<placeables.tokens.TokenRuler<NonNullable<TTokenDocument["object"]>>>;
         movement: {
             TerrainData: typeof foundry.data.TerrainData;
             /** The movement cost aggregator. */
@@ -773,6 +776,16 @@ export default interface Config<
         FilePicker: typeof applications.apps.FilePicker;
         TextEditor: typeof applications.ux.TextEditor;
         TooltipManager: typeof foundry.helpers.interaction.TooltipManager;
+    };
+
+    /**
+     * System and modules must prefix the names of the queries they register (e.g. "my-module.aCustomQuery").
+     * Non-prefixed query names are reserved by core.
+     */
+    queries: {
+        dialog: typeof applications.api.DialogV2._handleQuery;
+        confirmTeleportToken: typeof foundry.data.regionBehaviors.TeleportTokenRegionBehaviorType._confirmQuery;
+        [key: string]: Function;
     };
 }
 

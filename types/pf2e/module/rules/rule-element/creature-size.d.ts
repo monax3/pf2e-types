@@ -1,21 +1,21 @@
 import { ActorType, CreaturePF2e } from '../../actor/index.ts';
 import { Size } from '../../data.ts';
 import { RecordField } from '../../system/schema-data-fields.ts';
-import { RuleElementOptions, RuleElementPF2e } from './base.ts';
+import { RuleElement, RuleElementOptions } from './base.ts';
 import { ModelPropsFromRESchema, ResolvableValueField, RuleElementSchema, RuleElementSource } from './data.ts';
 import fields = foundry.data.fields;
 /**
  * @category RuleElement
  * Change a creature's size
  */
-declare class CreatureSizeRuleElement extends RuleElementPF2e<CreatureSizeRuleSchema> {
+declare class CreatureSizeRuleElement extends RuleElement<CreatureSizeRuleSchema> {
     #private;
     protected static validActorTypes: ActorType[];
     constructor(data: RuleElementSource, options: RuleElementOptions);
     static defineSchema(): CreatureSizeRuleSchema;
     beforePrepareData(): void;
 }
-interface CreatureSizeRuleElement extends RuleElementPF2e<CreatureSizeRuleSchema>, ModelPropsFromRESchema<CreatureSizeRuleSchema> {
+interface CreatureSizeRuleElement extends RuleElement<CreatureSizeRuleSchema>, ModelPropsFromRESchema<CreatureSizeRuleSchema> {
     get actor(): CreaturePF2e;
 }
 type CreatureSizeRuleSchema = RuleElementSchema & {

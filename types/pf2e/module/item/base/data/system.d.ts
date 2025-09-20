@@ -13,10 +13,17 @@ interface ActionCost {
     type: Exclude<ActionType, "passive">;
     value: OneToThree | null;
 }
+interface TraitConfig {
+    volley?: number;
+    tracking?: number;
+    resilient?: number;
+    [key: string]: number | undefined;
+}
 interface ItemTraits<T extends ItemTrait = ItemTrait> {
     value: T[];
     rarity: Rarity;
     otherTags: string[];
+    config?: TraitConfig;
 }
 interface ItemTraitsNoRarity<T extends ItemTrait = ItemTrait> extends Omit<ItemTraits<T>, "rarity"> {
     rarity?: never;
@@ -25,11 +32,13 @@ interface RarityTraitAndOtherTags {
     rarity: Rarity;
     otherTags: string[];
     value?: never;
+    config?: never;
 }
 interface OtherTagsOnly {
     otherTags: string[];
     value?: never;
     rarity?: never;
+    config?: never;
 }
 type ItemFlagsPF2e = DocumentFlags & {
     pf2e: {
@@ -114,4 +123,4 @@ type ItemSchemaPF2e = Omit<foundry.documents.ItemSchema, "system"> & {
 interface Frequency extends FrequencySource {
     value: number;
 }
-export type { ActionCost, ActionType, BaseItemSourcePF2e, Frequency, FrequencyInterval, FrequencySource, ItemDescriptionData, ItemFlagsPF2e, ItemGrantData, ItemGrantDeleteAction, ItemGranterSource, ItemGrantSource, ItemSchemaPF2e, ItemSourceFlagsPF2e, ItemSystemData, ItemSystemSource, ItemTrait, ItemTraits, ItemTraitsNoRarity, OtherTagsOnly, RarityTraitAndOtherTags, };
+export type { ActionCost, ActionType, BaseItemSourcePF2e, Frequency, FrequencyInterval, FrequencySource, ItemDescriptionData, ItemFlagsPF2e, ItemGrantData, ItemGrantDeleteAction, ItemGranterSource, ItemGrantSource, ItemSchemaPF2e, ItemSourceFlagsPF2e, ItemSystemData, ItemSystemSource, ItemTrait, ItemTraits, ItemTraitsNoRarity, OtherTagsOnly, RarityTraitAndOtherTags, TraitConfig, };

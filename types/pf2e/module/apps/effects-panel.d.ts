@@ -32,7 +32,7 @@ export declare class EffectsPanel extends EffectsPanel_base {
     /** Move the panel to the right interface column. */
     _onRender(context: object, options: HandlebarsRenderOptions): Promise<void>;
 }
-interface EffectsPanelViewData {
+interface EffectsPanelViewData extends fa.ApplicationRenderContext {
     afflictions: EffectViewData[];
     conditions: EffectViewData[];
     effects: EffectViewData[];

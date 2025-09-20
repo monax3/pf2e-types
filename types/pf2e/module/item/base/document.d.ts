@@ -2,13 +2,14 @@ import { ActorPF2e } from '../../actor/base.ts';
 import { DialogV2Configuration } from "../../../../foundry/client/applications/api/dialog.mts";
 import { DocumentHTMLEmbedConfig } from "../../../../foundry/client/applications/ux/text-editor.mts";
 import { ItemUUID } from "../../../../foundry/client/documents/_module.mts";
+import { ToCompendiumOptions } from "../../../../foundry/client/documents/abstract/_module.mts";
 import { DropCanvasData } from "../../../../foundry/client/helpers/hooks.mts";
 import { DatabaseCreateCallbackOptions, DatabaseCreateOperation, DatabaseDeleteCallbackOptions, DatabaseDeleteOperation, DatabaseUpdateCallbackOptions, Document } from "../../../../foundry/common/abstract/_module.mts";
 import { ImageFilePath, RollMode } from "../../../../foundry/common/constants.mts";
 import { PhysicalItemPF2e } from '../index.ts';
 import { ItemOriginFlag } from '../../chat-message/data.ts';
 import { ChatMessagePF2e } from '../../chat-message/document.ts';
-import { RuleElementOptions, RuleElementPF2e } from '../../rules/index.ts';
+import { RuleElement, RuleElementOptions } from '../../rules/index.ts';
 import { EnrichmentOptionsPF2e, RollDataPF2e } from '../../system/text-editor.ts';
 import { ItemInstances } from '../types.ts';
 import { ItemFlagsPF2e, ItemSourcePF2e, ItemSystemData, ItemType, RawItemChatData, TraitChatData } from './data/index.ts';
@@ -26,7 +27,7 @@ declare class ItemPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> exte
     /** Traits an item of this type can have */
     static get validTraits(): Partial<Record<ItemTrait, string>>;
     /** Prepared rule elements from this item */
-    rules: RuleElementPF2e[];
+    rules: RuleElement[];
     /** The sluggified name of the item **/
     get slug(): string | null;
     /** The UUID of the item from which this one was copied (or is identical to if a compendium item) **/
@@ -66,9 +67,10 @@ declare class ItemPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> exte
     protected _initialize(options?: Record<string, unknown>): void;
     /** Ensure the presence of the pf2e flag scope with default properties and values */
     prepareBaseData(): void;
-    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElementPF2e[];
+    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElement[];
     /** Pull the latest system data from the source compendium and replace this item's with it */
     refreshFromCompendium(options?: RefreshFromCompendiumParams): Promise<this | null>;
+    exportToJSON(options?: ToCompendiumOptions): void;
     getOriginData(): ItemOriginFlag;
     /** Retrieves base description data before enriching. May be overriden to prepend or append additional data */
     protected getDescriptionData(): Promise<ItemDescriptionData>;

@@ -1,10 +1,8 @@
 import { CreaturePF2e, FamiliarPF2e } from '../index.ts';
-import { CreatureSpeeds, LabeledSpeed } from '../creature/data.ts';
 import { CreatureUpdateCallbackOptions, ResourceData } from '../creature/types.ts';
 import { ActorInitiative } from '../initiative.ts';
-import { StatisticModifier } from '../modifiers.ts';
-import { AttributeString, MovementType } from '../types.ts';
-import { AncestryPF2e, BackgroundPF2e, ClassPF2e, DeityPF2e, FeatPF2e, HeritagePF2e, WeaponPF2e } from '../../item/index.ts';
+import { AttributeString } from '../types.ts';
+import { AncestryPF2e, BackgroundPF2e, ClassPF2e, DeityPF2e, FeatPF2e, HeritagePF2e, ItemPF2e, WeaponPF2e } from '../../item/index.ts';
 import { ItemType } from '../../item/base/data/index.ts';
 import { ZeroToTwo } from '../../data.ts';
 import { TokenDocumentPF2e } from '../../scene/index.ts';
@@ -48,7 +46,9 @@ declare class CharacterPF2e<TParent extends TokenDocumentPF2e | null = TokenDocu
     };
     /** Retrieve lore skills, class statistics, and tradition-specific spellcasting */
     getStatistic(slug: GuaranteedGetStatisticSlug): Statistic<this>;
-    getStatistic(slug: string): Statistic<this> | null;
+    getStatistic(slug: string, options?: {
+        item: ItemPF2e | null;
+    }): Statistic<this> | null;
     protected _initialize(options?: Record<string, unknown>): void;
     /** If one exists, prepare this character's familiar */
     prepareData(): void;
@@ -68,9 +68,7 @@ declare class CharacterPF2e<TParent extends TokenDocumentPF2e | null = TokenDocu
     private createArmorStatistic;
     private prepareSaves;
     private prepareSkills;
-    prepareSpeed(movementType: "land"): CreatureSpeeds;
-    prepareSpeed(movementType: Exclude<MovementType, "land">): (LabeledSpeed & StatisticModifier) | null;
-    prepareSpeed(movementType: MovementType): CreatureSpeeds | (LabeledSpeed & StatisticModifier) | null;
+    prepareMovementData(): void;
     private prepareFeats;
     private prepareClassDC;
     /** Prepare this character's strike actions */

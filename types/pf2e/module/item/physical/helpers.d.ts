@@ -3,12 +3,12 @@ import { ContainerPF2e, PhysicalItemPF2e } from '../index.ts';
 import { PhysicalItemSource } from '../base/data/index.ts';
 import { ContainerBulkData } from '../container/data.ts';
 import { Rarity } from '../../data.ts';
-import { CoinsPF2e } from './coins.ts';
+import { Coins } from './coins.ts';
 import { BulkData, EquippedData } from './data.ts';
 declare function computeLevelRarityPrice(item: PhysicalItemPF2e): {
     level: number;
     rarity: Rarity;
-    price: CoinsPF2e;
+    price: Coins;
 };
 /**
  * Checks if a change in traits leads to the item converting to sf2e or pf2e.
@@ -31,4 +31,4 @@ declare function sizeItemForActor<TItem extends PhysicalItemPF2e>(item: TItem, a
 /** Returns the default equip status for this item, called in order to "reset" the equip status */
 declare function getDefaultEquipStatus(item: PhysicalItemPF2e): EquippedData;
 export { coinCompendiumIds } from './coins.ts';
-export { CoinsPF2e, checkPhysicalItemSystemChange, computeLevelRarityPrice, generateItemName, getDefaultEquipStatus, handleHPChange, prepareBulkData, sizeItemForActor, };
+export { Coins, checkPhysicalItemSystemChange, computeLevelRarityPrice, generateItemName, getDefaultEquipStatus, handleHPChange, prepareBulkData, sizeItemForActor, };

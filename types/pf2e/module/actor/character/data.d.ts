@@ -1,8 +1,8 @@
 import { CraftingAbilityData, CraftingFormulaData } from './crafting/index.ts';
 import { AbilityData, BaseCreatureSource, CreatureAttributes, CreatureDetails, CreatureDetailsSource, CreatureLanguagesData, CreaturePerceptionData, CreatureResources, CreatureSystemData, CreatureSystemSource, HeldShieldData, SaveData, SkillData } from '../creature/data.ts';
-import { CreatureInitiativeSource, CreatureSpeeds, Language } from '../creature/index.ts';
+import { CreatureInitiativeSource, Language } from '../creature/index.ts';
 import { ActorAttributesSource, ActorFlagsPF2e, AttributeBasedTraceData, HitPointsStatistic, InitiativeData, StrikeData, TraitViewData } from '../data/base.ts';
-import { AttributeString, MovementType, SaveType, SkillSlug } from '../types.ts';
+import { AttributeString, SaveType, SkillSlug } from '../types.ts';
 import { WeaponPF2e } from '../../item/index.ts';
 import { ArmorCategory } from '../../item/armor/types.ts';
 import { ProficiencyRank } from '../../item/base/data/index.ts';
@@ -38,6 +38,10 @@ type CharacterFlags = ActorFlagsPF2e & {
         showBasicUnarmed: boolean;
         /** The limit for each feat group that supports a custom limit. */
         featLimits: Record<string, number>;
+        /** Whether this actor is under a polymorph effect */
+        polymorphed?: boolean;
+        /** Whether this actor is under a battle form polymorph effect */
+        battleForm?: boolean;
     };
 };
 interface CharacterSystemSource extends CreatureSystemSource {
@@ -76,13 +80,6 @@ interface CharacterAttributesSource extends ActorAttributesSource {
         sp?: {
             value: number;
         };
-    };
-    speed: {
-        value: number;
-        otherSpeeds: {
-            type: Exclude<MovementType, "land">;
-            value: number;
-        }[];
     };
 }
 interface CharacterDetailsSource extends CreatureDetailsSource {
@@ -249,7 +246,7 @@ interface CharacterSystemData extends Omit<CharacterSystemSource, SourceOmission
     crafting: CharacterCraftingData;
     exploration: string[];
 }
-type SourceOmission = "customModifiers" | "perception" | "resources" | "saves" | "traits";
+type SourceOmission = "attributes" | "customModifiers" | "perception" | "resources" | "saves" | "speed" | "traits";
 interface CharacterSkillData extends SkillData {
     attribute: AttributeString;
     /** The proficiency rank ("TEML") */
@@ -442,18 +439,13 @@ interface CharacterAttributes extends Omit<CharacterAttributesSource, Attributes
     };
     /** Data related to character hitpoints. */
     hp: CharacterHitPoints;
-    speed: CreatureSpeeds;
     /**
      * Data related to the currently equipped shield. This is copied from the shield data itself and exists to
      * allow for the shield health to be shown on an actor shield and token.
      */
     shield: HeldShieldData;
-    /** Whether this actor is under a polymorph effect */
-    polymorphed: boolean;
-    /** Whether this actor is under a battle form polymorph effect */
-    battleForm: boolean;
 }
-type AttributesSourceOmission = "immunities" | "weaknesses" | "resistances";
+type AttributesSourceOmission = "immunities" | "weaknesses" | "resistances" | "speed";
 interface CharacterHitPoints extends HitPointsStatistic {
     recoveryMultiplier: number;
     recoveryAddend: number;

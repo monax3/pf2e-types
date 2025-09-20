@@ -9,14 +9,17 @@ import fields = foundry.data.fields;
 type PartySource = BaseActorSourcePF2e<"party", PartySystemSource>;
 declare class PartySystemData extends ActorSystemModel<PartyPF2e, PartySystemSchema> {
     static defineSchema(): PartySystemSchema;
+    prepareBaseData(): void;
+    prepareDerivedData(): void;
 }
 interface PartySystemData extends ActorSystemModel<PartyPF2e, PartySystemSchema>, ModelPropsFromSchema<PartySystemSchema> {
     attributes: PartyAttributes;
     details: PartyDetails;
+    movement: PartyMovementData;
 }
 type PartySystemSchema = ActorSystemSchema & {
     details: fields.SchemaField<{
-        description: fields.HTMLField<string, string, true, false, true>;
+        description: fields.HTMLField;
         members: fields.ArrayField<fields.SchemaField<{
             uuid: fields.DocumentUUIDField<ActorUUID, true, false, false>;
         }>>;
@@ -33,14 +36,18 @@ interface PartyDetailsSource extends SourceFromDataField<PartySystemSchema["deta
     readonly alliance?: never;
     readonly level?: never;
 }
-interface PartyAttributes extends Omit<ActorAttributes, "initiative" | "ac" | "hp"> {
-    speed: {
-        total: number;
-    };
+interface PartyAttributes extends Omit<ActorAttributes, "attributes" | "initiative" | "ac" | "hp"> {
     reach: CreatureReach;
     immunities: never[];
     weaknesses: never[];
     resistances: never[];
+}
+interface PartyMovementData {
+    speeds: {
+        travel: {
+            value: number;
+        };
+    };
 }
 interface PartyDetails extends ModelPropFromDataField<PartySystemSchema["details"]>, ActorDetails {
 }

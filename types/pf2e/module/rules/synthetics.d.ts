@@ -1,7 +1,7 @@
 import { ActorPF2e } from '../actor/index.ts';
 import { DexterityModifierCapData } from '../actor/character/types.ts';
 import { LabeledSpeed, SenseData } from '../actor/creature/data.ts';
-import { DamageDicePF2e, DeferredDamageDiceOptions, DeferredPromise, DeferredValue, ModifierAdjustment, ModifierPF2e } from '../actor/modifiers.ts';
+import { DamageDicePF2e, DeferredDamageDiceOptions, DeferredPromise, DeferredValue, Modifier, ModifierAdjustment } from '../actor/modifiers.ts';
 import { MovementType } from '../actor/types.ts';
 import { TokenAnimationOptions } from "../../../foundry/client/_module.mts";
 import { TokenDocumentUUID } from "../../../foundry/client/documents/_module.mts";
@@ -71,7 +71,7 @@ interface RuleElementSynthetics {
     };
     weaponPotency: Record<string, PotencySynthetic[]>;
 }
-type CritSpecEffect = (DamageDicePF2e | ModifierPF2e | RollNotePF2e)[];
+type CritSpecEffect = (DamageDicePF2e | Modifier | RollNotePF2e)[];
 type CritSpecSynthetic = (weapon: WeaponPF2e | MeleePF2e, options: Set<string>) => CritSpecEffect | null;
 type DamageDiceSynthetics = {
     damage: DeferredDamageDice[];
@@ -81,7 +81,7 @@ type ModifierAdjustmentSynthetics = {
     all: ModifierAdjustment[];
     damage: ModifierAdjustment[];
 } & Record<string, ModifierAdjustment[] | undefined>;
-type DeferredModifier = DeferredValue<ModifierPF2e>;
+type DeferredModifier = DeferredValue<Modifier>;
 type DeferredDamageDice = (args: DeferredDamageDiceOptions) => DamageDicePF2e | null;
 type DeferredMovementType = DeferredValue<BaseSpeedSynthetic | null>;
 type DeferredEphemeralEffect = DeferredPromise<EffectSource | ConditionSource | null>;

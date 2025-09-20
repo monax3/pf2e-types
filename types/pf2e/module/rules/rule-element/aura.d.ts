@@ -3,18 +3,18 @@ import { HexColorString } from "../../../../foundry/common/constants.mts";
 import { ItemUUID } from "../../../../foundry/common/documents/_module.mts";
 import { EffectTrait } from '../../item/abstract-effect/types.ts';
 import { DataUnionField, PredicateField, StrictArrayField } from '../../system/schema-data-fields.ts';
-import { RuleElementOptions, RuleElementPF2e } from './base.ts';
+import { RuleElement, RuleElementOptions } from './base.ts';
 import { ModelPropsFromRESchema, ResolvableValueField, RuleElementSchema, RuleElementSource, RuleValue } from './data.ts';
 import { ItemAlteration } from './item-alteration/alteration.ts';
 import fields = foundry.data.fields;
 /** A Pathfinder 2e aura, capable of transmitting effects and with a visual representation on the canvas */
-declare class AuraRuleElement extends RuleElementPF2e<AuraSchema> {
+declare class AuraRuleElement extends RuleElement<AuraSchema> {
     #private;
     constructor(source: AuraRuleElementSource, options: RuleElementOptions);
     static defineSchema(): AuraSchema;
     afterPrepareData(): void;
 }
-interface AuraRuleElement extends RuleElementPF2e<AuraSchema>, ModelPropsFromRESchema<AuraSchema> {
+interface AuraRuleElement extends RuleElement<AuraSchema>, ModelPropsFromRESchema<AuraSchema> {
     slug: string;
     effects: AuraEffectREData[];
 }

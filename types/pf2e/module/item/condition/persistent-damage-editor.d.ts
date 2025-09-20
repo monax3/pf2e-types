@@ -19,7 +19,7 @@ interface PersistentDamageDialogOptions {
     actor: ActorPF2e;
     selectedItemId?: string;
 }
-interface PersistentDialogContext {
+interface PersistentDialogContext extends fa.ApplicationRenderContext {
     selectedItemId: string | null;
     existing: DamageEntryData[];
     damageTypes: DamageTypeData[];

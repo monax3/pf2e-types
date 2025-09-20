@@ -4,7 +4,7 @@ import { DatabaseCreateCallbackOptions, DatabaseDeleteCallbackOptions, DataModel
 import { UserAction } from "../../../../foundry/common/constants.mts";
 import { ActorUUID } from "../../../../foundry/common/documents/_module.mts";
 import { ItemType } from '../../item/base/data/index.ts';
-import { RuleElementPF2e } from '../../rules/index.ts';
+import { RuleElement } from '../../rules/index.ts';
 import { RuleElementSchema } from '../../rules/rule-element/data.ts';
 import { TokenDocumentPF2e } from '../../scene/index.ts';
 import { Statistic } from '../../system/statistic/index.ts';
@@ -27,7 +27,7 @@ declare class PartyPF2e<TParent extends TokenDocumentPF2e | null = TokenDocument
     validate(options?: DataModelValidationOptions): boolean;
     updateSource(data?: Record<string, unknown>, options?: DocumentSourceUpdateContext): DeepPartial<this["_source"]>;
     /** Only prepare rule elements for non-physical items (in case campaign items exist) */
-    protected prepareRuleElements(): RuleElementPF2e<RuleElementSchema>[];
+    protected prepareRuleElements(): RuleElement<RuleElementSchema>[];
     prepareBaseData(): void;
     prepareDerivedData(): void;
     addMembers(...membersToAdd: CreaturePF2e[]): Promise<void>;

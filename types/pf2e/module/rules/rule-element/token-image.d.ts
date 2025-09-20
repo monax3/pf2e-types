@@ -1,17 +1,17 @@
 import { TextureTransitionType } from "../../../../foundry/client/canvas/rendering/filters/transition.mts";
 import { HexColorString } from "../../../../foundry/common/constants.mts";
-import { RuleElementPF2e } from './base.ts';
+import { RuleElement } from './base.ts';
 import { ModelPropsFromRESchema, RuleElementSchema } from './data.ts';
 import fields = foundry.data.fields;
 /**
  * Change the image representing an actor's token
  * @category RuleElement
  */
-declare class TokenImageRuleElement extends RuleElementPF2e<TokenImageRuleSchema> {
+declare class TokenImageRuleElement extends RuleElement<TokenImageRuleSchema> {
     static defineSchema(): TokenImageRuleSchema;
     afterPrepareData(): void;
 }
-interface TokenImageRuleElement extends RuleElementPF2e<TokenImageRuleSchema>, ModelPropsFromRESchema<TokenImageRuleSchema> {
+interface TokenImageRuleElement extends RuleElement<TokenImageRuleSchema>, ModelPropsFromRESchema<TokenImageRuleSchema> {
 }
 type TokenImageRuleSchema = RuleElementSchema & {
     /** An image or video path */

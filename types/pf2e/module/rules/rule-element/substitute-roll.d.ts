@@ -1,15 +1,15 @@
 import { DataUnionField, PredicateField, StrictBooleanField } from '../../system/schema-data-fields.ts';
-import { RuleElementOptions, RuleElementPF2e } from './base.ts';
+import { RuleElement, RuleElementOptions } from './base.ts';
 import { ModelPropsFromRESchema, ResolvableValueField, RuleElementSchema, RuleElementSource } from './data.ts';
 import fields = foundry.data.fields;
 /** Substitute a pre-determined result for a check's D20 roll */
-declare class SubstituteRollRuleElement extends RuleElementPF2e<SubstituteRollSchema> {
+declare class SubstituteRollRuleElement extends RuleElement<SubstituteRollSchema> {
     constructor(source: RuleElementSource, options: RuleElementOptions);
     static defineSchema(): SubstituteRollSchema;
     beforePrepareData(): void;
-    afterRoll(params: RuleElementPF2e.AfterRollParams): Promise<void>;
+    afterRoll(params: RuleElement.AfterRollParams): Promise<void>;
 }
-interface SubstituteRollRuleElement extends RuleElementPF2e<SubstituteRollSchema>, ModelPropsFromRESchema<SubstituteRollSchema> {
+interface SubstituteRollRuleElement extends RuleElement<SubstituteRollSchema>, ModelPropsFromRESchema<SubstituteRollSchema> {
 }
 type SubstituteRollSchema = RuleElementSchema & {
     selector: fields.StringField<string, string, true, false, true>;

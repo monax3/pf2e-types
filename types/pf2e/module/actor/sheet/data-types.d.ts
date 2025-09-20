@@ -8,7 +8,7 @@ import { ActorSheetData } from "../../../../foundry/client/appv1/sheets/actor-sh
 import { ItemUUID } from "../../../../foundry/common/documents/_module.mts";
 import { PhysicalItemPF2e } from '../../item/index.ts';
 import { Frequency } from '../../item/base/data/index.ts';
-import { Coins } from '../../item/physical/data.ts';
+import { RawCoins } from '../../item/physical/data.ts';
 import { RollOptionToggle } from '../../rules/synthetics.ts';
 import { SheetOptions } from '../../sheet/helpers.ts';
 interface InventoryItem<TItem extends PhysicalItemPF2e = PhysicalItemPF2e> {
@@ -33,7 +33,7 @@ interface CoinDisplayData {
     label: string;
 }
 export type CoinageSummary = {
-    [K in keyof Coins]?: CoinDisplayData;
+    [K in keyof RawCoins]?: CoinDisplayData;
 };
 interface SheetItemList {
     label: string;
@@ -64,7 +64,7 @@ interface ActorSheetDataPF2e<TActor extends ActorPF2e> extends ActorSheetData<TA
     toggles: Record<string, RollOptionToggle[]>;
     totalCoinage: CoinageSummary;
     totalCoinageGold: string;
-    totalWealth: Coins;
+    totalWealth: RawCoins;
     totalWealthGold: string;
     traits: SheetOptions;
     user: {

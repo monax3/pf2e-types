@@ -4,7 +4,7 @@ import { DatabaseCreateCallbackOptions, DatabaseUpdateCallbackOptions } from "..
 import { ItemPF2e } from '../index.ts';
 import { ActionCost, Frequency, RawItemChatData } from '../base/data/index.ts';
 import { RangeData } from '../types.ts';
-import { RuleElementOptions, RuleElementPF2e } from '../../rules/index.ts';
+import { RuleElement, RuleElementOptions } from '../../rules/index.ts';
 import { EnrichmentOptionsPF2e } from '../../system/text-editor.ts';
 import { AbilitySource, AbilitySystemData } from './data.ts';
 import { AbilityTrait } from './types.ts';
@@ -26,7 +26,7 @@ declare class AbilityItemPF2e<TParent extends ActorPF2e | null = ActorPF2e | nul
         includeGranter?: boolean;
     }): string[];
     /** Overriden to not create rule elements when suppressed */
-    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElementPF2e[];
+    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElement[];
     getChatData(this: AbilityItemPF2e<ActorPF2e>, htmlOptions?: EnrichmentOptionsPF2e): Promise<RawItemChatData>;
     protected _preCreate(data: DeepPartial<this["_source"]>, options: DatabaseCreateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;
     protected _preUpdate(changed: DeepPartial<this["_source"]>, options: DatabaseUpdateCallbackOptions, user: fd.BaseUser): Promise<boolean | void>;

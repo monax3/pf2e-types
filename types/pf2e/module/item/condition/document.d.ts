@@ -2,7 +2,7 @@ import { ActorPF2e } from '../../actor/index.ts';
 import { DatabaseUpdateOperation } from "../../../../foundry/common/abstract/_module.mts";
 import { ItemPF2e } from '../index.ts';
 import { AbstractEffectPF2e, EffectBadge } from '../abstract-effect/index.ts';
-import { RuleElementOptions, RuleElementPF2e } from '../../rules/index.ts';
+import { RuleElement, RuleElementOptions } from '../../rules/index.ts';
 import { TokenDocumentPF2e } from '../../scene/index.ts';
 import { ConditionSource, ConditionSystemData, PersistentDamageData } from './data.ts';
 import { ConditionKey, ConditionSlug } from './types.ts';
@@ -47,7 +47,7 @@ declare class ConditionPF2e<TParent extends ActorPF2e | null = ActorPF2e | null>
     /** Log self in parent's conditions map */
     prepareActorData(): void;
     /** Withhold all rule elements if this condition is inactive */
-    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElementPF2e[];
+    prepareRuleElements(options?: Omit<RuleElementOptions, "parent">): RuleElement[];
     protected _preUpdate(changed: DeepPartial<this["_source"]>, operation: ConditionUpdateOperation<TParent>, user: fd.BaseUser): Promise<boolean | void>;
     protected _onUpdate(changed: DeepPartial<this["_source"]>, operation: ConditionUpdateOperation<TParent>, userId: string): void;
 }

@@ -23,8 +23,6 @@ declare class ArmyPF2e<TParent extends TokenDocumentPF2e | null = TokenDocumentP
     get strongSave(): "maneuver" | "morale";
     prepareData(): void;
     prepareBaseData(): void;
-    /** Run rule elements */
-    prepareEmbeddedDocuments(): void;
     prepareDerivedData(): void;
     usePotion(): Promise<void>;
     prepareArmyStrike(type: "melee" | "ranged"): ArmyStrike | null;

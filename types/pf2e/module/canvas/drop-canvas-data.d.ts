@@ -1,7 +1,7 @@
 import { DropCanvasData } from "../../../foundry/client/helpers/hooks.mts";
 import { ItemPF2e } from '../item/index.ts';
 import { EffectContextData } from '../item/abstract-effect/index.ts';
-type DropCanvasItemDataPF2e = DropCanvasData<"Item", ItemPF2e> & {
+type DropCanvasItemData = DropCanvasData<"Item", ItemPF2e> & {
     value?: number;
     level?: number;
     spellFrom?: {
@@ -14,5 +14,5 @@ type DropCanvasItemDataPF2e = DropCanvasData<"Item", ItemPF2e> & {
 type DropCanvasPersistentDamage = DropCanvasData<"PersistentDamage"> & {
     formula: string;
 };
-type DropCanvasDataPF2e = DropCanvasItemDataPF2e | DropCanvasPersistentDamage;
-export type { DropCanvasDataPF2e, DropCanvasItemDataPF2e };
+type DropCanvasDataPF2e = DropCanvasItemData | DropCanvasPersistentDamage;
+export type { DropCanvasDataPF2e, DropCanvasItemData };

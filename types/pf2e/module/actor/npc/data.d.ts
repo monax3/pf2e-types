@@ -1,8 +1,8 @@
 import { ActorPF2e } from '../base.ts';
-import { Abilities, BaseCreatureSource, CreatureAttributes, CreatureDetails, CreatureDetailsSource, CreatureHitPointsSource, CreatureInitiativeSource, CreatureLanguagesData, CreaturePerceptionData, CreatureResources, CreatureResourcesSource, CreatureSpeeds, CreatureSystemData, CreatureSystemSource, CreatureTraitsSource, HeldShieldData, LabeledSpeed, SaveData, SenseData } from '../creature/data.ts';
+import { Abilities, BaseCreatureSource, CreatureAttributes, CreatureDetails, CreatureDetailsSource, CreatureHitPointsSource, CreatureInitiativeSource, CreatureLanguagesData, CreaturePerceptionData, CreatureResources, CreatureResourcesSource, CreatureSystemData, CreatureSystemSource, CreatureTraitsSource, HeldShieldData, LabeledSpeed, SaveData, SenseData } from '../creature/data.ts';
 import { ActorAttributesSource, ActorFlagsPF2e, AttributeBasedTraceData, HitPointsStatistic, StrikeData } from '../data/base.ts';
 import { InitiativeTraceData } from '../initiative.ts';
-import { ModifierPF2e, StatisticModifier } from '../modifiers.ts';
+import { Modifier, StatisticModifier } from '../modifiers.ts';
 import { ActorAlliance, SaveType, SkillSlug } from '../types.ts';
 import { MeleePF2e } from '../../item/index.ts';
 import { PublicationData, ValueAndMax } from '../../data.ts';
@@ -118,7 +118,7 @@ interface NPCSystemData extends Omit<NPCSystemSource, "attributes" | "perception
             dc: number;
         };
     };
-    customModifiers: Record<string, ModifierPF2e[]>;
+    customModifiers: Record<string, Modifier[]>;
 }
 interface NPCPerceptionData extends CreaturePerceptionData {
     mod: number;
@@ -126,7 +126,6 @@ interface NPCPerceptionData extends CreaturePerceptionData {
 interface NPCAttributes extends Omit<NPCAttributesSource, AttributesSourceOmission>, CreatureAttributes {
     adjustment: "elite" | "weak" | null;
     hp: NPCHitPoints;
-    speed: NPCSpeeds;
     /**
      * Data related to the currently equipped shield. This is copied from the shield data itself, and exists to
      * allow for the shield health to be shown in a token.
@@ -150,7 +149,7 @@ interface NPCAttributes extends Omit<NPCAttributesSource, AttributesSourceOmissi
         value: number;
     };
 }
-type AttributesSourceOmission = "ac" | "initiative" | "immunities" | "weaknesses" | "resistances";
+type AttributesSourceOmission = "ac" | "initiative" | "immunities" | "weaknesses" | "resistances" | "speed";
 interface NPCDetails extends NPCDetailsSource, CreatureDetails {
     level: {
         value: number;
@@ -201,9 +200,6 @@ interface NPCSkillData extends NPCSkillSource, AttributeBasedTraceData {
     /** If this is a lore skill, what item it came from */
     itemId?: string;
     special: NPCSpecialSkill[];
-}
-interface NPCSpeeds extends CreatureSpeeds {
-    details: string;
 }
 interface NPCResources extends CreatureResources {
     /** The current number of focus points and pool size */

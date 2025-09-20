@@ -45,7 +45,6 @@ export type * from "../module/rules/rule-element/iwr/resistance.d.ts";
 export type * from "../module/rules/rule-element/iwr/index.d.ts";
 export type * from "../module/rules/rule-element/iwr/immunity.d.ts";
 export type * from "../module/rules/rule-element/iwr/base.d.ts";
-export type * from "../module/rules/rule-element/item-alteration/schemas.d.ts";
 export type * from "../module/rules/rule-element/item-alteration/rule-element.d.ts";
 export type * from "../module/rules/rule-element/item-alteration/index.d.ts";
 export type * from "../module/rules/rule-element/item-alteration/helper.d.ts";
@@ -60,8 +59,8 @@ export type * from "../module/rules/rule-element/effect-spinoff/rule-element.d.t
 export type * from "../module/rules/rule-element/damage-alteration/rule-element.d.ts";
 export type * from "../module/rules/rule-element/damage-alteration/alteration.d.ts";
 export type * from "../module/rules/rule-element/choice-set/rule-element.d.ts";
-export type * from "../module/rules/rule-element/choice-set/prompt.d.ts";
 export type * from "../module/rules/rule-element/choice-set/data.d.ts";
+export type * from "../module/rules/rule-element/battle-form/values.d.ts";
 export type * from "../module/rules/rule-element/battle-form/types.d.ts";
 export type * from "../module/rules/rule-element/battle-form/schema.d.ts";
 export type * from "../module/rules/rule-element/battle-form/rule-element.d.ts";

@@ -1,7 +1,7 @@
 import { ActorPF2e } from '../../index.ts';
-import { Coins } from '../../../item/physical/data.ts';
+import { RawCoins } from '../../../item/physical/data.ts';
 import appv1 = foundry.appv1;
-interface PopupFormData extends Coins {
+interface PopupFormData extends RawCoins {
     removeByValue: boolean;
 }
 /**

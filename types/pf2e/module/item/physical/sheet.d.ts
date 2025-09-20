@@ -2,7 +2,7 @@ import { FormSelectOption } from "../../../../foundry/client/applications/forms/
 import { AppV1RenderOptions } from "../../../../foundry/client/appv1/api/application-v1.mts";
 import { PhysicalItemPF2e } from '../index.ts';
 import { ItemSheetDataPF2e, ItemSheetOptions, ItemSheetPF2e } from '../base/sheet/sheet.ts';
-import { CoinsPF2e, MaterialValuationData } from './index.ts';
+import { Coins, MaterialValuationData } from './index.ts';
 declare class PhysicalItemSheetPF2e<TItem extends PhysicalItemPF2e> extends ItemSheetPF2e<TItem> {
     static get defaultOptions(): ItemSheetOptions;
     /** Show the identified data for editing purposes */
@@ -20,7 +20,7 @@ interface PhysicalItemSheetData<TItem extends PhysicalItemPF2e> extends ItemShee
     bulkAdjustment: string | null;
     adjustedBulkHint?: string | null;
     adjustedLevelHint: string | null;
-    basePrice: CoinsPF2e;
+    basePrice: Coins;
     priceAdjustment: string | null;
     adjustedPriceHint: string | null;
     attributes: typeof CONFIG.PF2E.abilities;

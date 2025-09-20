@@ -32,7 +32,6 @@ declare class ItemSheetPF2e<TItem extends ItemPF2e> extends fav1.sheets.ItemShee
     activateListeners($html: JQuery): void;
     /** Add button to refresh from compendium if setting is enabled. */
     protected _getHeaderButtons(): ApplicationV1HeaderButton[];
-    protected _canDragDrop(_selector: string): boolean;
     protected _updateObject(event: Event, formData: Record<string, unknown>): Promise<void>;
     /** Overriden _render to maintain focus on tagify elements */
     protected _render(force?: boolean, options?: AppV1RenderOptions): Promise<void>;

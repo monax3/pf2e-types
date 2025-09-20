@@ -2528,6 +2528,9 @@ declare const armorTraits: {
     plant: string;
     ponderous: string;
     relic: string;
+    "resilient-1": string;
+    "resilient-2": string;
+    "resilient-3": string;
     tech: string;
     arcane: string;
     divine: string;

@@ -1,5 +1,5 @@
 import { ActorPF2e, ActorType } from '../../actor/index.ts';
-import { CheckModifier, DamageDicePF2e, ModifierPF2e } from '../../actor/modifiers.ts';
+import { CheckModifier, DamageDicePF2e, Modifier } from '../../actor/modifiers.ts';
 import { Rolled } from "../../../../foundry/client/dice/roll.mts";
 import { DatabaseCreateOperation, DatabaseDeleteOperation, DataModelConstructionContext, DataModelValidationOptions } from "../../../../foundry/common/abstract/_types.mts";
 import { ModelPropsFromSchema } from "../../../../foundry/common/data/fields.mts";
@@ -15,8 +15,7 @@ import { BracketedValue, RuleElementSchema, RuleElementSource, RuleValue } from 
  *
  * @category RuleElement
  */
-declare abstract class RuleElementPF2e<TSchema extends RuleElementSchema = RuleElementSchema> extends foundry.abstract
-    .DataModel<ItemPF2e<ActorPF2e>, TSchema> {
+declare abstract class RuleElement<TSchema extends RuleElementSchema = RuleElementSchema> extends foundry.abstract.DataModel<ItemPF2e<ActorPF2e>, TSchema> {
     #private;
     static _schema: LaxSchemaField<RuleElementSchema> | undefined;
     label: string;
@@ -86,8 +85,8 @@ declare abstract class RuleElementPF2e<TSchema extends RuleElementSchema = RuleE
     resolveValue(value: unknown, defaultValue?: Exclude<RuleValue, BracketedValue> | null, { evaluate, resolvables, warn }?: ResolveValueParams): number | string | boolean | object | null;
     protected isBracketedValue(value: unknown): value is BracketedValue;
 }
-interface RuleElementPF2e<TSchema extends RuleElementSchema> extends foundry.abstract.DataModel<ItemPF2e<ActorPF2e>, TSchema>, ModelPropsFromSchema<RuleElementSchema> {
-    constructor: typeof RuleElementPF2e<TSchema>;
+interface RuleElement<TSchema extends RuleElementSchema> extends foundry.abstract.DataModel<ItemPF2e<ActorPF2e>, TSchema>, ModelPropsFromSchema<RuleElementSchema> {
+    constructor: typeof RuleElement<TSchema>;
     get schema(): LaxSchemaField<TSchema>;
     /**
      * Run between Actor#applyActiveEffects and Actor#prepareDerivedData. Generally limited to ActiveEffect-Like
@@ -116,7 +115,7 @@ interface RuleElementPF2e<TSchema extends RuleElementSchema> extends foundry.abs
      * @param domains Applicable predication domains for pending check
      * @param rollOptions Currently accumulated roll options for the pending check
      */
-    afterRoll?(params: RuleElementPF2e.AfterRollParams): Promise<void>;
+    afterRoll?(params: RuleElement.AfterRollParams): Promise<void>;
     /** Runs before the rule's parent item's owning actor is updated */
     preUpdateActor?(): Promise<{
         create: ItemSourcePF2e[];
@@ -127,13 +126,13 @@ interface RuleElementPF2e<TSchema extends RuleElementSchema> extends foundry.abs
      * alter itself before its parent item is stored on an actor; it can also alter the item source itself in the same
      * manner.
      */
-    preCreate?({ ruleSource, itemSource, pendingItems, operation }: RuleElementPF2e.PreCreateParams): Promise<void>;
+    preCreate?({ ruleSource, itemSource, pendingItems, operation }: RuleElement.PreCreateParams): Promise<void>;
     /**
      * Runs before this rules element's parent item is created. The item is temporarilly constructed. A rule element can
      * alter itself before its parent item is stored on an actor; it can also alter the item source itself in the same
      * manner.
      */
-    preDelete?({ pendingItems, operation }: RuleElementPF2e.PreDeleteParams): Promise<void>;
+    preDelete?({ pendingItems, operation }: RuleElement.PreDeleteParams): Promise<void>;
     /**
      * Runs before this rules element's parent item is updated */
     preUpdate?(changes: DeepPartial<ItemSourcePF2e>): Promise<void>;
@@ -169,9 +168,9 @@ interface RuleElementPF2e<TSchema extends RuleElementSchema> extends foundry.abs
      */
     onDelete?(actorUpdates: Record<string, unknown>): void;
     /** An optional method for excluding damage modifiers and extra dice */
-    applyDamageExclusion?(weapon: WeaponPF2e, modifiers: (DamageDicePF2e | ModifierPF2e)[]): void;
+    applyDamageExclusion?(weapon: WeaponPF2e, modifiers: (DamageDicePF2e | Modifier)[]): void;
 }
-declare namespace RuleElementPF2e {
+declare namespace RuleElement {
     interface PreCreateParams<T extends RuleElementSource = RuleElementSource> {
         /** The source partial of the rule element's parent item to be created */
         itemSource: ItemSourcePF2e;
@@ -214,4 +213,4 @@ interface RuleElementOptions extends DataModelConstructionContext<ItemPF2e<Actor
     /** If data validation fails for any reason, do not emit console warnings */
     suppressWarnings?: boolean;
 }
-export { RuleElementPF2e, type RuleElementOptions };
+export { RuleElement, type RuleElementOptions };

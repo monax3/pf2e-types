@@ -3,7 +3,7 @@ import { HexColorString } from "../../../foundry/common/constants.mts";
 import { ItemPF2e, MeleePF2e, PhysicalItemPF2e, WeaponPF2e } from '../item/index.ts';
 import { ZeroToFour } from '../data.ts';
 import { ActorSourcePF2e } from './data/index.ts';
-import { ModifierPF2e } from './modifiers.ts';
+import { Modifier } from './modifiers.ts';
 import { NPCStrike } from './npc/data.ts';
 import { ActorGroupUpdate, AuraEffectData } from './types.ts';
 /**
@@ -50,7 +50,7 @@ declare function strikeFromMeleeItem(item: MeleePF2e<ActorPF2e>): NPCStrike;
 /** Get the range increment of a target for a given weapon */
 declare function getRangeIncrement(attackItem: ItemPF2e<ActorPF2e>, distance: number | null): number | null;
 /** Determine range penalty for a ranged attack roll */
-declare function calculateRangePenalty(actor: ActorPF2e, increment: number | null, selectors: string[], rollOptions: Set<string>): ModifierPF2e | null;
+declare function calculateRangePenalty(actor: ActorPF2e, increment: number | null, selectors: string[], rollOptions: Set<string>): Modifier | null;
 /** Whether this actor is of a the "character" type, excluding those from the PF2E Companion Compendia module */
 declare function isReallyPC(actor: ActorPF2e): boolean;
 /** Recursive generator function to iterate over all items and their sub items */

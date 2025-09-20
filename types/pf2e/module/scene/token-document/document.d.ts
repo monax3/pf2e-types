@@ -6,6 +6,7 @@ import { TokenUpdateCallbackOptions } from "../../../../foundry/client/documents
 import { Point } from "../../../../foundry/common/_types.mts";
 import { DatabaseCreateCallbackOptions, DatabaseDeleteCallbackOptions, DatabaseOperation } from "../../../../foundry/common/abstract/_types.mts";
 import { default as Document } from "../../../../foundry/common/abstract/document.mts";
+import { GridMeasurePathResult } from "../../../../foundry/common/grid/_types.mts";
 import { TokenPF2e } from '../../canvas/index.ts';
 import { CombatantPF2e, EncounterPF2e } from '../../encounter/index.ts';
 import { DifficultTerrainGrade, RegionDocumentPF2e } from '../index.ts';
@@ -36,6 +37,7 @@ declare class TokenDocumentPF2e<TParent extends ScenePF2e | null = ScenePF2e | n
     get bounds(): PIXI.Rectangle;
     /** Bounds used for mechanics, such as flanking and drawing auras */
     get mechanicalBounds(): PIXI.Rectangle;
+    get isTiny(): boolean;
     /** The pixel-coordinate pair constituting this token's center */
     get center(): Point;
     /** The grade of difficult terrain at this token's position */
@@ -45,19 +47,24 @@ declare class TokenDocumentPF2e<TParent extends ScenePF2e | null = ScenePF2e | n
     /** Filter trackable attributes for relevance and avoidance of circular references */
     static getTrackedAttributes(data?: Record<string, unknown>, _path?: string[]): TrackedAttributesDescription;
     static getTrackedAttributeChoices(attributes?: TrackedAttributesDescription): TrackedAttributesDescription;
+    /** Synchronize the token image with the actor image if the token does not currently have an image */
+    static assignDefaultImage(token: TokenDocumentPF2e | PrototypeTokenPF2e<ActorPF2e>): void;
+    /** Set a TokenData instance's dimensions from actor data. Static so actors can use for their prototypes */
+    static prepareScale(token: TokenDocumentPF2e | PrototypeTokenPF2e<ActorPF2e>): void;
     /** Make stamina, resolve, and shield HP editable despite not being present in template.json */
     getBarAttribute(barName: string, options?: {
         alternative?: string;
     }): TokenResourceData | null;
+    /** Recalculate measurements of tiny-token movement to avoid upstream's partial square calculations. */
+    measureMovementPath(waypoints: fd.TokenMeasureMovementPathWaypoint[], options?: {
+        cost?: fd.TokenMovementCostFunction;
+    }): GridMeasurePathResult;
     protected _initialize(options?: Record<string, unknown>): void;
     /** If rules-based vision is enabled, disable manually configured vision radii */
     prepareBaseData(): void;
     /** Set vision and detection modes based on actor data */
     protected _prepareDetectionModes(): void;
-    /** Synchronize the token image with the actor image if the token does not currently have an image */
-    static assignDefaultImage(token: TokenDocumentPF2e | PrototypeTokenPF2e<ActorPF2e>): void;
-    /** Set a TokenData instance's dimensions from actor data. Static so actors can use for their prototypes */
-    static prepareScale(token: TokenDocumentPF2e | PrototypeTokenPF2e<ActorPF2e>): void;
+    protected _inferMovementAction(): string;
     /** Set a token's initiative on the current encounter, creating a combatant if necessary */
     setInitiative({ initiative, sendMessage, }: {
         initiative: number;
