@@ -16,7 +16,7 @@ declare class SpeedStatistic<TActor extends ActorPF2e, TType extends MovementTyp
     get breakdown(): string;
     /** Derive a travel speed from this statistic. */
     extend<TType extends MovementType | "travel">(options: ExtendParams<TType>): SpeedStatistic<TActor, TType>;
-    getTraceData(): SpeedStatisticTraceData<TType>;
+    getTraceData(): TType extends "land" ? LandSpeedStatisticTraceData : TType extends MovementType | "travel" ? SpeedStatisticTraceData<TType> : never;
 }
 interface SpeedStatisticData<TType extends MovementType | "travel"> extends Omit<Partial<BaseStatisticData>, "slug"> {
     type: TType;
@@ -30,11 +30,11 @@ interface SpeedStatisticTraceData<TType extends MovementType | "travel" = Moveme
     base: number;
     source: string | null;
 }
-interface LandSpeedStatisticTraceData extends SpeedStatisticTraceData {
+interface LandSpeedStatisticTraceData extends SpeedStatisticTraceData<"land"> {
     crawl: number;
     step: number;
 }
-interface ExtendParams<TType extends MovementType | "travel"> extends Pick<SpeedStatisticData<TType>, "type" | "base" | "source" | "modifiers"> {
+interface ExtendParams<TType extends MovementType | "travel"> extends Pick<SpeedStatisticData<TType>, "type" | "base" | "modifiers" | "source"> {
 }
 export { SpeedStatistic };
 export type { LandSpeedStatisticTraceData, SpeedStatisticTraceData };

@@ -26,9 +26,12 @@ declare class PickAThingPrompt<TThing extends string | number | object> extends 
         predicate: Predicate;
     } | null;
     allowNoSelection: boolean;
+    /** The current value, which is used in the resolve when it closes */
+    selection: PickableThing<TThing> | null;
     protected _prepareContext(): Promise<PickAThingRenderContext<TThing>>;
     /** Return early if there is only one choice */
     resolveSelection(): Promise<PickableThing<string | number | object> | null>;
+    protected _onClose(options: fa.ApplicationClosingOptions): void;
 }
 interface PickAThingPromptConfiguration<TThing extends string | number | object = string | number | object> extends DeepPartial<fa.ApplicationConfiguration>, DeepPartial<fa.ApplicationRenderContext> {
     prompt: string;
@@ -50,6 +53,7 @@ interface PickableThing<T extends string | number | object = string | number | o
     predicate?: Predicate;
 }
 interface PickAThingRenderContext<T extends string | number | object = string | number | object> extends SvelteApplicationRenderContext {
+    updateSelection: (option: PickableThing<T> | null) => void;
     resolve: (option: PickableThing<T> | null) => void;
     testAllowedDrop: (option: ItemPF2e) => boolean;
     state: {

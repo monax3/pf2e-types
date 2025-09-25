@@ -4,7 +4,6 @@ import { ActorInitiative } from '../initiative.ts';
 import { AttributeString } from '../types.ts';
 import { AncestryPF2e, BackgroundPF2e, ClassPF2e, DeityPF2e, FeatPF2e, HeritagePF2e, ItemPF2e, WeaponPF2e } from '../../item/index.ts';
 import { ItemType } from '../../item/base/data/index.ts';
-import { ZeroToTwo } from '../../data.ts';
 import { TokenDocumentPF2e } from '../../scene/index.ts';
 import { RollParameters } from '../../system/rolls.ts';
 import { Statistic } from '../../system/statistic/index.ts';
@@ -36,9 +35,9 @@ declare class CharacterPF2e<TParent extends TokenDocumentPF2e | null = TokenDocu
     get keyAttribute(): AttributeString;
     /** This PC's ability scores */
     get abilities(): CharacterAbilities;
-    get handsFree(): ZeroToTwo;
+    get handsFree(): number;
     /** The number of hands this PC "really" has free, ignoring allowances for shields and the Free-Hand trait */
-    get handsReallyFree(): ZeroToTwo;
+    get handsReallyFree(): number;
     get hitPoints(): CharacterHitPointsSummary;
     get heroPoints(): {
         value: number;
@@ -61,6 +60,8 @@ declare class CharacterPF2e<TParent extends TokenDocumentPF2e | null = TokenDocu
      * modifiers according to them.
      */
     prepareDataFromItems(): void;
+    /** Determine hands free from held items. */
+    protected prepareHandsData(): void;
     prepareDerivedData(): void;
     private prepareBuildData;
     /** Set roll operations for ability scores, proficiency ranks, and number of hands free */

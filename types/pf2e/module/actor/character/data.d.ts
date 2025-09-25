@@ -224,6 +224,13 @@ interface CharacterSystemData extends Omit<CharacterSystemSource, SourceOmission
     attributes: CharacterAttributes;
     perception: CharacterPerceptionData;
     initiative: InitiativeData;
+    /**
+     * A character's hands (or some other grasping appendage): typically a maximum of 2 and actively usable of 2
+     * - A creature may have a certain number of hands but only have a subset of them be active.
+     *   An action may be needed to change the "live" subset.
+     * - Hands that are "really" free are literally not occupied in any sense of the word.
+     */
+    hands: CharacterHandsData;
     /** A catch-all for character proficiencies */
     proficiencies: {
         /** Proficiencies in the four weapon categories as well as groups, base weapon types, etc. */
@@ -382,6 +389,16 @@ type CharacterResources = CreatureResources & {
 interface CharacterPerceptionData extends CreaturePerceptionData {
     rank: ZeroToFour;
 }
+interface CharacterHandsData {
+    max: {
+        value: number;
+        active: number;
+    };
+    free: {
+        value: number;
+        really: number;
+    };
+}
 interface CharacterDetails extends Omit<CharacterDetailsSource, "alliance">, CreatureDetails {
     /** Convenience information for easy access when the item class instance isn't available */
     ancestry: {
@@ -451,4 +468,4 @@ interface CharacterHitPoints extends HitPointsStatistic {
     recoveryAddend: number;
     sp?: ValueAndMax;
 }
-export type { BaseWeaponProficiencyKey, CategoryProficiencies, CharacterAbilities, CharacterAttributes, CharacterAttributesSource, CharacterBiography, CharacterDetails, CharacterDetailsSource, CharacterFlags, CharacterProficiency, CharacterResources, CharacterResourcesSource, CharacterSaveData, CharacterSaves, CharacterSkillData, CharacterSource, CharacterStrike, CharacterSystemData, CharacterSystemSource, ClassDCData, MartialProficiency, WeaponGroupProficiencyKey, };
+export type { BaseWeaponProficiencyKey, CategoryProficiencies, CharacterAbilities, CharacterAttributes, CharacterAttributesSource, CharacterBiography, CharacterDetails, CharacterDetailsSource, CharacterFlags, CharacterHandsData, CharacterProficiency, CharacterResources, CharacterResourcesSource, CharacterSaveData, CharacterSaves, CharacterSkillData, CharacterSource, CharacterStrike, CharacterSystemData, CharacterSystemSource, ClassDCData, MartialProficiency, WeaponGroupProficiencyKey, };

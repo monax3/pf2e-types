@@ -73,15 +73,8 @@ declare function createForceOpenPenalty(actor: CharacterPF2e, domains: string[])
 declare function createShoddyPenalty(actor: ActorPF2e, item: WeaponPF2e | ArmorPF2e | null, domains: string[]): Modifier | null;
 /**
  * Create a penalty for wearing armor with the "ponderous" trait
- * "You take a –5 penalty to all your Speeds (to a minimum of a 5-foot Speed). This is separate from and in addition to
- * the armor's Speed penalty, and affects you even if your Strength or an ability lets you reduce or ignore the armor's
- * Speed penalty."
- */
-declare function createHinderingPenalty(actor: CharacterPF2e): Modifier | null;
-/**
- * Create a penalty for wearing armor with the "ponderous" trait
  * "While wearing the armor, you take a –1 penalty to initiative checks. If you don't meet the armor's required Strength
  * score, this penalty increases to be equal to the armor's check penalty if it's worse."
  */
 declare function createPonderousPenalty(actor: CharacterPF2e): Modifier | null;
-export { PCAttackTraitHelpers, WeaponAuxiliaryAction, createForceOpenPenalty, createHinderingPenalty, createPonderousPenalty, createShoddyPenalty, getItemProficiencyRank, imposeOversizedWeaponCondition, };
+export { PCAttackTraitHelpers, WeaponAuxiliaryAction, createForceOpenPenalty, createPonderousPenalty, createShoddyPenalty, getItemProficiencyRank, imposeOversizedWeaponCondition, };
