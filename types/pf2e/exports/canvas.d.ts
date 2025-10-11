@@ -17,7 +17,6 @@ export type * from "../module/canvas/token/aura/util.d.ts";
 export type * from "../module/canvas/token/aura/renderer.d.ts";
 export type * from "../module/canvas/token/aura/map.d.ts";
 export type * from "../module/canvas/token/aura/index.d.ts";
-export type * from "../module/canvas/perception/point-vision-source.d.ts";
 export type * from "../module/canvas/perception/modes.d.ts";
 export type * from "../module/canvas/layer/visibility.d.ts";
 export type * from "../module/canvas/layer/token.d.ts";

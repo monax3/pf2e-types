@@ -8,6 +8,7 @@ import fields = foundry.data.fields;
 declare class BaseSpeedRuleElement extends RuleElement<BaseSpeedRuleSchema> {
     #private;
     protected static validActorTypes: ActorType[];
+    static autogenForms: boolean;
     constructor(data: RuleElementSource, options: RuleElementOptions);
     static defineSchema(): BaseSpeedRuleSchema;
     beforePrepareData(): void;

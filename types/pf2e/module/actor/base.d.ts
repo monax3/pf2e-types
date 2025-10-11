@@ -6,9 +6,10 @@ import { DocumentConstructionContext } from "../../../foundry/common/_types.mts"
 import { DatabaseCreateOperation, DatabaseDeleteCallbackOptions, DatabaseUpdateOperation, Document } from "../../../foundry/common/abstract/_module.mts";
 import { ImageFilePath, VideoFilePath } from "../../../foundry/common/constants.mts";
 import { AbstractEffectPF2e, ConditionPF2e, ContainerPF2e, PhysicalItemPF2e, ShieldPF2e, ItemPF2e } from '../item/index.ts';
-import { ItemSourcePF2e, ItemType, PhysicalItemSource } from '../item/base/data/index.ts';
+import { ItemSourcePF2e, PhysicalItemSource } from '../item/base/data/index.ts';
 import { ConditionKey, ConditionSlug, ConditionSource } from '../item/condition/index.ts';
 import { EffectSource } from '../item/effect/data.ts';
+import { ItemType } from '../item/types.ts';
 import { ActiveEffectPF2e } from '../active-effect.ts';
 import { TokenPF2e } from '../canvas/index.ts';
 import { AppliedDamageFlag } from '../chat-message/index.ts';

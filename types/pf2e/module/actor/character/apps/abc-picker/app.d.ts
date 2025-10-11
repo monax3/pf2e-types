@@ -1,7 +1,7 @@
 import { CharacterPF2e } from '../../../index.ts';
 import { ImageFilePath } from "../../../../../../foundry/common/constants.mts";
 import { ItemUUID } from "../../../../../../foundry/common/documents/_module.mts";
-import { ItemType } from '../../../../item/base/data/index.ts';
+import { ItemType } from '../../../../item/types.ts';
 import { Rarity } from '../../../../data.ts';
 import { SvelteApplicationRenderContext } from '../../../../sheet/mixin.svelte.ts';
 type AhBCDType = Extract<ItemType, "ancestry" | "heritage" | "background" | "class" | "deity">;

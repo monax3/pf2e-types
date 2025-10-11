@@ -2,7 +2,7 @@ import { ActorPF2e } from '../actor/index.ts';
 import { Point } from "../../../foundry/common/_types.mts";
 import { GridSnappingMode } from "../../../foundry/common/constants.mjs";
 import { ItemPF2e } from '../item/index.ts';
-import { EffectAreaShape } from '../item/spell/types.ts';
+import { EffectAreaShape } from '../item/types.ts';
 import { ChatMessagePF2e } from '../chat-message/document.ts';
 import { MeasuredTemplateDocumentPF2e, ScenePF2e } from '../scene/index.ts';
 import { TemplateLayerPF2e } from './layer/template.ts';

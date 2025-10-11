@@ -319,5 +319,5 @@ interface ResistanceSource extends IWRSource<ResistanceType> {
 }
 /** Weaknesses to things that "[don't] normally deal damage, such as water": applied separately as untyped damage */
 declare const APPLY_ONCE_WEAKNESSES: Set<WeaknessType>;
-export { Immunity, APPLY_ONCE_WEAKNESSES, Resistance, Weakness };
+export { APPLY_ONCE_WEAKNESSES, Immunity, Resistance, Weakness };
 export type { ImmunitySource, IWRSource, ResistanceSource, WeaknessSource };

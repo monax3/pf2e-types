@@ -5,6 +5,7 @@ import fields = foundry.data.fields;
  * @category RuleElement
  */
 declare class MultipleAttackPenaltyRuleElement extends RuleElement<MAPRuleSchema> {
+    static autogenForms: boolean;
     static defineSchema(): MAPRuleSchema;
     beforePrepareData(): void;
 }

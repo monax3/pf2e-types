@@ -1,10 +1,12 @@
 import { ActorPF2e } from '../actor/index.ts';
-import { ItemSourcePF2e, ItemType } from './base/data/index.ts';
+import { MeasuredTemplatePF2e } from '../canvas/measured-template.ts';
+import { ChatMessagePF2e } from '../chat-message/document.ts';
+import { ItemSourcePF2e } from './base/data/index.ts';
 import { ItemTraits, ItemTraitsNoRarity } from './base/data/system.ts';
 import { ItemPF2e } from './base/document.ts';
 import { ItemTrait } from './base/types.ts';
 import { PhysicalItemPF2e } from './physical/document.ts';
-import { ItemInstances } from './types.ts';
+import { EffectAreaShape, ItemInstances, ItemType } from './types.ts';
 type ItemOrSource = PreCreate<ItemSourcePF2e> | ItemPF2e;
 /** Determine in a type-safe way whether an `ItemPF2e` or `ItemSourcePF2e` is among certain types */
 declare function itemIsOfType<TParent extends ActorPF2e | null, TType extends ItemType>(item: ItemOrSource, ...types: TType[]): item is ItemInstances<TParent>[TType] | ItemInstances<TParent>[TType]["_source"];
@@ -31,4 +33,15 @@ declare function addOrUpgradeTrait<TTrait extends ItemTrait>(traits: ItemTraits<
  * @param trait the trait being removed, either the full one or an unannotated variant (like "volley")
  */
 declare function removeTrait<TTrait extends ItemTrait>(traits: ItemTraits<TTrait> | ItemTraitsNoRarity<TTrait>, trait: string): void;
-export { addOrUpgradeTrait, itemIsOfType, markdownToHTML, performLatePreparation, reduceItemName, removeTrait };
+declare function createEffectAreaLabel(areaData: {
+    type: EffectAreaShape;
+    value: number;
+}): string;
+declare function placeItemTemplate(area: {
+    type: EffectAreaShape;
+    value: number;
+}, { message, item }: {
+    message?: ChatMessagePF2e;
+    item: ItemPF2e;
+}): Promise<MeasuredTemplatePF2e>;
+export { addOrUpgradeTrait, createEffectAreaLabel, itemIsOfType, markdownToHTML, performLatePreparation, placeItemTemplate, reduceItemName, removeTrait, };

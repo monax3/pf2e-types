@@ -6,6 +6,7 @@ import { ModelPropsFromRESchema, ResolvableValueField, RuleElementSchema } from 
  */
 declare class DexterityModifierCapRuleElement extends RuleElement<DexterityModifierCapRuleSchema> {
     protected static validActorTypes: ActorType[];
+    static autogenForms: boolean;
     static defineSchema(): DexterityModifierCapRuleSchema;
     beforePrepareData(): void;
 }

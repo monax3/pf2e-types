@@ -1,8 +1,8 @@
 import { ModelPropsFromSchema, SourceFromSchema } from "../../../../foundry/common/data/fields.mts";
 import { AbstractEffectSchema, DurationData } from '../abstract-effect/data.ts';
-import { ItemType } from '../base/data/index.ts';
 import { ItemSystemModel } from '../base/data/model.ts';
 import { BaseItemSourcePF2e, ItemSystemSource } from '../base/data/system.ts';
+import { ItemType } from '../types.ts';
 import { DamageType } from '../../system/damage/index.ts';
 import { DamageRoll } from '../../system/damage/roll.ts';
 import { ConditionPF2e } from './document.ts';

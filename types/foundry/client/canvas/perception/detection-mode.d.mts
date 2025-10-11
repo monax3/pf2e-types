@@ -1,4 +1,5 @@
 import { CanvasVisibilityTest, CanvasVisibilityTestConfiguration } from "../../_module.mjs";
+import DataModel from "../../../common/abstract/data.mjs";
 import * as fields from "../../../common/data/fields.mjs";
 import { PlaceableObject, Token } from "../placeables/_module.mjs";
 import PointVisionSource from "../sources/point-vision-source.mjs";
@@ -8,13 +9,7 @@ import { TokenDetectionMode } from "../../../common/documents/token.mjs";
  * A Detection Mode which can be associated with any kind of sense/vision/perception.
  * A token could have multiple detection modes.
  */
-export default class DetectionMode extends foundry.abstract.DataModel<null, DetectionModeSchema> {
-    id: string;
-    label: string;
-    tokenConfig: boolean;
-    walls: boolean;
-    type: DetectionType;
-
+export default class DetectionMode extends DataModel<null, DetectionModeSchema> {
     static override defineSchema(): DetectionModeSchema;
 
     /** Get the detection filter pertaining to this mode. */
@@ -126,6 +121,10 @@ export default class DetectionMode extends foundry.abstract.DataModel<null, Dete
         test: CanvasVisibilityTest,
     ): boolean;
 }
+
+export default interface DetectionMode
+    extends DataModel<null, DetectionModeSchema>,
+        fields.ModelPropsFromSchema<DetectionModeSchema> {}
 
 export type DetectionType = (typeof DetectionMode.DETECTION_TYPES)[keyof typeof DetectionMode.DETECTION_TYPES];
 

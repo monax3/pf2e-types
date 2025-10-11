@@ -1,4 +1,4 @@
-import { ActorAttributes, ActorAttributesSource, ActorDetailsSource, ActorHitPoints, ActorHitPointsSource, ActorSystemData, ActorSystemSource, ActorTraitsSource, AttributeBasedTraceData, BaseActorSourcePF2e, StrikeData } from '../data/base.ts';
+import { ActorAttributes, ActorAttributesSource, ActorDetailsSource, ActorHitPoints, ActorHitPointsSource, ActorSystemData, ActorSystemSource, ActorTraitsSource, AttributeBasedTraceData, BaseActorSourcePF2e } from '../data/base.ts';
 import { ActorSizePF2e } from '../data/size.ts';
 import { Modifier, RawModifier } from '../modifiers.ts';
 import { AttributeString, MovementType, SaveType, SkillSlug } from '../types.ts';
@@ -82,7 +82,6 @@ interface CreatureSystemData extends Omit<CreatureSystemSource, "attributes">, A
     /** Saving throw data */
     saves: CreatureSaves;
     skills: Record<string, SkillData>;
-    actions?: StrikeData[];
     resources: CreatureResources;
 }
 type SenseData = {

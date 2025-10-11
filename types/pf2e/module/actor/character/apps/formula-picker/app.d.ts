@@ -1,10 +1,10 @@
-import { ActorPF2e } from '../../../base.ts';
+import { ActorPF2e, CharacterPF2e } from '../../../index.ts';
 import { CraftingAbility } from '../../crafting/ability.ts';
-import { CharacterPF2e } from '../../document.ts';
 import { ResourceData } from '../../../creature/index.ts';
 import { ItemUUID } from "../../../../../../foundry/common/documents/_module.mts";
 import { AbilityItemPF2e, FeatPF2e, PhysicalItemPF2e } from '../../../../item/index.ts';
-import { ItemType, TraitChatData } from '../../../../item/base/data/index.ts';
+import { TraitChatData } from '../../../../item/base/data/index.ts';
+import { ItemType } from '../../../../item/types.ts';
 import { Rarity } from '../../../../data.ts';
 import { SvelteApplicationRenderContext } from '../../../../sheet/mixin.svelte.ts';
 import { default as MiniSearch } from 'minisearch';

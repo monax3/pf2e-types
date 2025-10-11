@@ -5,7 +5,9 @@ import fields = foundry.data.fields;
 /** Remember a token for later referencing */
 declare class TokenMarkRuleElement extends RuleElement<TokenMarkSchema> {
     #private;
+    static autogenForms: boolean;
     static defineSchema(): TokenMarkSchema;
+    static LOCALIZATION_PREFIXES: string[];
     preCreate({ ruleSource, itemSource, pendingItems }: RuleElement.PreCreateParams): Promise<void>;
     beforePrepareData(): void;
 }

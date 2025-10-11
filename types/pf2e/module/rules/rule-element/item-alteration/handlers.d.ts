@@ -1,7 +1,8 @@
 import { DataFieldOptions } from "../../../../../foundry/common/data/_types.mts";
 import { ItemPF2e } from '../../../item/index.ts';
-import { ItemSourcePF2e, ItemType } from '../../../item/base/data/index.ts';
+import { ItemSourcePF2e } from '../../../item/base/data/index.ts';
 import { PersistentDamageValueSchema } from '../../../item/condition/data.ts';
+import { ItemType } from '../../../item/types.ts';
 import { DataUnionField, PredicateField, SlugField, StrictNumberField, StrictStringField } from '../../../system/schema-data-fields.ts';
 import { AELikeChangeMode } from '../ae-like.ts';
 import { ResolvableValueField, RuleElement } from '../index.ts';
@@ -47,64 +48,64 @@ interface AlterationApplicationData {
 }
 declare const ITEM_ALTERATION_HANDLERS: {
     "ac-bonus": ItemAlterationHandler<{
-        itemType: fields.StringField<"armor" | "shield", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "subtract" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor" | "shield", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "area-size": ItemAlterationHandler<{
-        itemType: fields.StringField<"spell", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "add" | "subtract" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"spell", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "add" | "subtract" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "badge-max": ItemAlterationHandler<{
-        itemType: fields.StringField<"effect", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "downgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"effect", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "downgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "badge-value": ItemAlterationHandler<{
-        itemType: fields.StringField<"effect" | "condition", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "subtract" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"condition" | "effect", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     bulk: ItemAlterationHandler<{
-        itemType: fields.StringField<"armor" | "shield" | "consumable" | "book" | "backpack" | "equipment" | "treasure" | "weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor" | "shield" | "consumable" | "backpack" | "book" | "equipment" | "treasure" | "weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: StrictNumberField<number, number, true, false, false>;
     }>;
     category: ItemAlterationHandler<{
-        itemType: fields.StringField<"armor", ItemType, true, false, false>;
-        mode: fields.StringField<"override", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.StringField<"medium" | "light" | "heavy", NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "check-penalty": ItemAlterationHandler<{
-        itemType: fields.StringField<"armor", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "subtract" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: StrictNumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "damage-dice-faces": ItemAlterationHandler<{
-        itemType: fields.StringField<"weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: StrictNumberField<6 | 4 | 8 | 10 | 12, 6 | 4 | 8 | 10 | 12, true, true, true>;
     }>;
     "damage-dice-number": ItemAlterationHandler<{
-        itemType: fields.StringField<"weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "subtract" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "damage-type": ItemAlterationHandler<{
-        itemType: fields.StringField<"weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.StringField<"acid" | "bleed" | "bludgeoning" | "cold" | "electricity" | "fire" | "force" | "mental" | "piercing" | "poison" | "slashing" | "sonic" | "spirit" | "vitality" | "void" | "untyped", NonNullable<JSONValue>, true, false, boolean>;
     }>;
     /** The passive defense targeted by an attack spell */
     "defense-passive": ItemAlterationHandler<{
-        itemType: fields.StringField<"spell", ItemType, true, false, false>;
-        mode: fields.StringField<"override", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"spell", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.StringField<"ac" | "fortitude-dc" | "reflex-dc" | "will-dc", NonNullable<JSONValue>, true, false, boolean>;
     }>;
     description: ItemAlterationHandler<{
-        itemType: fields.StringField<"background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "action" | "book" | "backpack" | "equipment" | "treasure" | "weapon" | "effect" | "condition" | "affliction" | "campaignFeature" | "deity" | "feat" | "heritage" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "add", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "add", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.ArrayField<DescriptionElementField, fields.SourceFromSchema<{
             title: fields.StringField<string, string, false, true, true>;
             text: fields.StringField<string, string, true, false, false>;
@@ -118,113 +119,113 @@ declare const ITEM_ALTERATION_HANDLERS: {
         }>[], true, false, false>;
     }>;
     "dex-cap": ItemAlterationHandler<{
-        itemType: fields.StringField<"armor", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "subtract" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: StrictNumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "focus-point-cost": ItemAlterationHandler<{
-        itemType: fields.StringField<"spell", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "add" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"spell", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "add" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: StrictNumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     grade: ItemAlterationHandler<{
-        itemType: fields.StringField<"armor" | "shield" | "weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor" | "shield" | "weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.StringField<"advanced" | "commercial" | "tactical" | "superior" | "elite" | "ultimate" | "paragon", "advanced" | "commercial" | "tactical" | "superior" | "elite" | "ultimate" | "paragon", true, false, boolean>;
     }>;
     group: ItemAlterationHandler<{
-        itemType: fields.StringField<"armor" | "weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor" | "weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.StringField<string, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     hardness: ItemAlterationHandler<{
-        itemType: fields.StringField<"armor" | "shield" | "consumable" | "book" | "backpack" | "equipment" | "treasure" | "weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor" | "shield" | "consumable" | "backpack" | "book" | "equipment" | "treasure" | "weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "hp-max": ItemAlterationHandler<{
-        itemType: fields.StringField<"armor" | "shield" | "consumable" | "book" | "backpack" | "equipment" | "treasure" | "weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor" | "shield" | "consumable" | "backpack" | "book" | "equipment" | "treasure" | "weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "material-type": ItemAlterationHandler<{
-        itemType: fields.StringField<"armor" | "shield" | "consumable" | "book" | "backpack" | "equipment" | "treasure" | "weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor" | "shield" | "consumable" | "backpack" | "book" | "equipment" | "treasure" | "weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.StringField<"abysium" | "adamantine" | "dawnsilver" | "djezet" | "duskwood" | "inubrix" | "noqual" | "orichalcum" | "siccatite" | "silver" | "cold-iron" | "dragonhide" | "dreamweb" | "grisantian-pelt" | "keep-stone" | "peachwood" | "sisterstone" | "sisterstone-dusk" | "sisterstone-scarlet" | "sloughstone" | "sovereign-steel" | "warpglass", NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "pd-recovery-dc": ItemAlterationHandler<{
-        itemType: fields.StringField<"condition", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "subtract" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"condition", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "persistent-damage": ItemAlterationHandler<{
-        itemType: fields.StringField<"condition", ItemType, true, false, false>;
-        mode: fields.StringField<"override", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"condition", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.SchemaField<PersistentDamageValueSchema, fields.SourceFromSchema<PersistentDamageValueSchema>, fields.ModelPropsFromSchema<PersistentDamageValueSchema>, true, false, true>;
     }>;
     rarity: ItemAlterationHandler<{
-        itemType: fields.StringField<"armor" | "shield" | "consumable" | "book" | "backpack" | "equipment" | "treasure" | "weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor" | "shield" | "consumable" | "backpack" | "book" | "equipment" | "treasure" | "weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.StringField<"common" | "uncommon" | "rare" | "unique", NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "range-increment": ItemAlterationHandler<{
-        itemType: fields.StringField<"weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "multiply" | "subtract", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "multiply" | "add" | "subtract" | "remove", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "range-max": ItemAlterationHandler<{
-        itemType: fields.StringField<"weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "multiply" | "subtract", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "multiply" | "add" | "subtract" | "remove", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "frequency-max": ItemAlterationHandler<{
-        itemType: fields.StringField<"action" | "feat", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"feat" | "action", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "frequency-per": ItemAlterationHandler<{
-        itemType: fields.StringField<"action" | "feat", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"feat" | "action", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.StringField<string, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "other-tags": ItemAlterationHandler<{
-        itemType: fields.StringField<"background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "action" | "book" | "backpack" | "equipment" | "treasure" | "weapon" | "effect" | "condition" | "affliction" | "campaignFeature" | "deity" | "feat" | "heritage" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry", ItemType, true, false, false>;
-        mode: fields.StringField<"remove" | "add" | "subtract", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"add" | "subtract" | "remove", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: SlugField<true, false, boolean>;
     }>;
     name: ItemAlterationHandler<{
-        itemType: fields.StringField<ItemType, ItemType, true, false, false>;
-        mode: fields.StringField<"override", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.StringField<string, NonNullable<JSONValue>, true, false, boolean>;
     }>;
-    potency: ItemAlterationHandler<{
-        itemType: fields.StringField<"armor" | "weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+    "runes-potency": ItemAlterationHandler<{
+        itemType: fields.StringField<"armor" | "weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
-    resilient: ItemAlterationHandler<{
-        itemType: fields.StringField<"armor", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+    "runes-resilient": ItemAlterationHandler<{
+        itemType: fields.StringField<"armor", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
+        value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
+    }>;
+    "runes-striking": ItemAlterationHandler<{
+        itemType: fields.StringField<"weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     "speed-penalty": ItemAlterationHandler<{
-        itemType: fields.StringField<"armor" | "shield", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "subtract" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor" | "shield", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: StrictNumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
     strength: ItemAlterationHandler<{
-        itemType: fields.StringField<"armor", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "remove" | "add" | "subtract" | "downgrade" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"armor", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"override" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: StrictNumberField<number, NonNullable<JSONValue>, true, false, boolean>;
     }>;
-    striking: ItemAlterationHandler<{
-        itemType: fields.StringField<"weapon", ItemType, true, false, false>;
-        mode: fields.StringField<"override" | "upgrade", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
-        value: fields.NumberField<number, NonNullable<JSONValue>, true, false, boolean>;
-    }>;
     traits: ItemAlterationHandler<{
-        itemType: fields.StringField<"background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "action" | "book" | "backpack" | "equipment" | "treasure" | "weapon" | "effect" | "condition" | "affliction" | "campaignFeature" | "feat" | "heritage" | "kit" | "melee" | "spell", ItemType, true, false, false>;
-        mode: fields.StringField<"remove" | "add" | "subtract", "override" | "remove" | "add" | "multiply" | "subtract" | "downgrade" | "upgrade", true, false, false>;
+        itemType: fields.StringField<"background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "melee" | "spell" | "treasure" | "weapon", "background" | "armor" | "shield" | "consumable" | "class" | "ancestry" | "deity" | "feat" | "heritage" | "action" | "affliction" | "backpack" | "book" | "campaignFeature" | "condition" | "effect" | "equipment" | "kit" | "lore" | "melee" | "spell" | "spellcastingEntry" | "treasure" | "weapon", true, false, false>;
+        mode: fields.StringField<"add" | "subtract" | "remove", "override" | "multiply" | "add" | "subtract" | "remove" | "downgrade" | "upgrade", true, false, false>;
         value: DataUnionField<TraitsValueField, true, false, boolean>;
     }>;
 };

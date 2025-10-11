@@ -19,5 +19,12 @@ interface ConsumableSheetData extends PhysicalItemSheetData<ConsumablePF2e> {
     materialEffects: SheetOptions;
     otherTags: SheetOptions;
     stackGroups: Omit<typeof CONFIG.PF2E.stackGroups, "coins" | "gems"> | null;
+    embeddedSpell: {
+        /** The embedded spell uuid, or null if this item *should* have a spell but doesn't */
+        uuid: string | null;
+        img?: string;
+        name?: string;
+        rank?: number;
+    } | null;
 }
 export { ConsumableSheetPF2e };

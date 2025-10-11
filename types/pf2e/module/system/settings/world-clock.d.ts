@@ -33,7 +33,7 @@ export declare class WorldClockSettings extends WorldClockSettings_base {
         };
     };
     /** Register World Clock settings and this menu. */
-    static registerSettings(): void;
+    static register(): void;
     static localizeSchema(): void;
     _prepareContext(): Promise<SettingsContext>;
 }

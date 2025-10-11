@@ -6,6 +6,7 @@ import fields = foundry.data.fields;
  * @category RuleElement
  */
 declare class TokenNameRuleElement extends RuleElement<TokenNameRuleSchema> {
+    static autogenForms: boolean;
     static defineSchema(): TokenNameRuleSchema;
     afterPrepareData(): void;
 }

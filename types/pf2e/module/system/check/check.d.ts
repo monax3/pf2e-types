@@ -6,8 +6,6 @@ import { DegreeOfSuccessString } from '../degree-of-success.ts';
 import { CheckRoll } from './roll.ts';
 import { CheckCheckContext } from './types.ts';
 interface RerollOptions {
-    /** @deprecated Use `resource: "hero-points"` instead. */
-    heroPoint?: boolean;
     resource?: string;
     keep?: "new" | "higher" | "lower";
 }

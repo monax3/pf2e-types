@@ -2,7 +2,7 @@ import { CreaturePF2e, CharacterPF2e } from '../index.ts';
 import { CreatureUpdateCallbackOptions } from '../creature/index.ts';
 import { DatabaseDeleteCallbackOptions } from "../../../../foundry/common/abstract/_types.mts";
 import { ActorUUID } from "../../../../foundry/common/documents/_module.mts";
-import { ItemType } from '../../item/base/data/index.ts';
+import { ItemType } from '../../item/types.ts';
 import { CombatantPF2e, EncounterPF2e } from '../../encounter/index.ts';
 import { RuleElement } from '../../rules/index.ts';
 import { TokenDocumentPF2e } from '../../scene/index.ts';

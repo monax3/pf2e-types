@@ -8,7 +8,7 @@ declare const KINGDOM_SKILLS: readonly ["agriculture", "arts", "boating", "defen
 declare const KINGDOM_LEADERSHIP_ABILITIES: Record<KingdomLeadershipRole, KingdomAbility>;
 declare const KINGDOM_SKILL_ABILITIES: Record<KingdomSkill, KingdomAbility>;
 declare const KINGDOM_ABILITY_LABELS: Record<"culture" | "economy" | "loyalty" | "stability", string>;
-declare const KINGDOM_COMMODITY_LABELS: Record<"stone" | "food" | "luxuries" | "lumber" | "ore", string>;
+declare const KINGDOM_COMMODITY_LABELS: Record<"stone" | "ore" | "food" | "luxuries" | "lumber", string>;
 /** Ruin label by ability slug */
 declare const KINGDOM_RUIN_LABELS: {
     culture: string;

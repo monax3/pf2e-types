@@ -2926,6 +2926,7 @@ export declare const PF2ECONFIG: {
         yaoguai: string;
     };
     npcAttackTraits: {
+        area: string;
         concentrate: string;
         curse: string;
         "deadly-2d8": string;
@@ -4599,6 +4600,40 @@ export declare const PF2ECONFIG: {
         focus: string;
         items: string;
         ritual: string;
+    };
+    spellcastingItems: {
+        scroll: {
+            name: string;
+            nameTemplate: string;
+            compendiumUuids: {
+                1: string;
+                2: string;
+                3: string;
+                4: string;
+                5: string;
+                6: string;
+                7: string;
+                8: string;
+                9: string;
+                10: string;
+            };
+        };
+        wand: {
+            name: string;
+            nameTemplate: string;
+            compendiumUuids: {
+                1: string;
+                2: string;
+                3: string;
+                4: string;
+                5: string;
+                6: string;
+                7: string;
+                8: string;
+                9: string;
+                10: null;
+            };
+        };
     };
     attitude: {
         hostile: string;

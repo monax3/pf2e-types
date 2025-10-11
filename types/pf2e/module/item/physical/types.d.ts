@@ -15,5 +15,5 @@ type PhysicalItemTrait = ArmorTrait | ConsumableTrait | EquipmentTrait | ShieldT
 type PhysicalItemType = SetElement<typeof PHYSICAL_ITEM_TYPES>;
 type PreciousMaterialType = SetElement<typeof PRECIOUS_MATERIAL_TYPES>;
 type PreciousMaterialGrade = SetElement<typeof PRECIOUS_MATERIAL_GRADES>;
-type Grade = keyof ConfigPF2e["PF2E"]["grades"];
+type Grade = keyof typeof CONFIG.PF2E.grades;
 export type { BaseMaterial, CoinDenomination, Grade, PhysicalItemTrait, PhysicalItemType, PreciousMaterialGrade, PreciousMaterialType, };

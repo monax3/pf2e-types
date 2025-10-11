@@ -14,7 +14,6 @@ declare class FlatModifierForm extends RuleElementForm<FlatModifierSource, FlatM
     } & Partial<FlatModifierSource> & Partial<Record<string, JSONValue>>): void;
 }
 interface FlatModifierFormSheetData extends RuleElementFormSheetData<FlatModifierSource, FlatModifierRuleElement> {
-    selectorIsArray: boolean;
     abilities: typeof CONFIG.PF2E.abilities;
     types: Record<ModifierType, string>;
     damageCategories: Record<DamageCategoryUnique, string>;

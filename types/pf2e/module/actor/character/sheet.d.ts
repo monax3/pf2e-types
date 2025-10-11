@@ -41,7 +41,7 @@ declare class CharacterSheetPF2e<TActor extends CharacterPF2e> extends CreatureS
     protected _updateObject(event: Event, formData: Record<string, unknown>): Promise<void>;
 }
 interface CharacterSheetPF2e<TActor extends CharacterPF2e> extends CreatureSheetPF2e<TActor> {
-    getStrikeFromDOM(target: HTMLElement): CharacterStrike | null;
+    getAttackActionFromDOM(target: HTMLElement): CharacterStrike | null;
 }
 type CharacterSheetOptions = ActorSheetOptions;
 type CharacterSystemSheetData = CharacterSystemData & {

@@ -1,9 +1,9 @@
 import { DocumentFlags, DocumentFlagsSource } from "../../../../../foundry/common/data/_types.mts";
+import { ItemType } from '../../types.ts';
 import { MigrationRecord, OneToThree, PublicationData, Rarity } from '../../../data.ts';
 import { RuleElementSource } from '../../../rules/index.ts';
 import { Predicate } from '../../../system/predication.ts';
 import { ItemTrait } from '../types.ts';
-import { ItemType } from './index.ts';
 import type * as fields from "../../../../../foundry/common/data/fields.mts";
 type BaseItemSourcePF2e<TType extends ItemType, TSystemSource extends ItemSystemSource = ItemSystemSource> = foundry.documents.ItemSource<TType, TSystemSource> & {
     flags: ItemSourceFlagsPF2e;

@@ -20,6 +20,6 @@ type SubstituteRollSchema = RuleElementSchema & {
      * Remove the parent item (must be an effect) after a roll:
      * The value may be a boolean, "if-enabled", or a predicate to be tested against the roll options from the roll.
      */
-    removeAfterRoll: DataUnionField<fields.StringField<"if-enabled"> | StrictBooleanField | PredicateField<false, false, false>, false, false, true>;
+    removeAfterRoll: DataUnionField<fields.StringField<"if-enabled"> | StrictBooleanField<false> | PredicateField<false, false, false>, false, false, true>;
 };
 export { SubstituteRollRuleElement };

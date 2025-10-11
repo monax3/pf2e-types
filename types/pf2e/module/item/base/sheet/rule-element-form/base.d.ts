@@ -28,7 +28,9 @@ declare class RuleElementForm<TSource extends RuleElementSource = RuleElementSou
     get item(): ItemPF2e;
     get fieldIdPrefix(): string;
     /** Returns the initial value of the schema. Arrays are stripped due to how they're handled in forms */
-    protected getInitialValue(): object;
+    protected getInitialValue({ autogenerate }?: {
+        autogenerate?: boolean | undefined;
+    }): object;
     getData(): Promise<RuleElementFormSheetData<TSource, TObject>>;
     render(): Promise<string>;
     /**
@@ -50,8 +52,10 @@ interface RuleElementFormSheetData<TSource extends RuleElementSource, TObject ex
     basePath: string;
     fields: RuleElementSchema | undefined;
     /** A collection of additional handlebars functions */
-    form: Record<string, unknown>;
+    form: Record<string, Function>;
     validationFailures: string[];
+    hiddenFields: string[];
+    omittedFields: string[];
 }
 interface RuleElementFormTabData {
     /** Valid tab names for this form */

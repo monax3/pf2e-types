@@ -1,12 +1,13 @@
 import { ActorPF2e } from '../base.ts';
 import { Abilities, BaseCreatureSource, CreatureAttributes, CreatureDetails, CreatureDetailsSource, CreatureHitPointsSource, CreatureInitiativeSource, CreatureLanguagesData, CreaturePerceptionData, CreatureResources, CreatureResourcesSource, CreatureSystemData, CreatureSystemSource, CreatureTraitsSource, HeldShieldData, LabeledSpeed, SaveData, SenseData } from '../creature/data.ts';
-import { ActorAttributesSource, ActorFlagsPF2e, AttributeBasedTraceData, HitPointsStatistic, StrikeData } from '../data/base.ts';
+import { ActorAttributesSource, ActorFlagsPF2e, AttributeBasedTraceData, BasicAttackAction, HitPointsStatistic, StrikeData } from '../data/base.ts';
 import { InitiativeTraceData } from '../initiative.ts';
 import { Modifier, StatisticModifier } from '../modifiers.ts';
 import { ActorAlliance, SaveType, SkillSlug } from '../types.ts';
 import { MeleePF2e } from '../../item/index.ts';
 import { PublicationData, ValueAndMax } from '../../data.ts';
 import { RawPredicate } from '../../system/predication.ts';
+import { Statistic } from '../../system/statistic/index.ts';
 type NPCSource = BaseCreatureSource<"npc", NPCSystemSource> & {
     flags: DeepPartial<NPCFlags>;
 };
@@ -111,7 +112,7 @@ interface NPCSystemData extends Omit<NPCSystemSource, "attributes" | "perception
     /** Skills that this actor possesses; skills the actor is actually trained on are marked 'visible'. */
     skills: Record<string, NPCSkillData>;
     /** Special strikes which the creature can take. */
-    actions: NPCStrike[];
+    actions: NPCAttackAction[];
     resources: NPCResources;
     spellcasting: {
         rituals: {
@@ -162,7 +163,7 @@ interface NPCDetails extends NPCDetailsSource, CreatureDetails {
 interface NPCStrike extends StrikeData {
     item: MeleePF2e<ActorPF2e>;
     /** The type of attack as a localization string */
-    attackRollType?: string;
+    attackRollType: string;
     /** The id of the item this strike is generated from */
     sourceId?: string;
     /** Additional effects from a successful strike, like "Grab" */
@@ -173,6 +174,24 @@ interface NPCStrike extends StrikeData {
     /** A melee usage of a firearm: not available on NPC strikes */
     altUsages?: never;
 }
+interface NPCAreaFire extends BasicAttackAction {
+    type: "area-fire" | "auto-fire";
+    item: MeleePF2e<ActorPF2e>;
+    /** The type of attack as a localization string */
+    attackRollType: string;
+    altUsages?: never;
+    statistic: Statistic;
+    additionalEffects: {
+        tag: string;
+        label: string;
+    }[];
+    /** A list of buttons to show. In practice there is only one */
+    variants: {
+        label: string;
+        roll: () => void;
+    }[];
+}
+type NPCAttackAction = NPCStrike | NPCAreaFire;
 /** Save data with an additional "base" value */
 interface NPCSaveData extends SaveData {
     base?: number;
@@ -208,4 +227,4 @@ interface NPCResources extends CreatureResources {
     };
     mythicPoints: ValueAndMax;
 }
-export type { NPCAttributes, NPCAttributesSource, NPCFlags, NPCHitPoints, NPCPerceptionData, NPCPerceptionSource, NPCSaveData, NPCSkillData, NPCSkillSource, NPCSource, NPCSpecialSkillSource, NPCStrike, NPCSystemData, NPCSystemSource, NPCTraitsSource, };
+export type { NPCAreaFire, NPCAttackAction, NPCAttributes, NPCAttributesSource, NPCFlags, NPCHitPoints, NPCPerceptionData, NPCPerceptionSource, NPCSaveData, NPCSkillData, NPCSkillSource, NPCSource, NPCSpecialSkillSource, NPCStrike, NPCSystemData, NPCSystemSource, NPCTraitsSource, };

@@ -11,8 +11,8 @@ import { ItemOriginFlag } from '../../chat-message/data.ts';
 import { ChatMessagePF2e } from '../../chat-message/document.ts';
 import { RuleElement, RuleElementOptions } from '../../rules/index.ts';
 import { EnrichmentOptionsPF2e, RollDataPF2e } from '../../system/text-editor.ts';
-import { ItemInstances } from '../types.ts';
-import { ItemFlagsPF2e, ItemSourcePF2e, ItemSystemData, ItemType, RawItemChatData, TraitChatData } from './data/index.ts';
+import { ItemInstances, ItemType } from '../types.ts';
+import { ItemFlagsPF2e, ItemSourcePF2e, ItemSystemData, RawItemChatData, TraitChatData } from './data/index.ts';
 import { ItemDescriptionData, ItemTrait } from './data/system.ts';
 import { ItemSheetPF2e } from './sheet/sheet.ts';
 /** The basic `Item` subclass for the system */

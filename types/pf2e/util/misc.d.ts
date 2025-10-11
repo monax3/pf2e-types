@@ -83,11 +83,6 @@ declare function fontAwesomeIcon(glyph: string, { style, fixedWidth }?: {
     style?: FontAwesomeStyle;
     fixedWidth?: boolean;
 }): HTMLElement;
-/** Short form of type and non-null check */
-declare function isObject<T extends object>(value: unknown): value is DeepPartial<T>;
-declare function isObject<T extends string>(value: unknown): value is {
-    [K in T]?: unknown;
-};
 /** Create a copy of a record with its insertion order sorted by label */
 declare function sortLabeledRecord<T extends Record<string, {
     label: string;
@@ -97,7 +92,7 @@ declare function sortStringRecord<T extends Record<string, string>>(record: T): 
 /** JSON.stringify with recursive key sorting */
 declare function sortObjByKey(value: unknown): unknown;
 /** Walk an object tree and replace any string values found according to a provided function */
-declare function recursiveReplaceString<T>(source: T, replace: (s: string) => string): T;
+declare function recursiveReplaceString<T>(source: T, replace: (s: string) => string | number): T;
 /** Create a localization function with a prefixed localization object path */
 declare function localizer(prefix: string): (...args: Parameters<Localization["format"]>) => string;
 /** Walk a localization object and recursively map the keys as localization strings starting with a given prefix */
@@ -108,4 +103,4 @@ declare function isImageFilePath(path: unknown): path is ImageFilePath;
 declare function isVideoFilePath(path: unknown): path is VideoFilePath;
 declare function isImageOrVideoPath(path: unknown): path is ImageFilePath | VideoFilePath;
 declare const SORTABLE_BASE_OPTIONS: Sortable.Options;
-export { applyNTimes, configFromLocalization, ErrorPF2e, fontAwesomeIcon, getActionGlyph, getActionIcon, getActionTypeLabel, groupBy, isImageFilePath, isImageOrVideoPath, isObject, isVideoFilePath, localizeList, localizer, objectHasKey, ordinalString, parseHTML, recursiveReplaceString, setHasElement, signedInteger, sluggify, SORTABLE_BASE_OPTIONS, sortLabeledRecord, sortObjByKey, sortStringRecord, splitListString, tupleHasValue, type SlugCamel, };
+export { applyNTimes, configFromLocalization, ErrorPF2e, fontAwesomeIcon, getActionGlyph, getActionIcon, getActionTypeLabel, groupBy, isImageFilePath, isImageOrVideoPath, isVideoFilePath, localizeList, localizer, objectHasKey, ordinalString, parseHTML, recursiveReplaceString, setHasElement, signedInteger, sluggify, SORTABLE_BASE_OPTIONS, sortLabeledRecord, sortObjByKey, sortStringRecord, splitListString, tupleHasValue, type SlugCamel, };

@@ -3,7 +3,7 @@ import { ActorUpdateCallbackOptions } from '../base.ts';
 import { DatabaseCreateCallbackOptions, DatabaseDeleteCallbackOptions, DataModelValidationOptions } from "../../../../foundry/common/abstract/_module.mts";
 import { UserAction } from "../../../../foundry/common/constants.mts";
 import { ActorUUID } from "../../../../foundry/common/documents/_module.mts";
-import { ItemType } from '../../item/base/data/index.ts';
+import { ItemType } from '../../item/types.ts';
 import { RuleElement } from '../../rules/index.ts';
 import { RuleElementSchema } from '../../rules/rule-element/data.ts';
 import { TokenDocumentPF2e } from '../../scene/index.ts';

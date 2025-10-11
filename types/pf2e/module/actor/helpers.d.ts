@@ -4,7 +4,7 @@ import { ItemPF2e, MeleePF2e, PhysicalItemPF2e, WeaponPF2e } from '../item/index
 import { ZeroToFour } from '../data.ts';
 import { ActorSourcePF2e } from './data/index.ts';
 import { Modifier } from './modifiers.ts';
-import { NPCStrike } from './npc/data.ts';
+import { NPCAttackAction } from './npc/data.ts';
 import { ActorGroupUpdate, AuraEffectData } from './types.ts';
 /**
  * Reset and rerender a provided list of actors. Omit argument to reset all world and synthetic actors
@@ -44,9 +44,9 @@ declare function createEnvironmentRollOptions(actor: ActorPF2e): Record<string, 
 /** Whether flanking puts this actor off-guard */
 declare function isOffGuardFromFlanking(target: ActorPF2e, origin: ActorPF2e): boolean;
 declare function getStrikeAttackDomains(weapon: WeaponPF2e<ActorPF2e> | MeleePF2e<ActorPF2e>, proficiencyRank: ZeroToFour | null, baseRollOptions: string[] | Set<string>): string[];
-declare function getStrikeDamageDomains(weapon: WeaponPF2e<ActorPF2e> | MeleePF2e<ActorPF2e>, proficiencyRank: ZeroToFour | null): string[];
-/** Create a strike statistic from a melee item: for use by NPCs and Hazards */
-declare function strikeFromMeleeItem(item: MeleePF2e<ActorPF2e>): NPCStrike;
+declare function getAttackDamageDomains(weapon: WeaponPF2e<ActorPF2e> | MeleePF2e<ActorPF2e>, proficiencyRank: ZeroToFour | null, action?: "strike" | "auto-fire" | "area-fire"): string[];
+/** Create a strike or area/auto fire statistic from a melee item: for use by NPCs and Hazards */
+declare function attackFromMeleeItem(item: MeleePF2e<ActorPF2e>): NPCAttackAction;
 /** Get the range increment of a target for a given weapon */
 declare function getRangeIncrement(attackItem: ItemPF2e<ActorPF2e>, distance: number | null): number | null;
 /** Determine range penalty for a ranged attack roll */
@@ -68,5 +68,5 @@ declare function createActorGroupUpdate(data?: Partial<ActorGroupUpdate>): Actor
 declare function applyActorGroupUpdate(actor: ActorPF2e, data: Partial<ActorGroupUpdate>, { render }?: {
     render?: boolean;
 }): Promise<void>;
-export { applyActorGroupUpdate, auraAffectsActor, calculateMAPs, calculateRangePenalty, checkAreaEffects, createActorGroupUpdate, createEncounterRollOptions, createEnvironmentRollOptions, getRangeIncrement, getStrikeAttackDomains, getStrikeDamageDomains, isOffGuardFromFlanking, isReallyPC, iterateAllItems, migrateActorSource, resetActors, setHitPointsRollOptions, strikeFromMeleeItem, transferItemsBetweenActors, userColorForActor, };
+export { applyActorGroupUpdate, attackFromMeleeItem, auraAffectsActor, calculateMAPs, calculateRangePenalty, checkAreaEffects, createActorGroupUpdate, createEncounterRollOptions, createEnvironmentRollOptions, getAttackDamageDomains, getRangeIncrement, getStrikeAttackDomains, isOffGuardFromFlanking, isReallyPC, iterateAllItems, migrateActorSource, resetActors, setHitPointsRollOptions, transferItemsBetweenActors, userColorForActor, };
 export type { MultipleAttackPenaltyData };

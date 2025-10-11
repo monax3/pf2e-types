@@ -1,5 +1,5 @@
 import { DataSchema } from "../../../../../foundry/common/abstract/_types.mts";
-import { DataUnionField, PredicateField, StrictArrayField, StrictBooleanField, StrictStringField } from '../../../system/schema-data-fields.ts';
+import { DataUnionField, PredicateField, StrictArrayField, StrictBooleanField } from '../../../system/schema-data-fields.ts';
 import { AELikeDataPrepPhase } from '../ae-like.ts';
 import { ResolvableValueField, RuleElementSchema } from '../data.ts';
 import { RollOptionRuleElement } from './rule-element.ts';
@@ -27,7 +27,7 @@ type RollOptionSchema = RuleElementSchema & {
     /** A suboption selection */
     selection: fields.StringField<string, string, false, false, false>;
     /** Whether the roll option is toggleable: a checkbox will appear in interfaces (usually actor sheets) */
-    toggleable: DataUnionField<StrictStringField<"totm"> | StrictBooleanField, false, false, true>;
+    toggleable: DataUnionField<fields.StringField<"totm"> | StrictBooleanField<false>, false, false, true>;
     /** If toggleable, the location to be found in an interface */
     placement: fields.StringField<string, string, false, false, false>;
     /** An optional predicate to determine whether the toggle is interactable by the user */

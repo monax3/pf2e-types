@@ -1,5 +1,5 @@
 import { CreatureSheetData } from '../creature/sheet.ts';
-import { HitPointsStatistic, TraitViewData } from '../data/base.ts';
+import { HitPointsStatistic } from '../data/base.ts';
 import { AbilityViewData } from '../sheet/data-types.ts';
 import { MovementType, SaveType, SkillSlug } from '../types.ts';
 import { ImageFilePath, VideoFilePath } from "../../../../foundry/common/constants.mts";
@@ -9,7 +9,7 @@ import { ZeroToFour } from '../../data.ts';
 import { TagifyEntry } from '../../sheet/helpers.ts';
 import { ArmorClassTraceData } from '../../system/statistic/index.ts';
 import { NPCAttributes, NPCPerceptionData, NPCSaveData, NPCSkillData, NPCSystemData } from './data.ts';
-import { NPCPF2e, NPCStrike } from './index.ts';
+import { NPCPF2e } from './index.ts';
 interface ActionsDetails {
     label: string;
     actions: AbilityViewData[];
@@ -57,13 +57,26 @@ interface NPCStrikeSheetData {
     id: string;
     name: string;
     sort: number;
-    breakdown: string;
-    variants: NPCStrike["variants"];
+    variants: {
+        label: string;
+        breakdown: string | null;
+    }[];
     attackType: string;
-    traits: TraitViewData[];
+    glyph: string;
+    /** A list of traits or tags to show next to the strike. */
+    traitsAndTags: NPCAttackTraitOrTag[];
     description: string | null;
     /** The damage formula of the strike for display on sheets */
     damageFormula: string | null;
+}
+/**
+ * An NPC trait or tag to show next to a strike (or area/auto fire in SF2e).
+ * Sometimes Paizo will include a non-trait in the traits list.
+ * "As Melee, but also lists range or range increment *with* traits" - Monster Core Pg 5
+ */
+interface NPCAttackTraitOrTag {
+    label: string;
+    description?: string | null;
 }
 interface NPCSpellcastingSheetData extends SpellcastingSheetData {
     adjustedHigher?: {
@@ -129,4 +142,4 @@ interface NPCIdentificationSheetData {
     standard: string | null;
     lore: string;
 }
-export type { NPCActionSheetData, NPCIdentificationSheetData, NPCSheetData, NPCSheetItemData, NPCSkillSheetData, NPCSpeedSheetData, NPCSpellcastingSheetData, NPCStrikeSheetData, NPCSystemSheetData, VariantCloneParams, };
+export type { NPCActionSheetData, NPCIdentificationSheetData, NPCSheetData, NPCSheetItemData, NPCSkillSheetData, NPCSpeedSheetData, NPCSpellcastingSheetData, NPCStrikeSheetData, NPCSystemSheetData, NPCAttackTraitOrTag as NPCTraitOrTag, VariantCloneParams, };

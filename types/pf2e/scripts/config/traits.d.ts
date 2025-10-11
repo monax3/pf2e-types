@@ -706,6 +706,7 @@ declare const otherArmorTags: Record<OtherArmorTag, string>;
 declare const otherConsumableTags: Record<OtherConsumableTag, string>;
 declare const otherWeaponTags: Record<OtherWeaponTag, string>;
 declare const npcAttackTraits: {
+    area: string;
     concentrate: string;
     curse: string;
     "deadly-2d8": string;

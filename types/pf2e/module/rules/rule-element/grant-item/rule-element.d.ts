@@ -16,7 +16,7 @@ declare class GrantItemRuleElement extends RuleElement<GrantItemSchema> {
      */
     preselectChoices: Record<string, string | number>;
     /** Actions taken when either the parent or child item are deleted */
-    onDeleteActions: Partial<OnDeleteActions> | null;
+    onDeleteActions: OnDeleteActions | null;
     constructor(data: GrantItemSource, options: RuleElementOptions);
     static defineSchema(): GrantItemSchema;
     static ON_DELETE_ACTIONS: readonly ["cascade", "detach", "restrict"];
@@ -43,7 +43,7 @@ interface GrantItemSource extends RuleElementSource {
     alterations?: unknown;
 }
 interface OnDeleteActions {
-    granter: ItemGrantDeleteAction;
-    grantee: ItemGrantDeleteAction;
+    granter: ItemGrantDeleteAction | null;
+    grantee: ItemGrantDeleteAction | null;
 }
 export { GrantItemRuleElement, type GrantItemSource };

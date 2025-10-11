@@ -2,7 +2,7 @@ import { ActorPF2e } from '../actor/index.ts';
 import { DatabaseCreateCallbackOptions, DatabaseDeleteCallbackOptions, DataModelConstructionContext } from "../../../foundry/common/abstract/_types.mts";
 import { DocumentFlags } from "../../../foundry/common/data/_types.mts";
 import { ItemPF2e } from '../item/index.ts';
-import { EffectAreaShape } from '../item/spell/types.ts';
+import { EffectAreaShape } from '../item/types.ts';
 import { MeasuredTemplatePF2e } from '../canvas/measured-template.ts';
 import { ItemOriginFlag } from '../chat-message/data.ts';
 import { ChatMessagePF2e } from '../chat-message/document.ts';

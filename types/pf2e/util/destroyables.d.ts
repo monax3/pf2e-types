@@ -1,3 +1,4 @@
+import { default as Tagify } from '@yaireo/tagify';
 import { default as Sortable } from 'sortablejs';
 declare class DestroyableManager {
     #private;
@@ -12,5 +13,10 @@ type Destroyable = Tagify<{
     value: string;
 }> | Tagify<Tagify.TagData> | Sortable | JQueryTooltipster.ITooltipsterInstance;
 declare function createSortable(list: HTMLElement, options: Sortable.Options): Sortable;
+declare class NoJQueryPlugin {
+    static pluginName: string;
+    setupClone(): void;
+    clone(): void;
+}
 declare function createTooltipster(target: HTMLElement, options: JQueryTooltipster.ITooltipsterOptions): JQuery;
-export { createSortable, createTooltipster, DestroyableManager };
+export { createSortable, createTooltipster, DestroyableManager, NoJQueryPlugin };

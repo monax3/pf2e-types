@@ -1,4 +1,4 @@
-import { ItemType } from '../../../item/base/data/index.ts';
+import { ItemType } from '../../../item/types.ts';
 import { PickableThing } from '../../../apps/pick-a-thing-prompt/app.ts';
 import { RawPredicate } from '../../../system/predication.ts';
 import { DataUnionField, PredicateField, StrictArrayField, StrictBooleanField, StrictNumberField, StrictObjectField, StrictStringField } from '../../../system/schema-data-fields.ts';

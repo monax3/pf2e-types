@@ -1,16 +1,14 @@
 import { ActorType, CharacterPF2e } from '../../../actor/index.ts';
 import { DamageDicePF2e, Modifier } from '../../../actor/modifiers.ts';
 import { WeaponPF2e } from '../../../item/index.ts';
-import { RuleElement, RuleElementOptions } from '../base.ts';
+import { RuleElement } from '../base.ts';
 import { ModelPropsFromRESchema } from '../data.ts';
 import { BattleFormRuleSchema } from './schema.ts';
-import { BattleFormSource } from './types.ts';
 declare class BattleFormRuleElement extends RuleElement<BattleFormRuleSchema> {
     #private;
     protected static validActorTypes: ActorType[];
     /** The label given to modifiers of AC, skills, and strikes */
     modifierLabel: string;
-    constructor(data: BattleFormSource, options: RuleElementOptions);
     static defineSchema(): BattleFormRuleSchema;
     preCreate({ itemSource, ruleSource }: RuleElement.PreCreateParams): Promise<void>;
     /** Set temporary hit points */

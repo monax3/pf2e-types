@@ -1,11 +1,13 @@
+import { ModelPropsFromSchema, SourceFromSchema } from "../../../../foundry/common/data/fields.mjs";
 import { MeleePF2e } from '../index.ts';
 import { ItemSystemModel, ItemSystemSchema } from '../base/data/model.ts';
 import { BaseItemSourcePF2e, ItemFlagsPF2e, ItemSystemSource, ItemTraitsNoRarity } from '../base/data/system.ts';
+import { EffectAreaShape } from '../types.ts';
 import { WeaponMaterialData } from '../weapon/data.ts';
 import { WeaponPropertyRuneType } from '../weapon/types.ts';
 import { DamageCategoryUnique, DamageType } from '../../system/damage/types.ts';
 import { RecordField, SlugField } from '../../system/schema-data-fields.ts';
-import { NPCAttackTrait } from './types.ts';
+import { NPCAttackActionType, NPCAttackTrait } from './types.ts';
 import fields = foundry.data.fields;
 type MeleeSource = BaseItemSourcePF2e<"melee", MeleeSystemSource> & {
     flags: DeepPartial<MeleeFlags>;
@@ -22,6 +24,7 @@ declare class MeleeSystemData extends ItemSystemModel<MeleePF2e, NPCAttackSystem
         property: WeaponPropertyRuneType[];
     };
     static defineSchema(): NPCAttackSystemSchema;
+    prepareBaseData(): void;
 }
 interface MeleeSystemData extends ItemSystemModel<MeleePF2e, NPCAttackSystemSchema>, Omit<fields.ModelPropsFromSchema<NPCAttackSystemSchema>, "description"> {
 }
@@ -30,6 +33,8 @@ type NPCAttackSystemSchema = Omit<ItemSystemSchema, "traits"> & {
         otherTags: fields.ArrayField<SlugField<true, false, false>, string[], string[], true, false, true>;
         value: fields.ArrayField<fields.StringField<NPCAttackTrait, NPCAttackTrait, true, false, false>, NPCAttackTrait[], NPCAttackTrait[], true, false, true>;
     }>;
+    action: fields.StringField<NPCAttackActionType, NPCAttackActionType, true, false, true>;
+    area: fields.SchemaField<EffectAreaSchema, SourceFromSchema<EffectAreaSchema>, ModelPropsFromSchema<EffectAreaSchema>, true, true, true>;
     damageRolls: RecordField<fields.StringField<string, string, true, false, false>, fields.SchemaField<{
         damage: fields.StringField<string, string, true, false, false>;
         damageType: fields.StringField<DamageType, DamageType, true, false, true>;
@@ -42,6 +47,10 @@ type NPCAttackSystemSchema = Omit<ItemSystemSchema, "traits"> & {
     attackEffects: fields.SchemaField<{
         value: fields.ArrayField<fields.StringField<string, string, true, false, false>>;
     }>;
+};
+type EffectAreaSchema = {
+    type: fields.StringField<EffectAreaShape, EffectAreaShape, true, false, true>;
+    value: fields.NumberField<number, number, true, false, true>;
 };
 type MeleeSystemSource = fields.SourceFromSchema<NPCAttackSystemSchema> & {
     level?: never;

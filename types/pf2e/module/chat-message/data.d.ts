@@ -3,8 +3,9 @@ import { ActorUUID, TokenDocumentUUID } from "../../../foundry/client/documents/
 import { DocumentUUID } from "../../../foundry/client/utils/_module.mts";
 import { RollMode } from "../../../foundry/common/constants.mts";
 import { ChatMessageFlags } from "../../../foundry/common/documents/chat-message.mts";
-import { ItemType, SpellSource } from '../item/base/data/index.ts';
+import { SpellSource } from '../item/base/data/index.ts';
 import { MagicTradition } from '../item/spell/types.ts';
+import { ItemType } from '../item/types.ts';
 import { ZeroToTwo } from '../data.ts';
 import { RollNoteSource } from '../notes.ts';
 import { CheckCheckContext } from '../system/check/index.ts';

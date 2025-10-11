@@ -55,6 +55,7 @@ interface ClientSettingsPF2e extends fh.ClientSettings {
             applications: string;
             interface: string;
         };
+        uiScale: number;
     };
     get(module: "pf2e", setting: "automation.actorsDeadAtZero"): "neither" | "npcsOnly" | "pcsOnly" | "both";
     get(module: "pf2e", setting: "automation.encumbrance"): boolean;
@@ -250,6 +251,7 @@ declare global {
         var ui: FoundryUI<ActorDirectoryPF2e, ItemDirectoryPF2e, ChatLogPF2e, CompendiumDirectoryPF2e, EncounterTracker<EncounterPF2e | null>, Hotbar<MacroPF2e>>;
         var AutomaticBonusProgression: typeof ABP;
         interface Math {
+            btwn: (v: number, lte: number, gte: number) => boolean;
             eq: (a: number, b: number) => boolean;
             gt: (a: number, b: number) => boolean;
             gte: (a: number, b: number) => boolean;
@@ -257,16 +259,9 @@ declare global {
             lte: (a: number, b: number) => boolean;
             ne: (a: number, b: number) => boolean;
             ternary: (condition: boolean | number, ifTrue: number, ifFalse: number) => number;
+            match: (...args: (string | number | null)[]) => string | number;
+            when: (condition: boolean, then: string | number) => string | number | null;
         }
-    }
-    interface RollMathProxy {
-        eq: (a: number, b: number) => boolean;
-        gt: (a: number, b: number) => boolean;
-        gte: (a: number, b: number) => boolean;
-        lt: (a: number, b: number) => boolean;
-        lte: (a: number, b: number) => boolean;
-        ne: (a: number, b: number) => boolean;
-        ternary: (condition: boolean | number, ifTrue: number, ifFalse: number) => number;
     }
     const BUILD_MODE: "development" | "production";
     const CONDITION_SOURCES: ConditionSource[];

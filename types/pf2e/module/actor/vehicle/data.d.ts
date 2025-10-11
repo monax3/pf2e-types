@@ -123,4 +123,4 @@ interface TokenDimensions {
     height: number;
 }
 export { VehicleSystemData };
-export type { TokenDimensions, VehicleSource, VehicleTrait };
+export type { TokenDimensions, VehicleSource, VehicleSystemSchema, VehicleTrait };

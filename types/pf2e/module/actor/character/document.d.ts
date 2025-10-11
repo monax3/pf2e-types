@@ -3,7 +3,7 @@ import { CreatureUpdateCallbackOptions, ResourceData } from '../creature/types.t
 import { ActorInitiative } from '../initiative.ts';
 import { AttributeString } from '../types.ts';
 import { AncestryPF2e, BackgroundPF2e, ClassPF2e, DeityPF2e, FeatPF2e, HeritagePF2e, ItemPF2e, WeaponPF2e } from '../../item/index.ts';
-import { ItemType } from '../../item/base/data/index.ts';
+import { ItemType } from '../../item/types.ts';
 import { TokenDocumentPF2e } from '../../scene/index.ts';
 import { RollParameters } from '../../system/rolls.ts';
 import { Statistic } from '../../system/statistic/index.ts';

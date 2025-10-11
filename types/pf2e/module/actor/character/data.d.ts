@@ -12,8 +12,8 @@ import { BaseWeaponType, WeaponCategory, WeaponGroup } from '../../item/weapon/t
 import { ValueAndMax, ZeroToFour } from '../../data.ts';
 import { DamageType } from '../../system/damage/types.ts';
 import { Predicate } from '../../system/predication.ts';
+import { WeaponAuxiliaryAction } from './auxiliary.ts';
 import { CharacterPF2e } from './document.ts';
-import { WeaponAuxiliaryAction } from './helpers.ts';
 import { CharacterSheetTabVisibility } from './sheet.ts';
 type CharacterSource = BaseCreatureSource<"character", CharacterSystemSource> & {
     flags: DeepPartial<CharacterFlags>;

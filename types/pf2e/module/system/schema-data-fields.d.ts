@@ -23,8 +23,14 @@ declare class StrictStringField<TSourceProp extends string, TModelProp extends N
 declare class StrictNumberField<TSourceProp extends number, TModelProp extends NonNullable<JSONValue> = TSourceProp, TRequired extends boolean = false, TNullable extends boolean = true, THasInitial extends boolean = true> extends fields.NumberField<TSourceProp, TModelProp, TRequired, TNullable, THasInitial> {
     protected _cast(value: unknown): unknown;
 }
+/** A `BooleanField` when genuine nullability support */
+declare class NullableBooleanField<TRequired extends boolean = true, TNullable extends boolean = false, THasInitial extends boolean = true> extends fields.BooleanField<boolean, boolean, TRequired, TNullable, THasInitial> {
+    protected _cast(value: unknown): boolean | null;
+    /** Create a select element for nullable fields. */
+    protected _toInput(config: foundry.data.FormInputConfig<boolean>): HTMLElement;
+}
 /** A `BooleanField` that does not cast the source value */
-declare class StrictBooleanField<TRequired extends boolean = false, TNullable extends boolean = false, THasInitial extends boolean = true> extends fields.BooleanField<boolean, boolean, TRequired, TNullable, THasInitial> {
+declare class StrictBooleanField<TRequired extends boolean = true, TNullable extends boolean = false, THasInitial extends boolean = true> extends fields.BooleanField<boolean, boolean, TRequired, TNullable, THasInitial> {
     protected _cast(value: unknown): unknown;
 }
 declare class StrictArrayField<TElementField extends fields.DataField, TSourceProp extends Partial<SourceFromDataField<TElementField>>[] = SourceFromDataField<TElementField>[], TModelProp extends object = ModelPropFromDataField<TElementField>[], TRequired extends boolean = true, TNullable extends boolean = false, THasInitial extends boolean = true> extends fields.ArrayField<TElementField, TSourceProp, TModelProp, TRequired, TNullable, THasInitial> {
@@ -96,6 +102,7 @@ declare class PredicateField<TRequired extends boolean = true, TNullable extends
     constructor(options?: ArrayFieldOptions<RawPredicate, TRequired, TNullable, THasInitial>);
     /** Construct a `PredicatePF2e` from the initialized `PredicateStatement[]` */
     initialize(value: RawPredicate, model: foundry.abstract.DataModel, options?: ArrayFieldOptions<RawPredicate, TRequired, TNullable, THasInitial>): MaybeSchemaProp<Predicate, TRequired, TNullable, THasInitial>;
+    protected _toInput(config: foundry.data.FormInputConfig): HTMLInputElement;
 }
 type RecordFieldModelProp<TKeyField extends fields.StringField<string, string, true, false, false> | fields.NumberField<number, number, true, false, false>, TValueField extends fields.DataField, TDense extends boolean = false> = TDense extends true ? Record<ModelPropFromDataField<TKeyField>, ModelPropFromDataField<TValueField>> : TDense extends false ? Partial<Record<ModelPropFromDataField<TKeyField>, ModelPropFromDataField<TValueField>>> : Record<ModelPropFromDataField<TKeyField>, ModelPropFromDataField<TValueField>> | Partial<Record<ModelPropFromDataField<TKeyField>, ModelPropFromDataField<TValueField>>>;
 type RecordFieldSourceProp<TKeyField extends fields.StringField<string, string, true, false, false> | fields.NumberField<number, number, true, false, false>, TValueField extends fields.DataField, 
@@ -117,4 +124,4 @@ declare class NullField extends fields.DataField<null, null, true, true, true> {
     constructor();
     protected _cast(): null;
 }
-export { AnyChoiceField, DataUnionField, LaxArrayField, LaxSchemaField, NullField, PredicateField, RecordField, SlugField, StrictArrayField, StrictBooleanField, StrictNumberField, StrictObjectField, StrictSchemaField, StrictStringField, };
+export { AnyChoiceField, DataUnionField, LaxArrayField, LaxSchemaField, NullableBooleanField, NullField, PredicateField, RecordField, SlugField, StrictArrayField, StrictBooleanField, StrictNumberField, StrictObjectField, StrictSchemaField, StrictStringField, };

@@ -1,14 +1,12 @@
 export type * from "../module/rules/synthetics.d.ts";
 export type * from "../module/rules/index.d.ts";
 export type * from "../module/rules/helpers.d.ts";
-export type * from "../module/rules/rule-element/weapon-potency.d.ts";
 export type * from "../module/rules/rule-element/token-name.d.ts";
 export type * from "../module/rules/rule-element/token-light.d.ts";
 export type * from "../module/rules/rule-element/token-image.d.ts";
 export type * from "../module/rules/rule-element/token-effect-icon.d.ts";
 export type * from "../module/rules/rule-element/temp-hp.d.ts";
 export type * from "../module/rules/rule-element/substitute-roll.d.ts";
-export type * from "../module/rules/rule-element/striking.d.ts";
 export type * from "../module/rules/rule-element/strike.d.ts";
 export type * from "../module/rules/rule-element/special-statistic.d.ts";
 export type * from "../module/rules/rule-element/special-resource.d.ts";

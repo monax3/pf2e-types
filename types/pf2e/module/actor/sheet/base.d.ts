@@ -1,5 +1,5 @@
 import { ActorPF2e } from '../index.ts';
-import { StrikeData } from '../data/base.ts';
+import { AttackAction } from '../data/base.ts';
 import { default as Tabs } from "../../../../foundry/client/applications/ux/tabs.mts";
 import { AppV1RenderOptions } from "../../../../foundry/client/appv1/api/application-v1.mts";
 import { ActorSheetOptions } from "../../../../foundry/client/appv1/sheets/actor-sheet.mts";
@@ -31,7 +31,7 @@ declare abstract class ActorSheetPF2e<TActor extends ActorPF2e> extends fav1.she
     protected prepareInventoryItem(item: PhysicalItemPF2e): InventoryItem;
     protected _onSearchFilter(event: KeyboardEvent, query: string, rgx: RegExp, html: HTMLElement | null): void;
     protected static coinsToSheetData(coins: RawCoins): CoinageSummary;
-    protected getStrikeFromDOM(button: HTMLElement, readyOnly?: boolean): StrikeData | null;
+    protected getAttackActionFromDOM(button: HTMLElement, readyOnly?: boolean): AttackAction | null;
     activateListeners($html: JQuery): void;
     /** Sheet-wide click listeners for elements selectable as `a[data-action]` */
     protected activateClickListener(html: HTMLElement): SheetClickActionHandlers;

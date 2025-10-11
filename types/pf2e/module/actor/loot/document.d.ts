@@ -3,7 +3,7 @@ import { ActorUpdateCallbackOptions } from '../base.ts';
 import { DatabaseCreateCallbackOptions, DatabaseCreateOperation, DatabaseDeleteOperation } from "../../../../foundry/common/abstract/_types.mts";
 import { default as Document } from "../../../../foundry/common/abstract/document.mts";
 import { UserAction } from "../../../../foundry/common/constants.mts";
-import { ItemType } from '../../item/base/data/index.ts';
+import { ItemType } from '../../item/types.ts';
 import { TokenDocumentPF2e } from '../../scene/index.ts';
 import { LootSource, LootSystemData } from './data.ts';
 declare class LootPF2e<TParent extends TokenDocumentPF2e | null = TokenDocumentPF2e | null> extends ActorPF2e<TParent> {
